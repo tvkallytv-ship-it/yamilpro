@@ -1,1 +1,1400 @@
-0
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M3U8 Converter PRO</title>
+    <style>
+        :root {
+            --bg-amoled: #000000;
+            --card-bg: #121212;
+            --text-primary: #e0e0e0;
+            --accent-purple: #bb86fc;
+            --accent-blue: #03dac6;
+            --accent-pink: #ff4081;
+            --border-dark: #333333;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg-amoled);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden; /* Evita desplazamiento horizontal */
+        }
+        .header {
+            background-color: var(--card-bg);
+            padding: 12px;
+            border-bottom: 1px solid var(--border-dark);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        .app-title {
+            margin: 0;
+            text-align: center;
+            font-size: 18px;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+        .container {
+            flex: 1;
+            padding: 8px;
+            max-width: 100%;
+            margin: 0 auto;
+            width: 100%;
+            overflow-x: hidden; /* Evita desplazamiento horizontal */
+        }
+        .converter-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        .panel {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 12px;
+            border: 1px solid var(--border-dark);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            overflow: hidden; /* Evita desbordamiento */
+        }
+        .panel-title {
+            margin-top: 0;
+            font-size: 16px;
+            color: var(--accent-purple);
+            border-bottom: 1px solid var(--border-dark);
+            padding-bottom: 6px;
+            margin-bottom: 12px;
+        }
+        textarea {
+            width: 100%;
+            height: 180px;
+            background-color: #1a1a1a;
+            color: var(--text-primary);
+            border: 1px solid var(--border-dark);
+            border-radius: 6px;
+            padding: 10px;
+            font-family: 'Fira Code', monospace;
+            resize: vertical;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 12px;
+            justify-content: center;
+        }
+        .btn {
+            background-color: var(--accent-purple);
+            color: black;
+            border: none;
+            padding: 8px 12px;
+            font-size: 12px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: 600;
+            min-width: 0;
+            flex: 1;
+            max-width: calc(50% - 3px); /* 2 botones por fila en móvil */
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(187, 134, 252, 0.4);
+        }
+        .btn:disabled {
+            background-color: #424242;
+            color: #757575;
+            cursor: not-allowed;
+        }
+        .btn-download {
+            background-color: var(--accent-blue);
+        }
+        .btn-reset {
+            background-color: var(--accent-pink);
+        }
+        .btn-share {
+            background-color: #4CAF50;
+        }
+        .btn-search {
+            background-color: #2196F3;
+        }
+        .btn-load-url {
+            background-color: #FF9800;
+        }
+        .btn-copy {
+            background-color: #9C27B0;
+        }
+        .btn-categories {
+            background-color: #E91E63;
+        }
+        .file-input {
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        .file-input label {
+            background-color: var(--accent-purple);
+            color: black;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s;
+            font-size: 12px;
+            width: 100%;
+            justify-content: center;
+        }
+        .file-info {
+            margin: 10px 0;
+            padding: 8px;
+            background-color: #1a1a1a;
+            border-radius: 5px;
+            color: var(--accent-blue);
+            font-style: italic;
+            word-break: break-all;
+            font-size: 12px;
+        }
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: bold;
+            text-align: center;
+            font-size: 12px;
+        }
+        .status-success {
+            background-color: rgba(0, 200, 83, 0.1);
+            color: #00c853;
+            border: 1px solid #00c853;
+        }
+        .status-error {
+            background-color: rgba(255, 23, 68, 0.1);
+            color: #ff1744;
+            border: 1px solid #ff1744;
+        }
+        .progress-container {
+            margin: 12px 0;
+        }
+        .progress-text {
+            text-align: center;
+            margin-bottom: 6px;
+            color: var(--accent-blue);
+            font-weight: bold;
+            font-size: 12px;
+        }
+        .progress-bar {
+            height: 6px;
+            background-color: #1a1a1a;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
+            width: 0%;
+            transition: width 0.3s;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-dark);
+            font-size: 10px;
+            color: var(--text-secondary);
+        }
+        .save-options {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #1a1a1a;
+            border-radius: 5px;
+            border: 1px solid var(--border-dark);
+        }
+        .save-options label {
+            display: block;
+            margin: 6px 0;
+            font-size: 12px;
+        }
+        .save-options select, .save-options input {
+            background-color: #333;
+            color: white;
+            border: 1px solid var(--border-dark);
+            padding: 6px;
+            border-radius: 3px;
+            margin-left: 6px;
+            font-size: 12px;
+            width: calc(100% - 12px);
+            margin-top: 4px;
+        }
+        .search-container {
+            margin: 10px 0;
+            display: flex;
+            gap: 6px;
+            flex-direction: column;
+        }
+        .search-input {
+            flex: 1;
+            padding: 8px;
+            background-color: #1a1a1a;
+            color: white;
+            border: 1px solid var(--border-dark);
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        .search-results {
+            margin-top: 6px;
+            max-height: 120px;
+            overflow-y: auto;
+            border: 1px solid var(--border-dark);
+            border-radius: 5px;
+            background-color: #1a1a1a;
+            display: none;
+        }
+        .search-result-item {
+            padding: 6px;
+            border-bottom: 1px solid var(--border-dark);
+            cursor: pointer;
+            font-size: 11px;
+            user-select: text;
+            white-space: pre-wrap;
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            word-break: break-all;
+        }
+        .search-result-item:hover {
+            background-color: #333;
+        }
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+        .search-highlight {
+            background-color: rgba(187, 134, 252, 0.3);
+            font-weight: bold;
+        }
+        .search-tabs {
+            display: flex;
+            margin-bottom: 6px;
+            border-bottom: 1px solid var(--border-dark);
+        }
+        .search-tab {
+            padding: 6px 10px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            font-size: 12px;
+        }
+        .search-tab.active {
+            border-bottom: 2px solid var(--accent-purple);
+            color: var(--accent-purple);
+            font-weight: bold;
+        }
+        .share-dialog {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--card-bg);
+            padding: 12px;
+            border-top: 1px solid var(--border-dark);
+            z-index: 1000;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
+        }
+        .share-dialog-title {
+            margin-top: 0;
+            margin-bottom: 12px;
+            text-align: center;
+            color: var(--accent-purple);
+            font-size: 14px;
+        }
+        .share-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+        .share-option {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .batch-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 8px 0;
+            padding: 8px;
+            background-color: #1a1a1a;
+            border-radius: 5px;
+        }
+        .batch-info {
+            font-size: 12px;
+            color: var(--accent-blue);
+        }
+        .batch-nav {
+            display: flex;
+            gap: 6px;
+        }
+        .batch-btn {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+        .batch-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 999;
+        }
+        .url-input-container {
+            margin-bottom: 12px;
+        }
+        .url-input {
+            width: 100%;
+            padding: 10px;
+            background-color: #1a1a1a;
+            color: white;
+            border: 1px solid var(--border-dark);
+            border-radius: 5px;
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
+        .categories-panel {
+            margin: 12px 0;
+            padding: 10px;
+            background-color: #1a1a1a;
+            border-radius: 5px;
+            border: 1px solid var(--border-dark);
+        }
+        .categories-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .categories-stats {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 8px;
+            font-size: 11px;
+            color: var(--accent-blue);
+            flex-wrap: wrap;
+        }
+        .categories-controls {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        .categories-controls .btn {
+            padding: 4px 8px;
+            font-size: 10px;
+            max-width: none;
+            flex: none;
+        }
+        .categories-list {
+            max-height: 150px;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 6px;
+        }
+        .category-item {
+            padding: 6px;
+            background-color: #333;
+            border-radius: 3px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+        }
+        .category-item:hover {
+            border-color: var(--accent-purple);
+        }
+        .category-item.selected {
+            border-color: var(--accent-blue);
+            background-color: #2a2a2a;
+        }
+        .category-name {
+            font-weight: bold;
+            margin-bottom: 2px;
+            font-size: 11px;
+        }
+        .category-count {
+            font-size: 10px;
+            color: var(--accent-blue);
+        }
+        @media (min-width: 768px) {
+            .converter-panel {
+                flex-direction: row;
+            }
+            .panel {
+                width: calc(50% - 6px);
+            }
+            .btn {
+                max-width: calc(25% - 5px); /* 4 botones por fila en desktop */
+                font-size: 11px;
+                padding: 6px 8px;
+            }
+            textarea {
+                height: 250px;
+            }
+            .categories-controls .btn {
+                font-size: 11px;
+                padding: 5px 10px;
+            }
+        }
+        @media (max-width: 480px) {
+            .btn {
+                font-size: 11px;
+                padding: 7px 10px;
+                max-width: calc(50% - 3px);
+            }
+            .categories-controls {
+                justify-content: center;
+            }
+            .categories-controls .btn {
+                flex: 1;
+                min-width: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="app-title">CONVERTIDOR M3U8 PRO</h1>
+    </div>
+    
+    <div class="container">
+        <div class="converter-panel">
+            <div class="panel">
+                <h2 class="panel-title">ENTRADA ORIGINAL</h2>
+                
+                <div class="url-input-container">
+                    <input type="text" id="urlInput" class="url-input" placeholder="Ingresa URL de lista M3U...">
+                    <button id="loadUrlBtn" class="btn btn-load-url">🌍 CARGAR URL</button>
+                </div>
+                
+                <div class="file-input">
+                    <label for="fileUpload">
+                        <span>📁 SELECCIONAR ARCHIVO .M3U</span>
+                    </label>
+                    <input type="file" id="fileUpload" accept=".m3u,.txt" style="display: none;">
+                    <div id="fileName" class="file-info">Ningún archivo seleccionado</div>
+                </div>
+                
+                <div class="search-container">
+                    <div class="search-tabs">
+                        <div class="search-tab active" data-tab="input">Buscar entrada</div>
+                        <div class="search-tab" data-tab="output">Buscar resultados</div>
+                    </div>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Buscar en la lista...">
+                    <button id="searchBtn" class="btn btn-search">🔍 BUSCAR</button>
+                    <button id="copySearchResults" class="btn btn-copy" style="display: none;">📋 COPIAR</button>
+                    <div id="searchResults" class="search-results"></div>
+                </div>
+                
+                <textarea id="inputText" placeholder="Pega aquí tu lista M3U..."></textarea>
+            </div>
+            
+            <div class="panel">
+                <h2 class="panel-title">RESULTADO CONVERTIDO</h2>
+                
+                <div class="categories-panel" id="categoriesPanel" style="display: none;">
+                    <div class="categories-header">
+                        <h3 style="margin: 0; font-size: 14px;">📺 CATEGORÍAS</h3>
+                        <button id="showCategoriesBtn" class="btn btn-categories" style="padding: 4px 8px; font-size: 10px;">📋 GESTIONAR</button>
+                    </div>
+                    <div class="categories-stats">
+                        <span id="totalCategories">Categorías: 0</span>
+                        <span id="totalChannels">Total: 0</span>
+                        <span id="filteredChannels">Seleccionados: 0</span>
+                    </div>
+                    <div class="categories-controls">
+                        <button id="selectAllCategories" class="btn">✅ TODO</button>
+                        <button id="deselectAllCategories" class="btn">❌ NADA</button>
+                        <button id="copySelectedCategories" class="btn btn-copy">📋 COPIAR</button>
+                    </div>
+                    <div id="categoriesList" class="categories-list">
+                        <!-- Las categorías se generarán aquí -->
+                    </div>
+                </div>
+                
+                <div class="batch-controls" id="batchControls" style="display: none;">
+                    <div class="batch-info" id="batchInfo">Lote 1 de 3</div>
+                    <div class="batch-nav">
+                        <button class="batch-btn" id="prevBatch">ANTERIOR</button>
+                        <button class="batch-btn" id="nextBatch">SIGUIENTE</button>
+                    </div>
+                </div>
+                
+                <textarea id="outputText" placeholder="Aquí aparecerá tu lista convertida..." readonly></textarea>
+                
+                <div class="progress-container">
+                    <div class="progress-text">Progreso: <span id="progressText">0%</span></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressBar"></div>
+                    </div>
+                </div>
+                
+                <div class="save-options">
+                    <h3 style="margin: 0 0 8px 0; font-size: 14px;">Opciones de Guardado:</h3>
+                    <label>
+                        Formato:
+                        <select id="fileFormat">
+                            <option value="m3u8">.m3u8 (UTF-8)</option>
+                            <option value="m3u">.m3u (UTF-8)</option>
+                            <option value="txt">.txt (UTF-8)</option>
+                        </select>
+                    </label>
+                    <label>
+                        Nombre:
+                        <input type="text" id="customFilename" placeholder="Nombre personalizado">
+                    </label>
+                    <label>
+                        Canales por lote:
+                        <input type="number" id="batchSize" min="1" value="100">
+                    </label>
+                </div>
+                
+                <div id="status" class="status" style="display: none;"></div>
+                
+                <div class="btn-group">
+                    <button id="convertBtn" class="btn">🔁 CONVERTIR</button>
+                    <button id="downloadBtn" class="btn btn-download" disabled>💾 GUARDAR</button>
+                    <button id="shareBtn" class="btn btn-share" disabled>📤 COMPARTIR</button>
+                    <button id="resetBtn" class="btn btn-reset">🔄 REINICIAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="shareOverlay"></div>
+    <div class="share-dialog" id="shareDialog">
+        <h3 class="share-dialog-title">Compartir lista a:</h3>
+        <div class="share-options" id="shareOptions">
+            <!-- Las opciones de compartir se generarán dinámicamente -->
+        </div>
+    </div>
+
+    <div class="footer">
+        Convertidor M3U8 Pro © 2023 - Todos los derechos reservados
+    </div>
+
+    <script>
+        // El código JavaScript permanece exactamente igual que en la versión anterior
+        // Solo se han ajustado los estilos CSS para hacer todo más compacto
+        
+        // Variables de estado
+        let convertedContent = '';
+        let currentFileName = '';
+        let searchResults = [];
+        let currentSearchTab = 'input';
+        let batches = [];
+        let currentBatchIndex = 0;
+        let categories = new Map();
+        let selectedCategories = new Set();
+        
+        // Elementos del DOM
+        const fileUpload = document.getElementById('fileUpload');
+        const inputText = document.getElementById('inputText');
+        const outputText = document.getElementById('outputText');
+        const convertBtn = document.getElementById('convertBtn');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const shareBtn = document.getElementById('shareBtn');
+        const searchBtn = document.getElementById('searchBtn');
+        const searchInput = document.getElementById('searchInput');
+        const searchResultsContainer = document.getElementById('searchResults');
+        const searchTabs = document.querySelectorAll('.search-tab');
+        const fileName = document.getElementById('fileName');
+        const progressText = document.getElementById('progressText');
+        const progressBar = document.getElementById('progressBar');
+        const statusElement = document.getElementById('status');
+        const fileFormat = document.getElementById('fileFormat');
+        const customFilename = document.getElementById('customFilename');
+        const shareOverlay = document.getElementById('shareOverlay');
+        const shareDialog = document.getElementById('shareDialog');
+        const shareOptions = document.getElementById('shareOptions');
+        const batchControls = document.getElementById('batchControls');
+        const batchInfo = document.getElementById('batchInfo');
+        const prevBatchBtn = document.getElementById('prevBatch');
+        const nextBatchBtn = document.getElementById('nextBatch');
+        const batchSizeInput = document.getElementById('batchSize');
+        const urlInput = document.getElementById('urlInput');
+        const loadUrlBtn = document.getElementById('loadUrlBtn');
+        const copySearchResultsBtn = document.getElementById('copySearchResults');
+        const categoriesPanel = document.getElementById('categoriesPanel');
+        const categoriesList = document.getElementById('categoriesList');
+        const totalCategories = document.getElementById('totalCategories');
+        const totalChannels = document.getElementById('totalChannels');
+        const filteredChannels = document.getElementById('filteredChannels');
+        const selectAllCategories = document.getElementById('selectAllCategories');
+        const deselectAllCategories = document.getElementById('deselectAllCategories');
+        const copySelectedCategories = document.getElementById('copySelectedCategories');
+        const showCategoriesBtn = document.getElementById('showCategoriesBtn');
+        
+        // Función para extraer categorías de la lista M3U
+        function extractCategories(content) {
+            categories.clear();
+            selectedCategories.clear();
+            
+            const lines = content.split('\n');
+            let currentGroup = 'Sin Categoría';
+            
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i].trim();
+                
+                // Buscar línea de grupo/título
+                if (line.startsWith('#EXTINF:-1') || line.startsWith('#EXTINF:')) {
+                    // Extraer grupo/título usando expresión regular
+                    const groupMatch = line.match(/group-title="([^"]*)"/);
+                    const titleMatch = line.match(/,(.*)$/);
+                    
+                    if (groupMatch && groupMatch[1]) {
+                        currentGroup = groupMatch[1].trim() || 'Sin Categoría';
+                    }
+                    
+                    if (titleMatch && titleMatch[1]) {
+                        const channelName = titleMatch[1].trim();
+                        const channelLine = line;
+                        const urlLine = i + 1 < lines.length ? lines[i + 1] : '';
+                        
+                        if (!categories.has(currentGroup)) {
+                            categories.set(currentGroup, []);
+                        }
+                        
+                        categories.get(currentGroup).push({
+                            name: channelName,
+                            extinf: channelLine,
+                            url: urlLine
+                        });
+                    }
+                }
+            }
+            
+            // Ordenar categorías alfabéticamente
+            const sortedCategories = new Map([...categories.entries()].sort());
+            categories = sortedCategories;
+            
+            updateCategoriesUI();
+        }
+        
+        // Actualizar la interfaz de categorías
+        function updateCategoriesUI() {
+            if (categories.size === 0) {
+                categoriesPanel.style.display = 'none';
+                return;
+            }
+            
+            categoriesPanel.style.display = 'block';
+            
+            // Calcular estadísticas
+            let totalChannelsCount = 0;
+            categories.forEach(channels => {
+                totalChannelsCount += channels.length;
+            });
+            
+            totalCategories.textContent = `Categorías: ${categories.size}`;
+            totalChannels.textContent = `Total: ${totalChannelsCount}`;
+            filteredChannels.textContent = `Seleccionados: ${selectedCategories.size}`;
+            
+            // Generar lista de categorías
+            categoriesList.innerHTML = '';
+            
+            categories.forEach((channels, categoryName) => {
+                const categoryItem = document.createElement('div');
+                categoryItem.className = `category-item ${selectedCategories.has(categoryName) ? 'selected' : ''}`;
+                categoryItem.innerHTML = `
+                    <div class="category-name">${categoryName}</div>
+                    <div class="category-count">${channels.length} canales</div>
+                `;
+                
+                categoryItem.addEventListener('click', () => {
+                    toggleCategorySelection(categoryName);
+                });
+                
+                categoriesList.appendChild(categoryItem);
+            });
+        }
+        
+        // Alternar selección de categoría
+        function toggleCategorySelection(categoryName) {
+            if (selectedCategories.has(categoryName)) {
+                selectedCategories.delete(categoryName);
+            } else {
+                selectedCategories.add(categoryName);
+            }
+            updateCategoriesUI();
+        }
+        
+        // Seleccionar todas las categorías
+        selectAllCategories.addEventListener('click', () => {
+            categories.forEach((_, categoryName) => {
+                selectedCategories.add(categoryName);
+            });
+            updateCategoriesUI();
+            showStatus(`Todas las categorías seleccionadas (${categories.size})`, 'success');
+        });
+        
+        // Deseleccionar todas las categorías
+        deselectAllCategories.addEventListener('click', () => {
+            selectedCategories.clear();
+            updateCategoriesUI();
+            showStatus('Todas las categorías deseleccionadas', 'success');
+        });
+        
+        // Copiar categorías seleccionadas
+        copySelectedCategories.addEventListener('click', () => {
+            if (selectedCategories.size === 0) {
+                showStatus('Selecciona al menos una categoría para copiar', 'error');
+                return;
+            }
+            
+            let contentToCopy = '#EXTM3U\n\n';
+            let totalChannelsCopied = 0;
+            
+            selectedCategories.forEach(categoryName => {
+                const channels = categories.get(categoryName);
+                if (channels) {
+                    contentToCopy += `# ${categoryName}\n`;
+                    channels.forEach(channel => {
+                        contentToCopy += `${channel.extinf}\n`;
+                        contentToCopy += `${channel.url}\n\n`;
+                        totalChannelsCopied++;
+                    });
+                }
+            });
+            
+            navigator.clipboard.writeText(contentToCopy).then(() => {
+                showStatus(`${totalChannelsCopied} canales de ${selectedCategories.size} categorías copiados`, 'success');
+            }).catch(err => {
+                // Fallback para navegadores que no soportan clipboard API
+                const textArea = document.createElement('textarea');
+                textArea.value = contentToCopy;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showStatus(`${totalChannelsCopied} canales de ${selectedCategories.size} categorías copiados`, 'success');
+            });
+        });
+        
+        // Mostrar/ocultar panel de categorías
+        let categoriesVisible = false;
+        showCategoriesBtn.addEventListener('click', () => {
+            categoriesVisible = !categoriesVisible;
+            if (categoriesVisible) {
+                categoriesPanel.style.display = 'block';
+                showCategoriesBtn.textContent = '📋 OCULTAR';
+            } else {
+                categoriesPanel.style.display = 'none';
+                showCategoriesBtn.textContent = '📋 GESTIONAR';
+            }
+        });
+        
+        // Cargar archivo
+        fileUpload.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            currentFileName = file.name;
+            fileName.textContent = `Archivo: ${file.name} (${formatFileSize(file.size)})`;
+            showStatus('Archivo cargado correctamente', 'success');
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                inputText.value = e.target.result;
+                // Extraer categorías del contenido cargado
+                extractCategories(e.target.result);
+            };
+            reader.onerror = function() {
+                showStatus('Error al leer el archivo', 'error');
+            };
+            reader.readAsText(file);
+        });
+        
+        // Cargar desde URL
+        loadUrlBtn.addEventListener('click', async function() {
+            const url = urlInput.value.trim();
+            if (!url) {
+                showStatus('Por favor ingresa una URL válida', 'error');
+                return;
+            }
+            
+            loadUrlBtn.disabled = true;
+            loadUrlBtn.textContent = 'CARGANDO...';
+            showStatus('Conectando con el servidor...', 'success');
+            
+            try {
+                let response = await fetch(url, {
+                    headers: {
+                        'Accept': 'application/x-mpegURL',
+                        'User-Agent': 'Mozilla/5.0'
+                    }
+                });
+                
+                if (!response.ok) {
+                    const proxyUrl = `https://cors-anywhere.herokuapp.com/${url}`;
+                    response = await fetch(proxyUrl, {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    });
+                }
+                
+                if (!response.ok) {
+                    throw new Error('No se pudo conectar al servidor');
+                }
+                
+                const content = await response.text();
+                
+                if (!content.startsWith('#EXTM3U')) {
+                    throw new Error('La respuesta no es una lista M3U válida');
+                }
+                
+                inputText.value = content;
+                currentFileName = url.split('/').pop() || 'lista_remota.m3u';
+                fileName.textContent = `URL: ${url}`;
+                showStatus('Lista cargado correctamente desde la URL', 'success');
+                
+                // Extraer categorías del contenido cargado
+                extractCategories(content);
+                
+            } catch (error) {
+                console.error('Error al cargar URL:', error);
+                showStatus(`Error: ${error.message}`, 'error');
+            } finally {
+                loadUrlBtn.disabled = false;
+                loadUrlBtn.textContent = '🌍 CARGAR URL';
+            }
+        });
+        
+        // Cambiar pestañas de búsqueda
+        searchTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                searchTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                currentSearchTab = this.getAttribute('data-tab');
+                searchInput.placeholder = `Buscar en ${currentSearchTab === 'input' ? 'entrada' : 'resultados'}...`;
+                
+                if (searchInput.value.trim()) {
+                    performSearch();
+                }
+            });
+        });
+        
+        // Función de búsqueda optimizada
+        function performSearch() {
+            const searchTerm = searchInput.value.trim();
+            if (!searchTerm) {
+                searchResultsContainer.style.display = 'none';
+                copySearchResultsBtn.style.display = 'none';
+                return;
+            }
+            
+            const content = currentSearchTab === 'input' ? inputText.value : outputText.value;
+            if (!content) {
+                showStatus(`No hay contenido en ${currentSearchTab === 'input' ? 'entrada' : 'resultados'} para buscar`, 'error');
+                return;
+            }
+            
+            requestAnimationFrame(() => {
+                const lines = content.split('\n');
+                searchResults = [];
+                
+                for (let i = 0; i < lines.length; i++) {
+                    if (lines[i].toLowerCase().includes(searchTerm.toLowerCase())) {
+                        let channelBlock = lines[i];
+                        
+                        if (lines[i].startsWith('#EXTINF')) {
+                            channelBlock += '\n' + (lines[i+1] || '');
+                        }
+                        else if (i > 0 && lines[i-1].startsWith('#EXTINF')) {
+                            channelBlock = lines[i-1] + '\n' + channelBlock;
+                        }
+                        
+                        searchResults.push({
+                            lineNumber: i,
+                            content: channelBlock,
+                            fullContent: channelBlock
+                        });
+                    }
+                }
+                
+                if (searchResults.length > 0) {
+                    let resultsHTML = '';
+                    searchResults.forEach(result => {
+                        const highlightedContent = highlightText(result.content, searchTerm);
+                        resultsHTML += `<div class="search-result-item" data-line="${result.lineNumber}">${highlightedContent}</div>`;
+                    });
+                    
+                    searchResultsContainer.innerHTML = resultsHTML;
+                    searchResultsContainer.style.display = 'block';
+                    copySearchResultsBtn.style.display = 'flex';
+                    
+                    document.querySelectorAll('.search-result-item').forEach(item => {
+                        item.addEventListener('click', function() {
+                            const lineNumber = parseInt(this.getAttribute('data-line'));
+                            scrollToLine(lineNumber);
+                        });
+                    });
+                    
+                    showStatus(`Encontradas ${searchResults.length} coincidencias en ${currentSearchTab === 'input' ? 'entrada' : 'resultados'}`, 'success');
+                } else {
+                    searchResultsContainer.style.display = 'none';
+                    copySearchResultsBtn.style.display = 'none';
+                    showStatus(`No se encontraron coincidencias en ${currentSearchTab === 'input' ? 'entrada' : 'resultados'}`, 'error');
+                }
+            });
+        }
+        
+        // Copiar resultados de búsqueda
+        copySearchResultsBtn.addEventListener('click', function() {
+            if (searchResults.length === 0) {
+                showStatus('No hay resultados para copiar', 'error');
+                return;
+            }
+            
+            const resultsText = searchResults.map(result => result.fullContent).join('\n\n');
+            
+            navigator.clipboard.writeText(resultsText).then(() => {
+                showStatus('Resultados copiados al portapapeles', 'success');
+            }).catch(err => {
+                const textArea = document.createElement('textarea');
+                textArea.value = resultsText;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showStatus('Resultados copiados al portapapeles', 'success');
+            });
+        });
+        
+        // Evento de búsqueda - Solo al hacer clic o Enter
+        searchBtn.addEventListener('click', performSearch);
+        
+        // Buscar al presionar Enter
+        searchInput.addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+        
+        // Función para resaltar texto en los resultados
+        function highlightText(text, term) {
+            const regex = new RegExp(`(${term})`, 'gi');
+            return text.replace(regex, '<span class="search-highlight">$1</span>');
+        }
+        
+        // Función para desplazarse a la línea específica
+        function scrollToLine(lineNumber) {
+            const textarea = currentSearchTab === 'input' ? inputText : outputText;
+            const content = textarea.value;
+            const lines = content.split('\n');
+            let position = 0;
+            
+            for (let i = 0; i < lineNumber; i++) {
+                position += lines[i].length + 1;
+            }
+            
+            textarea.focus();
+            textarea.setSelectionRange(position, position);
+            
+            const lineHeight = parseInt(window.getComputedStyle(textarea).lineHeight);
+            const textareaHeight = textarea.clientHeight;
+            const linesVisible = Math.floor(textareaHeight / lineHeight);
+            const scrollToLine = Math.max(0, lineNumber - Math.floor(linesVisible / 2));
+            
+            textarea.scrollTop = scrollToLine * lineHeight;
+        }
+        
+        // Web Worker para conversión en segundo plano
+        let convertWorker;
+        
+        if (window.Worker) {
+            const workerCode = `
+                self.onmessage = function(e) {
+                    let content = e.data;
+                    content = content.replace(/(https?:\\/\\/[^\\s"]+)(\\.ts)(?=[\\s"']|$)/gi, '$1.m3u8');
+                    content = content.replace(/(https?:\\/\\/[^\\s"]+\\/\\d+)(?=[\\s"']|$)/gi, '$1.m3u8');
+                    self.postMessage(content);
+                };
+            `;
+            
+            const blob = new Blob([workerCode], { type: 'application/javascript' });
+            convertWorker = new Worker(URL.createObjectURL(blob));
+            
+            convertWorker.onmessage = function(e) {
+                convertedContent = e.data;
+                createBatches(convertedContent);
+                showCurrentBatch();
+                convertBtn.disabled = false;
+                convertBtn.textContent = '🔁 CONVERTIR';
+                updateProgress(100);
+                showStatus('Conversión completada usando Web Worker', 'success');
+                
+                // Extraer categorías del contenido convertido
+                extractCategories(convertedContent);
+            };
+            
+            convertWorker.onerror = function(error) {
+                showStatus('Error en procesamiento en segundo plano.', 'error');
+                console.error(error);
+                convertBtn.disabled = false;
+                convertBtn.textContent = '🔁 CONVERTIR';
+            };
+        }
+        
+        // Convertir usando Web Worker
+        convertBtn.addEventListener('click', () => {
+            const content = inputText.value;
+            if (!content.trim()) {
+                showStatus('Por favor carga o pega tu lista M3U', 'error');
+                return;
+            }
+            
+            convertBtn.disabled = true;
+            convertBtn.textContent = 'PROCESANDO...';
+            updateProgress(0);
+            
+            if (convertWorker) {
+                convertWorker.postMessage(content);
+            } else {
+                setTimeout(() => {
+                    try {
+                        const startTime = performance.now();
+                        
+                        convertedContent = content.replace(/(https?:\/\/[^\s"]+)(\.ts)(?=[\s"']|$)/gi, '$1.m3u8');
+                        convertedContent = convertedContent.replace(/(https?:\/\/[^\s"]+\/\d+)(?=[\s"']|$)/gi, '$1.m3u8');
+                        
+                        const endTime = performance.now();
+                        
+                        createBatches(convertedContent);
+                        showCurrentBatch();
+                        
+                        downloadBtn.disabled = false;
+                        shareBtn.disabled = false;
+                        
+                        const timeTaken = ((endTime - startTime) / 1000).toFixed(2);
+                        showStatus(`Conversión completada en ${timeTaken} segundos`, 'success');
+                        
+                        // Extraer categorías del contenido convertido
+                        extractCategories(convertedContent);
+                        
+                    } catch (error) {
+                        showStatus(`Error durante la conversión: ${error.message}`, 'error');
+                        console.error("Error de conversión:", error);
+                    }
+                    
+                    convertBtn.disabled = false;
+                    convertBtn.textContent = '🔁 CONVERTIR';
+                    updateProgress(100);
+                }, 100);
+            }
+        });
+        
+        // Función para dividir el contenido en lotes
+        function createBatches(content) {
+            const batchSize = parseInt(batchSizeInput.value) || 100;
+            const lines = content.split('\n');
+            batches = [];
+            let currentBatch = [];
+            let channelCount = 0;
+            
+            for (let i = 0; i < lines.length; i++) {
+                if (lines[i].startsWith('#EXTINF')) {
+                    if (channelCount >= batchSize && currentBatch.length > 0) {
+                        batches.push(currentBatch.join('\n'));
+                        currentBatch = [];
+                        channelCount = 0;
+                    }
+                    
+                    currentBatch.push(lines[i]);
+                    if (i + 1 < lines.length && !lines[i+1].startsWith('#')) {
+                        currentBatch.push(lines[i+1]);
+                        i++;
+                    }
+                    channelCount++;
+                } else if (lines[i].trim() !== '') {
+                    currentBatch.push(lines[i]);
+                }
+            }
+            
+            if (currentBatch.length > 0) {
+                batches.push(currentBatch.join('\n'));
+            }
+            
+            if (batches.length > 1) {
+                batchControls.style.display = 'flex';
+            } else {
+                batchControls.style.display = 'none';
+            }
+            
+            currentBatchIndex = 0;
+            updateBatchControls();
+        }
+        
+        // Mostrar el lote actual
+        function showCurrentBatch() {
+            if (batches.length === 0) return;
+            outputText.value = batches[currentBatchIndex];
+            updateBatchControls();
+        }
+        
+        // Actualizar controles de navegación entre lotes
+        function updateBatchControls() {
+            batchInfo.textContent = `Lote ${currentBatchIndex + 1} de ${batches.length}`;
+            prevBatchBtn.disabled = currentBatchIndex <= 0;
+            nextBatchBtn.disabled = currentBatchIndex >= batches.length - 1;
+        }
+        
+        // Navegación entre lotes
+        prevBatchBtn.addEventListener('click', function() {
+            if (currentBatchIndex > 0) {
+                currentBatchIndex--;
+                showCurrentBatch();
+            }
+        });
+        
+        nextBatchBtn.addEventListener('click', function() {
+            if (currentBatchIndex < batches.length - 1) {
+                currentBatchIndex++;
+                showCurrentBatch();
+            }
+        });
+        
+        // Función para guardar archivos
+        downloadBtn.addEventListener('click', function() {
+            if (!convertedContent) {
+                showStatus('No hay contenido para guardar', 'error');
+                return;
+            }
+
+            let filename = customFilename.value.trim() || 
+                         (currentFileName ? currentFileName.replace(/\.[^/.]+$/, "") : 'lista_convertida');
+            filename += `.${fileFormat.value}`;
+
+            if (typeof Android !== 'undefined') {
+                try {
+                    Android.saveFile(filename, convertedContent);
+                    showStatus(`Archivo guardado en Descargas/${filename}`, 'success');
+                } catch (error) {
+                    showStatus('Error al guardar: ' + error.message, 'error');
+                }
+            } else {
+                const blob = new Blob([convertedContent], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                setTimeout(() => {
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                }, 100);
+                
+                showStatus(`Archivo ${filename} descargado`, 'success');
+            }
+        });
+        
+        // Función para compartir por lotes
+        shareBtn.addEventListener('click', function() {
+            if (batches.length === 0) {
+                showStatus('No hay contenido para compartir', 'error');
+                return;
+            }
+            
+            let filenameBase = customFilename.value.trim() || 
+                             (currentFileName ? currentFileName.replace(/\.[^/.]+$/, "") : 'lista_convertida');
+            
+            showShareDialog(filenameBase);
+        });
+        
+        // Mostrar diálogo de compartir con opciones por lote
+        function showShareDialog(filenameBase) {
+            shareOptions.innerHTML = '';
+            
+            if (batches.length > 1) {
+                const currentBatchOption = document.createElement('button');
+                currentBatchOption.className = 'share-option';
+                currentBatchOption.innerHTML = '📤 Lote Actual';
+                currentBatchOption.addEventListener('click', () => shareBatch(currentBatchIndex, filenameBase));
+                shareOptions.appendChild(currentBatchOption);
+            }
+            
+            const allBatchesOption = document.createElement('button');
+            allBatchesOption.className = 'share-option';
+            allBatchesOption.innerHTML = '📦 Todos los Lotes';
+            allBatchesOption.addEventListener('click', () => {
+                shareAllBatches(filenameBase);
+            });
+            shareOptions.appendChild(allBatchesOption);
+            
+            shareOverlay.style.display = 'block';
+            shareDialog.style.display = 'block';
+        }
+        
+        // Compartir un lote específico
+        function shareBatch(batchIndex, filenameBase) {
+            const content = batches[batchIndex];
+            const filename = `${filenameBase}_part${batchIndex + 1}.${fileFormat.value}`;
+            
+            if (typeof Android !== 'undefined') {
+                try {
+                    Android.shareText(content, filename);
+                    showStatus(`Lote ${batchIndex + 1} compartido`, 'success');
+                } catch (error) {
+                    showStatus('Error al compartir: ' + error.message, 'error');
+                }
+            } else {
+                const blob = new Blob([content], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                
+                if (navigator.share) {
+                    navigator.share({
+                        title: filename,
+                        text: `Lote ${batchIndex + 1} de lista M3U8`,
+                        url: url
+                    }).catch(err => {
+                        showStatus('Error al compartir: ' + err.message, 'error');
+                    });
+                } else {
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    setTimeout(() => {
+                        document.body.removeChild(a);
+                        URL.revokeObjectURL(url);
+                    }, 100);
+                    showStatus(`Lote ${batchIndex + 1} preparado para descargar`, 'success');
+                }
+            }
+            
+            hideShareDialog();
+        }
+        
+        // Compartir todos los lotes secuencialmente
+        function shareAllBatches(filenameBase) {
+            hideShareDialog();
+            showStatus(`Preparando ${batches.length} lotes para compartir...`, 'success');
+            
+            setTimeout(() => {
+                shareNextBatch(0, filenameBase);
+            }, 500);
+        }
+        
+        // Función recursiva para compartir lotes uno tras otro
+        function shareNextBatch(index, filenameBase) {
+            if (index >= batches.length) {
+                showStatus('Todos los lotes compartidos', 'success');
+                return;
+            }
+            
+            showStatus(`Compartiendo lote ${index + 1} de ${batches.length}...`, 'success');
+            shareBatch(index, filenameBase);
+            
+            setTimeout(() => {
+                shareNextBatch(index + 1, filenameBase);
+            }, 1000);
+        }
+        
+        // Ocultar diálogo de compartir
+        function hideShareDialog() {
+            shareOverlay.style.display = 'none';
+            shareDialog.style.display = 'none';
+        }
+        
+        // Cerrar diálogo al hacer clic fuera
+        shareOverlay.addEventListener('click', hideShareDialog);
+        
+        // Reiniciar
+        resetBtn.addEventListener('click', function() {
+            fileUpload.value = '';
+            inputText.value = '';
+            outputText.value = '';
+            fileName.textContent = 'Ningún archivo seleccionado';
+            convertedContent = '';
+            currentFileName = '';
+            customFilename.value = '';
+            downloadBtn.disabled = true;
+            shareBtn.disabled = true;
+            searchInput.value = '';
+            searchResultsContainer.innerHTML = '';
+            searchResultsContainer.style.display = 'none';
+            copySearchResultsBtn.style.display = 'none';
+            updateProgress(0);
+            statusElement.style.display = 'none';
+            batches = [];
+            currentBatchIndex = 0;
+            batchControls.style.display = 'none';
+            urlInput.value = '';
+            categories.clear();
+            selectedCategories.clear();
+            categoriesPanel.style.display = 'none';
+            showCategoriesBtn.textContent = '📋 GESTIONAR';
+            categoriesVisible = false;
+        });
+        
+        // Funciones auxiliares
+        function updateProgress(percent) {
+            const rounded = Math.round(percent);
+            progressText.textContent = `${rounded}%`;
+            progressBar.style.width = `${percent}%`;
+        }
+        
+        function showStatus(message, type) {
+            statusElement.textContent = message;
+            statusElement.className = `status status-${type}`;
+            statusElement.style.display = 'block';
+        }
+        
+        function formatFileSize(bytes) {
+            if (bytes < 1024) return bytes + ' bytes';
+            else if (bytes < 1048576) return (bytes / 1024).toFixed(2) + ' KB';
+            else return (bytes / 1048576).toFixed(2) + ' MB';
+        }
+    </script>
+</body>
+</html>
