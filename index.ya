@@ -26,7 +26,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            overflow-x: hidden; /* Evita desplazamiento horizontal */
+            overflow-x: hidden;
         }
         .header {
             background-color: var(--card-bg);
@@ -52,7 +52,7 @@
             max-width: 100%;
             margin: 0 auto;
             width: 100%;
-            overflow-x: hidden; /* Evita desplazamiento horizontal */
+            overflow-x: hidden;
         }
         .converter-panel {
             display: flex;
@@ -67,7 +67,7 @@
             border: 1px solid var(--border-dark);
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
             width: 100%;
-            overflow: hidden; /* Evita desbordamiento */
+            overflow: hidden;
         }
         .panel-title {
             margin-top: 0;
@@ -108,7 +108,7 @@
             font-weight: 600;
             min-width: 0;
             flex: 1;
-            max-width: calc(50% - 3px); /* 2 botones por fila en móvil */
+            max-width: calc(50% - 3px);
             transition: all 0.3s;
             display: flex;
             align-items: center;
@@ -470,7 +470,7 @@
                 width: calc(50% - 6px);
             }
             .btn {
-                max-width: calc(25% - 5px); /* 4 botones por fila en desktop */
+                max-width: calc(25% - 5px);
                 font-size: 11px;
                 padding: 6px 8px;
             }
@@ -552,6 +552,7 @@
                         <button id="selectAllCategories" class="btn">✅ TODO</button>
                         <button id="deselectAllCategories" class="btn">❌ NADA</button>
                         <button id="copySelectedCategories" class="btn btn-copy">📋 COPIAR</button>
+                        <button id="downloadSelectedCategories" class="btn btn-download">💾 DESCARGAR</button>
                     </div>
                     <div id="categoriesList" class="categories-list">
                         <!-- Las categorías se generarán aquí -->
@@ -620,9 +621,6 @@
     </div>
 
     <script>
-        // El código JavaScript permanece exactamente igual que en la versión anterior
-        // Solo se han ajustado los estilos CSS para hacer todo más compacto
-        
         // Variables de estado
         let convertedContent = '';
         let currentFileName = '';
@@ -632,6 +630,7 @@
         let currentBatchIndex = 0;
         let categories = new Map();
         let selectedCategories = new Set();
+        let convertedCategories = new Map(); // Almacena las categorías ya convertidas
         
         // Elementos del DOM
         const fileUpload = document.getElementById('fileUpload');
@@ -670,11 +669,20 @@
         const selectAllCategories = document.getElementById('selectAllCategories');
         const deselectAllCategories = document.getElementById('deselectAllCategories');
         const copySelectedCategories = document.getElementById('copySelectedCategories');
+        const downloadSelectedCategories = document.getElementById('downloadSelectedCategories');
         const showCategoriesBtn = document.getElementById('showCategoriesBtn');
         
-        // Función para extraer categorías de la lista M3U
-        function extractCategories(content) {
+        // Función para convertir enlaces a M3U8
+        function convertUrlsToM3U8(content) {
+            return content
+                .replace(/(https?:\/\/[^\s"]+)(\.ts)(?=[\s"']|$)/gi, '$1.m3u8')
+                .replace(/(https?:\/\/[^\s"]+\/\d+)(?=[\s"']|$)/gi, '$1.m3u8');
+        }
+        
+        // Función para extraer y convertir categorías de la lista M3U
+        function extractAndConvertCategories(content) {
             categories.clear();
+            convertedCategories.clear();
             selectedCategories.clear();
             
             const lines = content.split('\n');
@@ -698,6 +706,9 @@
                         const channelLine = line;
                         const urlLine = i + 1 < lines.length ? lines[i + 1] : '';
                         
+                        // Convertir URL a M3U8 si es necesario
+                        const convertedUrl = convertUrlsToM3U8(urlLine);
+                        
                         if (!categories.has(currentGroup)) {
                             categories.set(currentGroup, []);
                         }
@@ -705,11 +716,24 @@
                         categories.get(currentGroup).push({
                             name: channelName,
                             extinf: channelLine,
-                            url: urlLine
+                            url: urlLine,
+                            convertedUrl: convertedUrl
                         });
                     }
                 }
             }
+            
+            // Crear versiones convertidas de todas las categorías
+            categories.forEach((channels, categoryName) => {
+                let convertedContent = '#EXTM3U\n\n';
+                
+                channels.forEach(channel => {
+                    convertedContent += `${channel.extinf}\n`;
+                    convertedContent += `${channel.convertedUrl}\n\n`;
+                });
+                
+                convertedCategories.set(categoryName, convertedContent);
+            });
             
             // Ordenar categorías alfabéticamente
             const sortedCategories = new Map([...categories.entries()].sort());
@@ -782,7 +806,7 @@
             showStatus('Todas las categorías deseleccionadas', 'success');
         });
         
-        // Copiar categorías seleccionadas
+        // Copiar categorías seleccionadas YA CONVERTIDAS
         copySelectedCategories.addEventListener('click', () => {
             if (selectedCategories.size === 0) {
                 showStatus('Selecciona al menos una categoría para copiar', 'error');
@@ -793,19 +817,15 @@
             let totalChannelsCopied = 0;
             
             selectedCategories.forEach(categoryName => {
-                const channels = categories.get(categoryName);
-                if (channels) {
-                    contentToCopy += `# ${categoryName}\n`;
-                    channels.forEach(channel => {
-                        contentToCopy += `${channel.extinf}\n`;
-                        contentToCopy += `${channel.url}\n\n`;
-                        totalChannelsCopied++;
-                    });
+                const convertedContent = convertedCategories.get(categoryName);
+                if (convertedContent) {
+                    contentToCopy += convertedContent.replace('#EXTM3U\n\n', '') + '\n';
+                    totalChannelsCopied += categories.get(categoryName).length;
                 }
             });
             
             navigator.clipboard.writeText(contentToCopy).then(() => {
-                showStatus(`${totalChannelsCopied} canales de ${selectedCategories.size} categorías copiados`, 'success');
+                showStatus(`${totalChannelsCopied} canales convertidos de ${selectedCategories.size} categorías copiados`, 'success');
             }).catch(err => {
                 // Fallback para navegadores que no soportan clipboard API
                 const textArea = document.createElement('textarea');
@@ -814,8 +834,58 @@
                 textArea.select();
                 document.execCommand('copy');
                 document.body.removeChild(textArea);
-                showStatus(`${totalChannelsCopied} canales de ${selectedCategories.size} categorías copiados`, 'success');
+                showStatus(`${totalChannelsCopied} canales convertidos de ${selectedCategories.size} categorías copiados`, 'success');
             });
+        });
+        
+        // DESCARGAR categorías seleccionadas YA CONVERTIDAS - CORREGIDO
+        downloadSelectedCategories.addEventListener('click', function() {
+            if (selectedCategories.size === 0) {
+                showStatus('Selecciona al menos una categoría para descargar', 'error');
+                return;
+            }
+            
+            let contentToDownload = '#EXTM3U\n\n';
+            let totalChannelsDownloaded = 0;
+            let categoryNames = [];
+            
+            selectedCategories.forEach(categoryName => {
+                const convertedContent = convertedCategories.get(categoryName);
+                if (convertedContent) {
+                    contentToDownload += convertedContent.replace('#EXTM3U\n\n', '') + '\n';
+                    totalChannelsDownloaded += categories.get(categoryName).length;
+                    categoryNames.push(categoryName.replace(/[^a-zA-Z0-9]/g, '_'));
+                }
+            });
+            
+            // Generar nombre de archivo más limpio
+            let filenameBase = 'categorias_seleccionadas';
+            if (selectedCategories.size === 1) {
+                filenameBase = categoryNames[0];
+            } else if (selectedCategories.size <= 3) {
+                filenameBase = categoryNames.slice(0, 3).join('_');
+            }
+            
+            const filename = `${filenameBase}_${new Date().getTime()}.${fileFormat.value}`;
+            
+            // Crear y descargar el archivo
+            const blob = new Blob([contentToDownload], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.style.display = 'none';
+            
+            document.body.appendChild(a);
+            a.click();
+            
+            // Limpiar
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 100);
+            
+            showStatus(`${totalChannelsDownloaded} canales de ${selectedCategories.size} categorías descargados como ${filename}`, 'success');
         });
         
         // Mostrar/ocultar panel de categorías
@@ -843,8 +913,8 @@
             const reader = new FileReader();
             reader.onload = function(e) {
                 inputText.value = e.target.result;
-                // Extraer categorías del contenido cargado
-                extractCategories(e.target.result);
+                // Extraer y convertir categorías del contenido cargado
+                extractAndConvertCategories(e.target.result);
             };
             reader.onerror = function() {
                 showStatus('Error al leer el archivo', 'error');
@@ -896,8 +966,8 @@
                 fileName.textContent = `URL: ${url}`;
                 showStatus('Lista cargado correctamente desde la URL', 'success');
                 
-                // Extraer categorías del contenido cargado
-                extractCategories(content);
+                // Extraer y convertir categorías del contenido cargado
+                extractAndConvertCategories(content);
                 
             } catch (error) {
                 console.error('Error al cargar URL:', error);
@@ -908,7 +978,7 @@
             }
         });
         
-        // Cambiar pestañas de búsqueda
+        // Resto del código JavaScript (búsqueda, conversión, etc.)
         searchTabs.forEach(tab => {
             tab.addEventListener('click', function() {
                 searchTabs.forEach(t => t.classList.remove('active'));
@@ -922,7 +992,6 @@
             });
         });
         
-        // Función de búsqueda optimizada
         function performSearch() {
             const searchTerm = searchInput.value.trim();
             if (!searchTerm) {
@@ -987,7 +1056,6 @@
             });
         }
         
-        // Copiar resultados de búsqueda
         copySearchResultsBtn.addEventListener('click', function() {
             if (searchResults.length === 0) {
                 showStatus('No hay resultados para copiar', 'error');
@@ -1009,23 +1077,19 @@
             });
         });
         
-        // Evento de búsqueda - Solo al hacer clic o Enter
         searchBtn.addEventListener('click', performSearch);
         
-        // Buscar al presionar Enter
         searchInput.addEventListener('keyup', function(e) {
             if (e.key === 'Enter') {
                 performSearch();
             }
         });
         
-        // Función para resaltar texto en los resultados
         function highlightText(text, term) {
             const regex = new RegExp(`(${term})`, 'gi');
             return text.replace(regex, '<span class="search-highlight">$1</span>');
         }
         
-        // Función para desplazarse a la línea específica
         function scrollToLine(lineNumber) {
             const textarea = currentSearchTab === 'input' ? inputText : outputText;
             const content = textarea.value;
@@ -1072,8 +1136,8 @@
                 updateProgress(100);
                 showStatus('Conversión completada usando Web Worker', 'success');
                 
-                // Extraer categorías del contenido convertido
-                extractCategories(convertedContent);
+                // Extraer y convertir categorías del contenido convertido
+                extractAndConvertCategories(convertedContent);
             };
             
             convertWorker.onerror = function(error) {
@@ -1103,8 +1167,7 @@
                     try {
                         const startTime = performance.now();
                         
-                        convertedContent = content.replace(/(https?:\/\/[^\s"]+)(\.ts)(?=[\s"']|$)/gi, '$1.m3u8');
-                        convertedContent = convertedContent.replace(/(https?:\/\/[^\s"]+\/\d+)(?=[\s"']|$)/gi, '$1.m3u8');
+                        convertedContent = convertUrlsToM3U8(content);
                         
                         const endTime = performance.now();
                         
@@ -1117,8 +1180,8 @@
                         const timeTaken = ((endTime - startTime) / 1000).toFixed(2);
                         showStatus(`Conversión completada en ${timeTaken} segundos`, 'success');
                         
-                        // Extraer categorías del contenido convertido
-                        extractCategories(convertedContent);
+                        // Extraer y convertir categorías del contenido convertido
+                        extractAndConvertCategories(convertedContent);
                         
                     } catch (error) {
                         showStatus(`Error durante la conversión: ${error.message}`, 'error');
@@ -1237,118 +1300,6 @@
             }
         });
         
-        // Función para compartir por lotes
-        shareBtn.addEventListener('click', function() {
-            if (batches.length === 0) {
-                showStatus('No hay contenido para compartir', 'error');
-                return;
-            }
-            
-            let filenameBase = customFilename.value.trim() || 
-                             (currentFileName ? currentFileName.replace(/\.[^/.]+$/, "") : 'lista_convertida');
-            
-            showShareDialog(filenameBase);
-        });
-        
-        // Mostrar diálogo de compartir con opciones por lote
-        function showShareDialog(filenameBase) {
-            shareOptions.innerHTML = '';
-            
-            if (batches.length > 1) {
-                const currentBatchOption = document.createElement('button');
-                currentBatchOption.className = 'share-option';
-                currentBatchOption.innerHTML = '📤 Lote Actual';
-                currentBatchOption.addEventListener('click', () => shareBatch(currentBatchIndex, filenameBase));
-                shareOptions.appendChild(currentBatchOption);
-            }
-            
-            const allBatchesOption = document.createElement('button');
-            allBatchesOption.className = 'share-option';
-            allBatchesOption.innerHTML = '📦 Todos los Lotes';
-            allBatchesOption.addEventListener('click', () => {
-                shareAllBatches(filenameBase);
-            });
-            shareOptions.appendChild(allBatchesOption);
-            
-            shareOverlay.style.display = 'block';
-            shareDialog.style.display = 'block';
-        }
-        
-        // Compartir un lote específico
-        function shareBatch(batchIndex, filenameBase) {
-            const content = batches[batchIndex];
-            const filename = `${filenameBase}_part${batchIndex + 1}.${fileFormat.value}`;
-            
-            if (typeof Android !== 'undefined') {
-                try {
-                    Android.shareText(content, filename);
-                    showStatus(`Lote ${batchIndex + 1} compartido`, 'success');
-                } catch (error) {
-                    showStatus('Error al compartir: ' + error.message, 'error');
-                }
-            } else {
-                const blob = new Blob([content], { type: 'text/plain' });
-                const url = URL.createObjectURL(blob);
-                
-                if (navigator.share) {
-                    navigator.share({
-                        title: filename,
-                        text: `Lote ${batchIndex + 1} de lista M3U8`,
-                        url: url
-                    }).catch(err => {
-                        showStatus('Error al compartir: ' + err.message, 'error');
-                    });
-                } else {
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = filename;
-                    document.body.appendChild(a);
-                    a.click();
-                    setTimeout(() => {
-                        document.body.removeChild(a);
-                        URL.revokeObjectURL(url);
-                    }, 100);
-                    showStatus(`Lote ${batchIndex + 1} preparado para descargar`, 'success');
-                }
-            }
-            
-            hideShareDialog();
-        }
-        
-        // Compartir todos los lotes secuencialmente
-        function shareAllBatches(filenameBase) {
-            hideShareDialog();
-            showStatus(`Preparando ${batches.length} lotes para compartir...`, 'success');
-            
-            setTimeout(() => {
-                shareNextBatch(0, filenameBase);
-            }, 500);
-        }
-        
-        // Función recursiva para compartir lotes uno tras otro
-        function shareNextBatch(index, filenameBase) {
-            if (index >= batches.length) {
-                showStatus('Todos los lotes compartidos', 'success');
-                return;
-            }
-            
-            showStatus(`Compartiendo lote ${index + 1} de ${batches.length}...`, 'success');
-            shareBatch(index, filenameBase);
-            
-            setTimeout(() => {
-                shareNextBatch(index + 1, filenameBase);
-            }, 1000);
-        }
-        
-        // Ocultar diálogo de compartir
-        function hideShareDialog() {
-            shareOverlay.style.display = 'none';
-            shareDialog.style.display = 'none';
-        }
-        
-        // Cerrar diálogo al hacer clic fuera
-        shareOverlay.addEventListener('click', hideShareDialog);
-        
         // Reiniciar
         resetBtn.addEventListener('click', function() {
             fileUpload.value = '';
@@ -1371,6 +1322,7 @@
             batchControls.style.display = 'none';
             urlInput.value = '';
             categories.clear();
+            convertedCategories.clear();
             selectedCategories.clear();
             categoriesPanel.style.display = 'none';
             showCategoriesBtn.textContent = '📋 GESTIONAR';
