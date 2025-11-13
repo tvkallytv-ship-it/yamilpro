@@ -462,6 +462,16 @@
             font-size: 10px;
             color: var(--accent-blue);
         }
+        .size-warning {
+            background-color: rgba(255, 152, 0, 0.1);
+            color: #FF9800;
+            border: 1px solid #FF9800;
+            padding: 8px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 12px;
+            text-align: center;
+        }
         @media (min-width: 768px) {
             .converter-panel {
                 flex-direction: row;
@@ -631,6 +641,10 @@
         let categories = new Map();
         let selectedCategories = new Set();
         let convertedCategories = new Map(); // Almacena las categorías ya convertidas
+        
+        // Límites de tamaño para evitar problemas de memoria
+        const MAX_FILE_SIZE = 500 * 1024 * 1024; // 500 MB
+        const MAX_URL_SIZE = 100 * 1024 * 1024; // 100 MB para URLs
         
         // Elementos del DOM
         const fileUpload = document.getElementById('fileUpload');
@@ -901,20 +915,33 @@
             }
         });
         
-        // Cargar archivo
+        // Cargar archivo con verificación de tamaño
         fileUpload.addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (!file) return;
             
+            // Verificar tamaño del archivo
+            if (file.size > MAX_FILE_SIZE) {
+                showStatus(`Archivo demasiado grande (${formatFileSize(file.size)}). Límite: ${formatFileSize(MAX_FILE_SIZE)}.`, 'error');
+                fileUpload.value = '';
+                fileName.textContent = 'Ningún archivo seleccionado';
+                return;
+            }
+            
             currentFileName = file.name;
             fileName.textContent = `Archivo: ${file.name} (${formatFileSize(file.size)})`;
-            showStatus('Archivo cargado correctamente', 'success');
+            
+            // Mostrar advertencia para archivos grandes
+            if (file.size > 50 * 1024 * 1024) { // 50 MB
+                showStatus(`Archivo grande detectado. Procesando en lotes para evitar problemas de memoria...`, 'success');
+            }
             
             const reader = new FileReader();
             reader.onload = function(e) {
                 inputText.value = e.target.result;
                 // Extraer y convertir categorías del contenido cargado
                 extractAndConvertCategories(e.target.result);
+                showStatus('Archivo cargado correctamente', 'success');
             };
             reader.onerror = function() {
                 showStatus('Error al leer el archivo', 'error');
@@ -922,7 +949,7 @@
             reader.readAsText(file);
         });
         
-        // Cargar desde URL
+        // Cargar desde URL con verificación de tamaño
         loadUrlBtn.addEventListener('click', async function() {
             const url = urlInput.value.trim();
             if (!url) {
@@ -935,6 +962,36 @@
             showStatus('Conectando con el servidor...', 'success');
             
             try {
+                // Primero, obtener solo los headers para verificar el tamaño
+                let headResponse = await fetch(url, {
+                    method: 'HEAD',
+                    headers: {
+                        'Accept': 'application/x-mpegURL',
+                        'User-Agent': 'Mozilla/5.0'
+                    }
+                });
+                
+                if (!headResponse.ok) {
+                    // Intentar con proxy CORS
+                    const proxyUrl = `https://cors-anywhere.herokuapp.com/${url}`;
+                    headResponse = await fetch(proxyUrl, {
+                        method: 'HEAD',
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    });
+                }
+                
+                if (!headResponse.ok) {
+                    throw new Error('No se pudo conectar al servidor');
+                }
+                
+                const contentLength = headResponse.headers.get('content-length');
+                if (contentLength && parseInt(contentLength) > MAX_URL_SIZE) {
+                    throw new Error(`El archivo es demasiado grande (${formatFileSize(parseInt(contentLength))}). Límite: ${formatFileSize(MAX_URL_SIZE)}.`);
+                }
+                
+                // Ahora obtener el contenido completo
                 let response = await fetch(url, {
                     headers: {
                         'Accept': 'application/x-mpegURL',
@@ -952,7 +1009,7 @@
                 }
                 
                 if (!response.ok) {
-                    throw new Error('No se pudo conectar al servidor');
+                    throw new Error('No se pudo descargar el contenido');
                 }
                 
                 const content = await response.text();
@@ -1148,11 +1205,18 @@
             };
         }
         
-        // Convertir usando Web Worker
+        // Convertir usando Web Worker o procesamiento por lotes
         convertBtn.addEventListener('click', () => {
             const content = inputText.value;
             if (!content.trim()) {
                 showStatus('Por favor carga o pega tu lista M3U', 'error');
+                return;
+            }
+            
+            // Verificar tamaño del contenido
+            const contentSize = new Blob([content]).size;
+            if (contentSize > MAX_FILE_SIZE) {
+                showStatus(`Contenido demasiado grande (${formatFileSize(contentSize)}). Límite: ${formatFileSize(MAX_FILE_SIZE)}.`, 'error');
                 return;
             }
             
@@ -1163,37 +1227,88 @@
             if (convertWorker) {
                 convertWorker.postMessage(content);
             } else {
-                setTimeout(() => {
-                    try {
-                        const startTime = performance.now();
+                // Procesamiento por lotes para contenido grande
+                if (contentSize > 10 * 1024 * 1024) { // 10 MB
+                    processContentInBatches(content);
+                } else {
+                    setTimeout(() => {
+                        try {
+                            const startTime = performance.now();
+                            
+                            convertedContent = convertUrlsToM3U8(content);
+                            
+                            const endTime = performance.now();
+                            
+                            createBatches(convertedContent);
+                            showCurrentBatch();
+                            
+                            downloadBtn.disabled = false;
+                            shareBtn.disabled = false;
+                            
+                            const timeTaken = ((endTime - startTime) / 1000).toFixed(2);
+                            showStatus(`Conversión completada en ${timeTaken} segundos`, 'success');
+                            
+                            // Extraer y convertir categorías del contenido convertido
+                            extractAndConvertCategories(convertedContent);
+                            
+                        } catch (error) {
+                            showStatus(`Error durante la conversión: ${error.message}`, 'error');
+                            console.error("Error de conversión:", error);
+                        }
                         
-                        convertedContent = convertUrlsToM3U8(content);
-                        
-                        const endTime = performance.now();
-                        
-                        createBatches(convertedContent);
-                        showCurrentBatch();
-                        
-                        downloadBtn.disabled = false;
-                        shareBtn.disabled = false;
-                        
-                        const timeTaken = ((endTime - startTime) / 1000).toFixed(2);
-                        showStatus(`Conversión completada en ${timeTaken} segundos`, 'success');
-                        
-                        // Extraer y convertir categorías del contenido convertido
-                        extractAndConvertCategories(convertedContent);
-                        
-                    } catch (error) {
-                        showStatus(`Error durante la conversión: ${error.message}`, 'error');
-                        console.error("Error de conversión:", error);
-                    }
+                        convertBtn.disabled = false;
+                        convertBtn.textContent = '🔁 CONVERTIR';
+                        updateProgress(100);
+                    }, 100);
+                }
+            }
+        });
+        
+        // Procesar contenido en lotes para evitar problemas de memoria
+        function processContentInBatches(content) {
+            const lines = content.split('\n');
+            const batchSize = 1000; // Procesar 1000 líneas a la vez
+            let processedContent = '';
+            let currentIndex = 0;
+            
+            function processNextBatch() {
+                const endIndex = Math.min(currentIndex + batchSize, lines.length);
+                const batchLines = lines.slice(currentIndex, endIndex);
+                
+                for (let i = 0; i < batchLines.length; i++) {
+                    processedContent += convertUrlsToM3U8(batchLines[i]) + '\n';
+                }
+                
+                currentIndex = endIndex;
+                const progress = (currentIndex / lines.length) * 100;
+                updateProgress(progress);
+                
+                if (currentIndex < lines.length) {
+                    // Continuar procesando en el siguiente frame
+                    setTimeout(processNextBatch, 0);
+                } else {
+                    // Procesamiento completado
+                    convertedContent = processedContent;
+                    createBatches(convertedContent);
+                    showCurrentBatch();
+                    
+                    downloadBtn.disabled = false;
+                    shareBtn.disabled = false;
                     
                     convertBtn.disabled = false;
                     convertBtn.textContent = '🔁 CONVERTIR';
                     updateProgress(100);
-                }, 100);
+                    
+                    showStatus('Conversión completada usando procesamiento por lotes', 'success');
+                    
+                    // Extraer y convertir categorías del contenido convertido
+                    extractAndConvertCategories(convertedContent);
+                }
             }
-        });
+            
+            // Iniciar procesamiento por lotes
+            processNextBatch();
+        }
         
         // Función para dividir el contenido en lotes
         function createBatches(content) {
@@ -1345,7 +1460,8 @@
         function formatFileSize(bytes) {
             if (bytes < 1024) return bytes + ' bytes';
             else if (bytes < 1048576) return (bytes / 1024).toFixed(2) + ' KB';
-            else return (bytes / 1048576).toFixed(2) + ' MB';
+            else if (bytes < 1073741824) return (bytes / 1048576).toFixed(2) + ' MB';
+            else return (bytes / 1073741824).toFixed(2) + ' GB';
         }
     </script>
 </body>
