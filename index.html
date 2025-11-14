@@ -485,6 +485,11 @@
             width: calc(100% - 12px);
             margin-top: 4px;
         }
+        .bottom-controls {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-dark);
+        }
         @media (min-width: 768px) {
             .converter-panel {
                 flex-direction: row;
@@ -543,7 +548,7 @@
                             <option value="direct">Directo</option>
                             <option value="cors-anywhere">CORS Anywhere</option>
                             <option value="allorigins">AllOrigins</option>
-                            <option value="jsonp">JSONP (si está disponible)</option>
+                            <option value="cors-proxy">CORS Proxy</option>
                         </select>
                     </label>
                 </div>
@@ -568,6 +573,14 @@
                 </div>
                 
                 <textarea id="inputText" placeholder="Pega aquí tu lista M3U..."></textarea>
+                
+                <!-- Botones adicionales en la parte inferior del panel izquierdo -->
+                <div class="bottom-controls">
+                    <div class="btn-group">
+                        <button id="downloadInputBtn" class="btn btn-download" disabled>💾 GUARDAR ENTRADA</button>
+                        <button id="shareInputBtn" class="btn btn-share" disabled>📤 COMPARTIR ENTRADA</button>
+                    </div>
+                </div>
             </div>
             
             <div class="panel">
@@ -639,6 +652,14 @@
                     <button id="shareBtn" class="btn btn-share" disabled>📤 COMPARTIR</button>
                     <button id="resetBtn" class="btn btn-reset">🔄 REINICIAR</button>
                 </div>
+                
+                <!-- Botones adicionales en la parte inferior del panel derecho -->
+                <div class="bottom-controls">
+                    <div class="btn-group">
+                        <button id="downloadCustomBtn" class="btn btn-download">💾 DESCARGAR M3U PERSONALIZADO</button>
+                        <button id="shareCustomBtn" class="btn btn-share">📤 COMPARTIR M3U PERSONALIZADO</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -665,7 +686,7 @@
         let currentBatchIndex = 0;
         let categories = new Map();
         let selectedCategories = new Set();
-        let convertedCategories = new Map(); // Almacena las categorías ya convertidas
+        let convertedCategories = new Map();
         
         // Elementos del DOM
         const fileUpload = document.getElementById('fileUpload');
@@ -707,6 +728,12 @@
         const downloadSelectedCategories = document.getElementById('downloadSelectedCategories');
         const showCategoriesBtn = document.getElementById('showCategoriesBtn');
         const proxyMethod = document.getElementById('proxyMethod');
+        
+        // NUEVOS ELEMENTOS - Botones adicionales
+        const downloadInputBtn = document.getElementById('downloadInputBtn');
+        const shareInputBtn = document.getElementById('shareInputBtn');
+        const downloadCustomBtn = document.getElementById('downloadCustomBtn');
+        const shareCustomBtn = document.getElementById('shareCustomBtn');
         
         // MEJORA: Función mejorada para convertir enlaces a M3U8
         function convertUrlsToM3U8(content) {
@@ -761,6 +788,74 @@
                 }
             }
             return 'Desconocido';
+        }
+        
+        // MEJORA: Función mejorada para cargar URLs con múltiples métodos
+        async function loadUrlWithRetry(url, method, retries = 3) {
+            for (let i = 0; i < retries; i++) {
+                try {
+                    let response;
+                    let finalUrl = url;
+                    
+                    switch(method) {
+                        case 'direct':
+                            response = await fetch(url, {
+                                headers: {
+                                    'Accept': 'application/x-mpegURL, application/vnd.apple.mpegurl, text/plain',
+                                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                                },
+                                mode: 'cors'
+                            });
+                            break;
+                            
+                        case 'cors-anywhere':
+                            finalUrl = `https://cors-anywhere.herokuapp.com/${url}`;
+                            response = await fetch(finalUrl, {
+                                headers: {
+                                    'X-Requested-With': 'XMLHttpRequest'
+                                }
+                            });
+                            break;
+                            
+                        case 'allorigins':
+                            finalUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
+                            response = await fetch(finalUrl);
+                            break;
+                            
+                        case 'cors-proxy':
+                            finalUrl = `https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent(url)}`;
+                            response = await fetch(finalUrl);
+                            break;
+                    }
+                    
+                    if (!response.ok) {
+                        throw new Error(`Error HTTP: ${response.status} ${response.statusText}`);
+                    }
+                    
+                    const content = await response.text();
+                    
+                    // Validar que sea una lista M3U/M3U8
+                    if (!content.startsWith('#EXTM3U') && !content.includes('#EXTINF')) {
+                        // Intentar detectar si es una redirección o contenido diferente
+                        if (content.length < 100 && (content.includes('http') || content.includes('://'))) {
+                            // Posiblemente es una URL de redirección
+                            const redirectUrl = content.trim();
+                            showStatus(`Redireccionando a: ${redirectUrl}`, 'success');
+                            return await loadUrlWithRetry(redirectUrl, method, retries - 1);
+                        }
+                        throw new Error('La respuesta no es una lista M3U/M3U8 válida');
+                    }
+                    
+                    return content;
+                    
+                } catch (error) {
+                    console.error(`Intento ${i + 1} fallido:`, error);
+                    if (i === retries - 1) throw error;
+                    
+                    // Esperar antes de reintentar
+                    await new Promise(resolve => setTimeout(resolve, 1000 * (i + 1)));
+                }
+            }
         }
         
         // Función para extraer y convertir categorías de la lista M3U
@@ -922,7 +1017,7 @@
             });
         });
         
-        // DESCARGAR categorías seleccionadas YA CONVERTIDAS - CORREGIDO
+        // DESCARGAR categorías seleccionadas YA CONVERTIDAS
         downloadSelectedCategories.addEventListener('click', function() {
             if (selectedCategories.size === 0) {
                 showStatus('Selecciona al menos una categoría para descargar', 'error');
@@ -953,21 +1048,7 @@
             const filename = `${filenameBase}_${new Date().getTime()}.${fileFormat.value}`;
             
             // Crear y descargar el archivo
-            const blob = new Blob([contentToDownload], { type: 'text/plain;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = filename;
-            a.style.display = 'none';
-            
-            document.body.appendChild(a);
-            a.click();
-            
-            // Limpiar
-            setTimeout(() => {
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-            }, 100);
+            downloadFile(contentToDownload, filename);
             
             showStatus(`${totalChannelsDownloaded} canales de ${selectedCategories.size} categorías descargados como ${filename}`, 'success');
         });
@@ -1001,6 +1082,10 @@
                 const listType = detectListType(e.target.result);
                 showStatus(`Lista detectada: ${listType}`, 'success');
                 
+                // Habilitar botones de entrada
+                downloadInputBtn.disabled = false;
+                shareInputBtn.disabled = false;
+                
                 // Extraer y convertir categorías del contenido cargado
                 extractAndConvertCategories(e.target.result);
             };
@@ -1010,7 +1095,7 @@
             reader.readAsText(file);
         });
         
-        // MEJORA: Cargar desde URL con múltiples métodos
+        // MEJORA: Cargar desde URL con múltiples métodos y reintentos
         loadUrlBtn.addEventListener('click', async function() {
             let url = urlInput.value.trim();
             if (!url) {
@@ -1026,56 +1111,16 @@
             showStatus('Conectando con el servidor...', 'success');
             
             try {
-                let response;
                 const method = proxyMethod.value;
-                
-                switch(method) {
-                    case 'direct':
-                        response = await fetch(url, {
-                            headers: {
-                                'Accept': 'application/x-mpegURL, application/vnd.apple.mpegurl, text/plain',
-                                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-                            },
-                            mode: 'cors'
-                        });
-                        break;
-                        
-                    case 'cors-anywhere':
-                        const corsUrl = `https://cors-anywhere.herokuapp.com/${url}`;
-                        response = await fetch(corsUrl, {
-                            headers: {
-                                'X-Requested-With': 'XMLHttpRequest'
-                            }
-                        });
-                        break;
-                        
-                    case 'allorigins':
-                        const allOriginsUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
-                        response = await fetch(allOriginsUrl);
-                        break;
-                        
-                    case 'jsonp':
-                        // Método JSONP (solo para servicios que lo soporten)
-                        showStatus('Método JSONP no implementado completamente', 'error');
-                        loadUrlBtn.disabled = false;
-                        loadUrlBtn.textContent = '🌍 CARGAR URL';
-                        return;
-                }
-                
-                if (!response.ok) {
-                    throw new Error(`Error HTTP: ${response.status} ${response.statusText}`);
-                }
-                
-                const content = await response.text();
-                
-                // Validar que sea una lista M3U/M3U8
-                if (!content.startsWith('#EXTM3U') && !content.includes('#EXTINF')) {
-                    throw new Error('La respuesta no es una lista M3U/M3U8 válida');
-                }
+                const content = await loadUrlWithRetry(url, method);
                 
                 inputText.value = content;
                 currentFileName = url.split('/').pop() || 'lista_remota.m3u';
                 fileName.textContent = `URL: ${url}`;
+                
+                // Habilitar botones de entrada
+                downloadInputBtn.disabled = false;
+                shareInputBtn.disabled = false;
                 
                 // Detectar tipo de lista
                 const listType = detectListType(content);
@@ -1103,7 +1148,142 @@
             }
         });
         
-        // Resto del código JavaScript (búsqueda, conversión, etc.)
+        // NUEVO: Función para descargar archivos
+        function downloadFile(content, filename) {
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.style.display = 'none';
+            
+            document.body.appendChild(a);
+            a.click();
+            
+            // Limpiar
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 100);
+        }
+        
+        // NUEVO: Descargar contenido de entrada
+        downloadInputBtn.addEventListener('click', function() {
+            const content = inputText.value;
+            if (!content.trim()) {
+                showStatus('No hay contenido para guardar', 'error');
+                return;
+            }
+
+            let filename = customFilename.value.trim() || 
+                         (currentFileName ? currentFileName.replace(/\.[^/.]+$/, "") : 'lista_original');
+            filename += `.${fileFormat.value}`;
+
+            downloadFile(content, filename);
+            showStatus(`Archivo ${filename} descargado`, 'success');
+        });
+        
+        // NUEVO: Compartir contenido de entrada
+        shareInputBtn.addEventListener('click', function() {
+            const content = inputText.value;
+            if (!content.trim()) {
+                showStatus('No hay contenido para compartir', 'error');
+                return;
+            }
+            
+            showShareDialog(content, 'Lista Original');
+        });
+        
+        // NUEVO: Descargar M3U personalizado
+        downloadCustomBtn.addEventListener('click', function() {
+            let filename = customFilename.value.trim() || 'lista_personalizada';
+            filename += `.${fileFormat.value}`;
+            
+            let content;
+            if (outputText.value.trim()) {
+                content = outputText.value;
+            } else {
+                content = inputText.value;
+            }
+            
+            if (!content.trim()) {
+                showStatus('No hay contenido para descargar', 'error');
+                return;
+            }
+            
+            downloadFile(content, filename);
+            showStatus(`Archivo personalizado ${filename} descargado`, 'success');
+        });
+        
+        // NUEVO: Compartir M3U personalizado
+        shareCustomBtn.addEventListener('click', function() {
+            let content;
+            if (outputText.value.trim()) {
+                content = outputText.value;
+            } else {
+                content = inputText.value;
+            }
+            
+            if (!content.trim()) {
+                showStatus('No hay contenido para compartir', 'error');
+                return;
+            }
+            
+            showShareDialog(content, 'Lista Personalizada');
+        });
+        
+        // Función para mostrar diálogo de compartir
+        function showShareDialog(content, title) {
+            shareOptions.innerHTML = '';
+            
+            // Opción de copiar al portapapeles
+            const copyOption = document.createElement('button');
+            copyOption.className = 'share-option';
+            copyOption.innerHTML = '📋 Copiar al Portapapeles';
+            copyOption.addEventListener('click', function() {
+                navigator.clipboard.writeText(content).then(() => {
+                    showStatus(`${title} copiada al portapapeles`, 'success');
+                    closeShareDialog();
+                }).catch(err => {
+                    const textArea = document.createElement('textarea');
+                    textArea.value = content;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    showStatus(`${title} copiada al portapapeles`, 'success');
+                    closeShareDialog();
+                });
+            });
+            shareOptions.appendChild(copyOption);
+            
+            // Opción de compartir como archivo
+            const fileOption = document.createElement('button');
+            fileOption.className = 'share-option';
+            fileOption.innerHTML = '📁 Generar Archivo Descargable';
+            fileOption.addEventListener('click', function() {
+                const filename = `${title.toLowerCase().replace(/\s/g, '_')}_${new Date().getTime()}.${fileFormat.value}`;
+                downloadFile(content, filename);
+                showStatus(`Archivo ${filename} listo para descargar`, 'success');
+                closeShareDialog();
+            });
+            shareOptions.appendChild(fileOption);
+            
+            // Mostrar diálogo
+            shareOverlay.style.display = 'block';
+            shareDialog.style.display = 'block';
+        }
+        
+        // Función para cerrar diálogo de compartir
+        function closeShareDialog() {
+            shareOverlay.style.display = 'none';
+            shareDialog.style.display = 'none';
+        }
+        
+        // Cerrar diálogo al hacer clic en el overlay
+        shareOverlay.addEventListener('click', closeShareDialog);
+        
+        // Resto del código existente (búsqueda, conversión, etc.)
         searchTabs.forEach(tab => {
             tab.addEventListener('click', function() {
                 searchTabs.forEach(t => t.classList.remove('active'));
@@ -1280,6 +1460,10 @@
                 updateProgress(100);
                 showStatus('Conversión completada usando Web Worker', 'success');
                 
+                // Habilitar botones de salida
+                downloadBtn.disabled = false;
+                shareBtn.disabled = false;
+                
                 // Extraer y convertir categorías del contenido convertido
                 extractAndConvertCategories(convertedContent);
             };
@@ -1420,28 +1604,18 @@
                          (currentFileName ? currentFileName.replace(/\.[^/.]+$/, "") : 'lista_convertida');
             filename += `.${fileFormat.value}`;
 
-            if (typeof Android !== 'undefined') {
-                try {
-                    Android.saveFile(filename, convertedContent);
-                    showStatus(`Archivo guardado en Descargas/${filename}`, 'success');
-                } catch (error) {
-                    showStatus('Error al guardar: ' + error.message, 'error');
-                }
-            } else {
-                const blob = new Blob([convertedContent], { type: 'text/plain' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = filename;
-                document.body.appendChild(a);
-                a.click();
-                setTimeout(() => {
-                    document.body.removeChild(a);
-                    URL.revokeObjectURL(url);
-                }, 100);
-                
-                showStatus(`Archivo ${filename} descargado`, 'success');
+            downloadFile(convertedContent, filename);
+            showStatus(`Archivo ${filename} descargado`, 'success');
+        });
+        
+        // Compartir contenido convertido
+        shareBtn.addEventListener('click', function() {
+            if (!convertedContent) {
+                showStatus('No hay contenido para compartir', 'error');
+                return;
             }
+            
+            showShareDialog(convertedContent, 'Lista Convertida');
         });
         
         // Reiniciar
@@ -1455,6 +1629,8 @@
             customFilename.value = '';
             downloadBtn.disabled = true;
             shareBtn.disabled = true;
+            downloadInputBtn.disabled = true;
+            shareInputBtn.disabled = true;
             searchInput.value = '';
             searchResultsContainer.innerHTML = '';
             searchResultsContainer.style.display = 'none';
