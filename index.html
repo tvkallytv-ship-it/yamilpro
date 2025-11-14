@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M3U8 Converter PRO</title>
+    <title>M3U8 Converter PRO - Mejorado</title>
     <style>
         :root {
             --bg-amoled: #000000;
@@ -462,15 +462,28 @@
             font-size: 10px;
             color: var(--accent-blue);
         }
-        .size-warning {
-            background-color: rgba(255, 152, 0, 0.1);
-            color: #FF9800;
-            border: 1px solid #FF9800;
-            padding: 8px;
-            border-radius: 5px;
+        .proxy-options {
             margin: 10px 0;
+            padding: 10px;
+            background-color: #1a1a1a;
+            border-radius: 5px;
+            border: 1px solid var(--border-dark);
+        }
+        .proxy-options label {
+            display: block;
+            margin: 6px 0;
             font-size: 12px;
-            text-align: center;
+        }
+        .proxy-options select {
+            background-color: #333;
+            color: white;
+            border: 1px solid var(--border-dark);
+            padding: 6px;
+            border-radius: 3px;
+            margin-left: 6px;
+            font-size: 12px;
+            width: calc(100% - 12px);
+            margin-top: 4px;
         }
         @media (min-width: 768px) {
             .converter-panel {
@@ -510,7 +523,7 @@
 </head>
 <body>
     <div class="header">
-        <h1 class="app-title">CONVERTIDOR M3U8 PRO</h1>
+        <h1 class="app-title">CONVERTIDOR M3U8 PRO - MEJORADO</h1>
     </div>
     
     <div class="container">
@@ -523,11 +536,23 @@
                     <button id="loadUrlBtn" class="btn btn-load-url">🌍 CARGAR URL</button>
                 </div>
                 
+                <div class="proxy-options">
+                    <label>
+                        Método de carga:
+                        <select id="proxyMethod">
+                            <option value="direct">Directo</option>
+                            <option value="cors-anywhere">CORS Anywhere</option>
+                            <option value="allorigins">AllOrigins</option>
+                            <option value="jsonp">JSONP (si está disponible)</option>
+                        </select>
+                    </label>
+                </div>
+                
                 <div class="file-input">
                     <label for="fileUpload">
                         <span>📁 SELECCIONAR ARCHIVO .M3U</span>
                     </label>
-                    <input type="file" id="fileUpload" accept=".m3u,.txt" style="display: none;">
+                    <input type="file" id="fileUpload" accept=".m3u,.txt,.m3u8" style="display: none;">
                     <div id="fileName" class="file-info">Ningún archivo seleccionado</div>
                 </div>
                 
@@ -627,7 +652,7 @@
     </div>
 
     <div class="footer">
-        Convertidor M3U8 Pro © 2023 - Todos los derechos reservados
+        Convertidor M3U8 Pro Mejorado © 2023 - Todos los derechos reservados
     </div>
 
     <script>
@@ -641,10 +666,6 @@
         let categories = new Map();
         let selectedCategories = new Set();
         let convertedCategories = new Map(); // Almacena las categorías ya convertidas
-        
-        // Límites de tamaño para evitar problemas de memoria
-        const MAX_FILE_SIZE = 500 * 1024 * 1024; // 500 MB
-        const MAX_URL_SIZE = 100 * 1024 * 1024; // 100 MB para URLs
         
         // Elementos del DOM
         const fileUpload = document.getElementById('fileUpload');
@@ -685,12 +706,61 @@
         const copySelectedCategories = document.getElementById('copySelectedCategories');
         const downloadSelectedCategories = document.getElementById('downloadSelectedCategories');
         const showCategoriesBtn = document.getElementById('showCategoriesBtn');
+        const proxyMethod = document.getElementById('proxyMethod');
         
-        // Función para convertir enlaces a M3U8
+        // MEJORA: Función mejorada para convertir enlaces a M3U8
         function convertUrlsToM3U8(content) {
-            return content
-                .replace(/(https?:\/\/[^\s"]+)(\.ts)(?=[\s"']|$)/gi, '$1.m3u8')
-                .replace(/(https?:\/\/[^\s"]+\/\d+)(?=[\s"']|$)/gi, '$1.m3u8');
+            // Patrones mejorados para detectar diferentes formatos de URLs
+            const patterns = [
+                // URLs que terminan en .ts
+                /(https?:\/\/[^\s"']+?)(\.ts)(?=[\s"']|$)/gi,
+                // URLs que contienen /chunklist o /media
+                /(https?:\/\/[^\s"']+?\/(?:chunklist|media)_[^\.\s]+)(?=[\s"']|$)/gi,
+                // URLs que contienen /playlist
+                /(https?:\/\/[^\s"']+?\/playlist)(?=[\s"']|$)/gi,
+                // URLs que contienen números al final (sin extensión)
+                /(https?:\/\/[^\s"']+\/\d+)(?=[\s"']|$)/gi,
+                // URLs que contienen segmentos
+                /(https?:\/\/[^\s"']+?\/segment_[^\.\s]+)(?=[\s"']|$)/gi,
+                // URLs que contienen index
+                /(https?:\/\/[^\s"']+?\/index)(?=[\s"']|$)/gi
+            ];
+            
+            let converted = content;
+            
+            // Aplicar cada patrón
+            patterns.forEach(pattern => {
+                converted = converted.replace(pattern, '$1.m3u8');
+            });
+            
+            return converted;
+        }
+        
+        // MEJORA: Función para validar y normalizar URLs
+        function normalizeUrl(url) {
+            // Asegurar que la URL tenga protocolo
+            if (!url.startsWith('http://') && !url.startsWith('https://')) {
+                url = 'https://' + url;
+            }
+            
+            // Limpiar espacios y caracteres no válidos
+            url = url.trim().replace(/\s/g, '');
+            
+            return url;
+        }
+        
+        // MEJORA: Función para detectar el tipo de lista
+        function detectListType(content) {
+            if (content.includes('#EXTM3U')) {
+                if (content.includes('.m3u8')) {
+                    return 'M3U8';
+                } else if (content.includes('.ts')) {
+                    return 'M3U con TS';
+                } else {
+                    return 'M3U';
+                }
+            }
+            return 'Desconocido';
         }
         
         // Función para extraer y convertir categorías de la lista M3U
@@ -915,33 +985,24 @@
             }
         });
         
-        // Cargar archivo con verificación de tamaño
+        // Cargar archivo
         fileUpload.addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (!file) return;
             
-            // Verificar tamaño del archivo
-            if (file.size > MAX_FILE_SIZE) {
-                showStatus(`Archivo demasiado grande (${formatFileSize(file.size)}). Límite: ${formatFileSize(MAX_FILE_SIZE)}.`, 'error');
-                fileUpload.value = '';
-                fileName.textContent = 'Ningún archivo seleccionado';
-                return;
-            }
-            
             currentFileName = file.name;
             fileName.textContent = `Archivo: ${file.name} (${formatFileSize(file.size)})`;
-            
-            // Mostrar advertencia para archivos grandes
-            if (file.size > 50 * 1024 * 1024) { // 50 MB
-                showStatus(`Archivo grande detectado. Procesando en lotes para evitar problemas de memoria...`, 'success');
-            }
+            showStatus('Archivo cargado correctamente', 'success');
             
             const reader = new FileReader();
             reader.onload = function(e) {
                 inputText.value = e.target.result;
+                // Detectar tipo de lista
+                const listType = detectListType(e.target.result);
+                showStatus(`Lista detectada: ${listType}`, 'success');
+                
                 // Extraer y convertir categorías del contenido cargado
                 extractAndConvertCategories(e.target.result);
-                showStatus('Archivo cargado correctamente', 'success');
             };
             reader.onerror = function() {
                 showStatus('Error al leer el archivo', 'error');
@@ -949,79 +1010,76 @@
             reader.readAsText(file);
         });
         
-        // Cargar desde URL con verificación de tamaño
+        // MEJORA: Cargar desde URL con múltiples métodos
         loadUrlBtn.addEventListener('click', async function() {
-            const url = urlInput.value.trim();
+            let url = urlInput.value.trim();
             if (!url) {
                 showStatus('Por favor ingresa una URL válida', 'error');
                 return;
             }
+            
+            // Normalizar URL
+            url = normalizeUrl(url);
             
             loadUrlBtn.disabled = true;
             loadUrlBtn.textContent = 'CARGANDO...';
             showStatus('Conectando con el servidor...', 'success');
             
             try {
-                // Primero, obtener solo los headers para verificar el tamaño
-                let headResponse = await fetch(url, {
-                    method: 'HEAD',
-                    headers: {
-                        'Accept': 'application/x-mpegURL',
-                        'User-Agent': 'Mozilla/5.0'
-                    }
-                });
+                let response;
+                const method = proxyMethod.value;
                 
-                if (!headResponse.ok) {
-                    // Intentar con proxy CORS
-                    const proxyUrl = `https://cors-anywhere.herokuapp.com/${url}`;
-                    headResponse = await fetch(proxyUrl, {
-                        method: 'HEAD',
-                        headers: {
-                            'X-Requested-With': 'XMLHttpRequest'
-                        }
-                    });
-                }
-                
-                if (!headResponse.ok) {
-                    throw new Error('No se pudo conectar al servidor');
-                }
-                
-                const contentLength = headResponse.headers.get('content-length');
-                if (contentLength && parseInt(contentLength) > MAX_URL_SIZE) {
-                    throw new Error(`El archivo es demasiado grande (${formatFileSize(parseInt(contentLength))}). Límite: ${formatFileSize(MAX_URL_SIZE)}.`);
-                }
-                
-                // Ahora obtener el contenido completo
-                let response = await fetch(url, {
-                    headers: {
-                        'Accept': 'application/x-mpegURL',
-                        'User-Agent': 'Mozilla/5.0'
-                    }
-                });
-                
-                if (!response.ok) {
-                    const proxyUrl = `https://cors-anywhere.herokuapp.com/${url}`;
-                    response = await fetch(proxyUrl, {
-                        headers: {
-                            'X-Requested-With': 'XMLHttpRequest'
-                        }
-                    });
+                switch(method) {
+                    case 'direct':
+                        response = await fetch(url, {
+                            headers: {
+                                'Accept': 'application/x-mpegURL, application/vnd.apple.mpegurl, text/plain',
+                                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                            },
+                            mode: 'cors'
+                        });
+                        break;
+                        
+                    case 'cors-anywhere':
+                        const corsUrl = `https://cors-anywhere.herokuapp.com/${url}`;
+                        response = await fetch(corsUrl, {
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest'
+                            }
+                        });
+                        break;
+                        
+                    case 'allorigins':
+                        const allOriginsUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
+                        response = await fetch(allOriginsUrl);
+                        break;
+                        
+                    case 'jsonp':
+                        // Método JSONP (solo para servicios que lo soporten)
+                        showStatus('Método JSONP no implementado completamente', 'error');
+                        loadUrlBtn.disabled = false;
+                        loadUrlBtn.textContent = '🌍 CARGAR URL';
+                        return;
                 }
                 
                 if (!response.ok) {
-                    throw new Error('No se pudo descargar el contenido');
+                    throw new Error(`Error HTTP: ${response.status} ${response.statusText}`);
                 }
                 
                 const content = await response.text();
                 
-                if (!content.startsWith('#EXTM3U')) {
-                    throw new Error('La respuesta no es una lista M3U válida');
+                // Validar que sea una lista M3U/M3U8
+                if (!content.startsWith('#EXTM3U') && !content.includes('#EXTINF')) {
+                    throw new Error('La respuesta no es una lista M3U/M3U8 válida');
                 }
                 
                 inputText.value = content;
                 currentFileName = url.split('/').pop() || 'lista_remota.m3u';
                 fileName.textContent = `URL: ${url}`;
-                showStatus('Lista cargado correctamente desde la URL', 'success');
+                
+                // Detectar tipo de lista
+                const listType = detectListType(content);
+                showStatus(`Lista cargada correctamente (${listType}) usando ${method}`, 'success');
                 
                 // Extraer y convertir categorías del contenido cargado
                 extractAndConvertCategories(content);
@@ -1029,6 +1087,16 @@
             } catch (error) {
                 console.error('Error al cargar URL:', error);
                 showStatus(`Error: ${error.message}`, 'error');
+                
+                // Intentar con método alternativo si falla el principal
+                if (proxyMethod.value !== 'direct') {
+                    showStatus('Intentando con método directo...', 'success');
+                    proxyMethod.value = 'direct';
+                    setTimeout(() => {
+                        loadUrlBtn.click();
+                    }, 1000);
+                    return;
+                }
             } finally {
                 loadUrlBtn.disabled = false;
                 loadUrlBtn.textContent = '🌍 CARGAR URL';
@@ -1173,10 +1241,29 @@
         
         if (window.Worker) {
             const workerCode = `
+                // MEJORA: Función mejorada para convertir enlaces a M3U8 en el Worker
+                function convertUrlsToM3U8(content) {
+                    const patterns = [
+                        /(https?:\\/\\/[^\\s"']+?)(\\.ts)(?=[\\s"']|$)/gi,
+                        /(https?:\\/\\/[^\\s"']+?\\/(?:chunklist|media)_[^\\.\\s]+)(?=[\\s"']|$)/gi,
+                        /(https?:\\/\\/[^\\s"']+?\\/playlist)(?=[\\s"']|$)/gi,
+                        /(https?:\\/\\/[^\\s"']+\\/\\d+)(?=[\\s"']|$)/gi,
+                        /(https?:\\/\\/[^\\s"']+?\\/segment_[^\\.\\s]+)(?=[\\s"']|$)/gi,
+                        /(https?:\\/\\/[^\\s"']+?\\/index)(?=[\\s"']|$)/gi
+                    ];
+                    
+                    let converted = content;
+                    
+                    patterns.forEach(pattern => {
+                        converted = converted.replace(pattern, '$1.m3u8');
+                    });
+                    
+                    return converted;
+                }
+                
                 self.onmessage = function(e) {
                     let content = e.data;
-                    content = content.replace(/(https?:\\/\\/[^\\s"]+)(\\.ts)(?=[\\s"']|$)/gi, '$1.m3u8');
-                    content = content.replace(/(https?:\\/\\/[^\\s"]+\\/\\d+)(?=[\\s"']|$)/gi, '$1.m3u8');
+                    content = convertUrlsToM3U8(content);
                     self.postMessage(content);
                 };
             `;
@@ -1205,18 +1292,11 @@
             };
         }
         
-        // Convertir usando Web Worker o procesamiento por lotes
+        // Convertir usando Web Worker
         convertBtn.addEventListener('click', () => {
             const content = inputText.value;
             if (!content.trim()) {
                 showStatus('Por favor carga o pega tu lista M3U', 'error');
-                return;
-            }
-            
-            // Verificar tamaño del contenido
-            const contentSize = new Blob([content]).size;
-            if (contentSize > MAX_FILE_SIZE) {
-                showStatus(`Contenido demasiado grande (${formatFileSize(contentSize)}). Límite: ${formatFileSize(MAX_FILE_SIZE)}.`, 'error');
                 return;
             }
             
@@ -1227,88 +1307,37 @@
             if (convertWorker) {
                 convertWorker.postMessage(content);
             } else {
-                // Procesamiento por lotes para contenido grande
-                if (contentSize > 10 * 1024 * 1024) { // 10 MB
-                    processContentInBatches(content);
-                } else {
-                    setTimeout(() => {
-                        try {
-                            const startTime = performance.now();
-                            
-                            convertedContent = convertUrlsToM3U8(content);
-                            
-                            const endTime = performance.now();
-                            
-                            createBatches(convertedContent);
-                            showCurrentBatch();
-                            
-                            downloadBtn.disabled = false;
-                            shareBtn.disabled = false;
-                            
-                            const timeTaken = ((endTime - startTime) / 1000).toFixed(2);
-                            showStatus(`Conversión completada en ${timeTaken} segundos`, 'success');
-                            
-                            // Extraer y convertir categorías del contenido convertido
-                            extractAndConvertCategories(convertedContent);
-                            
-                        } catch (error) {
-                            showStatus(`Error durante la conversión: ${error.message}`, 'error');
-                            console.error("Error de conversión:", error);
-                        }
+                setTimeout(() => {
+                    try {
+                        const startTime = performance.now();
                         
-                        convertBtn.disabled = false;
-                        convertBtn.textContent = '🔁 CONVERTIR';
-                        updateProgress(100);
-                    }, 100);
-                }
-            }
-        });
-        
-        // Procesar contenido en lotes para evitar problemas de memoria
-        function processContentInBatches(content) {
-            const lines = content.split('\n');
-            const batchSize = 1000; // Procesar 1000 líneas a la vez
-            let processedContent = '';
-            let currentIndex = 0;
-            
-            function processNextBatch() {
-                const endIndex = Math.min(currentIndex + batchSize, lines.length);
-                const batchLines = lines.slice(currentIndex, endIndex);
-                
-                for (let i = 0; i < batchLines.length; i++) {
-                    processedContent += convertUrlsToM3U8(batchLines[i]) + '\n';
-                }
-                
-                currentIndex = endIndex;
-                const progress = (currentIndex / lines.length) * 100;
-                updateProgress(progress);
-                
-                if (currentIndex < lines.length) {
-                    // Continuar procesando en el siguiente frame
-                    setTimeout(processNextBatch, 0);
-                } else {
-                    // Procesamiento completado
-                    convertedContent = processedContent;
-                    createBatches(convertedContent);
-                    showCurrentBatch();
-                    
-                    downloadBtn.disabled = false;
-                    shareBtn.disabled = false;
+                        convertedContent = convertUrlsToM3U8(content);
+                        
+                        const endTime = performance.now();
+                        
+                        createBatches(convertedContent);
+                        showCurrentBatch();
+                        
+                        downloadBtn.disabled = false;
+                        shareBtn.disabled = false;
+                        
+                        const timeTaken = ((endTime - startTime) / 1000).toFixed(2);
+                        showStatus(`Conversión completada en ${timeTaken} segundos`, 'success');
+                        
+                        // Extraer y convertir categorías del contenido convertido
+                        extractAndConvertCategories(convertedContent);
+                        
+                    } catch (error) {
+                        showStatus(`Error durante la conversión: ${error.message}`, 'error');
+                        console.error("Error de conversión:", error);
+                    }
                     
                     convertBtn.disabled = false;
                     convertBtn.textContent = '🔁 CONVERTIR';
                     updateProgress(100);
-                    
-                    showStatus('Conversión completada usando procesamiento por lotes', 'success');
-                    
-                    // Extraer y convertir categorías del contenido convertido
-                    extractAndConvertCategories(convertedContent);
-                }
+                }, 100);
             }
-            
-            // Iniciar procesamiento por lotes
-            processNextBatch();
-        }
+        });
         
         // Función para dividir el contenido en lotes
         function createBatches(content) {
@@ -1460,8 +1489,7 @@
         function formatFileSize(bytes) {
             if (bytes < 1024) return bytes + ' bytes';
             else if (bytes < 1048576) return (bytes / 1024).toFixed(2) + ' KB';
-            else if (bytes < 1073741824) return (bytes / 1048576).toFixed(2) + ' MB';
-            else return (bytes / 1073741824).toFixed(2) + ' GB';
+            else return (bytes / 1048576).toFixed(2) + ' MB';
         }
     </script>
 </body>
