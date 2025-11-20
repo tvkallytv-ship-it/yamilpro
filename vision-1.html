@@ -1,0 +1,3959 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Infinita - Televisión del Futuro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: white;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .splash-container {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+            max-width: 800px;
+            padding: 20px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .floating-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            animation: float 6s ease-in-out infinite;
+            border: 8px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .floating-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+            background: linear-gradient(90deg, #00FF88, #FF2A6D, #00D9FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .description {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .features {
+            text-align: left;
+            max-width: 500px;
+            margin: 0 auto 30px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .features h3 {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            color: #00FF88;
+        }
+
+        .features ul {
+            list-style-type: none;
+        }
+
+        .features li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .features li:before {
+            content: "•";
+            color: #00FF88;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: 3px;
+        }
+
+        .final-message {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-top: 20px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .slogan {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-top: 10px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: particle-float 15s infinite linear;
+        }
+
+        @keyframes particle-float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .glow {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            filter: blur(20px);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+
+        .loading-bar {
+            width: 300px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            margin: 30px auto;
+            overflow: hidden;
+        }
+
+        .loading-progress {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #00FF88, #FF2A6D);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .loading-text {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ===== NUEVOS ESTILOS PARA LAS LUCES DE DISCOTECA ===== */
+        .disco-lights {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .light-beam {
+            position: absolute;
+            width: 150px;
+            height: 100%;
+            opacity: 0.4;
+            filter: blur(20px);
+            transform-origin: center;
+            animation: rotateLight 8s linear infinite;
+        }
+
+        .light-beam:nth-child(1) {
+            background: linear-gradient(90deg, transparent, #ff0080, transparent);
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .light-beam:nth-child(2) {
+            background: linear-gradient(90deg, transparent, #00ff88, transparent);
+            left: 30%;
+            animation-delay: 1s;
+        }
+
+        .light-beam:nth-child(3) {
+            background: linear-gradient(90deg, transparent, #0080ff, transparent);
+            left: 50%;
+            animation-delay: 2s;
+        }
+
+        .light-beam:nth-child(4) {
+            background: linear-gradient(90deg, transparent, #ffff00, transparent);
+            left: 70%;
+            animation-delay: 3s;
+        }
+
+        .light-beam:nth-child(5) {
+            background: linear-gradient(90deg, transparent, #ff8000, transparent);
+            left: 90%;
+            animation-delay: 4s;
+        }
+
+        @keyframes rotateLight {
+            0% {
+                transform: rotate(0deg);
+                opacity: 0.3;
+            }
+            25% {
+                opacity: 0.6;
+            }
+            50% {
+                transform: rotate(180deg);
+                opacity: 0.8;
+            }
+            75% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: rotate(360deg);
+                opacity: 0.3;
+            }
+        }
+
+        .spotlight {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+            filter: blur(30px);
+            z-index: 1;
+            animation: moveSpotlight 10s ease-in-out infinite;
+        }
+
+        .spotlight:nth-child(1) {
+            top: 10%;
+            left: 20%;
+            background: radial-gradient(circle, rgba(255,0,128,0.4) 0%, rgba(255,0,128,0) 70%);
+            animation-delay: 0s;
+        }
+
+        .spotlight:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            background: radial-gradient(circle, rgba(0,255,136,0.4) 0%, rgba(0,255,136,0) 70%);
+            animation-delay: 2s;
+        }
+
+        .spotlight:nth-child(3) {
+            bottom: 20%;
+            left: 40%;
+            background: radial-gradient(circle, rgba(0,128,255,0.4) 0%, rgba(0,128,255,0) 70%);
+            animation-delay: 4s;
+        }
+
+        @keyframes moveSpotlight {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(100px, 50px) scale(1.2);
+            }
+            50% {
+                transform: translate(-50px, 100px) scale(0.8);
+            }
+            75% {
+                transform: translate(-100px, -50px) scale(1.1);
+            }
+        }
+
+        .color-change {
+            animation: colorShift 15s infinite alternate;
+        }
+
+        @keyframes colorShift {
+            0% {
+                filter: hue-rotate(0deg);
+            }
+            25% {
+                filter: hue-rotate(90deg);
+            }
+            50% {
+                filter: hue-rotate(180deg);
+            }
+            75% {
+                filter: hue-rotate(270deg);
+            }
+            100% {
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        /* ===== ESTILOS PARA OCULTAR LA APLICACIÓN INICIALMENTE ===== */
+        #app-container {
+            display: none;
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== EFECTO DE PRESENTACIÓN ===== -->
+    <div class="disco-lights">
+        <div class="light-beam"></div>
+        <div class="light-beam"></div>
+        <div class="light-beam"></div>
+        <div class="light-beam"></div>
+        <div class="light-beam"></div>
+        <div class="spotlight"></div>
+        <div class="spotlight"></div>
+        <div class="spotlight"></div>
+    </div>
+    
+    <div class="particles" id="particles"></div>
+    <div class="glow color-change"></div>
+    
+    <div class="splash-container" id="splash-container">
+        <div class="floating-image">
+            <img src="https://i.ibb.co/wZWXSkhK/Screenshot-20250218-202716-edit-224685485500225.jpg" alt="TV infinita">
+        </div>
+        <h1>𝙏𝙑 𝙞𝙣𝙛𝙞𝙣𝙞𝙩𝙖</h1>
+        <div class="tagline">Experimenta la televisión del futuro</div>
+        <div class="description">
+            Tu portal definitivo para contenido ilimitado en una interfaz elegante e intuitiva. 
+            Descubre una nueva dimensión de entretenimiento con calidad excepcional y navegación fluida.
+        </div>
+        
+        <div class="features">
+            <h3>✨ Desarrollador @yamilpro :</h3>
+            <ul>
+                <li>Contenido Ilimitado: Miles de canales y películas a tu alcance</li>
+                <li>Interfaz Intuitiva: Navegación fácil y experiencia de usuario fluida</li>
+                <li>Calidad Excepcional: Imágenes nítidas y sonido envolvente</li>
+                <li>Streaming Sin Límites: Disfruta sin interrupciones en cualquier dispositivo</li>
+            </ul>
+        </div>
+        
+        <div class="final-message">
+            El futuro del entretenimiento está aquí.
+        </div>
+        <div class="slogan">
+            TV infinita - Donde cada detalle cobra vida.
+        </div>
+        
+        <div class="loading-bar">
+            <div class="loading-progress" id="loading-progress"></div>
+        </div>
+        <div class="loading-text" id="loading-text">Inicializando TV infinita...</div>
+    </div>
+
+    <!-- ===== CONTENEDOR DE LA APLICACIÓN (OCULTO INICIALMENTE) ===== -->
+    <div id="app-container">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisiónMáx - Reproductor IPTV Premium</title>
+    <!-- Plyr CSS -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <style>
+        :root {
+            --primary-bg: #0F0F23;
+            --secondary-bg: #1A1A3A;
+            --accent-color: #FF00FF;
+            --accent-secondary: #00FFFF;
+            --text-color: #FFFFFF;
+            --card-bg: #2A2A5A;
+            --highlight: #FF6B6B;
+            --success: #00FFAB;
+            --warning: #FFD166;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 15% 50%, rgba(255, 0, 255, 0.1) 0%, transparent 20%), 
+                              radial-gradient(circle at 85% 30%, rgba(0, 255, 255, 0.1) 0%, transparent 20%);
+        }
+        
+        .app-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        /* Header con gradiente vibrante */
+        #header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: linear-gradient(135deg, var(--secondary-bg) 0%, #2A2A5A 100%);
+            border-bottom: 2px solid var(--accent-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-container img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+        
+        /* Nombre de la aplicación con doble color */
+        .logo-container h1 {
+            font-size: 18px;
+            font-weight: bold;
+            background: linear-gradient(90deg, var(--accent-color) 0%, var(--accent-secondary) 50%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+            letter-spacing: 1px;
+        }
+        
+        .settings-btn {
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-secondary) 100%);
+            border: none;
+            color: var(--text-color);
+            font-size: 20px;
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 8px rgba(255, 0, 255, 0.5);
+        }
+        
+        .settings-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.8);
+        }
+        
+        /* Player View */
+        #player-view {
+            display: none;
+            flex-direction: column;
+            height: 100vh;
+            background: var(--primary-bg);
+            overflow: hidden;
+        }
+        
+        /* Reproductor Inteligente Mejorado con Plyr */
+        #player-wrapper {
+            width: 100%;
+            background-color: #000;
+            position: relative;
+            flex-shrink: 0;
+        }
+        
+        #channel-player {
+            width: 100%;
+            height: auto;
+            background: black;
+            display: block;
+            object-fit: contain;
+        }
+        
+        /* Ocultar controles nativos del navegador */
+        #channel-player::-webkit-media-controls {
+            display: none !important;
+        }
+        
+        #channel-player::-webkit-media-controls-panel {
+            display: none !important;
+        }
+        
+        /* Ajustes para Plyr con colores vibrantes */
+        .plyr {
+            --plyr-color-main: var(--accent-color);
+            --plyr-control-icon-size: 18px;
+            --plyr-control-spacing: 10px;
+            --plyr-control-radius: 8px;
+            --plyr-video-controls-background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            --plyr-video-control-color: white;
+            border-radius: 0;
+        }
+        
+        .plyr__controls {
+            background: linear-gradient(transparent, rgba(0,0,0,0.8)) !important;
+        }
+        
+        .plyr__control--overlaid {
+            background: var(--accent-color) !important;
+            box-shadow: 0 0 20px var(--accent-color);
+        }
+        
+        .plyr__control:hover {
+            background: var(--accent-secondary) !important;
+        }
+        
+        .plyr__progress__buffer {
+            background: rgba(255,255,255,0.3) !important;
+        }
+        
+        /* Indicadores de estado inteligente */
+        .player-status {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.8);
+            padding: 12px 20px;
+            border-radius: 8px;
+            display: none;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            z-index: 50;
+            border: 1px solid var(--accent-color);
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+        }
+        
+        .player-status.show {
+            display: flex;
+        }
+        
+        .loading-spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--accent-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* NOTIFICACIÓN DE SIGUIENTE EPISODIO - MODIFICADA PARA REPRODUCIR AUTOMÁTICAMENTE */
+        .next-episode-notification {
+            position: absolute;
+            bottom: 80px;
+            right: 15px;
+            background: rgba(0,0,0,0.9);
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-color);
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+            max-width: 280px;
+            z-index: 60;
+            font-size: 0.9em;
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+        }
+        
+        .next-episode-notification.show {
+            display: flex;
+            animation: slideInRight 0.3s ease;
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .next-episode-info {
+            font-size: 12px;
+            color: white;
+        }
+        
+        .next-episode-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .notification-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+            flex: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .play-next-btn {
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-secondary) 100%);
+            color: white;
+            font-weight: bold;
+        }
+        
+        .play-next-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+        
+        .cancel-next-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        /* Search Bar in Player View */
+        #player-search-bar {
+            padding: 8px 10px;
+            background: linear-gradient(135deg, var(--secondary-bg) 0%, #2A2A5A 100%);
+            border-bottom: 2px solid var(--accent-color);
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+        
+        #player-search-input {
+            flex: 1;
+            padding: 6px 8px;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            font-size: 14px;
+            border: 1px solid rgba(255, 0, 255, 0.3);
+        }
+        
+        #back-to-main {
+            background: linear-gradient(135deg, var(--highlight) 0%, #FF8E8E 100%);
+            border: none;
+            border-radius: 5px;
+            color: white;
+            padding: 6px 12px;
+            cursor: pointer;
+            white-space: nowrap;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        #back-to-main:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px var(--highlight);
+        }
+        
+        #global-search-btn {
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-secondary) 100%);
+            border: none;
+            border-radius: 5px;
+            color: white;
+            padding: 6px 12px;
+            cursor: pointer;
+            white-space: nowrap;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        #global-search-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+        
+        /* Series Controls */
+        #series-controls {
+            background: linear-gradient(135deg, var(--secondary-bg) 0%, #2A2A5A 100%);
+            padding: 10px 12px;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            flex-shrink: 0;
+            max-height: 35vh;
+            overflow-y: auto;
+            border-top: 1px solid var(--accent-color);
+            border-bottom: 1px solid var(--accent-color);
+        }
+        
+        .series-info-display {
+            text-align: center;
+            font-weight: bold;
+            font-size: 15px;
+            background: linear-gradient(90deg, var(--accent-color) 0%, var(--accent-secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            padding: 6px 8px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 0, 255, 0.3);
+        }
+        
+        .auto-play-controls {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 8px;
+            background: rgba(42, 42, 90, 0.7);
+            border-radius: 5px;
+            border: 1px solid rgba(255, 0, 255, 0.3);
+        }
+        
+        .auto-play-toggle {
+            transform: scale(1);
+            accent-color: var(--accent-color);
+        }
+        
+        .auto-play-label {
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        /* Temporadas Container */
+        .seasons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        
+        .seasons-title {
+            font-size: 13px;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 2px;
+            text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
+        }
+        
+        .seasons-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 6px;
+            padding: 6px 0;
+            scrollbar-width: thin;
+        }
+        
+        .seasons-scroll::-webkit-scrollbar {
+            height: 3px;
+        }
+        
+        .seasons-scroll::-webkit-scrollbar-thumb {
+            background-color: var(--accent-color);
+            border-radius: 3px;
+        }
+        
+        .season-btn {
+            background: linear-gradient(135deg, var(--card-bg) 0%, #3A3A6A 100%);
+            border: 2px solid transparent;
+            border-radius: 5px;
+            padding: 8px 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 12px;
+            min-width: 95px;
+            flex-shrink: 0;
+            white-space: nowrap;
+            color: white;
+        }
+        
+        .season-btn:hover {
+            background: linear-gradient(135deg, #3A3A6A 0%, #4A4A7A 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .season-btn.active {
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-secondary) 100%);
+            color: white;
+            border-color: var(--accent-color);
+            font-weight: bold;
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+        
+        /* Episodios Container */
+        .episodes-container {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+        }
+        
+        .episodes-title {
+            font-size: 13px;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 2px;
+            text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
+        }
+        
+        .episodes-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 4px;
+            padding: 6px 0;
+            scrollbar-width: thin;
+        }
+        
+        .episodes-scroll::-webkit-scrollbar {
+            height: 3px;
+        }
+        
+        .episodes-scroll::-webkit-scrollbar-thumb {
+            background-color: var(--accent-color);
+            border-radius: 3px;
+        }
+        
+        .episode-item {
+            background: linear-gradient(135deg, var(--card-bg) 0%, #3A3A6A 100%);
+            border-radius: 5px;
+            padding: 6px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 11px;
+            min-width: 45px;
+            flex-shrink: 0;
+            white-space: nowrap;
+            border: 2px solid transparent;
+            color: white;
+        }
+        
+        .episode-item:hover {
+            background: linear-gradient(135deg, #3A3A6A 0%, #4A4A7A 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .episode-item.current {
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-secondary) 100%);
+            color: white;
+            border-color: var(--accent-color);
+            font-weight: bold;
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+        
+        /* Otras Series Container */
+        .other-series-container {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 6px;
+        }
+        
+        .other-series-title {
+            font-size: 13px;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 2px;
+            text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
+        }
+        
+        .other-series-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 8px;
+            padding: 6px 0;
+            scrollbar-width: thin;
+        }
+        
+        .other-series-scroll::-webkit-scrollbar {
+            height: 3px;
+        }
+        
+        .other-series-scroll::-webkit-scrollbar-thumb {
+            background-color: var(--accent-color);
+            border-radius: 3px;
+        }
+        
+        .other-series-item {
+            background: linear-gradient(135deg, var(--card-bg) 0%, #3A3A6A 100%);
+            border-radius: 6px;
+            padding: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-width: 120px;
+            flex-shrink: 0;
+            border: 2px solid transparent;
+        }
+        
+        .other-series-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 0, 255, 0.5);
+            border-color: var(--accent-color);
+            background: linear-gradient(135deg, #3A3A6A 0%, #4A4A7A 100%);
+        }
+        
+        .other-series-name {
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 3px;
+            color: var(--text-color);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 2.4em;
+            line-height: 1.2;
+        }
+        
+        .other-series-info {
+            font-size: 10px;
+            color: var(--accent-secondary);
+        }
+
+        /* Channels in Player View - MEJORADO CON MÁS ESPACIO */
+        #player-channels-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 12px;
+            background: var(--primary-bg);
+            min-height: 300px;
+            max-height: 40vh;
+        }
+        
+        /* Main Content */
+        #main-content {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+            width: 100%;
+        }
+        
+        /* Categories Panel */
+        #categories-panel {
+            width: 30%;
+            background: linear-gradient(135deg, var(--secondary-bg) 0%, #2A2A5A 100%);
+            overflow-y: auto;
+            border-right: 2px solid var(--accent-color);
+            flex-shrink: 0;
+        }
+        
+        .category-item {
+            padding: 12px 15px;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255, 0, 255, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .category-item:hover, .category-item.active {
+            background: linear-gradient(90deg, rgba(255, 0, 255, 0.2) 0%, rgba(0, 255, 255, 0.2) 100%);
+            color: white;
+            padding-left: 20px;
+        }
+        
+        .category-name {
+            flex: 1;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-size: 14px;
+        }
+        
+        .category-count {
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-secondary) 100%);
+            color: white;
+            border-radius: 10px;
+            padding: 2px 8px;
+            font-size: 12px;
+            min-width: 25px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        /* Channels Panel */
+        #channels-panel {
+            width: 70%;
+            background-color: var(--primary-bg);
+            overflow-y: auto;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Search Bar in Main View - ELIMINADO EL DUPLICADO */
+        /* #search-bar {
+            padding: 10px;
+            background: linear-gradient(135deg, var(--secondary-bg) 0%, #2A2A5A 100%);
+            border-bottom: 2px solid var(--accent-color);
+            flex-shrink: 0;
+        }
+        
+        #search-input {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid rgba(255, 0, 255, 0.3);
+        } */
+        
+        /* Canales normales - 3 columnas compactas */
+        .channels-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            width: 100%;
+            padding: 0;
+        }
+        
+        .channel-card {
+            background: linear-gradient(135deg, var(--card-bg) 0%, #3A3A6A 100%);
+            border-radius: 8px;
+            padding: 8px;
+            text-align: center;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            border: 1px solid rgba(255, 0, 255, 0.3);
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .channel-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 0, 255, 0.5);
+            border-color: var(--accent-color);
+        }
+        
+        /* Estilo para canal activo/reproduciéndose */
+        .channel-card.active {
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-secondary) 100%) !important;
+            border: 1px solid var(--accent-color) !important;
+            transform: scale(1.02) !important;
+            box-shadow: 0 0 15px var(--accent-color) !important;
+        }
+
+        .channel-card.active .channel-name {
+            color: white !important;
+            font-weight: bold !important;
+        }
+
+        .channel-card.active .favorite-star {
+            color: white !important;
+        }
+
+        /* Para canales especiales activos */
+        .special-channel-card.active {
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-secondary) 100%) !important;
+            border: 2px solid var(--accent-color) !important;
+            transform: translateY(-2px) scale(1.01) !important;
+            box-shadow: 0 0 15px var(--accent-color) !important;
+        }
+
+        .special-channel-card.active .special-channel-name {
+            color: white !important;
+            font-weight: bold !important;
+        }
+
+        /* Indicador de reproducción en tiempo real */
+        .playing-indicator {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 8px;
+            height: 8px;
+            background: #ff4444;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+            z-index: 4;
+            box-shadow: 0 0 5px #ff4444;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+            100% { transform: scale(0.8); opacity: 1; }
+        }
+        
+        .channel-card img {
+            width: 35px;
+            height: 35px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            flex-shrink: 0;
+            border: 1px solid rgba(255, 0, 255, 0.3);
+        }
+        
+        .channel-name {
+            font-size: 11px;
+            color: var(--text-color);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+            text-align: center;
+            line-height: 1.2;
+        }
+        
+        /* Canales especiales (películas, series, dramas) - 3 columnas con imagen completa */
+        .special-channels-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            width: 100%;
+            padding: 0;
+        }
+        
+        .special-channel-card {
+            background: linear-gradient(135deg, var(--card-bg) 0%, #3A3A6A 100%);
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            aspect-ratio: 2/3;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 0, 255, 0.3);
+        }
+        
+        .special-channel-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 0, 255, 0.5);
+            border-color: var(--accent-color);
+        }
+        
+        .special-channel-card img {
+            width: 100%;
+            height: 85%;
+            object-fit: container;
+            flex-shrink: 0;
+        }
+        
+        .special-channel-name {
+            height: 15%;
+            padding: 6px 4px;
+            font-size: 11px;
+            color: var(--text-color);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(42, 42, 90, 0.9);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            line-height: 1.2;
+        }
+        
+        .favorite-star {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 16px;
+            color: gold;
+            cursor: pointer;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .favorite-star:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 8px gold;
+        }
+        
+        .favorite-star.inactive {
+            color: #555;
+        }
+        
+        /* Series Info */
+        .series-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 3px;
+            font-size: 10px;
+            color: white;
+            display: none;
+        }
+        
+        .channel-card:hover .series-info {
+            display: block;
+        }
+        
+        .series-progress {
+            height: 2px;
+            background: #333;
+            margin-top: 2px;
+            border-radius: 1px;
+            overflow: hidden;
+        }
+        
+        .series-progress-bar {
+            height: 100%;
+            background: var(--accent-color);
+            border-radius: 1px;
+            width: 0%;
+        }
+        
+        /* Settings Menu */
+        #settings-menu {
+            position: absolute;
+            top: 60px;
+            right: 10px;
+            background: linear-gradient(135deg, var(--secondary-bg) 0%, #2A2A5A 100%);
+            border: 1px solid var(--accent-color);
+            border-radius: 5px;
+            padding: 10px;
+            display: none;
+            z-index: 200;
+            min-width: 200px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .settings-item {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255, 0, 255, 0.2);
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+        
+        .settings-item:last-child {
+            border-bottom: none;
+        }
+        
+        .settings-item:hover {
+            background: linear-gradient(90deg, rgba(255, 0, 255, 0.2) 0%, rgba(0, 255, 255, 0.2) 100%);
+            padding-left: 15px;
+        }
+        
+        /* Modal de búsqueda global */
+        .search-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 20px;
+        }
+        
+        .search-modal-content {
+            background: linear-gradient(135deg, var(--secondary-bg) 0%, #2A2A5A 100%);
+            width: 90%;
+            max-width: 600px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--accent-color);
+        }
+        
+        .search-modal-header {
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary-bg) 0%, #1A1A3A 100%);
+            border-bottom: 2px solid var(--accent-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .search-modal-title {
+            font-size: 18px;
+            font-weight: bold;
+            background: linear-gradient(90deg, var(--accent-color) 0%, var(--accent-secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+        }
+        
+        .search-modal-close {
+            background: linear-gradient(135deg, var(--highlight) 0%, #FF8E8E 100%);
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .search-modal-close:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px var(--highlight);
+        }
+        
+        .search-modal-body {
+            padding: 15px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        .search-modal-input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            font-size: 16px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 0, 255, 0.3);
+        }
+        
+        .search-results-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        
+        .search-result-item {
+            background: linear-gradient(135deg, var(--card-bg) 0%, #3A3A6A 100%);
+            border-radius: 8px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .search-result-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 0, 255, 0.5);
+            border-color: var(--accent-color);
+        }
+        
+        .search-result-name {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+        
+        .search-result-category {
+            font-size: 12px;
+            color: var(--accent-secondary);
+        }
+        
+        /* Indicador de carga inteligente */
+        .smart-loading-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: transparent;
+            z-index: 10000;
+            display: none;
+        }
+        
+        .smart-loading-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-color) 0%, var(--accent-secondary) 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .cache-status {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--accent-color);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            z-index: 1000;
+            display: none;
+            border: 1px solid var(--accent-color);
+        }
+        
+        /* ESTILOS PARA PANTALLA COMPLETA HORIZONTAL */
+        .plyr--fullscreen {
+            background: #000 !important;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            z-index: 9999 !important;
+        }
+
+        .plyr--fullscreen .plyr__video-wrapper {
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        .plyr--fullscreen video {
+            object-fit: contain !important;
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        /* Ocultar elementos en pantalla completa */
+        .plyr--fullscreen #player-search-bar,
+        .plyr--fullscreen #series-controls,
+        .plyr--fullscreen #player-channels-container,
+        .plyr--fullscreen #header {
+            display: none !important;
+        }
+
+        /* Para móviles en landscape */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .plyr--fullscreen {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            #main-content {
+                flex-direction: column;
+            }
+            
+            #categories-panel {
+                width: 100%;
+                max-height: 30vh;
+            }
+            
+            #channels-panel {
+                width: 100%;
+            }
+            
+            .channels-grid,
+            .special-channels-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .channel-card {
+                height: 90px;
+                padding: 6px;
+            }
+            
+            .channel-card img {
+                width: 30px;
+                height: 30px;
+                margin-bottom: 4px;
+            }
+            
+            .channel-name {
+                font-size: 10px;
+            }
+            
+            .special-channel-name {
+                font-size: 10px;
+                padding: 5px 3px;
+            }
+            
+            .category-name {
+                font-size: 13px;
+            }
+            
+            .season-btn {
+                min-width: 85px;
+                padding: 6px 10px;
+            }
+            
+            .episode-item {
+                min-width: 40px;
+                padding: 5px 8px;
+                font-size: 10px;
+            }
+            
+            .other-series-item {
+                min-width: 100px;
+                padding: 6px;
+            }
+            
+            .other-series-name {
+                font-size: 11px;
+            }
+            
+            .search-results-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            #player-search-bar {
+                flex-wrap: wrap;
+            }
+            
+            #player-search-input {
+                min-width: 150px;
+            }
+            
+            /* Ajustes para más espacio en móvil */
+            #player-channels-container {
+                padding: 10px;
+                min-height: 280px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .channels-grid,
+            .special-channels-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 6px;
+            }
+            
+            .channel-card {
+                height: 85px;
+                padding: 5px;
+            }
+            
+            .channel-card img {
+                width: 25px;
+                height: 25px;
+                margin-bottom: 3px;
+            }
+            
+            .channel-name {
+                font-size: 9px;
+            }
+            
+            .special-channel-name {
+                font-size: 9px;
+                padding: 4px 2px;
+            }
+            
+            .category-name {
+                font-size: 12px;
+            }
+            
+            .season-btn {
+                min-width: 80px;
+                padding: 5px 8px;
+                font-size: 11px;
+            }
+            
+            .episode-item {
+                min-width: 35px;
+                padding: 4px 6px;
+                font-size: 9px;
+            }
+            
+            .other-series-item {
+                min-width: 90px;
+                padding: 5px;
+            }
+            
+            .other-series-name {
+                font-size: 10px;
+            }
+            
+            #player-search-bar {
+                padding: 6px 8px;
+            }
+            
+            #player-search-input {
+                font-size: 12px;
+                padding: 5px;
+            }
+            
+            #back-to-main, #global-search-btn {
+                font-size: 12px;
+                padding: 5px 8px;
+            }
+            
+            /* Ajustes para más espacio en móvil pequeño */
+            #player-channels-container {
+                padding: 8px;
+                min-height: 260px;
+            }
+        }
+
+        /* VERSIÓN ESPECÍFICA - Solo tocar lo necesario */
+        #player-channels-container {
+            flex: 1 !important;
+            max-height: none !important;
+            min-height: auto;
+        }
+
+        #channel-player {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+        }
+
+        /* Asegurar que ocupe espacio */
+        #player-view {
+            display: none;
+            flex-direction: column;
+            height: 100vh;
+        }
+#search-input {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+}
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <!-- Plyr JS -->
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+</head>
+<body>
+    <!-- Indicador de carga inteligente -->
+    <div class="smart-loading-indicator" id="smart-loading-indicator">
+        <div class="smart-loading-bar" id="smart-loading-bar"></div>
+    </div>
+    
+    <!-- Estado del cache -->
+    <div class="cache-status" id="cache-status"></div>
+    
+    <div class="app-container">
+        <!-- Header -->
+        <div id="header">
+            <div class="logo-container">
+                <img src="https://i.ibb.co/wZWXSkhK/Screenshot-20250218-202716-edit-224685485500225.jpg" alt="Death Star">
+                <h1>𝙏𝙑 𝙞𝙣𝙛𝙞𝙣𝙞𝙩𝙖  </h1>
+            </div>
+            <button class="settings-btn" id="settings-btn">⚙️</button>
+            <div id="settings-menu">
+                <div class="settings-item" id="show-favorites">⭐ Ver Favoritos</div>
+                <div class="settings-item" id="refresh-list">🔄 Actualizar Lista</div>
+                <div class="settings-item" id="load-m3u">📁 Cargar archivo M3U</div>
+                <div class="settings-item" id="clear-cache">🗑️ Limpiar Cache</div>
+                <div class="settings-item" id="close-settings">❌ Cerrar</div>
+            </div>
+        </div>
+
+        <!-- Player View (se muestra cuando se reproduce un canal) -->
+        <div id="player-view">
+            <!-- Player Wrapper - MEJORADO CON PLYR -->
+            <div id="player-wrapper">
+                <video id="channel-player" autoplay playsinline></video>
+                
+                <!-- Indicador de estado -->
+                <div class="player-status" id="player-status">
+                    <div class="loading-spinner"></div>
+                    <span id="status-text">Cargando...</span>
+                </div>
+                
+                <!-- Notificación de siguiente episodio - MODIFICADA -->
+                <div class="next-episode-notification" id="next-episode-notification">
+                    <div class="next-episode-info" id="next-episode-info">
+                        Siguiente episodio en 10 segundos
+                    </div>
+                    <div class="next-episode-actions">
+                        <button class="notification-btn play-next-btn" id="play-next-now">Reproducir ahora</button>
+                        <button class="notification-btn cancel-next-btn" id="cancel-next">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Search Bar in Player View -->
+            <div id="player-search-bar">
+                <input type="text" id="player-search-input" placeholder="Buscar en esta categoría...">
+                <button id="back-to-main">← Volver</button>
+                <button id="global-search-btn">🔍 Global</button>
+            </div>
+            
+            <!-- Series Controls -->
+            <div id="series-controls">
+                <div id="series-info-display" class="series-info-display">Ojo de Halcón S01 E01</div>
+                <div class="auto-play-controls">
+                    <input type="checkbox" id="auto-play-toggle" class="auto-play-toggle" checked>
+                    <label for="auto-play-toggle" class="auto-play-label">Reproducción automática inteligente</label>
+                </div>
+                
+                <!-- Temporadas -->
+                <div id="seasons-container" class="seasons-container" style="display:none;">
+                    <div class="seasons-title">📺 Temporadas Disponibles</div>
+                    <div id="seasons-scroll" class="seasons-scroll">
+                        <!-- Las temporadas se cargarán aquí dinámicamente -->
+                    </div>
+                </div>
+                
+                <!-- Episodios -->
+                <div id="episodes-container" class="episodes-container" style="display:none;">
+                    <div class="episodes-title">🎬 Episodios de la Temporada</div>
+                    <div id="episodes-scroll" class="episodes-scroll">
+                        <!-- Los episodios se cargarán aquí dinámicamente -->
+                    </div>
+                </div>
+                
+                <!-- Otras Series -->
+                <div id="other-series-container" class="other-series-container" style="display:none;">
+                    <div class="other-series-title">🌟 Series que te pueden gustar</div>
+                    <div id="other-series-scroll" class="other-series-scroll">
+                        <!-- Otras series se cargarán aquí dinámicamente -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Channels in Player View - MEJORADO CON MÁS ESPACIO -->
+            <div id="player-channels-container">
+                <div class="channels-grid" id="player-channels-grid">
+                    <!-- Los canales de la categoría actual se cargarán aquí -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content (vista principal) -->
+        <div id="main-content">
+            <!-- Categories Panel -->
+            <div id="categories-panel">
+                <!-- Categories will be loaded dynamically -->
+            </div>
+
+            <!-- Channels Panel -->
+            <div id="channels-panel">
+                <!-- Search Bar in Main View -->
+                <div id="search-bar">
+                    <input type="text" id="search-input" placeholder="Buscar canal...">
+                </div>
+                
+                <!-- Channels Grid -->
+                <div id="channels-grid-container">
+                    <!-- Channels will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Búsqueda Global -->
+    <div id="global-search-modal" class="search-modal">
+        <div class="search-modal-content">
+            <div class="search-modal-header">
+                <div class="search-modal-title">🔍 Búsqueda Global</div>
+                <button class="search-modal-close" id="close-global-search">✕</button>
+            </div>
+            <div class="search-modal-body">
+                <input type="text" id="global-search-input" class="search-modal-input" placeholder="Buscar en todos los canales, series y categorías...">
+                <div id="global-search-results" class="search-results-grid">
+                    <!-- Los resultados de búsqueda se cargarán aquí -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input type="file" id="file-input" accept=".m3u,.m3u8,.txt" style="display:none">
+
+    <script>
+        // ===== SISTEMA DE REPRODUCCIÓN INTELIGENTE MEJORADO CON PLYR =====
+        class SmartVideoPlayer {
+            constructor(videoElement) {
+                this.video = videoElement;
+                this.hls = null;
+                this.currentUrl = null;
+                this.isPlaying = false;
+                this.currentTime = 0;
+                this.duration = 0;
+                this.playbackPositions = new Map();
+                this.retryCount = 0;
+                this.maxRetries = 3;
+                this.nextEpisodeTimer = null;
+                this.autoPlayEnabled = true;
+                this.nextEpisodeNotificationShown = false;
+                this.plyr = null;
+                
+                // Elementos de UI
+                this.playerStatus = document.getElementById('player-status');
+                this.statusText = document.getElementById('status-text');
+                this.nextEpisodeNotification = document.getElementById('next-episode-notification');
+                this.nextEpisodeInfo = document.getElementById('next-episode-info');
+                this.playNextNowBtn = document.getElementById('play-next-now');
+                this.cancelNextBtn = document.getElementById('cancel-next');
+                
+                this.initializePlyr();
+                this.setupEventListeners();
+            }
+            
+            initializePlyr() {
+                // Ocultar controles nativos del video
+                this.video.controls = false;
+                
+                // Inicializar Plyr CON PANTALLA COMPLETA HORIZONTAL
+                this.plyr = new Plyr(this.video, {
+                    controls: [
+                        'play-large',
+                        'play',
+                        'progress',
+                        'current-time',
+                        'mute',
+                        'volume',
+                        'settings',
+                        'fullscreen'
+                    ],
+                    settings: ['quality', 'speed'],
+                    invertTime: false,
+                    tooltips: { controls: true, seek: true },
+                    keyboard: { focused: true, global: true },
+                    seekTime: 10,
+                    volume: 0.8,
+                    clickToPlay: true,
+                    hideControls: true,
+                    resetOnEnd: false
+                });
+                
+                // CONFIGURACIÓN PARA PANTALLA COMPLETA HORIZONTAL
+                this.setupFullscreenOrientation();
+                
+                // Personalizar Plyr para que coincida con tu tema
+                this.customizePlyr();
+            }
+            
+            // NUEVA FUNCIÓN: Configurar orientación horizontal en pantalla completa
+            setupFullscreenOrientation() {
+                // Cuando entra en pantalla completa
+                this.plyr.on('enterfullscreen', event => {
+                    console.log('Entrando en pantalla completa - Forzando horizontal');
+                    
+                    // Forzar orientación horizontal en dispositivos móviles
+                    this.lockHorizontalOrientation();
+                    
+                    // Ocultar elementos de la interfaz
+                    this.hideUIElements();
+                });
+                
+                // Cuando sale de pantalla completa
+                this.plyr.on('exitfullscreen', event => {
+                    console.log('Saliendo de pantalla completa');
+                    
+                    // Liberar el bloqueo de orientación
+                    this.unlockOrientation();
+                    
+                    // Mostrar elementos de la interfaz
+                    this.showUIElements();
+                });
+            }
+            
+            // NUEVA FUNCIÓN: Forzar orientación horizontal
+            lockHorizontalOrientation() {
+                // Intentar usar Screen Orientation API
+                if (screen.orientation && screen.orientation.lock) {
+                    screen.orientation.lock('landscape').catch(error => {
+                        console.log('No se pudo bloquear orientación:', error);
+                        // Fallback: usar CSS para forzar landscape
+                        this.forceLandscapeWithCSS();
+                    });
+                } else {
+                    // Fallback para navegadores que no soportan Screen Orientation API
+                    this.forceLandscapeWithCSS();
+                }
+            }
+            
+            // NUEVA FUNCIÓN: Forzar landscape con CSS
+            forceLandscapeWithCSS() {
+                // Agregar clase CSS para landscape
+                document.documentElement.classList.add('force-landscape');
+                
+                // Crear estilo CSS para landscape forzado
+                const landscapeStyle = document.createElement('style');
+                landscapeStyle.id = 'landscape-style';
+                landscapeStyle.textContent = `
+                    .force-landscape body {
+                        transform: rotate(90deg);
+                        transform-origin: center center;
+                        width: 100vh;
+                        height: 100vw;
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        margin-top: -50vw;
+                        margin-left: -50vh;
+                        overflow: hidden;
+                    }
+                    .force-landscape .plyr--fullscreen {
+                        transform: rotate(0deg) !important;
+                    }
+                `;
+                document.head.appendChild(landscapeStyle);
+            }
+            
+            // NUEVA FUNCIÓN: Liberar orientación
+            unlockOrientation() {
+                // Liberar Screen Orientation API
+                if (screen.orientation && screen.orientation.unlock) {
+                    screen.orientation.unlock();
+                }
+                
+                // Remover CSS de landscape forzado
+                document.documentElement.classList.remove('force-landscape');
+                const landscapeStyle = document.getElementById('landscape-style');
+                if (landscapeStyle) {
+                    landscapeStyle.remove();
+                }
+            }
+            
+            // NUEVA FUNCIÓN: Ocultar elementos de UI
+            hideUIElements() {
+                const elementsToHide = [
+                    '#player-search-bar',
+                    '#series-controls',
+                    '#player-channels-container',
+                    '#header'
+                ];
+                
+                elementsToHide.forEach(selector => {
+                    const element = document.querySelector(selector);
+                    if (element) {
+                        element.style.display = 'none';
+                    }
+                });
+                
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // NUEVA FUNCIÓN: Mostrar elementos de UI
+            showUIElements() {
+                const elementsToShow = [
+                    '#player-search-bar',
+                    '#series-controls', 
+                    '#player-channels-container',
+                    '#header'
+                ];
+                
+                elementsToShow.forEach(selector => {
+                    const element = document.querySelector(selector);
+                    if (element) {
+                        element.style.display = '';
+                    }
+                });
+                
+                document.body.style.overflow = '';
+            }
+            
+            customizePlyr() {
+                // Aplicar estilos personalizados a Plyr
+                const style = document.createElement('style');
+                style.textContent = `
+                    .plyr--full-ui input[type="range"] {
+                        color: var(--accent-color);
+                    }
+                    .plyr__control--overlaid {
+                        background: var(--accent-color);
+                    }
+                    .plyr__control:hover {
+                        background: var(--accent-color);
+                    }
+                    .plyr--video .plyr__controls {
+                        background: linear-gradient(transparent, rgba(0,0,0,0.8));
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            setupEventListeners() {
+                // Eventos del video
+                this.video.addEventListener('loadedmetadata', () => {
+                    this.duration = this.video.duration;
+                    this.restorePlaybackPosition();
+                });
+                
+                this.video.addEventListener('timeupdate', () => {
+                    this.currentTime = this.video.currentTime;
+                    this.checkForNextEpisode();
+                    this.savePlaybackPosition();
+                });
+                
+                this.video.addEventListener('waiting', () => {
+                    this.showStatus('Buffering...');
+                });
+                
+                this.video.addEventListener('playing', () => {
+                    this.hideStatus();
+                });
+                
+                this.video.addEventListener('ended', () => {
+                    this.handleVideoEnded();
+                });
+                
+                this.video.addEventListener('error', (e) => {
+                    this.handleVideoError(e);
+                });
+                
+                // Eventos de Plyr
+                this.plyr.on('ready', () => {
+                    console.log('Plyr está listo - Pantalla completa horizontal habilitada');
+                });
+                
+                // Eventos de siguiente episodio
+                this.playNextNowBtn.addEventListener('click', () => {
+                    this.playNextEpisode();
+                });
+                
+                this.cancelNextBtn.addEventListener('click', () => {
+                    this.cancelNextEpisode();
+                });
+                
+                // NUEVO: Detectar cambios de orientación
+                window.addEventListener('orientationchange', () => {
+                    this.handleOrientationChange();
+                });
+            }
+            
+            // NUEVA FUNCIÓN: Manejar cambios de orientación
+            handleOrientationChange() {
+                if (this.plyr.fullscreen.active) {
+                    // Si está en pantalla completa y cambia la orientación, ajustar
+                    setTimeout(() => {
+                        if (window.orientation === 90 || window.orientation === -90) {
+                            console.log('En landscape - pantalla completa activa');
+                        } else {
+                            console.log('En portrait - forzar landscape');
+                            this.lockHorizontalOrientation();
+                        }
+                    }, 100);
+                }
+            }
+            
+            // Reproducir URL con sistema inteligente mejorado
+            play(url, channelInfo = null) {
+                this.currentUrl = url;
+                this.currentChannel = channelInfo;
+                
+                // Limpiar reproducción anterior
+                this.stop();
+                
+                // Mostrar estado de carga
+                this.showStatus('Cargando...');
+                
+                // Aplicar transformación de URL
+                const finalUrl = transformUrlToM3u8(url);
+                console.log('Reproduciendo URL inteligente:', finalUrl);
+                
+                const isHlsStream = finalUrl.toLowerCase().endsWith('.m3u8');
+                
+                if (isHlsStream) {
+                    this.playHlsStream(finalUrl);
+                } else {
+                    this.playDirectStream(finalUrl);
+                }
+            }
+            
+            playHlsStream(url) {
+                if (Hls.isSupported()) {
+                    this.hls = new Hls({
+                        enableWorker: true,
+                        lowLatencyMode: true,
+                        backBufferLength: 90,
+                        maxBufferLength: 30,
+                        maxMaxBufferLength: 60,
+                        maxBufferSize: 60 * 1000 * 1000, // 60MB
+                        maxBufferHole: 0.5,
+                        highBufferWatchdogPeriod: 2,
+                        nudgeOffset: 0.1,
+                        nudgeMaxRetry: 3,
+                        maxFragLookUpTolerance: 0.2,
+                        liveSyncDurationCount: 3,
+                        liveMaxLatencyDurationCount: 10,
+                        liveDurationInfinity: false,
+                        liveBackBufferLength: 0,
+                        maxLiveSyncPlaybackRate: 1.1
+                    });
+                    
+                    this.hls.loadSource(url);
+                    this.hls.attachMedia(this.video);
+                    
+                    this.hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                        this.hideStatus();
+                        this.video.play().catch(e => {
+                            console.error('Error al reproducir:', e);
+                            this.showStatus('Error de reproducción');
+                        });
+                    });
+                    
+                    this.hls.on(Hls.Events.ERROR, (event, data) => {
+                        console.error('Error HLS:', data);
+                        this.handleHlsError(data);
+                    });
+                    
+                    this.hls.on(Hls.Events.BUFFER_APPENDED, () => {
+                        this.hideStatus();
+                    });
+                    
+                } else if (this.video.canPlayType('application/vnd.apple.mpegurl')) {
+                    // Soporte nativo para HLS (Safari)
+                    this.video.src = url;
+                    this.video.play().catch(e => {
+                        console.error('Error al reproducir:', e);
+                        this.showStatus('Error de reproducción');
+                    });
+                } else {
+                    this.showStatus('Formato no soportado');
+                }
+            }
+            
+            playDirectStream(url) {
+                this.video.src = url;
+                this.video.play().catch(e => {
+                    console.error('Error al reproducir:', e);
+                    this.showStatus('Error de reproducción');
+                });
+            }
+            
+            // Manejo inteligente de errores
+            handleHlsError(data) {
+                if (data.fatal) {
+                    switch (data.type) {
+                        case Hls.ErrorTypes.NETWORK_ERROR:
+                            this.showStatus('Error de red, reintentando...');
+                            this.retryPlayback();
+                            break;
+                        case Hls.ErrorTypes.MEDIA_ERROR:
+                            this.showStatus('Error de medio, recuperando...');
+                            this.hls.recoverMediaError();
+                            break;
+                        default:
+                            this.showStatus('Error fatal');
+                            this.hls.destroy();
+                            break;
+                    }
+                }
+            }
+            
+            handleVideoError(e) {
+                console.error('Error de video:', e);
+                this.showStatus('Error de reproducción');
+                this.retryPlayback();
+            }
+            
+            retryPlayback() {
+                if (this.retryCount < this.maxRetries) {
+                    this.retryCount++;
+                    this.showStatus(`Reintentando... (${this.retryCount}/${this.maxRetries})`);
+                    
+                    setTimeout(() => {
+                        if (this.currentUrl) {
+                            this.play(this.currentUrl, this.currentChannel);
+                        }
+                    }, 2000 * this.retryCount);
+                } else {
+                    this.showStatus('Error: No se puede reproducir');
+                }
+            }
+            
+            // Gestión de posición de reproducción
+            savePlaybackPosition() {
+                if (this.currentUrl && this.video.duration > 0) {
+                    const position = this.video.currentTime;
+                    const percent = (position / this.video.duration) * 100;
+                    
+                    // Solo guardar si ha visto al menos 10 segundos y no está cerca del final
+                    if (position > 10 && percent < 95) {
+                        this.playbackPositions.set(this.currentUrl, {
+                            time: position,
+                            timestamp: Date.now()
+                        });
+                        
+                        // Actualizar progreso en la serie si es aplicable
+                        if (this.currentChannel && this.currentChannel.seriesInfo) {
+                            updateSeriesProgress(
+                                this.currentChannel.seriesInfo.seriesName,
+                                this.currentChannel.seriesInfo.season,
+                                this.currentChannel.seriesInfo.episode,
+                                percent / 100
+                            );
+                        }
+                    }
+                }
+            }
+            
+            restorePlaybackPosition() {
+                if (this.currentUrl && this.playbackPositions.has(this.currentUrl)) {
+                    const saved = this.playbackPositions.get(this.currentUrl);
+                    const currentTime = Date.now();
+                    const timeDiff = currentTime - saved.timestamp;
+                    
+                    // Restaurar posición si fue guardada en las últimas 24 horas
+                    if (timeDiff < 24 * 60 * 60 * 1000) {
+                        this.video.currentTime = saved.time;
+                        console.log(`Posición restaurada: ${Math.round(saved.time)}s`);
+                    }
+                }
+            }
+            
+            // ===== SISTEMA DE SIGUIENTE EPISODIO AUTOMÁTICO - MODIFICADO =====
+            checkForNextEpisode() {
+                if (!this.currentChannel || !this.currentChannel.seriesInfo) return;
+                
+                const timeLeft = this.video.duration - this.video.currentTime;
+                
+                // Reproducir automáticamente sin mostrar mensaje (más profesional)
+                if (timeLeft <= 5 && this.autoPlayEnabled && !this.nextEpisodeTimer) {
+                    this.playNextEpisode();
+                }
+            }
+            
+            playNextEpisode() {
+                const nextEpisode = findNextEpisode(this.currentChannel);
+                if (nextEpisode) {
+                    this.cancelNextEpisode();
+                    playSeries(nextEpisode);
+                }
+            }
+            
+            cancelNextEpisode() {
+                if (this.nextEpisodeTimer) {
+                    clearTimeout(this.nextEpisodeTimer);
+                    this.nextEpisodeTimer = null;
+                }
+                this.nextEpisodeNotification.classList.remove('show');
+                this.nextEpisodeNotificationShown = false;
+            }
+            
+            handleVideoEnded() {
+                if (this.autoPlayEnabled) {
+                    this.playNextEpisode();
+                }
+            }
+            
+            showStatus(message) {
+                this.statusText.textContent = message;
+                this.playerStatus.classList.add('show');
+            }
+            
+            hideStatus() {
+                this.playerStatus.classList.remove('show');
+                this.retryCount = 0;
+            }
+            
+            // Detener reproducción
+            stop() {
+                this.cancelNextEpisode();
+                
+                if (this.hls) {
+                    this.hls.destroy();
+                    this.hls = null;
+                }
+                
+                this.video.pause();
+                this.video.removeAttribute('src');
+                this.video.load();
+                
+                this.hideStatus();
+            }
+            
+            // Configurar autoplay
+            setAutoPlay(enabled) {
+                this.autoPlayEnabled = enabled;
+            }
+        }
+
+        // ===== SISTEMA DE CACHE INTELIGENTE =====
+        class SmartCacheManager {
+            constructor() {
+                this.cacheVersion = 'v2.0';
+                this.cacheKey = 'iptv_smart_cache';
+                this.lastUpdateKey = 'iptv_last_update';
+                this.cacheExpiry = 24 * 60 * 60 * 1000; // 24 horas
+                this.isUpdating = false;
+            }
+            
+            // Verificar si hay datos en cache y si están actualizados
+            hasValidCache() {
+                try {
+                    const cachedData = localStorage.getItem(this.cacheKey);
+                    const lastUpdate = localStorage.getItem(this.lastUpdateKey);
+                    
+                    if (!cachedData || !lastUpdate) {
+                        return false;
+                    }
+                    
+                    const timeSinceUpdate = Date.now() - parseInt(lastUpdate);
+                    return timeSinceUpdate < this.cacheExpiry;
+                } catch (e) {
+                    console.error('Error verificando cache:', e);
+                    return false;
+                }
+            }
+            
+            // Cargar datos desde cache
+            loadFromCache() {
+                try {
+                    const cachedData = localStorage.getItem(this.cacheKey);
+                    if (cachedData) {
+                        return JSON.parse(cachedData);
+                    }
+                } catch (e) {
+                    console.error('Error cargando desde cache:', e);
+                }
+                return null;
+            }
+            
+            // Guardar datos en cache
+            saveToCache(data) {
+                try {
+                    localStorage.setItem(this.cacheKey, JSON.stringify(data));
+                    localStorage.setItem(this.lastUpdateKey, Date.now().toString());
+                    console.log('Datos guardados en cache');
+                    return true;
+                } catch (e) {
+                    console.error('Error guardando en cache:', e);
+                    return false;
+                }
+            }
+            
+            // Limpiar cache - CORREGIDO: Sin mensajes ni recargas
+            clearCache() {
+                try {
+                    localStorage.removeItem(this.cacheKey);
+                    localStorage.removeItem(this.lastUpdateKey);
+                    console.log('Cache limpiado silenciosamente');
+                    return true;
+                } catch (e) {
+                    console.error('Error limpiando cache:', e);
+                    return false;
+                }
+            }
+            
+            // Obtener estado del cache
+            getCacheStatus() {
+                const hasCache = this.hasValidCache();
+                const lastUpdate = localStorage.getItem(this.lastUpdateKey);
+                const lastUpdateTime = lastUpdate ? new Date(parseInt(lastUpdate)).toLocaleTimeString() : 'Nunca';
+                
+                return {
+                    hasCache,
+                    lastUpdate: lastUpdateTime,
+                    isUpdating: this.isUpdating
+                };
+            }
+        }
+
+        // ===== SISTEMA DE CARGA INTELIGENTE =====
+        class SmartLoader {
+            constructor() {
+                this.cacheManager = new SmartCacheManager();
+                this.isInitialLoad = true;
+                this.loadingIndicator = document.getElementById('smart-loading-indicator');
+                this.loadingBar = document.getElementById('smart-loading-bar');
+                this.cacheStatus = document.getElementById('cache-status');
+            }
+            
+            // Cargar datos de forma inteligente
+            async loadData() {
+                // Mostrar estado del cache
+                this.showCacheStatus();
+                
+                // PRIMERO: Intentar cargar desde cache si está disponible
+                if (this.cacheManager.hasValidCache()) {
+                    console.log('Cargando desde cache...');
+                    const cachedData = this.cacheManager.loadFromCache();
+                    
+                    if (cachedData && cachedData.allChannels && cachedData.categories) {
+                        // Usar datos del cache inmediatamente
+                        this.applyCachedData(cachedData);
+                        
+                        // Actualizar en segundo plano
+                        this.updateInBackground();
+                        
+                        return true;
+                    }
+                }
+                
+                // SEGUNDO: Si no hay cache válido, cargar desde Drive
+                console.log('Cargando desde Drive...');
+                return await this.loadFromDrive();
+            }
+            
+            // Aplicar datos del cache
+            applyCachedData(cachedData) {
+                allChannels = cachedData.allChannels || [];
+                categories = new Map(Object.entries(cachedData.categories || {}));
+                allSeries = cachedData.allSeries || [];
+                
+                // Inicializar sistemas
+                searchEngine = new SearchEngine(allChannels);
+                
+                // Renderizar inmediatamente
+                renderCategories();
+                renderChannels();
+                
+                console.log('Datos cargados desde cache:', {
+                    canales: allChannels.length,
+                    categorias: categories.size,
+                    series: allSeries.length
+                });
+            }
+            
+            // Cargar desde Google Drive
+            async loadFromDrive() {
+                this.showLoadingIndicator();
+                
+                try {
+                    const result = await loadFromGoogleDriveSilent();
+                    const content = result.content;
+                    
+                    if (!content || !content.includes('#EXTM3U')) {
+                        throw new Error('Contenido no válido');
+                    }
+                    
+                    // Parsear y procesar datos
+                    parseM3U(content);
+                    
+                    // Guardar en cache para uso futuro
+                    const cacheData = {
+                        allChannels: allChannels,
+                        categories: Object.fromEntries(categories),
+                        allSeries: allSeries,
+                        timestamp: Date.now()
+                    };
+                    
+                    this.cacheManager.saveToCache(cacheData);
+                    
+                    console.log('Datos cargados desde Drive y guardados en cache');
+                    return true;
+                    
+                } catch (error) {
+                    console.error('Error cargando desde Drive:', error);
+                    
+                    // Si falla, intentar usar cache aunque esté expirado
+                    const cachedData = this.cacheManager.loadFromCache();
+                    if (cachedData) {
+                        console.log('Usando cache expirado como respaldo');
+                        this.applyCachedData(cachedData);
+                        return true;
+                    }
+                    
+                    return false;
+                } finally {
+                    this.hideLoadingIndicator();
+                    this.showCacheStatus();
+                }
+            }
+            
+            // Actualizar en segundo plano
+            async updateInBackground() {
+                if (this.cacheManager.isUpdating) return;
+                
+                this.cacheManager.isUpdating = true;
+                console.log('Actualizando datos en segundo plano...');
+                
+                try {
+                    const result = await loadFromGoogleDriveSilent();
+                    const content = result.content;
+                    
+                    if (content && content.includes('#EXTM3U')) {
+                        // Parsear datos nuevos
+                        const oldChannels = [...allChannels];
+                        parseM3U(content);
+                        
+                        // Verificar si hay cambios significativos
+                        if (this.hasSignificantChanges(oldChannels, allChannels)) {
+                            // Guardar nuevo cache
+                            const cacheData = {
+                                allChannels: allChannels,
+                                categories: Object.fromEntries(categories),
+                                allSeries: allSeries,
+                                timestamp: Date.now()
+                            };
+                            
+                            this.cacheManager.saveToCache(cacheData);
+                            console.log('Datos actualizados en segundo plano');
+                        } else {
+                            console.log('No hay cambios significativos, manteniendo cache actual');
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error en actualización en segundo plano:', error);
+                } finally {
+                    this.cacheManager.isUpdating = false;
+                    this.showCacheStatus();
+                }
+            }
+            
+            // Verificar si hay cambios significativos
+            hasSignificantChanges(oldChannels, newChannels) {
+                if (oldChannels.length !== newChannels.length) return true;
+                
+                // Verificar si hay cambios en URLs (canales nuevos/eliminados)
+                const oldUrls = new Set(oldChannels.map(c => c.url));
+                const newUrls = new Set(newChannels.map(c => c.url));
+                
+                if (oldUrls.size !== newUrls.size) return true;
+                
+                for (let url of oldUrls) {
+                    if (!newUrls.has(url)) return true;
+                }
+                
+                return false;
+            }
+            
+            // Mostrar indicador de carga
+            showLoadingIndicator() {
+                if (this.loadingIndicator && this.loadingBar) {
+                    this.loadingIndicator.style.display = 'block';
+                    this.loadingBar.style.width = '30%';
+                    
+                    // Simular progreso
+                    setTimeout(() => {
+                        if (this.loadingBar) {
+                            this.loadingBar.style.width = '70%';
+                        }
+                    }, 500);
+                }
+            }
+            
+            // Ocultar indicador de carga
+            hideLoadingIndicator() {
+                if (this.loadingIndicator && this.loadingBar) {
+                    this.loadingBar.style.width = '100%';
+                    setTimeout(() => {
+                        this.loadingIndicator.style.display = 'none';
+                        this.loadingBar.style.width = '0%';
+                    }, 300);
+                }
+            }
+            
+            // Mostrar estado del cache
+            showCacheStatus() {
+                if (!this.cacheStatus) return;
+                
+                const status = this.cacheManager.getCacheStatus();
+                
+                if (status.hasCache) {
+                    this.cacheStatus.textContent = `✅ Cache: ${status.lastUpdate}`;
+                    this.cacheStatus.style.display = 'block';
+                    
+                    // Ocultar después de 3 segundos
+                    setTimeout(() => {
+                        this.cacheStatus.style.display = 'none';
+                    }, 3000);
+                } else if (status.isUpdating) {
+                    this.cacheStatus.textContent = '🔄 Actualizando...';
+                    this.cacheStatus.style.display = 'block';
+                }
+            }
+        }
+
+        // ===== INICIALIZACIÓN DEL SISTEMA INTELIGENTE =====
+        const smartLoader = new SmartLoader();
+
+        // ===== SISTEMA MEJORADO PARA ENLACES NUMÉRICOS =====
+        const urlCache = new Map();
+
+        // 🔍 FUNCIÓN PARA DETECTAR TIPO DE STREAM
+        function detectStreamType(url) {
+            const urlStr = url.toLowerCase();
+            
+            if (urlStr.includes('.m3u8')) return 'hls';
+            if (urlStr.includes('.mp4')) return 'mp4';
+            if (urlStr.includes('.mkv')) return 'mkv';
+            if (urlStr.includes('.avi')) return 'avi';
+            if (urlStr.includes('.ts')) return 'ts';
+            if (urlStr.match(/\/\d+$/)) return 'numeric_id';
+            
+            return 'unknown';
+        }
+
+        // 🔄 FUNCIÓN PARA GENERAR OPCIONES DE URL PARA ENLACES NUMÉRICOS
+        function generateUrlOptions(baseUrl, streamId) {
+            return [
+                baseUrl, // Original
+                `${baseUrl}.m3u8`,
+                `${baseUrl}/index.m3u8`,
+                `${baseUrl.replace(/\/[^\/]+$/, '')}/playlist.m3u8?id=${streamId}`,
+                `${baseUrl.replace(/\/[^\/]+$/, '')}/hls/${streamId}/index.m3u8`,
+                `${baseUrl.replace(/\/[^\/]+$/, '')}/live/${streamId}/index.m3u8`,
+                `${baseUrl.replace(/\/[^\/]+$/, '')}/stream/${streamId}.m3u8`,
+                `${baseUrl.replace(/\/[^\/]+$/, '')}/chunklist_${streamId}.m3u8`,
+                `${baseUrl}?format=m3u8`,
+                `${baseUrl}?type=hls`
+            ];
+        }
+
+        // ⚡ FUNCIÓN MEJORADA PARA TRANSFORMAR URLs (CON MÚLTIPLES ESTRATEGIAS)
+        function transformUrlToM3u8(url) {
+            if (!url || typeof url !== 'string') return url;
+            
+            // USAR CACHE PARA URLs YA TRANSFORMADAS
+            if (urlCache.has(url)) {
+                const cached = urlCache.get(url);
+                return typeof cached === 'object' ? cached.main : cached;
+            }
+            
+            try {
+                const urlLower = url.toLowerCase();
+                let transformedUrl = url;
+                
+                // ESTRATEGIA 1: Si ya es un formato compatible, no cambiar
+                if (urlLower.includes('.m3u8') || urlLower.includes('.mp4') || 
+                    urlLower.includes('.mkv') || urlLower.includes('.avi')) {
+                    urlCache.set(url, transformedUrl);
+                    return transformedUrl;
+                }
+                
+                // ESTRATEGIA 2: Enlaces que terminan en número - MÚLTIPLES OPCIONES
+                if (url.match(/\/\d+$/) && !urlLower.includes('.m3u8')) {
+                    const baseUrl = url.replace(/\/\d+$/, '');
+                    const streamId = url.match(/\/(\d+)$/)[1];
+                    
+                    // Probar diferentes formatos comunes para enlaces numéricos
+                    const possibleUrls = generateUrlOptions(url, streamId);
+                    
+                    // La URL original siempre es la primera opción
+                    transformedUrl = possibleUrls[0];
+                    
+                    // Guardar todas las opciones en cache para pruebas posteriores
+                    urlCache.set(url, { main: transformedUrl, alternatives: possibleUrls });
+                    
+                } 
+                // ESTRATEGIA 3: Transformaciones para otros formatos
+                else if (urlLower.includes('.ts') && !urlLower.includes('.m3u8')) {
+                    transformedUrl = url.replace(/\.ts$/i, '.m3u8');
+                } else if (urlLower.includes('/chunklist')) {
+                    transformedUrl = url.replace('/chunklist', '/index');
+                }
+                
+                // GUARDAR EN CACHE
+                urlCache.set(url, transformedUrl);
+                return transformedUrl;
+                
+            } catch (e) {
+                return url;
+            }
+        }
+
+        // ===== SISTEMA DE BÚSQUEDA GLOBAL Y OPTIMIZADO =====
+        class SearchEngine {
+            constructor(channels) {
+                this.channels = channels;
+                this.index = this.buildIndex();
+                this.debounceTimer = null;
+            }
+            
+            // Construir índice para búsqueda rápida
+            buildIndex() {
+                const index = {};
+                this.channels.forEach((channel, idx) => {
+                    const terms = this.extractSearchTerms(channel);
+                    terms.forEach(term => {
+                        if (!index[term]) index[term] = [];
+                        index[term].push(idx);
+                    });
+                });
+                return index;
+            }
+            
+            // Extraer términos de búsqueda de un canal
+            extractSearchTerms(channel) {
+                const terms = [];
+                
+                // Nombre del canal
+                const nameTerms = channel.name.toLowerCase()
+                    .split(/[^a-z0-9áéíóúñ]+/)
+                    .filter(term => term.length > 2);
+                terms.push(...nameTerms);
+                
+                // Categoría
+                const groupTerms = channel.group.toLowerCase()
+                    .split(/[^a-z0-9áéíóúñ]+/)
+                    .filter(term => term.length > 2);
+                terms.push(...groupTerms);
+                
+                // Información de series
+                if (channel.seriesInfo) {
+                    const seriesTerms = channel.seriesInfo.seriesName.toLowerCase()
+                        .split(/[^a-z0-9áéíóúñ]+/)
+                        .filter(term => term.length > 2);
+                    terms.push(...seriesTerms);
+                }
+                
+                return [...new Set(terms)]; // Eliminar duplicados
+            }
+            
+            // Búsqueda optimizada con puntuación
+            search(query, options = {}) {
+                if (!query || query.length < 2) return [];
+                
+                const queryTerms = query.toLowerCase()
+                    .split(/[^a-z0-9áéíóúñ]+/)
+                    .filter(term => term.length > 1);
+                
+                if (queryTerms.length === 0) return [];
+                
+                // Calcular puntuación para cada canal
+                const scoredResults = this.channels.map((channel, idx) => {
+                    let score = 0;
+                    
+                    // Búsqueda en nombre (máxima prioridad)
+                    const nameLower = channel.name.toLowerCase();
+                    if (nameLower.includes(query.toLowerCase())) {
+                        score += 100;
+                    }
+                    
+                    // Búsqueda por términos
+                    queryTerms.forEach(term => {
+                        if (nameLower.includes(term)) score += 10;
+                        if (channel.group.toLowerCase().includes(term)) score += 5;
+                        if (channel.seriesInfo && channel.seriesInfo.seriesName.toLowerCase().includes(term)) {
+                            score += 8;
+                        }
+                    });
+                    
+                    return { channel, score, idx };
+                }).filter(result => result.score > 0)
+                  .sort((a, b) => b.score - a.score);
+                
+                // Aplicar límite si se especifica
+                const limit = options.limit || 100;
+                return scoredResults.slice(0, limit).map(result => result.channel);
+            }
+            
+            // Búsqueda con debounce para mejor rendimiento
+            debouncedSearch(query, callback, delay = 300) {
+                clearTimeout(this.debounceTimer);
+                this.debounceTimer = setTimeout(() => {
+                    const results = this.search(query);
+                    callback(results);
+                }, delay);
+            }
+            
+            // Actualizar índice cuando cambian los canales
+            updateChannels(newChannels) {
+                this.channels = newChannels;
+                this.index = this.buildIndex();
+            }
+        }
+
+        // ===== SISTEMA DE CARGA PROGRESIVA =====
+        class ChannelRenderer {
+            constructor() {
+                this.batchSize = 30;
+                this.currentBatch = 0;
+                this.isRendering = false;
+            }
+            
+            // Renderizar canales por lotes para mejor rendimiento
+            renderChannelsBatch(channels, container, isSpecialCategory, startIndex = 0) {
+                if (this.isRendering) return;
+                this.isRendering = true;
+                
+                const endIndex = Math.min(startIndex + this.batchSize, channels.length);
+                const fragment = document.createDocumentFragment();
+                
+                for (let i = startIndex; i < endIndex; i++) {
+                    const channelElement = this.createChannelElement(channels[i], isSpecialCategory);
+                    fragment.appendChild(channelElement);
+                }
+                
+                container.appendChild(fragment);
+                
+                // Programar siguiente lote si hay más canales
+                if (endIndex < channels.length) {
+                    requestAnimationFrame(() => {
+                        this.isRendering = false;
+                        this.renderChannelsBatch(channels, container, isSpecialCategory, endIndex);
+                    });
+                } else {
+                    this.isRendering = false;
+                }
+            }
+            
+            // Crear elemento de canal (optimizado)
+            createChannelElement(channel, isSpecialCategory) {
+                let channelElement;
+                
+                if (isSpecialCategory) {
+                    channelElement = document.createElement('div');
+                    channelElement.className = 'special-channel-card';
+                    
+                    const isFav = favorites.includes(channel.url);
+                    const favClass = isFav ? '' : 'inactive';
+                    
+                    channelElement.innerHTML = `
+                        <div class="favorite-star ${favClass}" data-url="${channel.url}">${isFav ? '★' : '☆'}</div>
+                        <img src="${channel.logo || 'https://via.placeholder.com/300x450/0F3460/00FFAB?text=Poster'}" alt="${channel.name}" loading="lazy">
+                        <div class="special-channel-name">${channel.name}</div>
+                    `;
+                } else {
+                    channelElement = document.createElement('div');
+                    channelElement.className = 'channel-card';
+                    
+                    const isFav = favorites.includes(channel.url);
+                    const favClass = isFav ? '' : 'inactive';
+                    
+                    let seriesInfoHTML = '';
+                    if (channel.seriesInfo && channel.seriesInfo.isSeries) {
+                        const progress = getSeriesProgress(channel.seriesInfo.seriesName, channel.seriesInfo.season, channel.seriesInfo.episode);
+                        const progressPercent = progress * 100;
+                        
+                        seriesInfoHTML = `
+                            <div class="series-info">
+                                <div>T${channel.seriesInfo.season} E${channel.seriesInfo.episode}</div>
+                                <div class="series-progress">
+                                    <div class="series-progress-bar" style="width: ${progressPercent}%"></div>
+                                </div>
+                            </div>
+                        `;
+                    }
+                    
+                    channelElement.innerHTML = `
+                        <div class="favorite-star ${favClass}" data-url="${channel.url}">${isFav ? '★' : '☆'}</div>
+                        <img src="${channel.logo || 'https://via.placeholder.com/50x50/0F3460/00FFAB?text=TV'}" alt="${channel.name}" loading="lazy">
+                        <div class="channel-name">${channel.name}</div>
+                        ${seriesInfoHTML}
+                    `;
+                }
+                
+                // Marcar como activo si es el canal actualmente reproduciéndose
+                if (channel.url === currentPlayingChannelUrl) {
+                    channelElement.classList.add('active');
+                    
+                    // Agregar indicador de reproducción
+                    const indicator = document.createElement('div');
+                    indicator.className = 'playing-indicator';
+                    channelElement.style.position = 'relative';
+                    channelElement.appendChild(indicator);
+                }
+                
+                // Event listeners optimizados
+                this.attachChannelEventListeners(channelElement, channel);
+                
+                return channelElement;
+            }
+            
+            // Adjuntar event listeners de forma eficiente
+            attachChannelEventListeners(element, channel) {
+                const favStar = element.querySelector('.favorite-star');
+                favStar.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleFavorite(channel.url);
+                    renderCategories();
+                    renderChannels();
+                });
+                
+                element.addEventListener('click', () => {
+                    if (channel.seriesInfo && channel.seriesInfo.isSeries) {
+                        playSeries(channel);
+                    } else {
+                        playChannel(channel);
+                    }
+                });
+            }
+            
+            // Limpiar contenedor de forma eficiente
+            clearContainer(container) {
+                while (container.firstChild) {
+                    container.removeChild(container.firstChild);
+                }
+            }
+            
+            // Crear elemento de resultado de búsqueda global
+            createSearchResultElement(channel) {
+                const resultElement = document.createElement('div');
+                resultElement.className = 'search-result-item';
+                
+                const isSeries = channel.seriesInfo && channel.seriesInfo.isSeries;
+                const seriesInfo = isSeries ? 
+                    `S${channel.seriesInfo.season} E${channel.seriesInfo.episode}` : '';
+                
+                resultElement.innerHTML = `
+                    <div class="search-result-name">${channel.name}</div>
+                    <div class="search-result-category">${channel.group} ${seriesInfo}</div>
+                `;
+                
+                resultElement.addEventListener('click', () => {
+                    // Cerrar modal
+                    closeGlobalSearchModal();
+                    
+                    // Reproducir el canal
+                    if (isSeries) {
+                        playSeries(channel);
+                    } else {
+                        playChannel(channel);
+                    }
+                });
+                
+                return resultElement;
+            }
+        }
+
+        // ===== INICIALIZACIÓN DE SISTEMAS OPTIMIZADOS =====
+        let searchEngine = null;
+        let channelRenderer = new ChannelRenderer();
+        let videoPlayer = null;
+
+        // Global variables
+        const playerView = document.getElementById('player-view');
+        const mainContent = document.getElementById('main-content');
+        const channelPlayer = document.getElementById('channel-player');
+        const playerSearchInput = document.getElementById('player-search-input');
+        const backToMain = document.getElementById('back-to-main');
+        const globalSearchBtn = document.getElementById('global-search-btn');
+        const seriesControls = document.getElementById('series-controls');
+        const seriesInfoDisplay = document.getElementById('series-info-display');
+        const autoPlayToggle = document.getElementById('auto-play-toggle');
+        
+        // Elementos para sistema de series CORREGIDO
+        const seasonsContainer = document.getElementById('seasons-container');
+        const seasonsScroll = document.getElementById('seasons-scroll');
+        const episodesContainer = document.getElementById('episodes-container');
+        const episodesScroll = document.getElementById('episodes-scroll');
+        const otherSeriesContainer = document.getElementById('other-series-container');
+        const otherSeriesScroll = document.getElementById('other-series-scroll');
+        
+        const playerChannelsGrid = document.getElementById('player-channels-grid');
+        const categoriesPanel = document.getElementById('categories-panel');
+        const channelsGridContainer = document.getElementById('channels-grid-container');
+        const searchInput = document.getElementById('search-input');
+        const settingsBtn = document.getElementById('settings-btn');
+        const settingsMenu = document.getElementById('settings-menu');
+        const fileInput = document.getElementById('file-input');
+
+        // Elementos del modal de búsqueda global
+        const globalSearchModal = document.getElementById('global-search-modal');
+        const globalSearchInput = document.getElementById('global-search-input');
+        const globalSearchResults = document.getElementById('global-search-results');
+        const closeGlobalSearchBtn = document.getElementById('close-global-search');
+
+        let allChannels = [];
+        let categories = new Map();
+        let favorites = JSON.parse(localStorage.getItem('iptv_favorites') || '[]');
+        let currentCategory = null;
+        let showingFavorites = false;
+        let searchActive = false;
+        let seriesProgress = JSON.parse(localStorage.getItem('series_progress') || '{}');
+
+        // Variables para manejar series
+        let currentSeriesEpisodes = [];
+        let currentSeason = 1;
+        let currentEpisodeIndex = 0;
+        let currentSeriesName = '';
+        let autoPlayEnabled = true;
+        let currentPlayingChannel = null;
+        let currentPlayingChannelUrl = null;
+        let allSeries = [];
+
+        // ===== CONFIGURACIÓN DE GOOGLE DRIVE OCULTA =====
+        const DRIVE_FILE_ID = "1WaUkxRsPjpVGRbZOoL7cw_W4Fjghmwnm";
+        const PROXIES = [
+            {
+                name: "CorsProxy",
+                url: (id) => `https://corsproxy.io/?${encodeURIComponent(`https://drive.google.com/uc?export=download&id=${id}`)}`,
+                timeout: 5000
+            },
+            {
+                name: "AllOrigins", 
+                url: (id) => `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://drive.google.com/uc?export=download&id=${id}`)}`,
+                timeout: 5000
+            },
+            {
+                name: "ThingProxy",
+                url: (id) => `https://thingproxy.freeboard.io/fetch/https://drive.google.com/uc?export=download&id=${id}`,
+                timeout: 4000
+            }
+        ];
+
+        // ===== FUNCIONES PARA CARGA DESDE GOOGLE DRIVE =====
+        async function loadFromGoogleDriveSilent() {
+            const promises = PROXIES.map(proxy => 
+                Promise.race([
+                    fetch(proxy.url(DRIVE_FILE_ID), {
+                        method: 'GET',
+                        headers: {
+                            'Accept': 'text/plain, application/x-mpegURL',
+                            'Cache-Control': 'no-cache'
+                        }
+                    }),
+                    new Promise((_, reject) => 
+                        setTimeout(() => reject(new Error('timeout')), proxy.timeout)
+                    )
+                ])
+                .then(async response => {
+                    if (!response.ok) throw new Error('HTTP error');
+                    const content = await response.text();
+                    if (!content || !content.includes('#EXTM3U')) {
+                        throw new Error('Invalid content');
+                    }
+                    return { content, proxy: proxy.name };
+                })
+                .catch(error => {
+                    throw error;
+                })
+            );
+
+            return Promise.any(promises);
+        }
+
+        // Parse M3U content
+        function parseM3U(data) {
+            allChannels = [];
+            categories.clear();
+            allSeries = [];
+            
+            const lines = data.split(/\r?\n/);
+            let channel = null;
+            
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i].trim();
+                
+                if (line.startsWith('#EXTINF')) {
+                    const groupMatch = line.match(/group-title="([^"]+)"/i);
+                    const logoMatch = line.match(/tvg-logo="([^"]+)"/i);
+                    const nameMatch = line.split(',')[1] || 'Sin nombre';
+                    channel = {
+                        group: groupMatch ? groupMatch[1] : 'Otros',
+                        logo: logoMatch ? logoMatch[1] : '',
+                        name: nameMatch,
+                        url: ''
+                    };
+                    
+                    // Extract series info if applicable
+                    channel.seriesInfo = extractSeriesInfo(channel);
+                } else if (line && !line.startsWith('#')) {
+                    if (channel) {
+                        channel.url = line;
+                        allChannels.push(channel);
+                        
+                        if (!categories.has(channel.group)) {
+                            categories.set(channel.group, []);
+                        }
+                        categories.get(channel.group).push(channel);
+                        
+                        // Si es una serie, agregar a la lista de series
+                        if (channel.seriesInfo && channel.seriesInfo.isSeries) {
+                            const existingSeries = allSeries.find(s => s.name === channel.seriesInfo.seriesName);
+                            if (!existingSeries) {
+                                allSeries.push({
+                                    name: channel.seriesInfo.seriesName,
+                                    episodes: [channel],
+                                    group: channel.group,
+                                    totalEpisodes: 1,
+                                    totalSeasons: 1
+                                });
+                            } else {
+                                existingSeries.episodes.push(channel);
+                                existingSeries.totalEpisodes = existingSeries.episodes.length;
+                                // Calcular temporadas únicas
+                                const uniqueSeasons = [...new Set(existingSeries.episodes.map(ep => ep.seriesInfo.season))];
+                                existingSeries.totalSeasons = uniqueSeasons.length;
+                            }
+                        }
+                        
+                        channel = null;
+                    }
+                }
+            }
+            
+            // Inicializar motor de búsqueda con los nuevos canales
+            searchEngine = new SearchEngine(allChannels);
+            
+            renderCategories();
+            renderChannels();
+        }
+
+        // Extract series information from channel name - MEJORADA
+        function extractSeriesInfo(item) {
+            const title = item.name.toLowerCase();
+            
+            // Detectar si es serie
+            const isSeries = /s\d+\s*e\d+/i.test(title) || 
+                            /temporada\s*\d+/i.test(title) || 
+                            /season\s*\d+/i.test(title) || 
+                            /cap[íi]tulo\s*\d+/i.test(title) || 
+                            /episodio\s*\d+/i.test(title) ||
+                            /chapter\s*\d+/i.test(title) ||
+                            item.group?.toLowerCase().includes('serie');
+            
+            if (!isSeries) return null;
+            
+            // Extraer número de temporada
+            const seasonMatch = title.match(/s(\d+)/i) || 
+                               title.match(/temporada\s*(\d+)/i) || 
+                               title.match(/season\s*(\d+)/i);
+            const season = seasonMatch ? parseInt(seasonMatch[1]) : 1;
+            
+            // Extraer número de episodio
+            const episodeMatch = title.match(/e(\d+)/i) || 
+                                title.match(/cap[íi]tulo\s*(\d+)/i) || 
+                                title.match(/episodio\s*(\d+)/i) || 
+                                title.match(/chapter\s*(\d+)/i);
+            const episode = episodeMatch ? parseInt(episodeMatch[1]) : 1;
+            
+            // Extraer nombre de la serie
+            const seriesName = item.name
+                .replace(/\s*s\d+\s*e\d+/i, '')
+                .replace(/\s*temporada\s*\d+/i, '')
+                .replace(/\s*cap[íi]tulo\s*\d+/i, '')
+                .replace(/\s*episodio\s*\d+/i, '')
+                .trim();
+            
+            return {
+                seriesName,
+                season,
+                episode,
+                isSeries: true
+            };
+        }
+
+        // Render categories
+        function renderCategories() {
+            categoriesPanel.innerHTML = '';
+            
+            // Add Favorites category if there are favorites
+            if (favorites.length > 0) {
+                const favItem = document.createElement('div');
+                favItem.className = `category-item ${showingFavorites ? 'active' : ''}`;
+                favItem.innerHTML = `
+                    <span class="category-name">⭐ Favoritos</span>
+                    <span class="category-count">${favorites.length}</span>
+                `;
+                
+                favItem.addEventListener('click', () => {
+                    showingFavorites = true;
+                    currentCategory = null;
+                    searchActive = false;
+                    searchInput.value = '';
+                    renderCategories();
+                    renderChannels();
+                });
+                
+                categoriesPanel.appendChild(favItem);
+            }
+            
+            // Add regular categories
+            for (const [categoryName, channels] of categories) {
+                const categoryItem = document.createElement('div');
+                categoryItem.className = `category-item ${categoryName === currentCategory ? 'active' : ''}`;
+                categoryItem.innerHTML = `
+                    <span class="category-name">${categoryName}</span>
+                    <span class="category-count">${channels.length}</span>
+                `;
+                
+                categoryItem.addEventListener('click', () => {
+                    showingFavorites = false;
+                    currentCategory = categoryName;
+                    searchActive = false;
+                    searchInput.value = '';
+                    renderCategories();
+                    renderChannels();
+                });
+                
+                categoriesPanel.appendChild(categoryItem);
+            }
+            
+            // If no categories, select the first one
+            if (categories.size > 0 && !currentCategory && !showingFavorites) {
+                currentCategory = [...categories.keys()][0];
+                renderCategories();
+            }
+        }
+
+        // ===== RENDERIZADO OPTIMIZADO DE CANALES =====
+        function renderChannels() {
+            channelRenderer.clearContainer(channelsGridContainer);
+            
+            let channelsToShow = [];
+            
+            if (showingFavorites) {
+                // Show favorite channels
+                channelsToShow = allChannels.filter(channel => favorites.includes(channel.url));
+            } else if (currentCategory && categories.has(currentCategory)) {
+                // Show channels from selected category
+                channelsToShow = categories.get(currentCategory);
+            } else if (searchActive) {
+                // Show search results
+                const searchTerm = searchInput.value.toLowerCase();
+                channelsToShow = searchEngine.search(searchTerm, { limit: 200 });
+            }
+            
+            // Determine if we should use special grid for this category
+            const isSpecialCategory = specialCategories.some(cat => 
+                currentCategory && currentCategory.toLowerCase().includes(cat.toLowerCase())
+            );
+            
+            // Create appropriate grid container
+            const gridContainer = document.createElement('div');
+            gridContainer.className = isSpecialCategory ? 'special-channels-grid' : 'channels-grid';
+            channelsGridContainer.appendChild(gridContainer);
+            
+            // Renderizar canales por lotes para mejor rendimiento
+            if (channelsToShow.length > 0) {
+                channelRenderer.renderChannelsBatch(channelsToShow, gridContainer, isSpecialCategory);
+            }
+        }
+
+        // ===== BÚSQUEDA GLOBAL OPTIMIZADA =====
+        function setupGlobalSearch() {
+            // Búsqueda en vista principal
+            searchInput.addEventListener('input', () => {
+                const query = searchInput.value.trim();
+                
+                if (query === '') {
+                    searchActive = false;
+                    renderCategories();
+                    renderChannels();
+                } else {
+                    searchActive = true;
+                    // Usar búsqueda con debounce para mejor rendimiento
+                    searchEngine.debouncedSearch(query, (results) => {
+                        // Actualizar interfaz con resultados
+                        const gridContainer = channelsGridContainer.querySelector('.channels-grid, .special-channels-grid');
+                        if (gridContainer) {
+                            channelRenderer.clearContainer(gridContainer);
+                            const isSpecialCategory = gridContainer.classList.contains('special-channels-grid');
+                            channelRenderer.renderChannelsBatch(results, gridContainer, isSpecialCategory);
+                        }
+                    }, 200);
+                }
+            });
+            
+            // ===== CORRECCIÓN: BÚSQUEDA EN VISTA DE REPRODUCTOR =====
+            playerSearchInput.addEventListener('input', () => {
+                const query = playerSearchInput.value.trim();
+                
+                if (query === '') {
+                    // Si no hay búsqueda, mostrar todos los canales de la categoría actual
+                    renderPlayerChannels();
+                } else {
+                    // Buscar en TODOS los canales (no solo en la categoría actual)
+                    const results = searchEngine.search(query, { limit: 100 });
+                    
+                    // Actualizar interfaz
+                    channelRenderer.clearContainer(playerChannelsGrid);
+                    const isSpecialCategory = specialCategories.some(cat => 
+                        currentCategory && currentCategory.toLowerCase().includes(cat.toLowerCase())
+                    );
+                    channelRenderer.renderChannelsBatch(results, playerChannelsGrid, isSpecialCategory);
+                }
+            });
+            
+            // Búsqueda global desde el reproductor
+            globalSearchBtn.addEventListener('click', openGlobalSearchModal);
+            
+            // Búsqueda en modal global
+            globalSearchInput.addEventListener('input', () => {
+                const query = globalSearchInput.value.trim();
+                
+                if (query === '') {
+                    globalSearchResults.innerHTML = '<div class="search-result-item">Ingresa un término de búsqueda...</div>';
+                } else {
+                    searchEngine.debouncedSearch(query, (results) => {
+                        channelRenderer.clearContainer(globalSearchResults);
+                        
+                        if (results.length === 0) {
+                            globalSearchResults.innerHTML = '<div class="search-result-item">No se encontraron resultados</div>';
+                        } else {
+                            results.forEach(channel => {
+                                const resultElement = channelRenderer.createSearchResultElement(channel);
+                                globalSearchResults.appendChild(resultElement);
+                            });
+                        }
+                    }, 300);
+                }
+            });
+        }
+
+        // ===== FUNCIONES PARA MODAL DE BÚSQUEDA GLOBAL =====
+        function openGlobalSearchModal() {
+            globalSearchModal.style.display = 'flex';
+            globalSearchInput.value = '';
+            globalSearchInput.focus();
+            globalSearchResults.innerHTML = '<div class="search-result-item">Ingresa un término de búsqueda...</div>';
+        }
+
+        function closeGlobalSearchModal() {
+            globalSearchModal.style.display = 'none';
+            globalSearchInput.value = '';
+        }
+
+        // Toggle favorite
+        function toggleFavorite(url) {
+            if (favorites.includes(url)) {
+                favorites = favorites.filter(f => f !== url);
+            } else {
+                favorites.push(url);
+            }
+            localStorage.setItem('iptv_favorites', JSON.stringify(favorites));
+        }
+
+        // ===== FUNCIÓN PARA MARCAR CANAL COMO ACTIVO =====
+        function markChannelAsActive(channelUrl) {
+            // Buscar y marcar en la vista principal
+            document.querySelectorAll('.channel-card, .special-channel-card').forEach(card => {
+                const cardUrl = card.querySelector('.favorite-star')?.getAttribute('data-url');
+                if (cardUrl === channelUrl) {
+                    card.classList.add('active');
+                    
+                    // Agregar indicador de reproducción
+                    const indicator = document.createElement('div');
+                    indicator.className = 'playing-indicator';
+                    card.style.position = 'relative';
+                    card.appendChild(indicator);
+                }
+            });
+        }
+
+        // ===== CORRECCIÓN: PLAY SERIES MEJORADO =====
+        function playSeries(channel) {
+            // Remover clase activa de todos los canales
+            document.querySelectorAll('.channel-card.active, .special-channel-card.active').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // Remover indicadores de reproducción existentes
+            document.querySelectorAll('.playing-indicator').forEach(indicator => {
+                indicator.remove();
+            });
+            
+            currentPlayingChannel = channel;
+            currentPlayingChannelUrl = channel.url;
+            
+            // Limpiar reproducción anterior
+            if (videoPlayer) {
+                videoPlayer.stop();
+            }
+
+            // Mostrar la vista del reproductor y ocultar el contenido principal
+            playerView.style.display = 'flex';
+            mainContent.style.display = 'none';
+
+            // Mostrar controles de series
+            seriesControls.style.display = 'flex';
+            currentSeriesName = channel.seriesInfo.seriesName;
+            seriesInfoDisplay.textContent = `${currentSeriesName} S${channel.seriesInfo.season.toString().padStart(2, '0')} E${channel.seriesInfo.episode.toString().padStart(2, '0')}`;
+            
+            // Buscar todos los episodios de la misma serie
+            currentSeriesEpisodes = allChannels.filter(ch => 
+                ch.seriesInfo && 
+                ch.seriesInfo.isSeries && 
+                ch.seriesInfo.seriesName === currentSeriesName
+            );
+            
+            // Determinar temporada y episodio actual
+            currentSeason = channel.seriesInfo.season || 1;
+            const seasonEpisodes = currentSeriesEpisodes.filter(ep => ep.seriesInfo.season === currentSeason);
+            currentEpisodeIndex = seasonEpisodes.findIndex(ep => ep.url === channel.url);
+            
+            // Agrupar episodios por temporada y mostrar selector
+            const seasons = groupEpisodesBySeason(currentSeriesEpisodes);
+            showSeasonSelector(seasons);
+            
+            // Mostrar episodios de la temporada actual
+            showEpisodesForSeason(seasonEpisodes);
+            
+            // Mostrar otras series - MÁS RECOMENDACIONES
+            showOtherSeries();
+            
+            // ===== CORRECCIÓN: ACTUALIZAR LISTA DE CANALES CON LOS EPISODIOS DE LA SERIE =====
+            renderPlayerChannelsWithSeries(currentSeriesEpisodes);
+
+            // Marcar el episodio como activo
+            markChannelAsActive(channel.url);
+
+            // Reproducir el canal con el reproductor inteligente
+            videoPlayer.play(channel.url, channel);
+        }
+
+        // Play channel normal
+        function playChannel(channel) {
+            // Remover clase activa de todos los canales
+            document.querySelectorAll('.channel-card.active, .special-channel-card.active').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // Remover indicadores de reproducción existentes
+            document.querySelectorAll('.playing-indicator').forEach(indicator => {
+                indicator.remove();
+            });
+            
+            currentPlayingChannel = channel;
+            currentPlayingChannelUrl = channel.url;
+            
+            // Limpiar reproducción anterior
+            if (videoPlayer) {
+                videoPlayer.stop();
+            }
+
+            // Mostrar la vista del reproductor y ocultar el contenido principal
+            playerView.style.display = 'flex';
+            mainContent.style.display = 'none';
+
+            // Ocultar controles de series
+            seriesControls.style.display = 'none';
+            seasonsContainer.style.display = 'none';
+            episodesContainer.style.display = 'none';
+            otherSeriesContainer.style.display = 'none';
+            
+            // Marcar el canal como activo en ambas vistas
+            markChannelAsActive(channel.url);
+            
+            // Cargar los canales de la misma categoría en la vista del reproductor
+            renderPlayerChannels();
+
+            // Reproducir el canal con el reproductor inteligente
+            videoPlayer.play(channel.url, channel);
+        }
+
+        // ===== NUEVA FUNCIÓN: RENDERIZAR CANALES CON SERIES ESPECÍFICAS =====
+        function renderPlayerChannelsWithSeries(episodes) {
+            channelRenderer.clearContainer(playerChannelsGrid);
+            
+            // Determinar si es categoría especial
+            const isSpecialCategory = specialCategories.some(cat => 
+                currentCategory && currentCategory.toLowerCase().includes(cat.toLowerCase())
+            );
+            
+            playerChannelsGrid.className = isSpecialCategory ? 'special-channels-grid' : 'channels-grid';
+            
+            // Renderizar episodios de la serie actual
+            if (episodes.length > 0) {
+                channelRenderer.renderChannelsBatch(episodes, playerChannelsGrid, isSpecialCategory);
+            }
+        }
+
+        // ===== CORRECCIÓN: FUNCIÓN PARA MOSTRAR EPISODIOS MEJORADA =====
+        function showEpisodesForSeason(episodes) {
+            episodesScroll.innerHTML = '';
+            episodesContainer.style.display = 'flex';
+
+            episodes.forEach((episode, index) => {
+                const isCurrent = episode.url === currentPlayingChannel.url;
+                const episodeItem = document.createElement('div');
+                episodeItem.className = `episode-item ${isCurrent ? 'current' : ''}`;
+                episodeItem.textContent = `E${episode.seriesInfo?.episode || (index + 1)}`;
+                episodeItem.title = episode.name;
+                
+                // ===== CORRECCIÓN: REPRODUCIR EPISODIO DIRECTAMENTE AL HACER CLIC =====
+                episodeItem.onclick = () => {
+                    // Reproducir el episodio inmediatamente
+                    videoPlayer.play(episode.url, episode);
+                    currentPlayingChannel = episode;
+                    currentEpisodeIndex = index;
+                    
+                    // Actualizar información de la serie
+                    seriesInfoDisplay.textContent = `${currentSeriesName} S${currentSeason.toString().padStart(2, '0')} E${episode.seriesInfo.episode.toString().padStart(2, '0')}`;
+                    
+                    // Actualizar episodios activos
+                    document.querySelectorAll('.episode-item').forEach(item => item.classList.remove('current'));
+                    episodeItem.classList.add('current');
+                    
+                    // Actualizar estado activo del canal
+                    markChannelAsActive(episode.url);
+                };
+                episodesScroll.appendChild(episodeItem);
+            });
+        }
+
+        // ===== CORRECCIÓN: FUNCIÓN PARA MOSTRAR OTRAS SERIES MEJORADA =====
+        function showOtherSeries() {
+            otherSeriesScroll.innerHTML = '';
+            otherSeriesContainer.style.display = 'flex';
+            
+            // Obtener otras series (excluyendo la actual) - MÁS SERIES
+            let otherSeries = allSeries.filter(series => 
+                series.name !== currentSeriesName
+            );
+            
+            // Ordenar por número de episodios (las más populares primero)
+            otherSeries.sort((a, b) => b.totalEpisodes - a.totalEpisodes);
+            
+            // Tomar hasta 12 series (más recomendaciones)
+            otherSeries = otherSeries.slice(0, 12);
+            
+            if (otherSeries.length === 0) {
+                otherSeriesContainer.style.display = 'none';
+                return;
+            }
+            
+            otherSeries.forEach(series => {
+                const seriesItem = document.createElement('div');
+                seriesItem.className = 'other-series-item';
+                
+                seriesItem.innerHTML = `
+                    <div class="other-series-name">${series.name}</div>
+                    <div class="other-series-info">${series.totalSeasons} Temp • ${series.totalEpisodes} Eps</div>
+                `;
+                
+                // ===== CORRECCIÓN: AL SELECCIONAR UNA SERIE RECOMENDADA, MOSTRAR SUS EPISODIOS =====
+                seriesItem.addEventListener('click', () => {
+                    // Reproducir el primer episodio de la serie recomendada
+                    const firstEpisode = series.episodes[0];
+                    
+                    // Actualizar variables globales para la nueva serie
+                    currentSeriesName = series.name;
+                    currentSeriesEpisodes = series.episodes;
+                    currentSeason = firstEpisode.seriesInfo.season || 1;
+                    
+                    // Mostrar controles de la nueva serie
+                    const seasons = groupEpisodesBySeason(currentSeriesEpisodes);
+                    showSeasonSelector(seasons);
+                    
+                    const seasonEpisodes = seasons[currentSeason] || [];
+                    showEpisodesForSeason(seasonEpisodes);
+                    
+                    // Actualizar lista de canales con los episodios de la nueva serie
+                    renderPlayerChannelsWithSeries(currentSeriesEpisodes);
+                    
+                    // Reproducir el primer episodio
+                    playSeries(firstEpisode);
+                });
+                
+                otherSeriesScroll.appendChild(seriesItem);
+            });
+        }
+
+        // Función para mostrar el selector de temporadas - NUEVA FUNCIÓN
+        function showSeasonSelector(seasons) {
+            seasonsScroll.innerHTML = '';
+            seasonsContainer.style.display = 'flex';
+
+            Object.keys(seasons).sort().forEach(seasonNum => {
+                const seasonBtn = document.createElement('div');
+                seasonBtn.className = `season-btn ${parseInt(seasonNum) === currentSeason ? 'active' : ''}`;
+                seasonBtn.textContent = `Temporada ${seasonNum}`;
+                seasonBtn.title = `${seasons[seasonNum].length} episodios`;
+                
+                seasonBtn.addEventListener('click', () => {
+                    currentSeason = parseInt(seasonNum);
+                    showEpisodesForSeason(seasons[currentSeason]);
+                    
+                    // Actualizar botones activos
+                    document.querySelectorAll('.season-btn').forEach(btn => btn.classList.remove('active'));
+                    seasonBtn.classList.add('active');
+                });
+                
+                seasonsScroll.appendChild(seasonBtn);
+            });
+        }
+
+        // Render channels in player view (versión normal)
+        function renderPlayerChannels() {
+            channelRenderer.clearContainer(playerChannelsGrid);
+            
+            let channelsToShow = [];
+            
+            if (currentCategory && categories.has(currentCategory)) {
+                channelsToShow = categories.get(currentCategory);
+            } else if (showingFavorites) {
+                channelsToShow = allChannels.filter(channel => favorites.includes(channel.url));
+            }
+            
+            // Aplicar búsqueda si hay término
+            const searchTerm = playerSearchInput.value.toLowerCase();
+            if (searchTerm) {
+                // Buscar en TODOS los canales (búsqueda global en el reproductor)
+                channelsToShow = searchEngine.search(searchTerm, { limit: 100 });
+            }
+            
+            // Determinar si es categoría especial
+            const isSpecialCategory = specialCategories.some(cat => 
+                currentCategory && currentCategory.toLowerCase().includes(cat.toLowerCase())
+            );
+            
+            playerChannelsGrid.className = isSpecialCategory ? 'special-channels-grid' : 'channels-grid';
+            
+            // Renderizar canales por lotes
+            if (channelsToShow.length > 0) {
+                channelRenderer.renderChannelsBatch(channelsToShow, playerChannelsGrid, isSpecialCategory);
+            }
+        }
+
+        // Función para agrupar episodios por temporada - NUEVA FUNCIÓN
+        function groupEpisodesBySeason(episodes) {
+            const seasons = {};
+            episodes.forEach(ep => {
+                const seasonNum = ep.seriesInfo?.season || 1;
+                seasons[seasonNum] = seasons[seasonNum] || [];
+                seasons[seasonNum].push(ep);
+            });
+            Object.keys(seasons).forEach(season => {
+                seasons[season].sort((a, b) => (a.seriesInfo?.episode || 0) - (b.seriesInfo?.episode || 0));
+            });
+            return seasons;
+        }
+
+        // Función para encontrar el siguiente episodio - ACTUALIZADA
+        function findNextEpisode(currentChannel) {
+            if (!autoPlayEnabled || !currentSeriesEpisodes.length) return null;
+            
+            const seasons = groupEpisodesBySeason(currentSeriesEpisodes);
+            const currentSeasonEpisodes = seasons[currentSeason] || [];
+            
+            if (currentEpisodeIndex !== -1 && currentEpisodeIndex < currentSeasonEpisodes.length - 1) {
+                // Hay un siguiente episodio en la misma temporada
+                return currentSeasonEpisodes[currentEpisodeIndex + 1];
+            } else {
+                // Buscar en la siguiente temporada
+                const seasonKeys = Object.keys(seasons).map(Number).sort((a, b) => a - b);
+                const currentSeasonIndex = seasonKeys.indexOf(currentSeason);
+                
+                if (currentSeasonIndex !== -1 && currentSeasonIndex < seasonKeys.length - 1) {
+                    const nextSeason = seasonKeys[currentSeasonIndex + 1];
+                    if (seasons[nextSeason] && seasons[nextSeason].length > 0) {
+                        return seasons[nextSeason][0]; // Primer episodio de la siguiente temporada
+                    }
+                }
+            }
+            
+            return null;
+        }
+
+        // Show main menu
+        function showMainMenu() {
+            if (videoPlayer) {
+                videoPlayer.stop();
+            }
+            
+            // Remover estado activo de todos los canales
+            document.querySelectorAll('.channel-card.active, .special-channel-card.active').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.playing-indicator').forEach(indicator => {
+                indicator.remove();
+            });
+            
+            currentPlayingChannel = null;
+            currentPlayingChannelUrl = null;
+            
+            playerView.style.display = 'none';
+            mainContent.style.display = 'flex';
+            seriesControls.style.display = 'none';
+        }
+
+        // Series progress functions
+        function getSeriesProgress(seriesName, season, episode) {
+            if (seriesProgress[seriesName] && 
+                seriesProgress[seriesName][season] && 
+                seriesProgress[seriesName][season][episode]) {
+                return seriesProgress[seriesName][season][episode];
+            }
+            return 0;
+        }
+
+        function updateSeriesProgress(seriesName, season, episode, progress = 1) {
+            if (!seriesProgress[seriesName]) {
+                seriesProgress[seriesName] = {};
+            }
+            
+            if (!seriesProgress[seriesName][season]) {
+                seriesProgress[seriesName][season] = {};
+            }
+            
+            seriesProgress[seriesName][season][episode] = progress;
+            localStorage.setItem('series_progress', JSON.stringify(seriesProgress));
+        }
+
+        // Event listeners
+        settingsBtn.addEventListener('click', () => {
+            settingsMenu.style.display = settingsMenu.style.display === 'block' ? 'none' : 'block';
+        });
+
+        document.getElementById('show-favorites').addEventListener('click', () => {
+            showingFavorites = true;
+            currentCategory = null;
+            searchActive = false;
+            searchInput.value = '';
+            renderCategories();
+            renderChannels();
+            settingsMenu.style.display = 'none';
+        });
+
+        document.getElementById('refresh-list').addEventListener('click', () => {
+            // Usar el sistema inteligente para actualizar
+            smartLoader.loadFromDrive();
+            settingsMenu.style.display = 'none';
+        });
+
+        document.getElementById('load-m3u').addEventListener('click', () => {
+            fileInput.click();
+            settingsMenu.style.display = 'none';
+        });
+
+        // CORRECCIÓN: Limpiar cache de forma silenciosa
+        document.getElementById('clear-cache').addEventListener('click', () => {
+            // Limpiar cache sin mostrar mensajes ni recargar
+            smartLoader.cacheManager.clearCache();
+            settingsMenu.style.display = 'none';
+        });
+
+        document.getElementById('close-settings').addEventListener('click', () => {
+            settingsMenu.style.display = 'none';
+        });
+
+        backToMain.addEventListener('click', showMainMenu);
+
+        // Configurar el toggle de reproducción automática
+        autoPlayToggle.addEventListener('change', function() {
+            autoPlayEnabled = this.checked;
+            localStorage.setItem('autoPlayEnabled', autoPlayEnabled);
+            if (videoPlayer) {
+                videoPlayer.setAutoPlay(autoPlayEnabled);
+            }
+        });
+
+        // Cerrar modal de búsqueda global
+        closeGlobalSearchBtn.addEventListener('click', closeGlobalSearchModal);
+
+        // Cerrar modal al hacer clic fuera
+        globalSearchModal.addEventListener('click', (e) => {
+            if (e.target === globalSearchModal) {
+                closeGlobalSearchModal();
+            }
+        });
+
+        // Cerrar modal con tecla Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && globalSearchModal.style.display === 'flex') {
+                closeGlobalSearchModal();
+            }
+        });
+
+        // Cargar preferencia de reproducción automática
+        function loadAutoPlayPreference() {
+            const saved = localStorage.getItem('autoPlayEnabled');
+            autoPlayEnabled = saved !== null ? saved === 'true' : true;
+            autoPlayToggle.checked = autoPlayEnabled;
+        }
+
+        fileInput.addEventListener('change', function() {
+            if (this.files.length > 0) {
+                const file = this.files[0];
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    parseM3U(e.target.result);
+                    
+                    // Guardar en cache
+                    const cacheData = {
+                        allChannels: allChannels,
+                        categories: Object.fromEntries(categories),
+                        allSeries: allSeries,
+                        timestamp: Date.now()
+                    };
+                    smartLoader.cacheManager.saveToCache(cacheData);
+                };
+                
+                reader.readAsText(file);
+            }
+        });
+
+        // Close settings menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!settingsMenu.contains(e.target) && e.target !== settingsBtn) {
+                settingsMenu.style.display = 'none';
+            }
+        });
+
+        // Inicializar el reproductor de video inteligente
+        function initVideoPlayer() {
+            const videoElement = document.getElementById('channel-player');
+            videoPlayer = new SmartVideoPlayer(videoElement);
+            videoPlayer.setAutoPlay(autoPlayEnabled);
+        }
+
+        // Special categories that should use special grid view
+        const specialCategories = [
+            'películas', 'película', 'serie', 'movies', 'series', 'drama',
+            'acción', 'action', 'terror', 'horror', 'anime',
+            'animación', 'dorama', 'doramas', 'netflix',
+            'infantil', 'dramas', 'telenovela', 'child', 'narcos',
+            'narcoseries', 'infantil', 'kids', 'vado', 'comedia'
+        ];
+
+        // Initialize the app
+        async function init() {
+            // Cargar datos de forma inteligente
+            await smartLoader.loadData();
+            
+            loadAutoPlayPreference();
+            setupGlobalSearch(); // Inicializar sistema de búsqueda
+            initVideoPlayer(); // Inicializar reproductor inteligente
+        }
+
+        // Start the application
+        init();
+
+        
+        
+    </script>
+</body>
+</html>>
+        <div style="display:flex; justify-content:center; align-items:center; height:100vh; flex-direction:column; background:#000; color:white;">
+            <h1>TV infinita - Aplicación Principal</h1>
+            <p>Tu aplicación se cargará aquí después del efecto de presentación</p>
+            <p>En una implementación real, aquí estaría tu reproductor IPTV completo</p>
+        </div>
+    </div>
+
+    <script>
+        // ===== SCRIPT DEL EFECTO DE PRESENTACIÓN =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Crear partículas decorativas
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                const size = Math.random() * 20 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.animationDelay = `${Math.random() * 15}s`;
+                
+                const duration = Math.random() * 10 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+            
+            // Simular progreso de carga
+            const progressBar = document.getElementById('loading-progress');
+            const loadingText = document.getElementById('loading-text');
+            let progress = 0;
+            
+            const interval = setInterval(() => {
+                progress += Math.random() * 10;
+                if (progress > 100) progress = 100;
+                
+                progressBar.style.width = `${progress}%`;
+                
+                if (progress < 30) {
+                    loadingText.textContent = "Cargando contenido infinito...";
+                } else if (progress < 60) {
+                    loadingText.textContent = "Optimizando experiencia visual...";
+                } else if (progress < 90) {
+                    loadingText.textContent = "Preparando interfaz futurista...";
+                } else {
+                    loadingText.textContent = "¡Listo! Iniciando TV infinita...";
+                }
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    
+                    // Transición a la aplicación real
+                    setTimeout(() => {
+                        // Ocultar efecto de presentación con animación
+                        document.getElementById('splash-container').style.opacity = '0';
+                        document.getElementById('particles').style.opacity = '0';
+                        document.querySelector('.glow').style.opacity = '0';
+                        document.querySelector('.disco-lights').style.opacity = '0';
+                        
+                        // Mostrar aplicación después de la animación
+                        setTimeout(() => {
+                            document.getElementById('splash-container').style.display = 'none';
+                            document.getElementById('particles').style.display = 'none';
+                            document.querySelector('.glow').style.display = 'none';
+                            document.querySelector('.disco-lights').style.display = 'none';
+                            
+                            // Mostrar la aplicación
+                            document.getElementById('app-container').style.display = 'block';
+                            
+                            // Cambiar el fondo al tema de la aplicación
+                            document.body.style.background = '#000000';
+                            document.body.style.animation = 'none';
+                            
+                            // Inicializar la aplicación (aquí se cargaría tu aplicación)
+                            console.log('TV infinita - Aplicación lista para usar');
+                            
+                        }, 1000);
+                    }, 1000);
+                }
+            }, 300);
+        });
+    </script>
+</body>
+</html>
