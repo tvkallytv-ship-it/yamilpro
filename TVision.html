@@ -14,7 +14,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #000000;
+            background: #000000; /* Fondo negro puro para AMOLED */
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -94,7 +94,7 @@
             text-align: left;
             max-width: 500px;
             margin: 0 auto 30px;
-            background: rgba(30, 30, 30, 0.8);
+            background: rgba(30, 30, 30, 0.8); /* Fondo oscuro para AMOLED */
             padding: 20px;
             border-radius: 10px;
             backdrop-filter: blur(10px);
@@ -155,7 +155,7 @@
 
         .particle {
             position: absolute;
-            background: rgba(0, 255, 136, 0.3);
+            background: rgba(0, 255, 136, 0.3); /* Color verde vibrante para AMOLED */
             border-radius: 50%;
             animation: particle-float 15s infinite linear;
         }
@@ -291,13 +291,9 @@
         <div class="loading-text" id="loading-text">Inicializando TVision Max...</div>
     </div>
 
-    <!-- ===== CONTENEDOR DE LA APLICACIÓN ===== -->
+    <!-- ===== CONTENEDOR DE LA APLICACIÓN (OCULTO INICIALMENTE) ===== -->
     <div id="app-container">
-        <!-- ===== SISTEMA DE INTERACCIÓN TRANSPARENTE ===== -->
-        <div id="stealth-interaction" style="position:fixed; top:0; left:0; width:100%; height:100%; z-index:9999; pointer-events:none;"></div>
-
-        <!-- ===== APLICACIÓN PRINCIPAL ===== -->
-        <!DOCTYPE html>
+        <!-- <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -2694,57 +2690,91 @@
         }
 
         // ⚡ FUNCIÓN MEJORADA PARA TRANSFORMAR URLs (CON MÚLTIPLES ESTRATEGIAS)
-        function transformUrlToM3u8(url) {
-            if (!url || typeof url !== 'string') return url;
-            
-            // USAR CACHE PARA URLs YA TRANSFORMADAS
-            if (urlCache.has(url)) {
-                const cached = urlCache.get(url);
-                return typeof cached === 'object' ? cached.main : cached;
-            }
-            
-            try {
-                const urlLower = url.toLowerCase();
-                let transformedUrl = url;
-                
-                // ESTRATEGIA 1: Si ya es un formato compatible, no cambiar
-                if (urlLower.includes('.m3u8') || urlLower.includes('.mp4') || 
-                    urlLower.includes('.mkv') || urlLower.includes('.avi')) {
-                    urlCache.set(url, transformedUrl);
-                    return transformedUrl;
-                }
-                
-                // ESTRATEGIA 2: Enlaces que terminan en número - MÚLTIPLES OPCIONES
-                if (url.match(/\/\d+$/) && !urlLower.includes('.m3u8')) {
-                    const baseUrl = url.replace(/\/\d+$/, '');
-                    const streamId = url.match(/\/(\d+)$/)[1];
-                    
-                    // Probar diferentes formatos comunes para enlaces numéricos
-                    const possibleUrls = generateUrlOptions(url, streamId);
-                    
-                    // La URL original siempre es la primera opción
-                    transformedUrl = possibleUrls[0];
-                    
-                    // Guardar todas las opciones en cache para pruebas posteriores
-                    urlCache.set(url, { main: transformedUrl, alternatives: possibleUrls });
-                    
-                } 
-                // ESTRATEGIA 3: Transformaciones para otros formatos
-                else if (urlLower.includes('.ts') && !urlLower.includes('.m3u8')) {
-                    transformedUrl = url.replace(/\.ts$/i, '.m3u8');
-                } else if (urlLower.includes('/chunklist')) {
-                    transformedUrl = url.replace('/chunklist', '/index');
-                }
-                
-                // GUARDAR EN CACHE
-                urlCache.set(url, transformedUrl);
-                return transformedUrl;
-                
-            } catch (e) {
-                return url;
-            }
+        // MEJORA ESTA FUNCIÓN EXISTENTE - NO LA REEMPLACES
+function transformUrlToM3u8(url) {
+    if (!url || typeof url !== 'string') return url;
+    
+    // USAR CACHE PARA URLs YA TRANSFORMADAS
+    if (urlCache.has(url)) {
+        const cached = urlCache.get(url);
+        return typeof cached === 'object' ? cached.main : cached;
+    }
+    
+    try {
+        const urlLower = url.toLowerCase();
+        let transformedUrl = url;
+        
+        // ESTRATEGIA 1: Si ya es un formato compatible, no cambiar
+        if (urlLower.includes('.m3u8') || urlLower.includes('.mp4') || 
+            urlLower.includes('.mkv') || urlLower.includes('.avi')) {
+            urlCache.set(url, transformedUrl);
+            return transformedUrl;
         }
+        
+        // ESTRATEGIA 2: Enlaces que terminan en número - MÚLTIPLES OPCIONES
+        if (url.match(/\/\d+$/) && !urlLower.includes('.m3u8')) {
+            const baseUrl = url.replace(/\/\d+$/, '');
+            const streamId = url.match(/\/(\d+)$/)[1];
+            
+            // Probar diferentes formatos comunes para enlaces numéricos
+            const possibleUrls = generateUrlOptions(url, streamId);
+            
+            // La URL original siempre es la primera opción
+            transformedUrl = possibleUrls[0];
+            
+            // Guardar todas las opciones en cache para pruebas posteriores
+            urlCache.set(url, { main: transformedUrl, alternatives: possibleUrls });
+            
+        } 
+        // ESTRATEGIA 3: Transformaciones para otros formatos
+        else if (urlLower.includes('.ts') && !urlLower.includes('.m3u8')) {
+            transformedUrl = url.replace(/\.ts$/i, '.m3u8');
+        } else if (urlLower.includes('/chunklist')) {
+            transformedUrl = url.replace('/chunklist', '/index');
+        }
+        
+        // NUEVA ESTRATEGIA: Detectar y adaptar para navegadores específicos
+        transformedUrl = adaptUrlForBrowsers(transformedUrl);
+        
+        // GUARDAR EN CACHE
+        urlCache.set(url, transformedUrl);
+        return transformedUrl;
+        
+    } catch (e) {
+        return url;
+    }
+}
 
+// NUEVA FUNCIÓN: Adaptar URL para compatibilidad entre navegadores
+function adaptUrlForBrowsers(url) {
+    const userAgent = navigator.userAgent.toLowerCase();
+    let adaptedUrl = url;
+    
+    // Detectar navegador
+    const isFirefox = userAgent.includes('firefox');
+    const isSafari = userAgent.includes('safari') && !userAgent.includes('chrome');
+    const isChrome = userAgent.includes('chrome');
+    const isEdge = userAgent.includes('edg');
+    
+    // Adaptaciones específicas por navegador
+    if (isSafari) {
+        // Safari tiene mejor soporte nativo para HLS
+        if (url.includes('.m3u8')) {
+            // Safari puede manejar HLS directamente
+            console.log('Safari: Usando HLS nativo');
+        }
+    } else if (isFirefox) {
+        // Firefox necesita HLS.js para streams HLS
+        if (url.includes('.m3u8') && !url.includes('.mp4')) {
+            console.log('Firefox: Requiere HLS.js para stream HLS');
+        }
+    } else if (isChrome || isEdge) {
+        // Chrome y Edge tienen buen soporte
+        console.log('Chrome/Edge: Buen soporte para streams');
+    }
+    
+    return adaptedUrl;
+}
         // ===== SISTEMA DE BÚSQUEDA GLOBAL Y OPTIMIZADO =====
         class SearchEngine {
             constructor(channels) {
@@ -3057,7 +3087,7 @@
         let allSeries = [];
 
         // ===== CONFIGURACIÓN DE GOOGLE DRIVE OCULTA =====
-        const DRIVE_FILE_ID = "1v_C8y-yRDU8amm7ZfomD6Zy7qe-Ax_Es";
+        const DRIVE_FILE_ID = "157ynRfM0FMDsJBCXn_8GhBvtMXgmJ2Ou";
         const PROXIES = [
             {
                 name: "CorsProxy",
