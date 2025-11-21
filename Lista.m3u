@@ -1,5 +1,390 @@
 #EXTM3U
+#EXTINF:-1 tvg-id="caracolinternacional.co" tvg-name="" group-title="COLOMBIA" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/6/65/Logotipo_de_Caracol_Televisi%C3%B3n_Corporativo.png",CO | CARACOL HD2
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/224163.ts
 
+#EXTINF:-1 tvg-id="caracol.co" tvg-name="" group-title="COLOMBIA" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/d/d1/Caracol_2003.png/revision/latest/scale-to-width-down/340?cb=20200209130328&path-prefix=es",CO | CARACOL SD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/55619.ts
+
+#EXTINF:-1 tvg-id="caracolinternacional.co" tvg-name="" group-title="COLOMBIA" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/6/65/Logotipo_de_Caracol_Televisi%C3%B3n_Corporativo.png",CO | CARACOL INTERNACIONAL
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/211350.ts
+
+#EXTINF:-1 tvg-id="caracolhd.co" tvg-name="" group-title="COLOMBIA" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/4/49/Caracol_2010.png/revision/latest?cb=20200209130634&path-prefix=es",CO | CARACOL FHD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/46257.ts
+
+#EXTINF:-1 tvg-id="caracolhd.co" tvg-name="" group-title="COLOMBIA" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/4/49/Caracol_2010.png/revision/latest?cb=20200209130634&path-prefix=es",CO | CARACOL HD OP2
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/167983.ts
+
+#EXTINF:-1 tvg-id="caracolhd.co" tvg-name="" group-title="COLOMBIA" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/4/49/Caracol_2010.png/revision/latest?cb=20200209130634&path-prefix=es",CO | CARACOL HD ⭐️
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/190520.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESTRENOS 2025" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/sJ7bgsuC06tpC7wVl3LUW5cyKmX.jpg",MEMORIAS DE UN CARACOL
+http://imaxplay.net/movie/Cta001/KfTwnUFGRD/600760.mp4
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="COLOMBIANAS" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/hBHj3hgirOFJHlxbw5pfGOlAmSX.jpg",LA ESTRATEGIA DEL CARACOL
+http://imaxplay.net/movie/Cta001/KfTwnUFGRD/529294.mp4
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="COLOMBIANAS" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/hBHj3hgirOFJHlxbw5pfGOlAmSX.jpg",LA ESTRATEGIA DEL CARACOL
+http://imaxplay.net/movie/Cta001/KfTwnUFGRD/529089.mp4
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="COLOMBIANAS" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/hBHj3hgirOFJHlxbw5pfGOlAmSX.jpg",LA ESTRATEGIA DEL CARACOL
+http://imaxplay.net/movie/Cta001/KfTwnUFGRD/520790.mp4
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESTRENOS 2022" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/eVOtyEwQMXLTvjI6lWmjv3sbORp.jpg",LA CASA DEL CARACOL
+http://imaxplay.net/movie/Cta001/KfTwnUFGRD/394921.mp4
+#EXTINF:-1 tvg-id="espn.deportes.mx" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Espn_deportes.svg/2560px-Espn_deportes.svg.png",DEP | ESPN DEPORTES SD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/54094.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/ESPN2_logo.svg/1280px-ESPN2_logo.svg.png",DEP | ESPN 2 ARG SD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/518964.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/ESPN2_logo.svg/1280px-ESPN2_logo.svg.png",DEP | ESPN 2 BRA
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/456549.ts
+
+#EXTINF:-1 tvg-id="espn.extra.co" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/ESPN_4_logo.svg/1200px-ESPN_4_logo.svg.png",DEP | ESPN 4 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/19485.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="DEPORTES" tvg-logo="http://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/ESPN_wordmark.svg/640px-ESPN_wordmark.svg.png",DEP | ESPN 1 CHI SD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/439775.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/ESPN2_logo.svg/1280px-ESPN2_logo.svg.png",DEP | ESPN 2 FHD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/439757.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/ESPN_Premium_logo.svg/640px-ESPN_Premium_logo.svg.png",DEP | ESPN PREMIUM FHD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/276163.ts
+
+#EXTINF:-1 tvg-id="espn.3.argentina.ar" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/5/51/ESPN3_Logo.png",DEP | ESPN 3 ARG HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/21220.ts
+
+#EXTINF:-1 tvg-id="espn.co" tvg-name="" group-title="DEPORTES" tvg-logo="http://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/ESPN_wordmark.svg/640px-ESPN_wordmark.svg.png",DEP | ESPN 1 COL SD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/439774.ts
+
+#EXTINF:-1 tvg-id="espn2.mx" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/ESPN2_logo.svg/1280px-ESPN2_logo.svg.png",DEP | ESPN 2 MEX
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/518965.ts
+
+#EXTINF:-1 tvg-id="espn2.mx" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/ESPN2_logo.svg/1280px-ESPN2_logo.svg.png",DEP | ESPN 2 MEX HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/36391.ts
+
+#EXTINF:-1 tvg-id="espn3.mx" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/5/51/ESPN3_Logo.png",DEP | ESPN 3 MEX
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/9530.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/5/51/ESPN3_Logo.png",DEP | ESPN 3 ARG
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/518963.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/ESPN_4_logo.svg/1200px-ESPN_4_logo.svg.png",DEP | ESPN 4 SD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/439770.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="DEPORTES" tvg-logo="http://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/ESPN_wordmark.svg/640px-ESPN_wordmark.svg.png",DEP | ESPN 1 FHD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/439752.ts
+
+#EXTINF:-1 tvg-id="espn.ar" tvg-name="" group-title="DEPORTES" tvg-logo="http://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/ESPN_wordmark.svg/640px-ESPN_wordmark.svg.png",DEP | ESPN 1 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/219171.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/ESPN_5_logo.svg/1024px-ESPN_5_logo.svg.png",DEP | ESPN 5
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/272499.ts
+
+#EXTINF:-1 tvg-id="espn.4.latin.america.mx" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/ESPN_4_logo.svg/1200px-ESPN_4_logo.svg.png",DEP | ESPN 4 FHD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/224430.ts
+
+#EXTINF:-1 tvg-id="espn.2.ar" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/ESPN2_logo.svg/1280px-ESPN2_logo.svg.png",DEP | ESPN 2 ARG
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/185666.ts
+
+#EXTINF:-1 tvg-id="espn.2.mx" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/ESPN2_logo.svg/1280px-ESPN2_logo.svg.png",DEP | ESPN 2 MEX FHD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/185149.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="DEPORTES" tvg-logo="http://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/ESPN_wordmark.svg/640px-ESPN_wordmark.svg.png",DEP | ESPN 1 ARG HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/454719.ts
+
+#EXTINF:-1 tvg-id="fox.sports.premium.ar" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/ESPN_Premium_logo.svg/640px-ESPN_Premium_logo.svg.png",DEP | ESPN PREMIUM HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/215252.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/ESPN2_logo.svg/1280px-ESPN2_logo.svg.png",DEP | ESPN 2 SD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/439802.ts
+
+#EXTINF:-1 tvg-id="espndeportes.us" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Espn_deportes.svg/2560px-Espn_deportes.svg.png",DEP | ESPN DEPORTES HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/54533.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/5/51/ESPN3_Logo.png",DEP | ESPN 3 FHD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/518962.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/ESPN2_logo.svg/1280px-ESPN2_logo.svg.png",DEP | ESPN 2
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/439772.ts
+
+#EXTINF:-1 tvg-id="espn3.mx" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/5/51/ESPN3_Logo.png",DEP | ESPN 3 MEX HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/186774.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/ESPN_4_logo.svg/1200px-ESPN_4_logo.svg.png",DEP | ESPN 4 MEX HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/439801.ts
+
+#EXTINF:-1 tvg-id="espn.3.mexico.mx" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/5/51/ESPN3_Logo.png",DEP | ESPN 3 MEX FHD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/40735.ts
+
+#EXTINF:-1 tvg-id="espn.extra.cr" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/4/41/ESPN_Extra_Logo_2022.webp",DEP | ESPN 4 MEX SD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/21229.ts
+
+#EXTINF:-1 tvg-id="espn.co" tvg-name="" group-title="DEPORTES" tvg-logo="http://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/ESPN_wordmark.svg/640px-ESPN_wordmark.svg.png",DEP | ESPN 1 COL HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/519821.ts
+
+#EXTINF:-1 tvg-id="espn.ar" tvg-name="" group-title="DEPORTES" tvg-logo="http://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/ESPN_wordmark.svg/640px-ESPN_wordmark.svg.png",DEP | ESPN 1 SD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/219173.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="DEPORTES" tvg-logo="http://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/ESPN_wordmark.svg/640px-ESPN_wordmark.svg.png",DEP | ESPN 1 ARG FHD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/439754.ts
+
+#EXTINF:-1 tvg-id="espn.mx" tvg-name="" group-title="DEPORTES" tvg-logo="http://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/ESPN_wordmark.svg/640px-ESPN_wordmark.svg.png",DEP | ESPN 1 MEX SD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/185154.ts
+
+#EXTINF:-1 tvg-id="espn.pe" tvg-name="" group-title="DEPORTES" tvg-logo="http://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/ESPN_wordmark.svg/640px-ESPN_wordmark.svg.png",DEP | ESPN 1 PER HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/219172.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/4/41/ESPN_Extra_Logo_2022.webp",DEP | ESPN EXTRA BRA
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/168997.ts
+
+#EXTINF:-1 tvg-id="espn.mx" tvg-name="" group-title="DEPORTES" tvg-logo="http://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/ESPN_wordmark.svg/640px-ESPN_wordmark.svg.png",DEP | ESPN 1 MEX HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/9380.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="DEPORTES" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/ESPN2_logo.svg/1280px-ESPN2_logo.svg.png",DEP | ESPN 2 PER HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/518967.ts
+
+#EXTINF:-1 tvg-id="espn.ar" tvg-name="" group-title="DEPORTES" tvg-logo="http://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/ESPN_wordmark.svg/640px-ESPN_wordmark.svg.png",DEP | ESPN 1 PER
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/220727.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.postimg.cc/dQkfSHxG/3.png",MEX | ESPN 3
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/588124.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.pinimg.com/originals/94/07/fa/9407fa33a1873b022ed3169d51ea6aff.png",MEX | ESPN
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/588125.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/8/82/Espn_deportes.png",USA | ESPN DEPORTES
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/588126.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/ESPN_4_logo.svg/2560px-ESPN_4_logo.svg.png",ARG | ESPN 4
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/588128.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.postimg.cc/LXsTfXrz/2.png",MEX | ESPN 2 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/588130.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.pinimg.com/originals/94/07/fa/9407fa33a1873b022ed3169d51ea6aff.png",ARG | ESPN
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/588132.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.postimg.cc/LXsTfXrz/2.png",MEX | ESPN 2
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/588134.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.postimg.cc/dQkfSHxG/3.png",MEX | ESPN 3 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/588135.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.pinimg.com/originals/94/07/fa/9407fa33a1873b022ed3169d51ea6aff.png",ARG | ESPN HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/588137.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.postimg.cc/LXsTfXrz/2.png",ARG | ESPN 2
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/588138.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.postimg.cc/dQkfSHxG/3.png",ARG | ESPN 3
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/588139.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.pinimg.com/originals/94/07/fa/9407fa33a1873b022ed3169d51ea6aff.png",COL | ESPN
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/588140.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.postimg.cc/LXsTfXrz/2.png",COL | ESPN 2
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/588141.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.postimg.cc/dQkfSHxG/3.png",COL | ESPN 3
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/588142.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/d/db/ESPN_Premium_logo.png",ARG | ESPN PREMIUM
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/588143.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.postimg.cc/66vHh780/4.png",MEX | ESPN 4
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/588144.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.pinimg.com/originals/94/07/fa/9407fa33a1873b022ed3169d51ea6aff.png",CHI | ESPN
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/588145.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.postimg.cc/LXsTfXrz/2.png",CHI | ESPN 2
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/588146.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.postimg.cc/dQkfSHxG/3.png",CHI | ESPN 3
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/588147.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.postimg.cc/66vHh780/4.png",CHI | ESPN 4
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/588148.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.postimg.cc/jj1XHKKm/5.png",CHI | ESPN 5
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/588149.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.postimg.cc/5ydSr3Xm/6.png",CHI | ESPN 6
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/588150.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.postimg.cc/8PbmyLNh/7.png",CHI | ESPN 7
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/588151.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/d/db/ESPN_Premium_logo.png",CHI | ESPN PREMIUM
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/588152.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.postimg.cc/jj1XHKKm/5.png",COL | ESPN 5
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/610858.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.postimg.cc/5ydSr3Xm/6.png",COL | ESPN 6
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/610859.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.postimg.cc/8PbmyLNh/7.png",COL | ESPN 7
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/610860.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.postimg.cc/LXsTfXrz/2.png",PER | ESPN 2
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/610861.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.postimg.cc/dQkfSHxG/3.png",PER | ESPN 3
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/610862.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/ESPN_4_logo.svg/2560px-ESPN_4_logo.svg.png",PER | ESPN 4
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/610863.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.postimg.cc/jj1XHKKm/5.png",PER | ESPN 5
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/610864.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.postimg.cc/5ydSr3Xm/6.png",PER | ESPN 6
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/610865.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ESPN PACK" tvg-logo="https://i.postimg.cc/8PbmyLNh/7.png",PER | ESPN 7
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/610866.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="BRASIL" tvg-logo="http://www.vod-logo.net/photos/ad9cf2ecbe0b5f59b572dd201663f387.jpg",BR | ESPN 2 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/236464.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="BRASIL" tvg-logo="http://www.vod-logo.net/photos/c1151548a71a96178cd054ffb55be9c2.png",BR | ESPN EXTRA HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/236466.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="BRASIL" tvg-logo="http://www.vod-logo.net/photos/40623663c189d87debd7429e2557bc14.png",BR | ESPN BRASIL HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/236456.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="USA PRUEBA 2" tvg-logo="http://tvstar.live:8880/chimg/6376555897.png",US:  ESPN U HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/218791.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="USA PRUEBA 2" tvg-logo="http://tvstar.live:8880/chimg/1933710499.png",US:  ESPN USA FHD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/218712.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="USA PRUEBA 2" tvg-logo="http://www.vod-logo.net/photos/ad9cf2ecbe0b5f59b572dd201663f387.jpg",US: ESPN 2
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/218975.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="USA PRUEBA 2" tvg-logo="http://www.vod-logo.net/photos/9b0ffff798ef4e5c7e03f8c147115032.jpg",US: ESPN LONGHORN NETWORK
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/218746.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="USA PRUEBA 2" tvg-logo="http://tvstar.live:8880/chimg/2768762765.png",US: ESPN PLUS
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/218757.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="USA PRUEBA 2" tvg-logo="",USA | ESPN
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/218143.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="USA PRUEBA 2" tvg-logo="",USA | ESPN
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/218457.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="USA PRUEBA 2" tvg-logo="",USA | ESPN 2
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/218458.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="USA PRUEBA 2" tvg-logo="",USA | ESPN GOAL LINE
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/218460.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="USA PRUEBA 2" tvg-logo="http://tvstar.live:8880/chimg/6269136525.png",US:  ESPN DEPORTES HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/218701.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="EVENTOS" tvg-logo="",004 USA: FORMULA 1 / GP LAS VEGAS - P3 6:30PM -CLASIF 10PM - ESPND HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/624323.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="DEPORTES ESPAÑA" tvg-logo="https://i.ibb.co/XzLdyFf/laliga.png",DEP ES | LA LIG4 (ESPN+) SOLO EVENTOS
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/440264.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="EUROSPORTS" tvg-logo="https://static-wp-tor15-prd.torcedores.com/wp-content/uploads/2017/08/eredivisie-premier-league-football-590x270.jpg",ESPN 1 EREDIVISIE
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/216454.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="AUSTRALIAN SPORTS" tvg-logo="",AU S | ESPN 1
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209700.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="AUSTRALIAN SPORTS" tvg-logo="",AU S | ESPN 2
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209699.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="INTERNACIONALES" tvg-logo="",DSTV: ESPN2
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/554688.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="INTERNACIONALES" tvg-logo="",UK: BT SPORT ESPN
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/555109.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="INTERNACIONALES" tvg-logo="",|UK| BT SPORT ESPN 4K+
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/555323.ts
+
+#EXTINF:-1 tvg-id="espn2.us" tvg-name="" group-title="USA SPORTS ⭐️" tvg-logo="https://static.wikia.nocookie.net/espn/images/7/79/ESPN2-Logo-D795.png/revision/latest/scale-to-width-down/300?cb=20130819193813",SPORTS | ESPN 2 HD.
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/54531.ts
+
+#EXTINF:-1 tvg-id="espn.us" tvg-name="" group-title="USA SPORTS ⭐️" tvg-logo="http://www.vod-logo.net/photos/c1151548a71a96178cd054ffb55be9c2.png",SPORTS | ESPN
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/37960.ts
+
+#EXTINF:-1 tvg-id="espnnews.us" tvg-name="" group-title="USA SPORTS ⭐️" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/ESPNews.svg/2560px-ESPNews.svg.png",SPORTS | ESPN NEWS SD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/54536.ts
+
+#EXTINF:-1 tvg-id="espnu.us" tvg-name="" group-title="USA SPORTS ⭐️" tvg-logo="https://static.epg.best/us/ESPNU.us.png",SPORTS | ESPN U
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/37962.ts
+
+#EXTINF:-1 tvg-id="espnu.us" tvg-name="" group-title="USA SPORTS ⭐️" tvg-logo="https://static.epg.best/us/ESPNU.us.png",SPORTS | ESPN U HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/54537.ts
+
+#EXTINF:-1 tvg-id="espn2.us" tvg-name="" group-title="USA SPORTS ⭐️" tvg-logo="https://static.wikia.nocookie.net/espn/images/7/79/ESPN2-Logo-D795.png/revision/latest/scale-to-width-down/300?cb=20130819193813",SPORTS | ESPN 2 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/170950.ts
+
+#EXTINF:-1 tvg-id="espndeportes.us" tvg-name="" group-title="USA SPORTS ⭐️" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/8/82/Espn_deportes.png",SPORTS | ESPN DEPORTES
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/170951.ts
+
+#EXTINF:-1 tvg-id="espn.us" tvg-name="" group-title="USA SPORTS ⭐️" tvg-logo="http://www.vod-logo.net/photos/c1151548a71a96178cd054ffb55be9c2.png",SPORTS | ESPN 1
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/218736.ts
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="UFC" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/loWOB6qBXD794ayC8XQXS6KJGYz.jpg",UFC ON ESPN 32: KATTAR VS. CHIKADZE
+http://imaxplay.net/movie/Cta001/KfTwnUFGRD/232606.mp4
+
+#EXTINF:-1 tvg-id="winsportsplus.co" tvg-name="" group-title="FUTBOL COLOMBIANO" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Win%2B_F%C3%BAtbol_logo.svg/800px-Win%2B_F%C3%BAtbol_logo.svg.png",F CO | WIN SPORTS + HD OP 1
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/516929.ts
+
+#EXTINF:-1 tvg-id="winsportsplus.co" tvg-name="" group-title="FUTBOL COLOMBIANO" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Win%2B_F%C3%BAtbol_logo.svg/800px-Win%2B_F%C3%BAtbol_logo.svg.png",F CO | WIN SPORTS + HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/516935.ts
+
+#EXTINF:-1 tvg-id="winsportsplus.co" tvg-name="" group-title="FUTBOL COLOMBIANO" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Win%2B_F%C3%BAtbol_logo.svg/800px-Win%2B_F%C3%BAtbol_logo.svg.png",F CO | WIN SPORTS + FHD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/516934.ts
+
+#EXTINF:-1 tvg-id="winsportsplus.co" tvg-name="" group-title="FUTBOL COLOMBIANO" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Win%2B_F%C3%BAtbol_logo.svg/800px-Win%2B_F%C3%BAtbol_logo.svg.png",F CO | WIN SPORTS +.
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/516933.ts
+
+#EXTINF:-1 tvg-id="winsportsplus.co" tvg-name="" group-title="FUTBOL COLOMBIANO" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Win%2B_F%C3%BAtbol_logo.svg/800px-Win%2B_F%C3%BAtbol_logo.svg.png",F CO | WIN SPORTS +
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/516931.ts
+
+#EXTINF:-1 tvg-id="winsports.co" tvg-name="" group-title="FUTBOL COLOMBIANO" tvg-logo="https://i8b5j9c8.rocketcdn.me/wp-content/uploads/2023/10/Ellipse-1.png",F CO | WIN SPORTS
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/516932.ts
+
+#EXTINF:-1 tvg-id="winsports.co" tvg-name="" group-title="FUTBOL COLOMBIANO" tvg-logo="https://i8b5j9c8.rocketcdn.me/wp-content/uploads/2023/10/Ellipse-1.png",F CO | WIN SPORTS OP 1
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/485515.ts
+
+#EXTINF:-1 tvg-id="winsportsplus.co" tvg-name="" group-title="FUTBOL COLOMBIANO" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Win%2B_F%C3%BAtbol_logo.svg/800px-Win%2B_F%C3%BAtbol_logo.svg.png",F CO | WIN SPORTS + VIP 1
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/516921.ts
+
+#EXTINF:-1 tvg-id="winsportsplus.co" tvg-name="" group-title="COLOMBIA" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Win%2B_F%C3%BAtbol_logo.svg/800px-Win%2B_F%C3%BAtbol_logo.svg.png",CO | WIN SPORTS+ SD ⭐️
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/12759.ts
+
+#EXTINF:-1 tvg-id="winsportsplus.co" tvg-name="" group-title="COLOMBIA" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Win%2B_F%C3%BAtbol_logo.svg/800px-Win%2B_F%C3%BAtbol_logo.svg.png",CO | WIN SPORTS+ FHD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/12840.ts
+
+#EXTINF:-1 tvg-id="winsportsplus.co" tvg-name="" group-title="COLOMBIA" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Win%2B_F%C3%BAtbol_logo.svg/800px-Win%2B_F%C3%BAtbol_logo.svg.png",CO | WIN SPORTS+ HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/395946.ts
+
+#EXTINF:-1 tvg-id="winsportsplus.co" tvg-name="" group-title="COLOMBIA" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Win%2B_F%C3%BAtbol_logo.svg/800px-Win%2B_F%C3%BAtbol_logo.svg.png",CO | WIN SPORTS+ HD OP2
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/479415.ts
+
+#EXTINF:-1 tvg-id="winsportsplus.co" tvg-name="" group-title="COLOMBIA" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Win%2B_F%C3%BAtbol_logo.svg/800px-Win%2B_F%C3%BAtbol_logo.svg.png",CO | WIN SPORTS+ SD OP2
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/505449.ts
+
+#EXTINF:-1 tvg-id="winsports.co" tvg-name="" group-title="COLOMBIA" tvg-logo="https://i8b5j9c8.rocketcdn.me/wp-content/uploads/2023/10/Ellipse-1.png",CO | WIN SPORTS HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/395945.ts
+
+#EXTINF:-1 tvg-id="winsports.co" tvg-name="" group-title="COLOMBIA" tvg-logo="https://i8b5j9c8.rocketcdn.me/wp-content/uploads/2023/10/Ellipse-1.png",CO | WIN SPORTS SD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/12851.ts
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="UFC" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/6hOUibAifdlBdI42JzFfy7y5ajh.jpg",UFC ON ESPN 31: FONT VS. ALDO
+http://imaxplay.net/movie/Cta001/KfTwnUFGRD/232604.mp4
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="DRAMA" tvg-logo="https://image.tmdb.org/t/p/w600_and_h900_bestv2/aXqpKxBz3UYwSmx7ycjPxoKHCiJ.jpg",CASA CARACOL
+http://imaxplay.net/movie/Cta001/KfTwnUFGRD/92806.mkv
 #EXTINF:-1 tvg-id="ArubaTV.aw@SD" tvg-logo="https://i.postimg.cc/zD9dD64m/arubatv.png" group-title="Aruba",Aruba.TV (1080p)
 https://cdn01.setar.aw/Canal49/canal49/playlist.m3u8
 
