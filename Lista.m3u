@@ -1,6 +1,112 @@
 #EXTM3U
-#EXL-1 tvg-id="" tvg-name="" group-title="ARGENTINA" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Sun_Channel_Logo_2022.webp/500px-Sun_Channel_Logo_2022.webp.png",AR | SUN CHANNEL
-http://imaxplay.net/live/Cta001/KfTwnUFGRD/624049.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="http://starsat123.com:8080/images/98017a472f81565a5a1f0bb0feda709b.jpg",A. SPORTS | SKY SPORT 1 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209622.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="http://www.tv-logo.com/pt-data/uploads/images/logo/sky_de_sport_02_hd.jpg",A. SPORTS | SKY SPORT 2 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209623.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="",A. SPORTS | SKY SPORTS  3 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209646.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="",A. SPORTS | SKY SPORTS 4 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209648.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="",A. SPORTS | SKY SPORTS 5 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209650.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="",A. SPORTS | SKY SPORTS 7 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209654.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="https://w7.pngwing.com/pngs/919/940/png-transparent-sky-sports-f1-sports-commentator-boxing-cricket-text-sport-logo.png",A. SPORTS | SKY SPORTS 8 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209655.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="",DE | EUROSPORT 1 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209663.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="",DE | EUROSPORT 2 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209665.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="http://starsat123.com:8080/images/61e6020a4f9f4707ba76b5eaac057ea6.jpg",A. SPORTS | EUROSPORT 2XTRA HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209608.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="http://starsat123.com:8080/images/8f776c2b8333c314134289741078a8e0.jpg",A. SPORTS | FC BAYER TV
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209620.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="",A. SPORTS | MOTORVISION TV
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209667.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="",A. SPORTS | SPORT1 FHD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209668.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="http://starsat123.com:8080/images/b1af8d82b522506737a96e33be03806b.jpg",A. SPORTS | SKY SPORT NEWS HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209606.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Logo_Telekom_Sport_%282017%29.svg/748px-Logo_Telekom_Sport_%282017%29.svg.png",A. SPORTS | TELEKOM FUSSBALL 1 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209625.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Logo_Telekom_Sport_%282017%29.svg/748px-Logo_Telekom_Sport_%282017%29.svg.png",A. SPORTS | TELEKOM FUSSBALL 2 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209626.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Logo_Telekom_Sport_%282017%29.svg/748px-Logo_Telekom_Sport_%282017%29.svg.png",A. SPORTS | TELEKOM FUSSBALL 3 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209627.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Logo_Telekom_Sport_%282017%29.svg/748px-Logo_Telekom_Sport_%282017%29.svg.png",A. SPORTS | TELEKOM FUSSBALL 4 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209628.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Logo_Telekom_Sport_%282017%29.svg/748px-Logo_Telekom_Sport_%282017%29.svg.png",A. SPORTS | TELEKOM FUSSBALL 5 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209629.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Logo_Telekom_Sport_%282017%29.svg/748px-Logo_Telekom_Sport_%282017%29.svg.png",A. SPORTS | TELEKOM FUSSBALL 6 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209630.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Logo_Telekom_Sport_%282017%29.svg/748px-Logo_Telekom_Sport_%282017%29.svg.png",A. SPORTS | TELEKOM FUSSBALL 7 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209631.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="https://w7.pngwing.com/pngs/919/940/png-transparent-sky-sports-f1-sports-commentator-boxing-cricket-text-sport-logo.png",A. SPORTS | SKY SPORTS 9 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209656.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="",A. SPORTS | SKY SPORTS  6 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209652.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="",A. SPORTS | AUTO MOTOR SPORTS HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209661.m3u8
+
+#EXTINF:-1 tvg-id="0" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="http://starsat123.com:8080/images/7b76ecee0a9d553df9911b2ed6f257ae.png",A. SPORTS | D4ZN B4R 2 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209605.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="http://starsat123.com:8080/images/f9dde9dacf115e85c36d946fa71d2616.png",A. SPORTS | D4ZN B4R 1
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/209621.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="https://img-cdn.curl.pk/chimg/7072964602.jpg",A. SPORTS | SKY SPORTS BUNDESLIGA 1
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/506160.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="https://img-cdn.curl.pk/chimg/1164641905.jpg",A. SPORTS | SKY SPORTS BUNDESLIGA 2 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/506161.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="https://img-cdn.curl.pk/chimg/4845185728.jpg",A. SPORTS | SKY SPORTS BUNDESLIGA 3 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/506162.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="https://img-cdn.curl.pk/chimg/2982136533.jpg",A. SPORTS | SKY SPORTS BUNDESLIGA 4 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/506163.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="https://img-cdn.curl.pk/chimg/6601179073.jpg",A. SPORTS | SKY SPORTS BUNDESLIGA 5 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/506164.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="https://img-cdn.curl.pk/channels_icon_api/52c5eb429c6fc1bf1806efd707e578c6.png",A. SPORTS | SKY SPORTS BUNDESLIGA 6 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/506165.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="https://img-cdn.curl.pk/chimg/1463696368.jpg",A. SPORTS | SKY SPORTS BUNDESLIGA 7 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/506166.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="https://img-cdn.curl.pk/channels_icon_api/93ecd0128bf1690a3246a794357ef774.png",A. SPORTS | SKY SPORTS BUNDESLIGA 8 HD
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/506167.m3u8
+
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="ALEMANIA SPORTS" tvg-logo="https://img-cdn.curl.pk/chimg/2121791406.jpg",A. SPORTS | SKY SPORTS BUNDESLIGA 9
+http://imaxplay.net/live/Cta001/KfTwnUFGRD/506168.m3u8
+
+
+
 
 #EXTINF:-1 tvg-id="" tvg-name="" group-title="ARGENTINA" tvg-logo="https://directostv.teleame.com/wp-content/uploads/2017/10/Canal-5-TV-Corrientes-en-vivo-Online.png",AR | CANAL 5 TV CORRIENTES
 http://imaxplay.net/live/Cta001/KfTwnUFGRD/54215.m3u8
