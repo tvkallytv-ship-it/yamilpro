@@ -1,5 +1,5 @@
 #EXTM3U
-#EXTINF:-1 tvg-id="" tvg-name="" group-title="ARGENTINA" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Sun_Channel_Logo_2022.webp/500px-Sun_Channel_Logo_2022.webp.png",AR | SUN CHANNEL
+#EXL-1 tvg-id="" tvg-name="" group-title="ARGENTINA" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Sun_Channel_Logo_2022.webp/500px-Sun_Channel_Logo_2022.webp.png",AR | SUN CHANNEL
 http://imaxplay.net/live/Cta001/KfTwnUFGRD/624049.m3u8
 
 #EXTINF:-1 tvg-id="" tvg-name="" group-title="ARGENTINA" tvg-logo="https://directostv.teleame.com/wp-content/uploads/2017/10/Canal-5-TV-Corrientes-en-vivo-Online.png",AR | CANAL 5 TV CORRIENTES
@@ -37,7 +37,7 @@ http://imaxplay.net/live/Cta001/KfTwnUFGRD/19983.m3u8
 
 #EXTINF:-1 tvg-id="" tvg-name="" group-title="ARGENTINA" tvg-logo="https://static.epg.best/ar/Canal9.ar.png",AR | EL NUEVE HD
 http://imaxplay.net/live/Cta001/KfTwnUFGRD/46977.m3u8
-#EXTM3U
+#EXTM3ULista
 
 #EXTINF:-1 tvg-name="El señor de los cielos S01E01" tvg-logo="https://image.tmdb.org/t/p/w1280/ieGeFeQaUHzwwBipJiVX0oPU2Lb.jpg" group-title="S TELENOVELAS",El señor de los cielos S01E01
 http://sinlimitestv.com:8080/series/ClaudiaGil/xUMsvYFQyc/282886.mkv
