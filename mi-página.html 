@@ -1,0 +1,2151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>𝒴𝒶𝓂𝒾𝓁 𝓇ℴ𝓋𝒾𝓇𝒶 𝒜𝓁𝒹𝒶𝓃𝒶  - La Verdad os Hará Libres</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #8b0000;
+        --secondary: #1a3e72;
+        --accent: #d4af37;
+        --light: #f8f9fa;
+        --dark: #212529;
+        --dark-bg: #121212;
+        --dark-text: #e0e0e0;
+        --dark-card: #1e1e1e;
+        --success: #28a745;
+        --info: #17a2b8;
+        --warning: #ffc107;
+        --danger: #dc3545;
+        --audio-bg: #;
+        --audio-controls: #006400;
+        --audio-progress: #8b0000;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Montserrat", sans-serif;
+        line-height: 1.6;
+        color: var(--dark);
+        background-color: #0a192f;
+        transition: all 0.3s ease;
+      }
+      body.dark-mode {
+        background-color: var(--dark-bg);
+        color: var(--dark-text);
+        --audio-bg: #1e1e1e;
+        --audio-controls: #d4af37;
+        --audio-progress: #d4af37;
+      }
+      body.high-contrast {
+        background-color: black;
+        color: white;
+        --audio-bg: black;
+        --audio-controls: white;
+        --audio-progress: white;
+      }
+      body.high-contrast .header {
+        background: black !important;
+        border-bottom: 3px solid yellow;
+      }
+      body.high-contrast .verse-card,
+      body.high-contrast .content-card,
+      body.high-contrast .feature-card {
+        background: black !important;
+        border: 2px solid yellow !important;
+        color: white !important;
+      }
+      body.high-contrast h1,
+      body.high-contrast h2,
+      body.high-contrast h3,
+      body.high-contrast .verse-title {
+        color: yellow !important;
+      }
+      body.high-contrast .btn {
+        background: yellow !important;
+        color: black !important;
+        border: 1px solid white !important;
+      }
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+      .dark-mode .header {
+        background: linear-gradient(135deg, #6b0000, #0d2b5a);
+      }
+      .profile-image {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        object-fit: container;
+        border: 3px solid var(--accent);
+        margin-right: 1rem;
+      }
+      .header-content h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        margin-bottom: 0.25rem;
+      }
+      .header-content p {
+        font-size: 0.9rem;
+        opacity: 0.9;
+      }
+      .main-container {
+        max-width: 1000px;
+        margin: 0 auto 2rem;
+        padding: 0 1rem;
+      }
+      .accessibility-tools {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        gap: 10px;
+        z-index: 1000;
+      }
+      .access-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+      }
+      .access-btn:hover {
+        transform: scale(1.1);
+      }
+      .btn-font-plus {
+        background: var(--primary);
+        color: white;
+      }
+      .btn-font-minus {
+        background: var(--secondary);
+        color: white;
+      }
+      .btn-dark-mode {
+        background: var(--dark);
+        color: white;
+      }
+      .btn-contrast {
+        background: black;
+        color: yellow;
+      }
+      .btn-reset {
+        background: var(--accent);
+        color: var(--dark);
+      }
+      .verse-card {
+        background: #006400;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        border-left: 5px solid var(--accent);
+        transition: all 0.3s ease;
+      }
+      .dark-mode .verse-card {
+        background: var(--dark-card);
+        color: var(--dark-text);
+      }
+      .verse-title {
+        font-family: "Playfair Display", serif;
+        color: var(--primary);
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+      }
+      .dark-mode .verse-title {
+        color: var(--accent);
+      }
+      .verse-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+      }
+      .content-card {
+        background: #2d3748;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+      .dark-mode .content-card {
+        background: var(--dark-card);
+        color: var(--dark-text);
+      }
+      .content-card h2 {
+        color: var(--primary);
+        margin-bottom: 1rem;
+        font-family: "Playfair Display", serif;
+        position: relative;
+        padding-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .dark-mode .content-card h2 {
+        color: var(--accent);
+      }
+      .content-card h2:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background: var(--accent);
+      }
+      /* Estilos avanzados para el reproductor de audio */
+      .audio-player {
+        width: 100%;
+        margin: 1rem 0;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: var(--audio-bg);
+        transition: all 0.3s ease;
+      }
+      /* Estilos para navegadores WebKit (Chrome, Safari, Edge) */
+      .audio-player::-webkit-media-controls-panel {
+        background-color: var(--audio-bg);
+      }
+      .audio-player::-webkit-media-controls-play-button,
+      .audio-player::-webkit-media-controls-mute-button,
+      .audio-player::-webkit-media-controls-timeline,
+      .audio-player::-webkit-media-controls-current-time-display,
+      .audio-player::-webkit-media-controls-time-remaining-display,
+      .audio-player::-webkit-media-controls-volume-slider {
+        color: var(--audio-controls);
+        filter: none;
+      }
+      .audio-player::-webkit-media-controls-timeline {
+        background-color: rgba(f, f, f, f.1);
+        border-radius: 4px;
+      }
+      .audio-player::-webkit-media-controls-progress-bar {
+        background-color: var(--audio-progress);
+        border-radius: 4px;
+      }
+      /* Estilos para Firefox */
+      .audio-player {
+        --moz-range-thumb: var(--audio-controls);
+        --moz-range-track: rgba(f, f, f, f.1);
+        --moz-range-progress: var(--audio-progress);
+      }
+      .audio-title {
+        font-weight: 600;
+        margin-top: 1.5rem;
+        color: var(--secondary);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .dark-mode .audio-title {
+        color: var(--accent);
+      }
+      .video-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        margin: 1rem 0;
+        border-radius: 8px;
+      }
+      .video-container video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        background-color: black;
+      }
+      .btn {
+        display: inline-block;
+        padding: 0.6rem 1.2rem;
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background: var(--secondary);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .btn-whatsapp {
+        background: #25d366;
+      }
+      .btn-telegram {
+        background: #0088cc;
+      }
+      .btn-facebook {
+        background: #3b5998;
+      }
+      .btn-group {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin: 1rem 0;
+      }
+      .footer {
+        text-align: center;
+        padding: 1.5rem;
+        background: var(--dark);
+        color: white;
+        font-size: 0.9rem;
+      }
+      .dark-mode .footer {
+        background: #000;
+      }
+      .section-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin: 1.5rem 0;
+      }
+      .feature-card {
+        background: #2d3748;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+      .dark-mode .feature-card {
+        background: var(--dark-card);
+        color: var(--dark-text);
+      }
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      }
+      .feature-card.prayer {
+        border-top: 4px solid var(--success);
+      }
+      .feature-card.facebook {
+        border-top: 4px solid #3b5998;
+      }
+      .feature-card.download {
+        border-top: 4px solid var(--warning);
+      }
+      .feature-card h3 {
+        color: var(--secondary);
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .dark-mode .feature-card h3 {
+        color: var(--accent);
+      }
+      /* Iconos personalizados */
+      .icon-bible {
+        color: #8b0000;
+      }
+      .icon-music {
+        color: #1a3e72;
+      }
+      .icon-live {
+        color: #d4af37;
+      }
+      .icon-prayer {
+        color: #28a745;
+      }
+      .icon-community {
+        color: #3b5998;
+      }
+      .icon-resources {
+        color: #ffc107;
+      }
+      .icon-whatsapp {
+        color: #25d366;
+      }
+      .icon-telegram {
+        color: #0088cc;
+      }
+      .icon-facebook {
+        color: #3b5998;
+      }
+      /* Estilos para emisoras */
+      .emisoras-list {
+        margin-top: 1rem;
+        max-height: 280px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      .emisora-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.38rem 0.2rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        user-select: none;
+      }
+      .emisora-item:hover,
+      .emisora-item:focus {
+        background-color: rgba(212, 175, 55, 0.16);
+        outline: none;
+      }
+      .emisora-nombre {
+        color: white !important; /* letras blancas */
+        font-weight: 700;
+        font-size: 1rem;
+        text-shadow: 0 0 5px #ab7c00;
+        word-break: break-word;
+      }
+      .emisora-icon {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 36px;
+        color: var(--primary);
+        flex-shrink: 0;
+        user-select: none;
+      }
+      @media (max-width: 768px) {
+        .header {
+          flex-direction: column;
+          text-align: center;
+          padding: 0.5rem;
+        }
+        .profile-image {
+          margin-right: 0;
+          margin-bottom: 0.5rem;
+          width: 60px;
+          height: 60px;
+        }
+        .main-container {
+          margin-top: 140px;
+        }
+        .header-content h1 {
+          font-size: 1.2rem;
+        }
+        .header-content p {
+          font-size: 0.8rem;
+        }
+        .accessibility-tools {
+          flex-direction: column;
+          bottom: 10px;
+          right: 10px;
+        }
+        .access-btn {
+          width: 40px;
+          height: 40px;
+          font-size: 1rem;
+        }
+      }
+      /* Tamaños de fuente accesibles */
+      body.font-small {
+        font-size: 14px;
+      }
+      body.font-medium {
+        font-size: 16px;
+      }
+      body.font-large {
+        font-size: 18px;
+      }
+      body.font-xlarge {
+        font-size: 20px;
+      }
+      /* estilos para audios */
+      .audio-player::-webkit-media-controls-play-button {
+        background-color: #FFB74D;
+        color: #FFB74D;
+        border-radius: 50%;
+      }
+      .audio-player::-webkit-media-controls-play-button::before {
+        color: #8B0000;
+      }
+#splash-screen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: 
+    linear-gradient(rgba(10, 30, 60, 0.0), rgba(10, 30, 60, 0.6)),
+    url('https://i.ibb.co/xKC5z77X/1000185420.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 1.2s ease;
+  font-family: 'Playfair Display', serif;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+    #splash-text {
+      color: #f0e9d2;
+      font-size: 8vw; /* Escala con ancho viewport */
+      max-width: 90vw;
+      font-weight: 900;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+      text-align: center;
+      position: relative;
+      animation: fadeSlideDown 10s ease forwards;
+      letter-spacing: 0.12em;
+      line-height: 1.1;
+      user-select: none;
+    }
+    @keyframes fadeSlideDown {
+      0% {
+        top: -20px;
+        opacity: 0;
+      }
+      10% {
+        top: 0;
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        top: 80vh;
+        opacity: 0;
+      }
+    }
+    /* Ajustes para pantallas pequeñas */
+    @media (max-width: 600px) {
+      #splash-text {
+        font-size: 12vw;
+        letter-spacing: 0.08em;
+      }
+    }
+/* Títulos en blanco */
+h1, h2, h3, .verse-title, .audio-title {
+  color: white !important;
+}
+
+/* Texto de contenido y párrafos en blanco */
+p, li, .verse-text, .content-card, .feature-card, .footer {
+  color: white !important;
+}
+
+/* Asegurar que textos dentro de .header sean blancos */
+.header h1, .header p {
+  color: white !important;
+}
+
+/* Para evitar que algún color por defecto prevalezca, aplicar en todos los textos posibles */
+body, body * {
+  color:  !important;
+}
+
+/* Fondo gris oscuro para controles de audio en navegadores WebKit */
+.audio-player::-webkit-media-controls-panel {
+  background-color: #333333; /* Gris oscuro */
+}
+
+/* Íconos y controles en blanco para visibilidad */
+.audio-player::-webkit-media-controls-play-button,
+.audio-player::-webkit-media-controls-mute-button,
+.audio-player::-webkit-media-controls-timeline,
+.audio-player::-webkit-media-controls-current-time-display,
+.audio-player::-webkit-media-controls-time-remaining-display,
+.audio-player::-webkit-media-controls-volume-slider {
+  color: white;
+  filter: none;
+}
+
+/* Para Firefox */
+.audio-player {
+  background-color: #333333;
+  color: white;
+  --moz-range-track: #666666;
+  --moz-range-progress: #d4af37;
+  --moz-range-thumb: #d4af37;
+}
+/* Elimina o comenta esta regla global para que no afecte el color de los iconos */
+/* body, body * {
+  color:  !important;
+} */
+
+/* O alternativamente excluir iconos para que no cambien a blanco */
+body, body *:not([class*="icon-"]) {
+  color:  !important;
+}
+
+/* Iconos con color original y prioridad */
+.icon-bible {
+  color: #8b0000 !important;
+}
+.icon-music {
+  color: #1a3e72 !important;
+}
+.icon-live {
+  color: #d4af37 !important;
+}
+.icon-prayer {
+  color: #28a745 !important;
+}
+.icon-community {
+  color: #3b5998 !important;
+}
+.icon-resources {
+  color: #ffc107 !important;
+}
+.icon-whatsapp {
+  color: #25d366 !important;
+}
+.icon-telegram {
+  color: #0088cc !important;
+}
+.icon-facebook {
+  color: #3b5998 !important;
+}
+.btn-whatsapp {
+  background: transparent;
+  border: none;
+  color: inherit; /* Hereda el color del texto normal */
+}
+
+.btn-telegram {
+  background: transparent;
+  border: none;
+  color: inherit; /* Hereda el color del texto normal */
+}
+
+/* Solo los iconos con color */
+.icon-whatsapp {
+  color: #25d366 !important;
+}
+
+.icon-telegram {
+  color: #0088cc !important;
+}
+
+/* Efectos hover */
+.btn-whatsapp:hover {
+  background: rgba(37, 211, 102, 0.1);
+}
+
+.btn-telegram:hover {
+  background: rgba(0, 136, 204, 0.1);
+}
+
+    </style>
+
+    <!-- Librería hls.js para reproducir HLS -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+<body class="font-medium">
+  <div id="splash-screen" role="dialog" aria-label="Pantalla de bienvenida">
+    <h1 id="splash-text">fortalécete con el Maná del cielo</h1>
+  </div> 
+class="font-medium">
+    <header class="header">
+        <img
+          src="https://i.ibb.co/fzxkPR4f/Dofoto-20241123-230427484.jpg"
+          alt="𝓨𝓪𝓶𝓲𝓵 𝓻𝓸𝓿𝓲𝓻𝒶 𝒜𝓁𝒹𝒶𝓃𝒶"
+          class="profile-image"
+        />
+        <div class="header-content">
+          <h1>Ministerio Bajo la Sombra del Omnipotente</h1>
+          <p>
+            "y conoceréis la verdad, y la verdad os hará libres" - Juan 8:32
+          </p>
+        </div>
+      </header>
+
+      <div class="accessibility-tools">
+        <button
+          class="access-btn btn-font-plus"
+          title="Aumentar tamaño de texto"
+          onclick="changeFontSize('increase')"
+        >
+          A+
+        </button>
+        <button
+          class="access-btn btn-font-minus"
+          title="Reducir tamaño de texto"
+          onclick="changeFontSize('decrease')"
+        >
+          A-
+        </button>
+        <button
+          class="access-btn btn-dark-mode"
+          title="Modo oscuro"
+          onclick="toggleDarkMode()"
+        >
+          🌙
+        </button>
+        <button
+          class="access-btn btn-contrast"
+          title="Alto contraste"
+          onclick="toggleHighContrast()"
+        >
+          ⚫
+        </button>
+        <button
+          class="access-btn btn-reset"
+          title="Restablecer"
+          onclick="resetAccessibility()"
+        >
+          ↻
+        </button>
+      </div>
+
+      <main class="main-container">
+        <section class="verse-card" id="verse">
+          <!-- Aquí se mostrará el versículo -->
+        </section>
+
+        <section class="content-card">
+          <h2>
+            <i class="fas fa-bible icon-bible"></i> La Verdad que Libera
+          </h2>
+          <p>
+            En Juan 8:32, Jesús hace una declaración poderosa sobre la verdad y la libertad: "y conocerán la verdad, y la verdad los hará libres". Estas palabras contienen una profunda enseñanza espiritual para nuestras vidas.
+          </p>
+
+          <p>
+            Jesús nos invita a buscar y conocer la verdad divina que se encuentra en Su enseñanza y en la Palabra de Dios. Este conocimiento no es meramente intelectual, sino transformador. Cuando la verdad de Cristo habita en nosotros, experimentamos una liberación genuina:
+          </p>
+
+          <ul style="margin: 1rem 0 1rem 2rem;">
+            <li>Liberación del pecado y la culpa</li>
+            <li>Liberación de falsas creencias y engaños</li>
+            <li>Liberación para vivir con propósito y plenitud</li>
+            <li>Liberación de ataduras emocionales y espirituales</li>
+          </ul>
+
+          <p>
+            La verdad de Cristo nos permite vivir con integridad, transparencia y libertad auténtica en todas las áreas de nuestra vida. No se trata de una libertad para hacer lo que queramos, sino la libertad para llegar a ser lo que Dios diseñó que fuéramos.
+          </p>
+
+          <p>
+            Te animamos a profundizar en el conocimiento de la Verdad que es Cristo mismo, porque solo en Él encontramos la libertad que realmente satisface y perdura.
+          </p>
+        </section>
+
+        <section class="content-card">
+          <h2><i class="fas fa-music icon-music"></i> Ministerio Musical</h2>
+
+          <h3 class="audio-title"><i class="fas fa-music"></i> Marino - La Senda Angosta</h3>
+          <audio controls class="audio-player">
+            <source
+              src="https://archive.org/download/marino-la-senda-angosta/Marino%20-%20La%20Senda%20Angosta.mp3"
+              type="audio/mpeg"
+            ></source>
+            Tu navegador no soporta el elemento de audio.
+          </audio>
+
+          <h3 class="audio-title"><i class="fas fa-music"></i> Para los que aman a Dios</h3>
+          <audio controls class="audio-player">
+            <source
+              src="https://archive.org/download/YAMILAUDIO/YAMILAUDIO.mp3"
+              type="audio/mpeg"
+            ></source>
+            Tu navegador no soporta el elemento de audio.
+          </audio>
+
+          <h3 class="audio-title"><i class="fas fa-music"></i> Paola Marino - Sigue Adelante</h3>
+          <audio controls class="audio-player">
+            <source
+              src="https://archive.org/download/sigue-adelante-version-1998-mp-3-128-k/Sigue%20Adelante%20%28version%201998%29%28MP3_128K%29.mp3"
+              type="audio/mpeg"
+            ></source>
+            Tu navegador no soporta el elemento de audio.
+          </audio>
+        </section>
+
+        <section class="content-card">
+          <h2><i class="fas fa-broadcast-tower icon-live"></i> Transmisiones en Vivo</h2>
+
+          <div class="video-container">
+            <video
+              id="videoPlayer"
+              autoplay
+              muted
+              playsinline
+              preload="metadata"
+              controls
+              aria-label="Reproductor de video en vivo"
+            >
+              Tu navegador no soporta video.
+            </video>
+          </div>
+
+          <h3 class="audio-title"><i class="fas fa-headphones"></i> Radio tropical cristiano</h3>
+          <audio controls class="audio-player">
+            <source src="https://stream.zeno.fm/vwqjwmcm8cfuv" type="audio/mpeg" ></source>
+            Tu navegador no soporta el elemento de audio.
+          </audio>
+
+          <h3 class="audio-title"><i class="fas fa-bible"></i> La Biblia en audio</h3>
+          <audio controls class="audio-player">
+            <source src="https://stream.zeno.fm/w3n32t4quzzuv" type="audio/mpeg" ></source>
+            Tu navegador no soporta el elemento de audio.
+          </audio>
+
+          <h3 class="audio-title"><i class="fas fa-church"></i> Radio Salvación Internacional</h3>
+          <audio controls class="audio-player">
+            <source src="http://ph1.ministeriotv.com:8031/salvacion.mp3" type="audio/mpeg" ></source>
+            Tu navegador no soporta el elemento de audio.
+          </audio>
+
+          <h3 class="audio-title"><i class="fas fa-cross"></i> Radio Cristo Viene</h3>
+          <audio controls class="audio-player">
+            <source src="https://stream.zeno.fm/axxgbszqxhhvv" type="audio/mpeg" ></source>
+            Tu navegador no soporta el elemento de audio.
+          </audio>
+
+          <h3 class="audio-title"><i class="fas fa-user-friends"></i> Radio Cristianos al dia</h3>
+          <audio controls class="audio-player">
+            <source src="http://stream.zeno.fm/gfxwedsggbruv" type="audio/mpeg" ></source>
+            Tu navegador no soporta el elemento de audio.
+          </audio>
+        </section>
+
+        <!-- SECCIÓN PARA EMISORAS -->
+        <section class="content-card" aria-label="Emisoras de radio en línea">
+          <h2>
+            <i class="fas fa-broadcast-tower icon-live"></i> Emisoras
+          </h2>
+          <audio id="radioPlayer" controls class="audio-player" aria-label="Reproductor de emisora"></audio>
+          <div id="emisorasList" class="emisoras-list"></div>
+        </section>
+
+        <div class="section-grid">
+          <section class="feature-card prayer">
+            <h3>
+              <i class="fas fa-praying-hands icon-prayer"></i> ¿Necesitas oración?
+            </h3>
+            <p>Estoy aquí para orar contigo y apoyarte en tus necesidades espirituales.Recuerda Mateo 18:19</p>
+            <div class="btn-group">
+              <a
+                href="https://wa.me/573046714614"
+                target="_blank"
+                class="btn btn-whatsapp"
+                ><i class="fab fa-whatsapp icon-whatsapp"></i> WhatsApp</a
+              >
+              <a
+                href="https://t.me/Holabendiciones"
+                target="_blank"
+                class="btn btn-telegram"
+                ><i class="fab fa-telegram icon-telegram"></i> Telegram</a
+              >
+            </div>
+          </section>
+
+          <section class="feature-card facebook">
+            <h3><i class="fab fa-facebook icon-community"></i> Nuestra comunidad</h3>
+            <p>
+              Únete a nuestra comunidad en Facebook para recibir contenido
+              edificante y estar en contacto.
+            </p>
+            <a
+              href="https://www.facebook.com/share/fX2gR1MwET4Cv1Ac/?mibextid=qi2Omg"
+              target="_blank"
+              class="btn btn-facebook"
+              ><i class="fab fa-facebook-f icon-facebook"></i> Visitar Facebook</a
+            >
+          </section>
+
+          <section class="feature-card download">
+            <h3><i class="fas fa-download icon-resources"></i> Más recursos</h3>
+            <p>Descargar nuestra apk para acceder a más contenido espiritual y recursos.</p>
+            <a href="https://www.appcreator24.com/app3102998-dutyem" target="_blank" class="btn"
+              ><i class="fas fa-globe"></i> Descargar</a
+            >
+          </section>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <p>
+          © 2023 𝒴𝒶𝓂𝒾𝓁 𝓇ℴ𝓋𝒾𝓇𝒶 𝒜𝓁𝒹𝒶𝓃𝒶 | Juan 8:32 - "y conoceréis la verdad, y la
+          verdad os hará libres"
+        </p>
+      </footer>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const video = document.getElementById('videoPlayer');
+          const videoSrc = 'https://livecdn.enlace.plus/enlace/smil:enlace-hd.smil/playlist.m3u8';
+
+          if (Hls.isSupported()) {
+            const hls = new Hls();
+            hls.loadSource(videoSrc);
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED, function () {
+              video.play();
+            });
+          } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            video.src = videoSrc;
+            video.addEventListener('loadedmetadata', function () {
+              video.play();
+            });
+          } else {
+            console.error('Este navegador no soporta reproducción HLS.');
+          }
+        });
+
+        const verses = [
+        {
+            title: "Deseo de estar con Dios",
+            text: "Salmo 27:4 - 'Lo único que le pido al SEÑOR —lo que más anhelo— es vivir en la casa del SEÑOR todos los días de mi vida, deleitándome en la perfección del SEÑOR y meditando dentro de su templo.'"
+        },
+        {
+    title: "Cuando hacer lo correcto duele",
+    text: "1 Pedro 3:14 - 'Pero, aun si sufren por hacer lo correcto, Dios va a recompensarlos. Así que no se preocupen ni tengan miedo a las amenazas.'"
+       },
+       {
+    title: "Bienaventurados los perseguidos",
+    text: "Mateo 5:10 - 'Bienaventurados los que padecen persecución por causa de la justicia, porque de ellos es el reino de los cielos.'"
+      },
+{
+    title: "¿Estás comprometido con la palabra de Dios o con la de los hombres?",
+    text: "Hechos 5:29 (RVR60) - 'Respondiendo Pedro y los apóstoles, dijeron: Es necesario obedecer a Dios antes que a los hombres.'"
+},
+{
+    title: "No podemos dejar de decir lo que hemos visto",
+    text: "Hechos 4:19-20 (RVR60) - 'Mas Pedro y Juan respondieron diciéndoles: Juzgad si es justo delante de Dios obedecer a vosotros antes que a Dios; porque no podemos dejar de decir lo que hemos visto y oído.'"
+},
+{
+    title: "Servir a Dios no a los hombres",
+    text: "Colosenses 3:23-24 (RVR60) - 'Y todo lo que hagáis, hacedlo de corazón, como para el Señor y no para los hombres; sabiendo que del Señor recibiréis la recompensa de la herencia, porque a Cristo el Señor servís.'"
+},
+{
+    title: "Hoy triunfa el malvado y el injusto pero mañana será el crujir de dientes",
+    text: "Mateo 13:41-42 (RVR60) - 'Enviará el Hijo del Hombre a sus ángeles, y recogerán de su reino a todos los que sirven de tropiezo, y a los que hacen iniquidad, y los echarán en el horno de fuego; allí será el lloro y el crujir de dientes.'"
+},
+{
+    title: "Tú decides si quieres tener un encuentro con Dios",
+    text: "Hebreos 12:14 (NTV) - 'Esfuércense por vivir en paz con todos y procuren llevar una vida santa, porque los que no son santos no verán al Señor.'"
+},
+{
+    title: "Buscad a Dios mientras pueda ser hallado",
+    text: "Isaías 55:6 (RVR60) - 'Buscad a Jehová mientras puede ser hallado, llamadle en tanto que está cercano.'"
+},
+{
+    title: "Acercaos a Dios y él se acercará a vosotros",
+    text: "Santiago 4:8 (RVR60) - 'Acercaos a Dios, y él se acercará a vosotros. Pecadores, limpiad las manos; y vosotros los de doble ánimo, purificad vuestros corazones.'"
+},
+{
+    title: "Santificaos y seréis santos",
+    text: "Levítico 20:7 (RVR60) - 'Santificaos, pues, y sed santos, porque yo Jehová soy vuestro Dios.'"
+},
+{
+    title: "Sin santidad nadie verá al Señor",
+    text: "Hebreos 12:14 (RVR60) - 'Seguid la paz con todos, y la santidad, sin la cual nadie verá al Señor.'"
+},
+{
+    title: "Presentad vuestros cuerpos en sacrificio vivo",
+    text: "Romanos 12:1 (RVR60) - 'Así que, hermanos, os ruego por las misericordias de Dios, que presentéis vuestros cuerpos en sacrificio vivo, santo, agradable a Dios, que es vuestro culto racional.'"
+},
+{
+    title: "Limpiaos de toda contaminación",
+    text: "2 Corintios 7:1 (RVR60) - 'Así que, amados, puesto que tenemos tales promesas, limpiémonos de toda contaminación de carne y de espíritu, perfeccionando la santidad en el temor de Dios.'"
+},
+{
+    title: "Escoged hoy a quién serviréis",
+    text: "Josué 24:15 (RVR60) - 'Y si mal os parece servir a Jehová, escogeos hoy a quién sirváis; pero yo y mi casa serviremos a Jehová.'"
+}, 
+{
+    title: "No te impacientes a causa de los malignos",
+    text: "Salmo 37:1-2 (RVR60) - 'No te impacientes a causa de los malignos, Ni tengas envidia de los que hacen iniquidad. Porque como hierba serán pronto cortados, Y como la hierba verde se secarán.'"
+},
+{
+    title: "Dios pagará a cada uno según sus obras",
+    text: "Romanos 2:6-8 (RVR60) - 'El cual pagará a cada uno conforme a sus obras: vida eterna a los que, perseverando en bien hacer, buscan gloria y honra e inmortalidad, pero ira y enojo a los que son contenciosos y no obedecen a la verdad, sino que obedecen a la injusticia.'"
+},
+{
+    title: "El juicio final ante el gran trono blanco",
+    text: "Apocalipsis 20:12-13 (RVR60) - 'Y vi a los muertos, grandes y pequeños, de pie ante Dios; y los libros fueron abiertos, y otro libro fue abierto, el cual es el libro de la vida; y fueron juzgados los muertos por las cosas que estaban escritas en los libros, según sus obras. Y el mar entregó los muertos que había en él; y la muerte y el Hades entregaron los muertos que había en ellos; y fueron juzgados cada uno según sus obras.'"
+},
+{
+    title: "La paja será quemada",
+    text: "Mateo 3:12 (RVR60) - 'Su aventador está en su mano, y limpiará su era; y recogerá su trigo en el granero, y quemará la paja en fuego que nunca se apagará.'"
+},
+{
+    title: "El destino de los injustos",
+    text: "2 Pedro 2:9 (RVR60) - 'Sabe el Señor librar de tentación a los piadosos, y reservar a los injustos para ser castigados en el día del juicio.'"
+},
+{
+    title: "La soberbia del impío será quebrantada",
+    text: "Proverbios 21:4 (RVR60) - 'Altivez de ojos, y orgullo de corazón, Y el brillo de los impíos, son pecado.'"
+},
+{
+    title: "Dios es juez justo",
+    text: "Salmo 7:11 (RVR60) - 'Dios es juez justo, Y Dios está airado contra el impío todos los días.'"
+}, 
+{
+    title: "A Dios no se le sirve de la forma que uno quiera",
+    text: "2 Samuel 6:6-7 (RVR60) - 'Pero cuando llegaron a la era de Nacón, Uza extendió la mano hacia el arca de Dios, y la sostuvo porque los bueyes casi la volcaron. Y se encendió la ira del SEÑOR contra Uza, y Dios lo hirió allí por su irreverencia; y allí murió junto al arca de Dios.'"
+},
+{
+    title: "Dios busca quien le adore en espíritu y verdad",
+    text: "Juan 4:23-24 (RVR60) - 'Mas la hora viene, y ahora es, cuando los verdaderos adoradores adorarán al Padre en espíritu y en verdad; porque también el Padre tales adoradores busca que le adoren. Dios es Espíritu; y los que le adoran, en espíritu y en verdad es necesario que adoren.'"
+},
+{
+    title: "Los fuegos extraños de Nadab y Abiú",
+    text: "Levítico 10:1-2 (RVR60) - 'Nadab y Abiú, hijos de Aarón, tomaron cada uno su incensario, y pusieron en ellos fuego, sobre el cual pusieron incienso, y ofrecieron delante de Jehová fuego extraño, que él nunca les mandó. Y salió fuego de delante de Jehová y los consumió, y murieron delante de Jehová.'"
+},
+{
+    title: "Obedeced a vuestros pastores",
+    text: "Hebreos 13:17 (RVR60) - 'Obedeced a vuestros pastores, y sujetaos a ellos; porque ellos velan por vuestras almas, como quienes han de dar cuenta; para que lo hagan con alegría, y no quejándose, porque esto no os es provechoso.'"
+},
+{
+    title: "No añadir ni quitar",
+    text: "Deuteronomio 12:32 (RVR60) - 'Cuidarás de hacer todo lo que yo te mando; no añadirás a ello, ni de ello quitarás.'"
+},
+{
+    title: "El camino que parece derecho",
+    text: "Proverbios 14:12 (RVR60) - 'Hay camino que al hombre le parece derecho; Pero su fin es camino de muerte.'"
+},
+{
+    title: "Saúl desobedece y ofrece sacrificio",
+    text: "1 Samuel 13:13-14 (RVR60) - 'Entonces Samuel dijo a Saúl: Locamente has hecho; no guardaste el mandamiento de Jehová tu Dios que él te había ordenado; pues ahora Jehová hubiera confirmado tu reino sobre Israel para siempre. Mas ahora tu reino no será duradero. Jehová se ha buscado un varón conforme a su corazón, al cual Jehová ha designado para que sea príncipe sobre su pueblo, por cuanto tú no has guardado lo que Jehová te mandó.'"
+},
+{
+    title: "Haced todo en el nombre del Señor Jesús",
+    text: "Colosenses 3:17 (RVR60) - 'Y todo lo que hacéis, sea de palabra o de hecho, hacedlo todo en el nombre del Señor Jesús, dando gracias a Dios Padre por medio de él.'"
+}, 
+{
+    title: "La sabiduría de los hombres vs la de Dios",
+    text: "1 Corintios 3:19 (RVR60) - 'Porque la sabiduría de este mundo es insensatez para con Dios; pues escrito está: El prende a los sabios en la astucia de ellos.'"
+},
+{
+    title: "No me avergüenzo del evangelio",
+    text: "Romanos 1:16 (RVR60) - 'Porque no me avergüenzo del evangelio, porque es poder de Dios para salvación a todo aquel que cree; al judío primeramente, y también al griego.'"
+},
+{
+    title: "Someteos a Dios, resistid al diablo",
+    text: "Santiago 4:7 (RVR60) - 'Someteos, pues, a Dios; resistid al diablo, y huirá de vosotros.'"
+},
+{
+    title: "La oración sin sumisión no nos beneficia 100%",
+    text: "Mateo 26:39 (RVR60) - 'Yendo un poco adelante, se postró sobre su rostro, orando y diciendo: Padre mío, si es posible, pase de mí esta copa; pero no sea como yo quiero, sino como tú.'"
+},
+{
+    title: "Pedimos mal para nuestros deleites",
+    text: "Santiago 4:3 (RVR60) - 'Pedís, y no recibís, porque pedís mal, para gastar en vuestros deleites.'"
+},
+{
+    title: "Conforme a su voluntad",
+    text: "1 Juan 5:14 (RVR60) - 'Y esta es la confianza que tenemos en él, que si pedimos alguna cosa conforme a su voluntad, él nos oye.'"
+},
+{
+    title: "No sabemos lo que nos conviene pedir",
+    text: "Romanos 8:26 (RVR60) - 'Y de igual manera el Espíritu nos ayuda en nuestra debilidad; pues qué hemos de pedir como conviene, no lo sabemos, pero el Espíritu mismo intercede por nosotros con gemidos indecibles.'"
+},
+{
+    title: "La sumisión de Job",
+    text: "Job 1:21 (RVR60) - 'Y dijo: Desnudo salí del vientre de mi madre, y desnudo volveré allá. Jehová dio, y Jehová quitó; sea el nombre de Jehová bendito.'"
+},
+{
+    title: "Humillaos bajo la mano de Dios",
+    text: "1 Pedro 5:6 (RVR60) - 'Humillaos, pues, bajo la poderosa mano de Dios, para que él os exalte cuando fuere tiempo;'"
+},
+{
+    title: "Enseñados a orar con sumisión",
+    text: "Lucas 11:2 (RVR60) - 'Y les dijo: Cuando oréis, decid: Padre nuestro que estás en los cielos, santificado sea tu nombre. Venga tu reino. Hágase tu voluntad, como en el cielo, así también en la tierra.'"
+},
+{
+    title: "Mejor es lo que Dios escoge",
+    text: "Salmo 84:11 (RVR60) - 'Porque sol y escudo es Jehová Dios; Gracia y gloria dará Jehová. No quitará el bien a los que andan en integridad.'"
+}, 
+{
+    title: "No conformarse a este siglo",
+    text: "Romanos 12:2 (RVR60) - 'No os conforméis a este siglo, sino transformaos por medio de la renovación de vuestro entendimiento, para que comprobéis cuál sea la buena voluntad de Dios, agradable y perfecta.'"
+},
+{
+    title: "Cristo debe ser el primero",
+    text: "Colosenses 1:18 (RVR60) - 'Y él es la cabeza del cuerpo que es la iglesia, él que es el principio, el primogénito de entre los muertos, para que en todo tenga la preeminencia.'"
+}, 
+      {
+    title: "Capturando todo pensamiento",
+    text: "2 Corintios 10:5 (NVI) - 'Derribamos argumentos y toda altanería que se levanta contra el conocimiento de Dios, y llevamos cautivo todo pensamiento para que se someta a Cristo.'"
+     },
+{
+    title: "Espera la dirección de Dios",
+    text: "Mateo 2:13-14 (RVR60) - 'Después que partieron ellos, he aquí un ángel del Señor apareció en sueños a José y dijo: Levántate y toma al niño y a su madre, y huye a Egipto, y permanece allá hasta que yo te diga; porque acontecerá que Herodes buscará al niño para matarlo. Y él, despertando, tomó de noche al niño y a su madre, y se fue a Egipto.'"
+},
+{
+    title: "Reconócelo en todos tus caminos",
+    text: "Proverbios 3:5-6 (RVR60) - 'Fíate de Jehová de todo tu corazón, y no te apoyes en tu propia prudencia. Reconócelo en todos tus caminos, y él enderezará tus veredas.'"
+},
+{
+    title: "Guíame por tu verdad",
+    text: "Salmo 25:4-5 (RVR60) - 'Muéstrame, oh Jehová, tus caminos; enséñame tus sendas. Encamíname en tu verdad, y enséñame, porque tú eres el Dios de mi salvación; en ti he esperado todo el día.'"
+},
+{
+    title: "No es lo mismo servir a Dios que buscar milagros",
+    text: "Mateo 7:21-23 (NTV) - '»No todo el que me llama: “¡Señor, Señor!” entrará en el reino del cielo. Solo entrarán aquellos que verdaderamente hacen la voluntad de mi Padre que está en el cielo. El día del juicio, muchos me dirán: “¡Señor, Señor! Profetizamos en tu nombre, expulsamos demonios en tu nombre e hicimos muchos milagros en tu nombre”. Pero yo les responderé: “Nunca los conocí. Aléjense de mí, ustedes, que violan las leyes de Dios”.'"
+},
+{
+    title: "Dios busca adoradores en espíritu y verdad",
+    text: "Juan 4:23-24 (RVR60) - 'Mas la hora viene, y ahora es, cuando los verdaderos adoradores adorarán al Padre en espíritu y en verdad; porque también el Padre tales adoradores busca que le adoren. Dios es Espíritu; y los que le adoran, en espíritu y en verdad es necesario que adoren.'"
+},
+{
+    title: "Usar el nombre de Jesús no es lo mismo que seguirlo",
+    text: "Marcos 9:38 (RVR60) - 'Juan le respondió diciendo: Maestro, hemos visto a uno que en tu nombre echaba fuera demonios, pero él no nos sigue; y se lo prohibimos, porque no nos seguía.'"
+},
+{
+    title: "No todo el que dice Señor, Señor",
+    text: "Mateo 7:21-23 (RVR60) - 'No todo el que me dice: Señor, Señor, entrará en el reino de los cielos, sino el que hace la voluntad de mi Padre que está en los cielos. Muchos me dirán en aquel día: Señor, Señor, ¿no profetizamos en tu nombre, y en tu nombre echamos fuera demonios, y en tu nombre hicimos muchos milagros? Y entonces les declararé: Nunca os conocí; apartaos de mí, hacedores de maldad.'"
+},
+{
+    title: "El que me ama, guarda mis mandamientos",
+    text: "Juan 14:15 (RVR60) - 'Si me amáis, guardad mis mandamientos.'"
+},
+{
+    title: "Negarse a sí mismo y tomar la cruz",
+    text: "Lucas 9:23 (RVR60) - 'Y decía a todos: Si alguno quiere venir en pos de mí, niéguese a sí mismo, tome su cruz cada día, y sígame.'"
+},
+{
+    title: "El discipulado cuesta todo",
+    text: "Lucas 14:33 (RVR60) - 'Así, pues, cualquiera de vosotros que no renuncia a todo lo que posee, no puede ser mi discípulo.'"
+},
+{
+    title: "Seguidores de palabra pero no de obra",
+    text: "Mateo 23:3 (RVR60) - 'Así que, todo lo que os digan que guardéis, guardadlo y hacedlo; mas no hagáis conforme a sus obras, porque dicen, y no hacen.'"
+},
+{
+    title: "La obediencia demuestra el amor",
+    text: "1 Juan 2:3-4 (RVR60) - 'Y en esto sabemos que nosotros le conocemos, si guardamos sus mandamientos. El que dice: Yo le conozco, y no guarda sus mandamientos, el tal es mentiroso, y la verdad no está en él.'"
+},
+{
+    title: "No ignores la señal",
+    text: "1 Juan 3:7 (NTV) - 'Queridos hijos, no dejen que nadie los engañe acerca de lo siguiente: cuando una persona hace lo correcto, demuestra que es justa, así como Cristo es justo.'"
+},
+{
+    title: "Por sus frutos los conoceréis",
+    text: "Mateo 7:16-20 (RVR60) - 'Por sus frutos los conoceréis. ¿Acaso se recogen uvas de los espinos, o higos de los abrojos? Así, todo buen árbol da buenos frutos, pero el árbol malo da frutos malos. No puede el buen árbol dar malos frutos, ni el árbol malo dar frutos buenos. Todo árbol que no da buen fruto, es cortado y echado en el fuego. Así que, por sus frutos los conoceréis.'"
+},
+{
+    title: "La fe sin obras es muerta",
+    text: "Santiago 2:17-18 (RVR60) - 'Así también la fe, si no tiene obras, es muerta en sí misma. Pero alguno dirá: Tú tienes fe, y yo tengo obras. Muéstrame tu fe sin tus obras, y yo te mostraré mi fe por mis obras.'"
+},
+{
+    title: "El que dice que permanece en él",
+    text: "1 Juan 2:6 (RVR60) - 'El que dice que permanece en él, debe andar como él anduvo.'"
+},
+{
+    title: "Sed hacedores de la palabra",
+    text: "Santiago 1:22 (RVR60) - 'Pero sed hacedores de la palabra, y no tan solamente oidores, engañándoos a vosotros mismos.'"
+},
+{
+    title: "¿Realmente crees en este EVANGELIO?",
+    text: "1 Corintios 15:3-4 (RVR60) - 'Porque primeramente os he enseñado lo que asimismo recibí: Que Cristo murió por nuestros pecados, conforme a las Escrituras; y que fue sepultado, y que resucitó al tercer día, conforme a las Escrituras;'"
+},
+{
+    title: "Porque de tal manera amó Dios",
+    text: "Juan 3:16 (RVR60) - 'Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel que en él cree, no se pierda, mas tenga vida eterna.'"
+},
+{
+    title: "Creer en el corazón y confesar con la boca",
+    text: "Romanos 10:9-10 (RVR60) - 'Que si confesares con tu boca que Jesús es el Señor, y creyeres en tu corazón que Dios le levantó de los muertos, serás salvo. Porque con el corazón se cree para justicia, pero con la boca se confiesa para salvación.'"
+},
+{
+    title: "No hay otro nombre para salvación",
+    text: "Hechos 4:12 (RVR60) - 'Y en ningún otro hay salvación; porque no hay otro nombre bajo el cielo, dado a los hombres, en que podamos ser salvos.'"
+},
+{
+    title: "El camino, la verdad y la vida",
+    text: "Juan 14:6 (RVR60) - 'Jesús le dijo: Yo soy el camino, y la verdad, y la vida; nadie viene al Padre, sino por mí.'"
+},
+{
+    title: "Justificados por su sangre",
+    text: "Romanos 5:8-9 (RVR60) - 'Mas Dios muestra su amor para con nosotros, en que siendo aún pecadores, Cristo murió por nosotros. Pues mucho más, estando ya justificados en su sangre, por él seremos salvos de la ira.'"
+},
+{
+    title: "Nacer de nuevo",
+    text: "Juan 3:3 (RVR60) - 'Respondió Jesús y le dijo: De cierto, de cierto te digo, que el que no naciere de nuevo, no puede ver el reino de Dios.'"
+},
+{
+    title: "Arrepentimiento para perdón de pecados",
+    text: "Hechos 2:38 (RVR60) - 'Pedro les dijo: Arrepentíos, y bautícese cada uno de vosotros en el nombre de Jesucristo para perdón de los pecados; y recibiréis el don del Espíritu Santo.'"
+}, 
+{
+    title: "Lámpara es tu palabra",
+    text: "Salmo 119:105 (RVR60) - 'Lámpara es a mis pies tu palabra, y lumbrera a mi camino.'"
+},
+{
+    title: "Examíname oh Dios",
+    text: "Salmo 139:23-24 (RVR60) - 'Examíname, oh Dios, y conoce mi corazón; Pruébame y conoce mis pensamientos; Y ve si hay en mí camino de perversidad, Y guíame en el camino eterno.'"
+},
+{
+    title: "No os conforméis a este siglo",
+    text: "Romanos 12:2 (RVR60) - 'No os conforméis a este siglo, sino transformaos por medio de la renovación de vuestro entendimiento, para que comprobéis cuál sea la buena voluntad de Dios, agradable y perfecta.'"
+}, 
+{
+    title: "Ten mucho cuidado Jesús reprende a los religiosos",
+    text: "Mateo 15:8-9 (RVR60) - 'Este pueblo de labios me honra; Mas su corazón está lejos de mí. Pues en vano me honran, Enseñando como doctrinas, mandamientos de hombres.'"
+}, 
+{
+    title: "Fe sin obras es muerta",
+    text: "Santiago 2:17 (RVR60) - 'Así también la fe, si no tiene obras, es muerta en sí misma.'"
+},
+{
+    title: "La señal de Jonás",
+    text: "Mateo 12:39-40 (RVR60) - 'El respondió y les dijo: La generación mala y adúltera demanda señal; pero señal no le será dada, sino la señal del profeta Jonás. Porque como estuvo Jonás en el vientre del gran pez tres días y tres noches, así estará el Hijo del Hombre en el corazón de la tierra tres días y tres noches.'"
+},
+{
+    title: "Bienaventurados los que creen sin ver",
+    text: "Juan 20:29 (RVR60) - 'Jesús le dijo: Porque me has visto, Tomás, creíste; bienaventurados los que no vieron, y creyeron.'"
+},
+{
+    title: "El amor es el cumplimiento de la ley",
+    text: "Romanos 13:10 (RVR60) - 'El amor no hace mal al prójimo; así que el cumplimiento de la ley es el amor.'"
+},
+{
+    title: "Conocimiento que envanece vs amor que edifica",
+    text: "1 Corintios 8:1-3 (RVR60) - 'En cuanto a lo sacrificado a los ídolos, sabemos que todos tenemos conocimiento. El conocimiento envanece, pero el amor edifica. Y si alguno se imagina que sabe algo, aún no sabe nada como debe saber. Pero si alguno ama a Dios, es conocido por él.'"
+},
+{
+    title: "El mayor mandamiento: amar",
+    text: "Mateo 22:37-40 (RVR60) - 'Jesús le dijo: Amarás al Señor tu Dios con todo tu corazón, y con toda tu alma, y con toda tu mente. Este es el primero y grande mandamiento. Y el segundo es semejante: Amarás a tu prójimo como a ti mismo. De estos dos mandamientos depende toda la ley y los profetas.'"
+}, 
+{
+    title: "Permite que Dios te muestre el camino",
+    text: "Salmo 32:8 (RVR60) - 'Te haré entender, y te enseñaré el camino en que debes andar; sobre ti fijaré mis ojos.'"
+},
+{
+    title: "No se deje llevar por el éxito que hoy tiene actuando injustamente",
+    text: "Proverbios 16:8 (RVR60) - 'Mejor es lo poco con justicia, que las muchas rentas sin derecho.'"
+},
+{
+    title: "El éxito efímero de los malvados",
+    text: "Salmos 37:1-2 (RVR60) - 'No te impacientes a causa de los malignos, Ni tengas envidia de los que hacen iniquidad. Porque como hierba serán pronto cortados, Y como la hierba verde se secarán.'"
+},
+{
+    title: "La riqueza injusta no aprovecha",
+    text: "Proverbios 10:2 (RVR60) - 'Las riquezas de maldad no serán de provecho; Mas la justicia libra de muerte.'"
+},
+{
+    title: "Tener conocimiento de Dios sin practicarlo no te hace sabio",
+    text: "Santiago 3:13 (NTV) - 'Si ustedes son sabios y entienden los caminos de Dios, demuéstrenlo viviendo una vida honesta y haciendo buenas acciones con la humildad que proviene de la sabiduría;'"
+},
+{
+    title: "La sabiduría que viene de lo alto",
+    text: "Santiago 3:17 (RVR60) - 'Pero la sabiduría que es de lo alto es primeramente pura, después pacífica, amable, benigna, llena de misericordia y de buenos frutos, sin incertidumbre ni hipocresía.'"
+},
+{
+    title: "El principio de la sabiduría",
+    text: "Proverbios 1:7 (RVR60) - 'El principio de la sabiduría es el temor de Jehová; Los insensatos desprecian la sabiduría y la enseñanza.'"
+},
+{
+    title: "Sabiduría vs conocimiento",
+    text: "1 Corintios 8:1 (RVR60) - 'En cuanto a lo sacrificado a los ídolos, sabemos que todos tenemos conocimiento. El conocimiento envanece, pero el amor edifica.'"
+},
+{
+    title: "La sabiduría se muestra con hechos",
+    text: "Santiago 2:18 (RVR60) - 'Pero alguno dirá: Tú tienes fe, y yo tengos obras. Muéstrame tu fe sin tus obras, y yo te mostraré mi fe por mis obras.'"
+},
+{
+    title: "Conocimiento sin amor es inútil",
+    text: "1 Corintios 13:2 (RVR60) - 'Y si tuviese profecía, y entendiese todos los misterios y toda ciencia, y si tuviese toda la fe, de tal manera que trasladase los montes, y no tengo amor, nada soy.'"
+},
+{
+    title: "Oidores pero no hacedores",
+    text: "Santiago 1:22 (RVR60) - 'Pero sed hacedores de la palabra, y no tan solamente oidores, engañándoos a vosotros mismos.'"
+},
+{
+    title: "El sabio edifica su casa",
+    text: "Mateo 7:24 (RVR60) - 'Cualquiera, pues, que me oye estas palabras, y las hace, le compararé a un hombre prudente, que edificó su casa sobre la roca.'"
+},
+{
+    title: "La verdadera sabiduría",
+    text: "Job 28:28 (RVR60) - 'Y dijo al hombre: He aquí que el temor del Señor es la sabiduría, Y el apartarse del mal, la inteligencia.'"
+}, 
+{
+    title: "Mejor es lo justo que lo injusto",
+    text: "Proverbios 21:3 (RVR60) - 'Hacer justicia y juicio es a Jehová más agradable que sacrificio.'"
+},
+{
+    title: "El fin del éxito injusto",
+    text: "Proverbios 28:20 (RVR60) - 'El hombre de verdad tendrá muchas bendiciones; Mas el que se apresura a enriquecerse no será sin culpa.'"
+},
+{
+    title: "Advertencia contra la avaricia",
+    text: "Lucas 12:15 (RVR60) - 'Y les dijo: Mirad, y guardaos de toda avaricia; porque la vida del hombre no consiste en la abundancia de los bienes que posee.'"
+},
+{
+    title: "El camino de la confesión no es todo",
+    text: "Proverbios 28:13 (RVR60) - 'El que encubre sus pecados no prosperará; Mas el que los confiesa y se aparta alcanzará misericordia.'"
+},
+{
+    title: "Confesión y perdón",
+    text: "1 Juan 1:9 (RVR60) - 'Si confesamos nuestros pecados, él es fiel y justo para perdonar nuestros pecados, y limpiarnos de toda maldad.'"
+},
+{
+    title: "El arrepentimiento verdadero",
+    text: "Hechos 3:19 (RVR60) - 'Así que, arrepentíos y convertíos, para que sean borrados vuestros pecados; para que vengan de la presencia del Señor tiempos de refrigerio.'"
+},
+{
+    title: "Dios no quiere la muerte del pecador",
+    text: "Ezequiel 18:30-32 (RVR60) - 'Por tanto, yo os juzgaré a cada uno según sus caminos, oh casa de Israel, dice Jehová el Señor. Convertíos, y apartaos de todas vuestras transgresiones, y no os será la iniquidad causa de ruina. Echad de vosotros todas vuestras transgresiones con que habéis pecado, y haceos un corazón nuevo y un espíritu nuevo. ¿Por qué moriréis, casa de Israel? Porque no quiero la muerte del que muere, dice Jehová el Señor; convertíos, pues, y viviréis.'"
+},
+{
+    title: "El fruto del arrepentimiento",
+    text: "Mateo 3:8 (RVR60) - 'Haced, pues, frutos dignos de arrepentimiento.'"
+},
+{
+    title: "La confesión debe ser específica",
+    text: "Levítico 5:5 (RVR60) - 'Cuando una persona pecare en alguna de estas cosas, confesará aquello en que pecó.'"
+},
+{
+    title: "El que confiesa sus faltas",
+    text: "Santiago 5:16 (RVR60) - 'Confesaos vuestras ofensas unos a otros, y orad unos por otros, para que seáis sanados. La oración eficaz del justo puede mucho.'"
+},
+{
+    title: "No basta con decir 'lo siento'",
+    text: "2 Corintios 7:10 (RVR60) - 'Porque la tristeza que es según Dios produce arrepentimiento para salvación, de que no hay que arrepentirse; pero la tristeza del mundo produce muerte.'"
+}, 
+{
+    title: "La honestidad ante Dios",
+    text: "Proverbios 19:1 (RVR60) - 'Mejor es el pobre que camina en su integridad, Que el de perversos labios y necio.'"
+},
+{
+    title: "No te confundas no basta con solo escuchar la palabra",
+    text: "Santiago 1:23 (RVR60) - 'Porque si alguno es oidor de la palabra pero no hacedor de ella, éste es semejante al hombre que considera en un espejo su rostro natural.'"
+},
+{
+    title: "El que oye y hace la palabra",
+    text: "Santiago 1:22 (RVR60) - 'Pero sed hacedores de la palabra, y no tan solamente oidores, engañándoos a vosotros mismos.'"
+},
+{
+    title: "La casa sobre la roca",
+    text: "Mateo 7:24-25 (RVR60) - 'Cualquiera, pues, que me oye estas palabras, y las hace, le compararé a un hombre prudente, que edificó su casa sobre la roca. Descendió lluvia, y vinieron ríos, y soplaron vientos, y golpearon contra aquella casa; y no cayó, porque estaba fundada sobre la roca.'"
+},
+{
+    title: "La fe sin obras es muerta",
+    text: "Santiago 2:17 (RVR60) - 'Así también la fe, si no tiene obras, es muerta en sí misma.'"
+},
+{
+    title: "No todo el que dice Señor, Señor",
+    text: "Mateo 7:21 (RVR60) - 'No todo el que me dice: Señor, Señor, entrará en el reino de los cielos, sino el que hace la voluntad de mi Padre que está en los cielos.'"
+},
+{
+    title: "El que guarda la palabra de Cristo",
+    text: "1 Juan 2:5 (RVR60) - 'Pero el que guarda su palabra, en éste verdaderamente el amor de Dios se ha perfeccionado; por esto sabemos que estamos en él.'"
+},
+{
+    title: "Bienaventurados los que oyen y guardan",
+    text: "Lucas 11:28 (RVR60) - 'Y él dijo: Antes bienaventurados los que oyen la palabra de Dios y la guardan.'"
+},
+{
+    title: "Palabra que penetra el corazón",
+    text: "Hebreos 4:12 (RVR60) - 'Porque la palabra de Dios es viva y eficaz, y más cortante que toda espada de dos filos; y penetra hasta partir el alma y el espíritu, las coyunturas y los tuétanos, y discierne los pensamientos y las intenciones del corazón.'"
+}, 
+{
+    title: "Cómo reconocer la voz de Dios",
+    text: "Juan 7:17 (NTV) - 'Todo el que quiera hacer la voluntad de Dios sabrá si lo que enseño proviene de Dios o solo hablo por mi propia cuenta.'"
+},
+{
+    title: "Las ovejas reconocen su voz",
+    text: "Juan 10:27 (RVR60) - 'Mis ovejas oyen mi voz, y yo las conozco, y me siguen.'"
+},
+{
+    title: "El Espíritu Santo os guiará",
+    text: "Juan 16:13 (RVR60) - 'Pero cuando venga el Espíritu de verdad, él os guiará a toda la verdad; porque no hablará por su propia cuenta, sino que hablará todo lo que oyere, y os hará saber las cosas que habrán de venir.'"
+},
+{
+    title: "La paz de Dios gobierne",
+    text: "Colosenses 3:15 (RVR60) - 'Y la paz de Dios gobierne en vuestros corazones, a la que asimismo fuisteis llamados en un solo cuerpo; y sed agradecidos.'"
+},
+{
+    title: "Dios habla en lo íntimo",
+    text: "Salmo 46:10 (RVR60) - 'Estad quietos, y conoced que yo soy Dios; seré exaltado entre las naciones; enaltecido seré en la tierra.'"
+},
+{
+    title: "La palabra es lámpara",
+    text: "Salmo 119:105 (RVR60) - 'Lámpara es a mis pies tu palabra, y lumbrera a mi camino.'"
+},
+{
+    title: "Prueba los espíritus",
+    text: "1 Juan 4:1 (RVR60) - 'Amados, no creáis a todo espíritu, sino probad los espíritus si son de Dios; porque muchos falsos profetas han salido por el mundo.'"
+},
+{
+    title: "Usa la biblia para examinar",
+    text: "Hechos 17:11 (RVR60) - 'Y éstos eran más nobles que los que estaban en Tesalónica, pues recibieron la palabra con toda solicitud, escudriñando cada día las Escrituras para ver si estas cosas eran así.'"
+},
+{
+    title: "Dios da sabiduría",
+    text: "Santiago 1:5 (RVR60) - 'Y si alguno de vosotros tiene falta de sabiduría, pídala a Dios, el cual da a todos abundantemente y sin reproche, y le será dada.'"
+}, 
+{
+    title: "Dios aborrece el peso injusto",
+    text: "Proverbios 20:10 (RVR60) - 'Pesas falsas y medidas falsas, Ambas cosas abomina Jehová.'"
+},
+{
+    title: "La herencia del justo",
+    text: "Proverbios 20:7 (RVR60) - 'El justo que camina en su integridad; Bienaventurados serán sus hijos después de él.'"
+}, 
+{
+    title: "La paz de Dios gobierne",
+    text: "Colosenses 3:15 (RVR60) - 'Y la paz de Dios gobierne en vuestros corazones, a la que asimismo fuisteis llamados en un solo cuerpo; y sed agradecidos.'"
+},
+{
+    title: "El buen pastor guía",
+    text: "Juan 10:27 (RVR60) - 'Mis ovejas oyen mi voz, y yo las conozco, y me siguen.'"
+},
+{
+    title: "El Espíritu Santo os guiará",
+    text: "Juan 16:13 (RVR60) - 'Pero cuando venga el Espíritu de verdad, él os guiará a toda la verdad; porque no hablará por su propia cuenta, sino que hablará todo lo que oyere, y os hará saber las cosas que habrán de venir.'"
+},
+{
+    title: "Jehová es mi pastor",
+    text: "Salmo 23:1-3 (RVR60) - 'Jehová es mi pastor; nada me faltará. En lugares de delicados pastos me hará descansar; junto a aguas de reposo me pastoreará. Confortará mi alma; me guiará por sendas de justicia por amor de su nombre.'"
+}, 
+     {
+    title: "Renueva tu mente",
+    text: "Romanos 12:2 (RVR60) - 'No os conforméis a este siglo, sino transformaos por medio de la renovación de vuestro entendimiento, para que comprobéis cuál sea la buena voluntad de Dios, agradable y perfecta.'"
+     },
+{
+    title: "Examinar todo antes de obedecer",
+    text: "1 Tesalonicenses 5:21 (RVR60) - 'Examinadlo todo; retened lo bueno.'"
+},
+{
+    title: "Los bereanos escudriñaban las Escrituras",
+    text: "Hechos 17:11 (RVR60) - 'Y éstos eran más nobles que los que estaban en Tesalónica, pues recibieron la palabra con toda solicitud, escudriñando cada día las Escrituras para ver si estas cosas eran así.'"
+},
+{
+    title: "Probar los espíritus",
+    text: "1 Juan 4:1 (RVR60) - 'Amados, no creáis a todo espíritu, sino probad los espíritus si son de Dios; porque muchos falsos profetas han salido por el mundo.'"
+},
+{
+    title: "La palabra discernidora",
+    text: "Hebreos 4:12 (RVR60) - 'Porque la palabra de Dios es viva y eficaz, y más cortante que toda espada de dos filos; y penetra hasta partir el alma y el espíritu, las coyunturas y los tuétanos, y discierne los pensamientos y las intenciones del corazón.'"
+},
+{
+    title: "Sabiduría para discernir",
+    text: "Santiago 1:5 (RVR60) - 'Y si alguno de vosotros tiene falta de sabiduría, pídala a Dios, el cual da a todos abundantemente y sin reproche, y le será dada.'"
+},
+{
+    title: "El discernimiento espiritual",
+    text: "1 Corintios 2:14-15 (RVR60) - 'Pero el hombre natural no percibe las cosas que son del Espíritu de Dios, porque para él son locura, y no las puede entender, porque se han de discernir espiritualmente. En cambio el espiritual juzga todas las cosas.'"
+},
+{
+    title: "Lámpara para el camino",
+    text: "Salmo 119:105 (RVR60) - 'Lámpara es a mis pies tu palabra, y lumbrera a mi camino.'"
+},
+{
+    title: "No creer todo lo que se oye",
+    text: "Proverbios 14:15 (RVR60) - 'El simple todo lo cree; mas el avisado mira bien sus pasos.'"
+     }, 
+     {
+    title: "Pensamientos que agradan a Dios",
+    text: "Filipenses 4:8 (NVI) - 'Por último, hermanos, consideren bien todo lo verdadero, todo lo respetable, todo lo justo, todo lo puro, todo lo amable, todo lo digno de admiración, en fin, todo lo que sea excelente o merezca elogio.'"
+     },
+    {
+    title: "El ejemplo de los bereanos",
+    text: "Hechos 17:10-12 (RVR60) - 'Inmediatamente, los hermanos enviaron de noche a Pablo y a Silas hasta Berea. Y ellos, habiendo llegado, entraron en la sinagoga de los judíos. Y éstos eran más nobles que los que estaban en Tesalónica, pues recibieron la palabra con toda solicitud, escudriñando cada día las Escrituras para ver si estas cosas eran así. Así que creyeron muchos de ellos, y mujeres griegas de distinción, y no pocos hombres.'"
+     },
+     {
+    title: "Buscando la verdad en las Escrituras",
+    text: "Juan 5:39 (RVR60) - 'Escudriñad las Escrituras; porque a vosotros os parece que en ellas tenéis la vida eterna; y ellas son las que dan testimonio de mí.'"
+    },
+    {
+    title: "La Palabra es nuestra guía",
+    text: "Salmo 119:105 (RVR60) - 'Lámpara es a mis pies tu palabra, y lumbrera a mi camino.'"
+    },
+    {
+    title: "La fe viene por el oír la Palabra",
+    text: "Romanos 10:17 (RVR60) - 'Así que la fe es por el oír, y el oír, por la palabra de Dios.'"
+    },
+    {
+    title: "Bienaventurado el que estudia la Palabra",
+    text: "Apocalipsis 1:3 (RVR60) - 'Bienaventurado el que lee, y los que oyen las palabras de esta profecía, y guardan las cosas en ella escritas; porque el tiempo está cerca.'"
+    },
+    {
+    title: "La Palabra es útil para enseñar",
+    text: "2 Timoteo 3:16-17 (RVR60) - 'Toda la Escritura es inspirada por Dios, y útil para enseñar, para redargüir, para corregir, para instruir en justicia, a fin de que el hombre de Dios sea perfecto, enteramente preparado para toda buena obra.'"
+    },
+    {
+    title: "No añadir ni quitar a la Palabra",
+    text: "Apocalipsis 22:18-19 (RVR60) - 'Yo testifico a todo aquel que oye las palabras de la profecía de este libro: Si alguno añadiere a estas cosas, Dios traerá sobre él las plagas que están escritas en este libro. Y si alguno quitare de las palabras del libro de esta profecía, Dios quitará su parte del libro de la vida.'"
+    },
+    {
+    title: "Guardando la Palabra en el corazón",
+    text: "Salmo 119:11 (RVR60) - 'En mi corazón he guardado tus dichos, para no pecar contra ti.'"
+    },
+    {
+    title: "La Palabra permanece para siempre",
+    text: "1 Pedro 1:23-25 (RVR60) - 'Siendo renacidos, no de simiente corruptible, sino de incorruptible, por la palabra de Dios que vive y permanece para siempre. Porque toda carne es como hierba, y toda la gloria del hombre como flor de la hierba. La hierba se seca, y la flor se cae; mas la palabra del Señor permanece para siempre.'"
+     }, 
+     {
+    title: "La batalla comienza en la mente",
+    text: "Efesios 6:12 (NVI) - 'Porque nuestra lucha no es contra seres humanos, sino contra poderes, contra autoridades, contra potestades que dominan este mundo de tinieblas, contra fuerzas espirituales malignas en las regiones celestiales.'"
+     },
+     {
+    title: "Sigamos el ejemplo de los bereanos",
+    text: "Hechos 17:10-11 (RVR60) - 'Inmediatamente, los hermanos enviaron de noche a Pablo y a Silas hasta Berea. Y ellos, habiendo llegado, entraron en la sinagoga de los judíos. Y éstos eran más nobles que los que estaban en Tesalónica, pues recibieron la palabra con toda solicitud, escudriñando cada día las Escrituras para ver si estas cosas eran así.'"
+     }, 
+     {
+    title: "Jesús conoce tus pensamientos",
+    text: "Mateo 9:4 (NVI) - 'Conociendo Jesús lo que estaban pensando, les dijo: «¿Por qué piensan mal en su corazón?»'"
+     },
+     {
+    title: "El poder de la Palabra contra pensamientos impuros",
+    text: "Salmo 119:11 (RVR60) - 'En mi corazón he guardado tus dichos, para no pecar contra ti.'"
+     },
+     {
+    title: "La mente espiritual trae vida",
+    text: "Romanos 8:6 (NVI) - 'La mentalidad pecaminosa es muerte, mientras que la mentalidad que proviene del Espíritu es vida y paz.'"
+     },
+     {
+    title: "Dios examina nuestros pensamientos",
+    text: "Salmo 139:23-24 (NVI) - 'Examíname, oh Dios, y conoce mi corazón; ponme a prueba y conoce mis pensamientos. Ve si hay en mí camino malo, y guíame en el camino eterno.'"
+     }, 
+     {
+    title: "El sufrimiento por Cristo es privilegio",
+    text: "Filipenses 1:29 - 'Porque a vosotros os es concedido a causa de Cristo, no solo que creáis en él, sino también que padezcáis por él.'"
+      },
+      {
+    title: "El gozo en el sufrimiento",
+    text: "Hechos 5:41 - 'Y ellos salieron de la presencia del concilio, gozosos de haber sido tenidos por dignos de padecer afrenta por causa del Nombre.'"
+      },
+      {
+    title: "La corona de vida",
+    text: "Apocalipsis 2:10 - 'Sé fiel hasta la muerte, y yo te daré la corona de la vida.'"
+      }, 
+      {
+            title: "Ten en cuenta que aquellos que abandonan la ley de Dios apoyan el mal",
+            text: "Pr 28:4 - 'Los que abandonan la ley alaban a los malvados, pero los que guardan la ley se les oponen.'"
+        },
+        {
+    title: "La idolatría provoca la ira de Dios",
+    text: "Éxodo 32:8-10 (RVR60) - 'Pronto se han apartado del camino que yo les mandé; se han hecho un becerro de fundición, y lo han adorado, y le han ofrecido sacrificios, y han dicho: Israel, estos son tus dioses, que te sacaron de la tierra de Egipto. Y me dijo Jehová: Yo he visto a este pueblo, que por cierto es pueblo de dura cerviz. Ahora, pues, déjame que se encienda mi ira en ellos, y los consuma; y de ti yo haré una nación grande.'"
+        },
+        {
+    title: "Dios prohíbe las imágenes",
+    text: "Éxodo 20:4-5 (RVR60) - 'No te harás imagen, ni ninguna semejanza de lo que esté arriba en el cielo, ni abajo en la tierra, ni en las aguas debajo de la tierra. No te inclinarás a ellas, ni las honrarás; porque yo soy Jehová tu Dios, fuerte, celoso, que visito la maldad de los padres sobre los hijos hasta la tercera y cuarta generación de los que me aborrecen.'"
+        },
+        {
+            title: "Que voces o circunstancias intentan callar tu oración hoy",
+            text: "MC 10:48 - 'Cállate!», muchos le gritaban, pero él gritó aún más fuerte: «¡Hijo de David, ten compasión de mí'"
+        },
+        {
+    title: "Los ídolos no ven, ni oyen, ni salvan",
+    text: "Isaías 44:9-10, 17 (RVR60) - 'Los formadores de imágenes de talla, todos ellos son vanidad, y lo más precioso de ellos para nada es útil... ¿Quién formó un dios, o quién fundió una imagen que para nada es de provecho? [...] Y del resto hace un dios, un ídolo; se postra delante de él, lo adora, y le ruega diciendo: Líbrame, porque mi dios eres tú.'"
+        },
+        {
+            title: "Verdaderos discípulos",
+            text: "Juan 8:31 - 'Jesús les dijo a los que creyeron en él: —Ustedes son verdaderamente mis discípulos si se mantienen fieles a mis enseñanzas;'"
+        },
+        {
+    title: "Dios debe ser adorado en espíritu y verdad",
+    text: "Juan 4:23-24 (RVR60) - 'Mas la hora viene, y ahora es, cuando los verdaderos adoradores adorarán al Padre en espíritu y en verdad; porque también el Padre tales adoradores busca que le adoren. Dios es Espíritu; y los que le adoran, en espíritu y en verdad es necesario que adoren.'"
+        },
+        {
+            title: "¿Realmente conoces a Dios?",
+            text: "Tit 1:16 - 'Tales personas afirman que conocen a Dios, pero lo niegan con su manera de vivir. Son detestables y desobedientes, no sirven para hacer nada bueno.'"
+        },
+        {
+    title: "Abandonar los ídolos para servir al Dios vivo",
+    text: "1 Tesalonicenses 1:9 (RVR60) - 'Porque ellos mismos cuentan de nosotros la manera en que nos recibisteis, y cómo os convertisteis de los ídolos a Dios, para servir al Dios vivo y verdadero.'"
+        },
+        {
+    title: "Los sacrificios a ídolos son a demonios",
+    text: "1 Corintios 10:19-20 (RVR60) - '¿Qué digo, pues? ¿Que el ídolo es algo, o que sea algo lo que se sacrifica a los ídolos? Antes digo que lo que los gentiles sacrifican, a los demonios lo sacrifican, y no a Dios; y no quiero que vosotros os hagáis partícipes con los demonios.'"
+        },
+        {
+    title: "No te desvíes del propósito de Dios",
+    text: "1 Reyes 13:17-19 (NTV) - 'El Señor me ordenó: «No comas ni bebas nada mientras estés allí, y no regreses a Judá por el mismo camino por el que viniste». Pero el anciano profeta respondió: —Yo también soy profeta, igual que tú, y un ángel me dio este mensaje del Señor: «Tráelo a tu casa para que coma y beba contigo». Pero todo era una mentira. Así que el hombre de Dios regresó y comió y bebió en la casa del anciano profeta.'"
+       },
+       {
+    title: "Las consecuencias de desobedecer",
+    text: "1 Reyes 13:23-24 (NTV) - 'Después de que el hombre de Dios terminó de comer y beber, el anciano profeta le preparó su burro, y el hombre de Dios partió. Pero en el camino, un león salió al encuentro del hombre de Dios y lo mató. Su cuerpo quedó tirado en el camino.'"
+       },
+       {
+    title: "Sé fiel hasta el fin",
+    text: "Mateo 24:13 (RVR60) - 'Mas el que persevere hasta el fin, éste será salvo.'"
+       },
+       {
+    title: "No mires atrás",
+    text: "Lucas 9:62 (RVR60) - 'Y Jesús le dijo: Ninguno que poniendo su mano en el arado mira hacia atrás, es apto para el reino de Dios.'"
+       },
+       {
+    title: "Corre hacia la meta",
+    text: "Filipenses 3:14 (RVR60) - 'Prosigo a la meta, al premio del supremo llamamiento de Dios en Cristo Jesús.'"
+       },
+       {
+    title: "Dios perfeccionará su obra",
+    text: "Filipenses 1:6 (RVR60) - 'Estando persuadido de esto, que el que comenzó en vosotros la buena obra, la perfeccionará hasta el día de Jesucristo.'"
+       },
+       {
+    title: "No te dejes engañar",
+    text: "Gálatas 1:8 (RVR60) - 'Mas si aun nosotros, o un ángel del cielo, os anunciare otro evangelio diferente del que os hemos anunciado, sea anatema.'"
+        }, 
+        {
+            title: "Amor y obediencia",
+            text: "Juan 14:15 - '»Si me aman, obedezcan mis mandamientos.'"
+        },
+        {
+            title: "Recuerda que no es suficiente tener el Espíritu Santo",
+            text: "Efesios 4:30 - 'Y no contristéis al Espíritu Santo de Dios, con el cual fuisteis sellados para el día de la redención.'"
+        },
+        {
+            title: "Examina bien en quién está puesta tu fe",
+            text: "2 Corintios 13:5 - 'Examínense a sí mismos para ver si su fe es genuina. Pónganse a prueba. Ciertamente saben que Jesucristo está entre ustedes; si no, han fallado la prueba de la fe genuina.'"
+        },
+        {
+            title: "Fortaleza en Cristo",
+            text: "Filipenses 4:13 - 'Todo lo puedo en Cristo que me fortalece.'"
+        },
+        {
+            title: "Propósito de Dios",
+            text: "Romanos 8:28 - 'Y sabemos que a los que aman a Dios, todas las cosas les ayudan a bien, esto es, a los que conforme a su propósito son llamados.'"
+        },
+        {
+            title: "No te confundas, estamos en este mundo, pero eso no significa que debemos vivir para él",
+            text: "1Juan 2:17 - 'Y el mundo pasa, y sus deseos; pero el que hace la voluntad de Dios permanece para siempre.'"
+        },
+        {
+            title: "Confía en el Señor",
+            text: "Proverbios 3:5-6 - 'Confía en el SEÑOR con todo tu corazón; no dependas de tu propio entendimiento. Busca su voluntad en todo lo que hagas, y él te mostrará cuál camino tomar.'"
+        },
+        {
+            title: "Renovación de fuerzas",
+            text: "Isaías 40:31 - 'Pero los que esperan en el SEÑOR renovarán sus fuerzas; volarán como las águilas: correrán y no se cansarán, caminarán y no se fatigarán.'"
+        },
+        {
+            title: "Descanso en Cristo",
+            text: "Mateo 11:28 - 'Venid a mí todos los que estáis trabajados y cargados, y yo os haré descansar.'"
+        },
+        {
+    title: "Santificados en la verdad",
+    text: "Juan 17:17 (RVR60) - 'Santifícalos en tu verdad; tu palabra es verdad.'"
+        },
+        {
+    title: "Unidad en un mismo sentir",
+    text: "1 Corintios 1:10 (RVR60) - 'Os ruego, pues, hermanos, por el nombre de nuestro Señor Jesucristo, que habléis todos una misma cosa, y que no haya entre vosotros divisiones, sino que estéis perfectamente unidos en una misma mente y en un mismo parecer.'"
+       },
+       {
+    title: "Un cuerpo en Cristo",
+    text: "Romanos 12:4-5 (RVR60) - 'Porque de la manera que en un cuerpo tenemos muchos miembros, pero no todos los miembros tienen la misma función, así nosotros, siendo muchos, somos un cuerpo en Cristo, y todos miembros los unos de los otros.'"
+       },
+       {
+    title: "La unidad del Espíritu",
+    text: "Efesios 4:3-6 (RVR60) - 'Solícitos en guardar la unidad del Espíritu en el vínculo de la paz; un cuerpo, y un Espíritu, como fuisteis también llamados en una misma esperanza de vuestra vocación; un Señor, una fe, un bautismo, un Dios y Padre de todos, el cual es sobre todos, y por todos, y en todos.'"
+       },
+       {
+    title: "La verdad nos hace libres",
+    text: "Juan 8:31-32 (RVR60) - 'Dijo entonces Jesús a los judíos que habían creído en él: Si vosotros permaneciereis en mi palabra, seréis verdaderamente mis discípulos; y conoceréis la verdad, y la verdad os hará libres.'"
+       },
+       {
+    title: "Amémonos de verdad",
+    text: "1 Juan 3:18 (RVR60) - 'Hijitos míos, no amemos de palabra ni de lengua, sino de hecho y en verdad.'"
+       },
+       {
+    title: "Unidos en la misma mente",
+    text: "Filipenses 2:1-2 (RVR60) - 'Por tanto, si hay alguna consolación en Cristo, si algún consuelo de amor, si alguna comunión del Espíritu, si algún afecto entrañable, si alguna misericordia, completad mi gozo, sintiendo lo mismo, teniendo el mismo amor, unánimes, sintiendo una misma cosa.'"
+       },
+       {
+    title: "Cristo es nuestra paz",
+    text: "Efesios 2:14 (RVR60) - 'Porque él es nuestra paz, que de ambos pueblos hizo uno, derribando la pared intermedia de separación.'"
+       },
+       {
+    title: "La comunión con la verdad",
+    text: "1 Juan 1:6-7 (RVR60) - 'Si decimos que tenemos comunión con él, y andamos en tinieblas, mentimos, y no practicamos la verdad; pero si andamos en luz, como él está en luz, tenemos comunión unos con otros, y la sangre de Jesucristo su Hijo nos limpia de todo pecado.'"
+      },
+      {
+    title: "Un reino que no puede ser dividido",
+    text: "Marcos 3:24-25 (RVR60) - 'Si un reino está dividido contra sí mismo, tal reino no puede permanecer. Y si una casa está dividida contra sí misma, tal casa no puede permanecer.'"
+       }, 
+       {
+            title: "Nueva criatura",
+            text: "2 Corintios 5:17 - 'De modo que si alguno está en Cristo, nueva criatura es; las cosas viejas pasaron; he aquí todas son hechas nuevas.'"
+        },
+        {
+            title: "El Señor es mi pastor",
+            text: "Salmo 23:1 - 'El SEÑOR es mi pastor; nada me faltará.'"
+        },
+        {
+            title: "Ánimo en la tribulación",
+            text: "Romanos 12:12 - 'Gozosos en la esperanza, sufridos en la tribulación, constantes en la oración.'"
+        },
+        {
+            title: "Recuerda que esta prueba es temporal", 
+            text: "Romanos 8:18 - 'Pues tengo por cierto que las aflicciones del tiempo presente no son comparables con la gloria venidera que en nosotros ha de manifestarse.'"
+        },
+        {
+            title: "Esperanza en Dios",
+            text: "Salmo 42:11 - '¿Por qué te abates, oh alma mía, y por qué te turbas dentro de mí? Espera en Dios; porque aún he de alabarle, salvación mía y Dios mío.'"
+        },
+        {
+            title: "Exhortación a la perseverancia",
+            text: "Hebreos 10:36 - 'Porque os es necesaria la paciencia, para que habiendo hecho la voluntad de Dios, obtengáis la promesa.'"
+        },
+        {
+    title: "Gozo, oración y acción de gracias",
+    text: "1 Tesalonicenses 5:16-18 (RVR60) - 'Estad siempre gozosos. Orad sin cesar. Dad gracias en todo, porque esta es la voluntad de Dios para con vosotros en Cristo Jesús.'"
+        },
+        {
+            title: "La paz de Dios",
+            text: "Filipenses 4:7 - 'Y la paz de Dios, que sobrepasa todo entendimiento, guardará vuestros corazones y vuestros pensamientos en Cristo Jesús.'"
+        },
+        {
+    title: "Amar a Dios y al prójimo",
+    text: "Mateo 22:37-39 (RVR60) - 'Jesús le dijo: Amarás al Señor tu Dios con todo tu corazón, y con toda tu alma, y con toda tu mente. Este es el primero y grande mandamiento. Y el segundo es semejante: Amarás a tu prójimo como a ti mismo.'"
+        },
+        {    
+            title: "En donde tienes puesta tu mirada ",
+            text: "He 12:2 - 'puestos los ojos en Jesús, el autor y consumador de la fe, el cual por el gozo puesto delante de él sufrió la cruz, menospreciando el oprobio, y se sentó a la diestra del trono de Dios.'"
+        },
+        {
+    title: "Dios es nuestra herencia eterna",
+    text: "Salmo 73:25-26 (RVR60) - '¿A quién tengo yo en los cielos sino a ti? Y fuera de ti nada deseo en la tierra. Mi carne y mi corazón desfallecen; mas la roca de mi corazón y mi porción es Dios para siempre.'"
+        },
+        {
+    title: "Jesús declara ser la luz del mundo",
+    text: "Juan 8:12 (RVR60) - 'Otra vez Jesús les habló, diciendo: Yo soy la luz del mundo; el que me sigue, no andará en tinieblas, sino que tendrá la luz de la vida.'"
+        },
+        {
+            title: "La esperanza no defrauda",
+            text: "Romanos 5:5 - 'Y la esperanza no defrauda, porque el amor de Dios ha sido derramado en nuestros corazones por el Espíritu Santo que nos fue dado.'"
+        },
+        {
+            title: "El comienzo de la vida que Cristo ofrece",
+            text: "2Co 5:17 - 'De modo que si alguno está en Cristo, nueva criatura es; las cosas viejas pasaron; he aquí todas son hechas nuevas'"
+        },
+        {
+            title: "Dios es nuestro refugio",
+            text: "Salmo 46:1 - 'Dios es nuestro amparo y fortaleza, nuestro pronto auxilio en las tribulaciones.'"
+        },
+        {
+            title: "Exhortación a la fe",
+            text: "Marcos 11:22 - 'Respondiendo Jesús, les dijo: Tened fe en Dios.'"
+        },
+        {
+            title: "¿Quién es tu guía en este mundo?",
+            text: "Jn 16:13 - 'Pero cuando venga el Espíritu de verdad, él os guiará a toda la verdad; porque no hablará por su propia cuenta, sino que hablará todo lo que oyere, y os hará saber las cosas que habrán de venir.'"
+        },
+        {
+            title: "La fidelidad de Dios",
+            text: "1 Corintios 1:9 - 'Fiel es Dios, por el cual fuisteis llamados a la comunión con su Hijo Jesucristo nuestro Señor.'"
+        },
+        {
+            title: "La promesa de vida eterna",
+            text: "1 Juan 2:25 - 'Y esta es la promesa que él nos hizo, la vida eterna.'"
+        },
+        {
+            title: "La luz del mundo",
+            text: "Juan 8:12 - 'Otra vez Jesús les habló, diciendo: Yo soy la luz del mundo; el que me sigue, no andará en tinieblas, sino que tendrá la luz de la vida.'"
+        },
+        {
+            title: "Refugio divino",
+            text: "Salmo 91:1 - 'El que habita al abrigo del Altísimo Morará bajo la sombra del Omnipotente.'"
+        },
+        {
+            title: "Vivir con propósito",
+            text: "1 Timoteo 4:16 - 'Ten cuidado de ti mismo y de la doctrina; persiste en ello, pues haciendo esto, te salvarás a ti mismo y a los que te oyeren.'"
+        },
+        {
+            title: "Esperanza en Dios",
+            text: "Salmo 62:5 - 'Alma mía, en Dios solamente reposa, porque de él es mi esperanza.'"
+        },
+        {
+            title: "El futuro que Dios tiene para ti",
+            text: "Jeremías 29:11 - 'Porque yo sé los planes que tengo para ti —declara el SEÑOR—, planes de bienestar y no de mal, para darte un futuro y una esperanza.'"
+        },
+        {
+            title: "La esperanza no te defraudará",
+            text: "Romanos 15:13 - 'Y el Dios de esperanza os llene de todo gozo y paz en el creer, para que abundéis en esperanza por el poder del Espíritu Santo.'"
+        },
+        {
+            title: "Dios renueva tus fuerzas",
+            text: "Isaías 40:31 - 'Pero los que esperan en el SEÑOR renovarán sus fuerzas; volarán como las águilas: correrán y no se cansarán, caminarán y no se fatigarán.'"
+        },
+        {
+            title: "Esperanza eterna",
+            text: "Tito 1:2 - 'En la esperanza de la vida eterna, la cual Dios, que no miente, prometió desde antes del principio de los siglos.'"
+        },
+        {
+            title: "Dios es tu fortaleza",
+            text: "Salmo 28:7 - 'El SEÑOR es mi fortaleza y mi escudo; en él confío mi corazón, y fui ayudado; por tanto, mi corazón se alegra, y con mi cántico le alabaré.'"
+        },
+        {
+            title: "No temas, Dios está contigo",
+            text: "Isaías 41:10 - 'No temas, porque yo estoy contigo; no desmayes, porque yo soy tu Dios que te esfuerzo; siempre te ayudaré, siempre te sustentaré con la diestra de mi justicia.'"
+        },
+        {
+            title: "Todo lo puedes en Cristo",
+            text: "Filipenses 4:13 - 'Todo lo puedo en Cristo que me fortalece.'"
+        },
+        {
+            title: "Dios te sostendrá",
+            text: "Salmo 55:22 - 'Echa sobre el SEÑOR tu carga, y él te sustentará; no dejará para siempre caído al justo.'"
+        },
+        {
+            title: "La fuerza de Dios es perfecta",
+            text: "2 Corintios 12:9 - 'Y me ha dicho: Bástate mi gracia; porque mi poder se perfecciona en la debilidad. Por tanto, de buena gana me gloriaré más bien en mis debilidades, para que repose sobre mí el poder de Cristo.'"
+        },
+        {
+            title: "Confía en Dios en todo momento",
+            text: "Proverbios 3:5-6 - 'Confía en el SEÑOR con todo tu corazón, y no te apoyes en tu propia prudencia. Reconócelo en todos tus caminos, y él enderezará tus veredas.'"
+        },
+        {
+            title: "La fe mueve montañas",
+            text: "Mateo 17:20 - 'Jesús les dijo: Por vuestra poca fe; porque de cierto os digo, que si tuviereis fe como un grano de mostaza, diréis a este monte: Pásate de aquí allá, y se pasará; y nada os será imposible.'"
+        },
+        {
+            title: "Camina por fe, no por vista",
+            text: "2 Corintios 5:7 - 'Porque por fe andamos, no por vista.'"
+        },
+        {
+            title: "Dios recompensa tu fe",
+            text: "Hebreos 11:6 - 'Pero sin fe es imposible agradar a Dios; porque es necesario que el que se acerca a Dios crea que él existe, y que es galardonador de los que le buscan.'"
+        },
+        {
+            title: "Tu fe te ha salvado",
+            text: "Lucas 7:50 - 'Y Jesús dijo a la mujer: Tu fe te ha salvado; ve en paz.'"
+        },
+        {
+            title: "El amor de Dios te da esperanza", 
+            text: "Juan 3:16 - 'Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel que en él cree no se pierda, mas tenga vida eterna.'"
+        },
+        {
+            title: "Nada te separará de su amor",
+            text: "Romanos 8:38-39 - 'Porque estoy convencido de que ni la muerte, ni la vida, ni ángeles, ni principados, ni lo presente, ni lo por venir, ni los poderes, ni lo alto, ni lo profundo, ni ninguna otra cosa creada nos podrá separar del amor de Dios que es en Cristo Jesús, nuestro Señor.'"
+        },
+        {
+            title: "El amor de Dios es perfecto",
+            text: "1 Juan 4:18 - 'En el amor no hay temor, sino que el perfecto amor echa fuera el temor; porque el temor lleva en sí castigo. De donde el que teme, no ha sido perfeccionado en el amor.'"
+        },
+        {
+            title: "Ama como Dios te ama",
+            text: "1 Juan 4:7 - 'Amados, amémonos unos a otros; porque el amor es de Dios. Todo aquel que ama, es nacido de Dios, y conoce a Dios.'"
+        },
+        {
+            title: "Dios es amor",
+            text: "1 Juan 4:8 - 'El que no ama, no ha conocido a Dios; porque Dios es amor.'"
+        },
+        {
+            title: "Dios es tu escudo",
+            text: "Salmo 3:3 - 'Mas tú, SEÑOR, eres escudo alrededor de mí; mi gloria, y el que levanta mi cabeza.'"
+        },
+        {
+            title: "Bajo sus alas hay seguridad",
+            text: "Salmo 91:4 - 'Con sus plumas te cubrirá, y debajo de sus alas estarás seguro; escudo y adarga es su verdad.'"
+        },
+        {
+            title: "Dios es tu refugio en la tormenta",
+            text: "Salmo 46:1 - 'Dios es nuestro amparo y fortaleza, nuestro pronto auxilio en las tribulaciones.'"
+        },
+        {
+            title: "¿Tú eres Templo del Espíritu Santo? ",
+            text: "1Co 6:19 - '¿No se dan cuenta de que su cuerpo es el templo del Espíritu Santo, quien vive en ustedes y les fue dado por Dios? Ustedes no se pertenecen a sí mismos,'"
+        },
+        {
+            title: "Ningún mal te tocará",
+            text: "Salmo 91:10 - 'No te sobrevendrá mal, ni plaga tocará tu morada.'"
+        },
+        {
+            title: "Dios te guarda en todo momento",
+            text: "Salmo 121:7-8 - 'El SEÑOR te guardará de todo mal; él guardará tu alma. El SEÑOR guardará tu salida y tu entrada desde ahora y para siempre.'"
+        }, 
+        {
+            title: "El fin no justifica los medios", 
+            text: "Proverbios 14:12 - 'Hay camino que al hombre le parece derecho; Pero su fin es camino de muerte.'"
+        }, 
+        { 
+            title: "Nueva vida en Cristo", 
+            text: "2 Corintios 5:17 - 'De modo que si alguno está en Cristo, nueva criatura es; las cosas viejas pasaron; he aquí todas son hechas nuevas.'"
+        }, 
+        {
+            title: "No pierdas la fe", 
+            text: "Hebreos 10:36 - 'Sean fuertes, y por ningún motivo dejen de confiar en él cuando estén sufriendo, para que así puedan hacer lo que Dios quiere y reciban lo que él les ha prometido.'"
+        }, 
+        {
+            title: "Imitadores de Dios", 
+            text: "Efesios 5:1 - 'Sed, pues, imitadores de Dios como hijos amados.'"
+        }, 
+        {
+            title: "Camino hacia la misericordia", 
+            text: "Proverbios 28:13 - 'El que encubre sus pecados no prosperará, mas el que los confiesa y los abandona hallará misericordia.'"
+        }, 
+        {
+            title: "El corazón determina las acciones", 
+            text: "Lucas 6:45 - 'Una persona buena produce cosas buenas del tesoro de su buen corazón, y una persona mala produce cosas malas del tesoro de su mal corazón. Lo que uno dice brota de lo que hay en el corazón.'"
+        }, 
+        {
+    title: "La luz en las tinieblas",
+    text: "Juan 8:12 - 'Otra vez Jesús les habló, diciendo: Yo soy la luz del mundo; el que me sigue, no andará en tinieblas, sino que tendrá la luz de la vida.'"
+       },
+       {
+    title: "El buen pastor",
+    text: "Juan 10:11 - 'Yo soy el buen pastor; el buen pastor su vida da por las ovejas.'"
+       },
+       {
+    title: "La resurrección y la vida",
+    text: "Juan 11:25 - 'Le dijo Jesús: Yo soy la resurrección y la vida; el que cree en mí, aunque esté muerto, vivirá.'"
+       },
+       {
+    title: "La vid verdadera",
+    text: "Juan 15:5 - 'Yo soy la vid, vosotros los pámpanos; el que permanece en mí, y yo en él, éste lleva mucho fruto; porque separados de mí nada podéis hacer.'"
+      },
+      {
+    title: "La libertad en Cristo",
+    text: "Gálatas 5:1 - 'Estad, pues, firmes en la libertad con que Cristo nos hizo libres, y no estéis otra vez sujetos al yugo de esclavitud.'"
+      },
+      {
+    title: "Armadura de Dios",
+    text: "Efesios 6:11 - 'Vestíos de toda la armadura de Dios, para que podáis estar firmes contra las asechanzas del diablo.'"
+      },
+      {
+    title: "La oración con acción de gracias",
+    text: "Filipenses 4:6 - 'Por nada estéis afanosos, sino sean conocidas vuestras peticiones delante de Dios en toda oración y ruego, con acción de gracias.'"
+     },
+     {
+    title: "La Palabra habita en nosotros",
+    text: "Colosenses 3:16 - 'La palabra de Cristo more en abundancia en vosotros, enseñándoos y exhortándoos unos a otros en toda sabiduría.'"
+     },
+     {
+    title: "Soporta las pruebas",
+    text: "Santiago 1:12 - 'Bienaventurado el varón que soporta la tentación; porque cuando haya resistido la prueba, recibirá la corona de vida.'"
+     },
+     {
+    title: "Echando toda ansiedad en Dios",
+    text: "1 Pedro 5:7 - 'Echando toda vuestra ansiedad sobre él, porque él tiene cuidado de vosotros.'"
+     },
+     {
+    title: "Cristo venció al mundo",
+    text: "Juan 16:33 - 'Estas cosas os he hablado para que en mí tengáis paz. En el mundo tendréis aflicción; pero confiad, yo he vencido al mundo.'"
+    },
+    {
+    title: "Dios no hace acepción de personas",
+    text: "Hechos 10:34 - 'Entonces Pedro, abriendo la boca, dijo: En verdad comprendo que Dios no hace acepción de personas.'"
+    },
+    {
+    title: "La ley del Espíritu de vida",
+    text: "Romanos 8:2 - 'Porque la ley del Espíritu de vida en Cristo Jesús me ha librado de la ley del pecado y de la muerte.'"
+    },
+    {
+    title: "Llamados a ser santos",
+    text: "1 Corintios 1:2 - 'a la iglesia de Dios que está en Corinto, a los santificados en Cristo Jesús, llamados a ser santos con todos los que en cualquier lugar invocan el nombre de nuestro Señor Jesucristo, Señor de ellos y nuestro.'"
+    },
+    {
+    title: "La ofrenda agradable",
+    text: "2 Corintios 9:7 - 'Cada uno dé como propuso en su corazón: no con tristeza, ni por necesidad, porque Dios ama al dador alegre.'"
+     }, 
+     {
+            title: "Mantente creyendo a pesar de las circunstancias porque eso aumenta tu fe", 
+            text: "Mt 15:28 - 'Entonces respondiendo Jesús, dijo: Oh mujer, grande es tu fe; hágase contigo como quieres. Y su hija fue sanada desde aquella hora.'"
+        }, 
+        {
+            title: "La verdadera identidad de los hijos de Dios", 
+            text: "Ro 8:14 - 'Pues todos los que son guiados por el Espíritu de Dios son hijos de Dios.'"
+        },
+        {
+    title: "No dejes de alumbrar", 
+    text: "Mateo 5:14-16 (RVR60) - 'Vosotros sois la luz del mundo; una ciudad asentada sobre un monte no se puede esconder. Ni se enciende una luz y se pone debajo de un almud, sino sobre el candelero, y alumbra a todos los que están en casa. Así alumbre vuestra luz delante de los hombres, para que vean vuestras buenas obras, y glorifiquen a vuestro Padre que está en los cielos.'"
+        },
+        {
+    title: "Frutos que demuestran la fe",
+    text: "Juan 15:8 (RVR60) - 'En esto es glorificado mi Padre, en que llevéis mucho fruto, y seáis así mis discípulos.'"
+        },
+        {
+    title: "Obras preparadas por Dios",
+    text: "Efesios 2:10 (RVR60) - 'Porque somos hechura suya, creados en Cristo Jesús para buenas obras, las cuales Dios preparó de antemano para que anduviésemos en ellas.'"
+         },
+         {
+    title: "La fe sin obras está muerta",
+    text: "Santiago 2:17-18 (RVR60) - 'Así también la fe, si no tiene obras, es muerta en sí misma. Pero alguno dirá: Tú tienes fe, y yo tengo obras. Muéstrame tu fe sin tus obras, y yo te mostraré mi fe por mis obras.'"
+          },
+         {
+    title: "Brillando como luminares",
+    text: "Filipenses 2:15-16 (RVR60) - 'Para que seáis irreprensibles y sencillos, hijos de Dios sin mancha en medio de una generación maligna y perversa, en medio de la cual resplandecéis como luminares en el mundo; asidos de la palabra de vida.'"
+         },
+         {
+    title: "El servicio como testimonio",
+    text: "1 Pedro 4:10-11 (RVR60) - 'Cada uno según el don que ha recibido, minístrelo a los otros, como buenos administradores de la multiforme gracia de Dios. Si alguno habla, hable conforme a las palabras de Dios; si alguno ministra, ministre conforme al poder que Dios da, para que en todo sea Dios glorificado por Jesucristo.'"
+         },
+        {
+    title: "La luz vence a las tinieblas",
+    text: "1 Juan 1:5-7 (RVR60) - 'Dios es luz, y no hay ningunas tinieblas en él. Si decimos que tenemos comunión con él, y andamos en tinieblas, mentimos, y no practicamos la verdad; pero si andamos en luz, como él está en luz, tenemos comunión unos con otros.'"
+        },
+        {
+    title: "Sal y luz en la sociedad",
+    text: "Colosenses 4:5-6 (RVR60) - 'Andad sabiamente para con los de afuera, redimiendo el tiempo. Sea vuestra palabra siempre con gracia, sazonada con sal, para que sepáis cómo debéis responder a cada uno.'"
+       }, 
+    ];
+
+      // Almacena el índice actual del versículo mostrado
+      let currentVerseIndex;
+
+      // Función para mostrar versículo actual según índice
+      function showCurrentVerse() {
+        const verseElement = document.getElementById("verse");
+        const verse = verses[currentVerseIndex];
+        verseElement.innerHTML = `<h3 class="verse-title">${verse.title}</h3><p class="verse-text">${verse.text}</p>`;
+      }
+
+      // Función para mostrar el siguiente versículo en orden circular
+      function showNextVerse() {
+        currentVerseIndex = (currentVerseIndex + 1) % verses.length;
+        showCurrentVerse();
+      }
+
+      // Al cargar la página, se selecciona un índice aleatorio para el versículo inicial
+      window.addEventListener("load", () => {
+        currentVerseIndex = Math.floor(Math.random() * verses.length);
+        showCurrentVerse();
+        // Luego cambia en orden cada 5 minutos (300000 ms)
+        setInterval(showNextVerse, 300000);
+      });
+
+      // Funciones de accesibilidad
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+        document.body.classList.remove("high-contrast");
+      }
+
+      function toggleHighContrast() {
+        document.body.classList.toggle("high-contrast");
+        document.body.classList.remove("dark-mode");
+      }
+
+      function changeFontSize(action) {
+        const sizes = [
+          "font-small",
+          "font-medium",
+          "font-large",
+          "font-xlarge",
+        ];
+        const currentSize =
+          sizes.find((size) => document.body.classList.contains(size)) ||
+          "font-medium";
+        let currentIndex = sizes.indexOf(currentSize);
+
+        if (action === "increase" && currentIndex < sizes.length - 1) {
+          currentIndex++;
+        } else if (action === "decrease" && currentIndex > 0) {
+          currentIndex--;
+        }
+        document.body.classList.remove(...sizes);
+        document.body.classList.add(sizes[currentIndex]);
+      }
+
+      function resetAccessibility() {
+        document.body.className = "font-medium";
+      }
+
+      // Ajuste del margen superior del main según altura del header
+      function adjustMainMargin() {
+        const header = document.querySelector(".header");
+        const main = document.querySelector(".main-container");
+        const headerHeight = header.offsetHeight;
+        main.style.marginTop = headerHeight + 20 + "px"; // 20px extra de separación
+      }
+
+      window.addEventListener("load", adjustMainMargin);
+      window.addEventListener("resize", adjustMainMargin);
+
+      // Datos de emisoras sin imágenes, solo iconos de radio
+      const emisoras = [
+        { nombre: "", url: "https://stream.zeno.fm/a3y646rxcfhvv" },
+        { nombre: "", url: "https://audio.streaminghd.cl:9130/live" },
+        { nombre: "", url: "https://server.radiogs.net/8208/stream" },
+        { nombre: "", url: "https://audio.streaminghd.cl:9130/live" },
+        { nombre: "", url: "https://stream.zeno.fm/axxgbszqxhhvv" },
+        { nombre: "", url: "https://stream.zeno.fm/vwqjwmcm8cfuv" },
+        { nombre: "", url: "http://stream.zeno.fm/3khgtfrpktzuv" },
+        { nombre: "", url: "https://www.streamingcp.com:2000/stream/elcaminofm/;" },
+        { nombre: "", url: "https://server.radiostreaming.com.ar/8426/stream/;type=mp3" },
+        { nombre: "", url: "https://stream.zeno.fm/xmv0g0ztvneuv" },
+        { nombre: "", url: "http://stream.zeno.fm/wwny9dqrz8quv" },
+        { nombre: "Música Cristiana", url: "https://panel.lifestreammedia.net:8178/stream" },
+      ];
+
+      const emisorasList = document.getElementById("emisorasList");
+      const radioPlayer = document.getElementById("radioPlayer");
+
+      function cambiarEmisora(url) {
+        if (radioPlayer.src !== url) {
+          radioPlayer.pause();
+          radioPlayer.src = url;
+          radioPlayer.load();
+          radioPlayer.play().catch(() => {});
+        }
+      }
+
+      function cargarEmisoras() {
+  emisorasList.innerHTML = ""; // limpiar
+  emisoras.forEach((e, index) => {
+    const emisoraDiv = document.createElement("div");
+    emisoraDiv.className = "emisora-item";
+    emisoraDiv.tabIndex = 0;
+    emisoraDiv.setAttribute("role", "button");
+    emisoraDiv.setAttribute(
+      "aria-label",
+      `Reproducir emisora ${index + 1} - ${e.nombre}`
+    );
+    emisoraDiv.innerHTML = `
+      <i class="fas fa-radio emisora-icon"></i>
+      <span class="emisora-nombre">Emisora ${index + 1}<br>${e.nombre}</span>
+    `;
+    emisoraDiv.addEventListener("click", () => {
+      cambiarEmisora(e.url);
+      document
+        .querySelectorAll(".emisora-item")
+        .forEach((el) => (el.style.backgroundColor = "transparent"));
+      emisoraDiv.style.backgroundColor = "rgba(212, 175, 55, 0.2)";
+    });
+    emisoraDiv.addEventListener("keypress", (evt) => {
+      if (evt.key === "Enter" || evt.key === " ") {
+        evt.preventDefault();
+        emisoraDiv.click();
+      }
+    });
+    emisorasList.appendChild(emisoraDiv);
+  });
+}
+
+
+      cargarEmisoras();
+document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const splash = document.getElementById('splash-screen');
+        splash.style.opacity = '0';
+        setTimeout(() => splash.style.display = 'none', 1200);
+      }, 10000);
+    });
+    </script>
+  </body>
+</html>
