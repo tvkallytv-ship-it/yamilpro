@@ -3,7 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TVision Max - Reproductor IPTV Premium</title>
+    <title>TVision Max - Cargando</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #000000, #000000, #000000);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: white;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .splash-container {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+            max-width: 800px;
+            padding: 20px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .floating-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            animation: float 6s ease-in-out infinite;
+            border: 8px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .floating-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(2deg);
+            }
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+            background: linear-gradient(90deg, #00FF88, #FF2A6D, #00D9FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .description {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .features {
+            text-align: left;
+            max-width: 500px;
+            margin: 0 auto 30px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .features h3 {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            color: #00FF88;
+        }
+
+        .features ul {
+            list-style-type: none;
+        }
+
+        .features li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .features li:before {
+            content: "•";
+            color: #00FF88;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: 3px;
+        }
+
+        .final-message {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-top: 20px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .slogan {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-top: 10px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: particle-float 15s infinite linear;
+        }
+
+        @keyframes particle-float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .glow {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            filter: blur(20px);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+
+        .loading-bar {
+            width: 300px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            margin: 30px auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loading-progress {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #00FF88, #FF2A6D);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .loading-text {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ================================================== */
+        /* CONTENEDOR DE LA APLICACIÓN - OCULTO INICIALMENTE */
+        /* ================================================== */
+        #app-container {
+            display: none;
+            width: 100%;
+            height: 100vh;
+        }
+        /* ================================================== */
+    </style>
+</head>
+<body>
+    <!-- EFECTO DE PRESENTACIÓN -->
+    <div class="particles" id="particles"></div>
+    <div class="glow"></div>
+    
+    <div class="splash-container" id="splash-container">
+        <div class="floating-image">
+            <img src="https://i.ibb.co/p6zkdWdb/1000210170.png" alt="TVision Max">
+        </div>
+        <h1>TVision Max</h1>
+        <div class="tagline">Donde cada detalle cobra vida</div>
+        <div class="description">
+            Experimenta la televisión como nunca antes. TVision Max te ofrece una calidad de imagen excepcional y una claridad que redefine el entretenimiento.
+        </div>
+        
+        <div class="features">
+            <h3>✨ Características principales:</h3>
+            <ul>
+                <li>Calidad Max: Imágenes nítidas y colores vibrantes</li>
+                <li>Interfaz intuitiva: Navegación fácil y fluida</li>
+                <li>Contenido ilimitado: Todo tu entretenimiento en un solo lugar</li>
+                <li>Streaming sin interrupciones: Disfruta sin límites</li>
+            </ul>
+        </div>
+        
+        <div class="final-message">
+            La evolución de la televisión está aquí.
+        </div>
+        <div class="slogan">
+            TVision Max - Máxima calidad, máxima experiencia.
+        </div>
+        
+        <div class="loading-bar">
+            <div class="loading-progress" id="loading-progress"></div>
+        </div>
+        <div class="loading-text" id="loading-text">Inicializando TVision Max...</div>
+    </div>
+
+    <!-- ================================================== -->
+    <!-- AQUÍ DEBES PEGAR TODA TU APLICACIÓN HTML COMPLETA -->
+    <!-- ================================================== -->
+    <div id="app-container">
+        <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisiónMáx - Reproductor IPTV Premium</title>
     <!-- Plyr CSS -->
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
     <style>
@@ -34,237 +331,6 @@
             color: var(--text-color);
             overflow-x: hidden;
             line-height: 1.5;
-            height: 100vh;
-            width: 100vw;
-        }
-
-        /* ===== ANIMACIÓN DE INICIO ===== */
-        #splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--primary-bg);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            overflow: hidden;
-        }
-        
-        .amoled-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(0, 255, 136, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(255, 42, 109, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(0, 217, 255, 0.05) 0%, transparent 50%);
-            animation: backgroundPulse 8s ease-in-out infinite;
-        }
-        
-        @keyframes backgroundPulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.7; }
-        }
-        
-        .logo-container {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 2;
-            margin-bottom: 50px;
-        }
-        
-        .logo-image {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 30px;
-            position: relative;
-            animation: logoGlow 3s ease-in-out infinite alternate;
-            box-shadow: 
-                0 0 20px var(--accent-color),
-                0 0 40px var(--accent-color),
-                0 0 60px var(--accent-color),
-                inset 0 0 20px rgba(0, 0, 0, 0.5);
-        }
-        
-        .logo-image::before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: url('https://i.ibb.co/p6zkdWdb/1000210170.png') center/contain no-repeat;
-            /* QUITAMOS EL FILTER QUE CAMBIA LOS COLORES */
-        }
-        
-        @keyframes logoGlow {
-            0% {
-                box-shadow: 
-                    0 0 20px var(--accent-color),
-                    0 0 40px var(--accent-color),
-                    0 0 60px var(--accent-color),
-                    inset 0 0 20px rgba(0, 0, 0, 0.5);
-                transform: scale(1);
-            }
-            100% {
-                box-shadow: 
-                    0 0 30px var(--accent-color),
-                    0 0 60px var(--accent-color),
-                    0 0 90px var(--accent-color),
-                    inset 0 0 30px rgba(0, 0, 0, 0.5);
-                transform: scale(1.05);
-            }
-        }
-        
-        .app-name {
-            font-size: 3.5rem;
-            font-weight: 900;
-            text-align: center;
-            background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary), var(--accent-tertiary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 
-                0 0 10px rgba(0, 255, 136, 0.5),
-                0 0 20px rgba(0, 255, 136, 0.3),
-                0 0 30px rgba(0, 255, 136, 0.2);
-            letter-spacing: 2px;
-            position: relative;
-            animation: textGlow 2s ease-in-out infinite alternate;
-            margin-bottom: 10px;
-        }
-        
-        @keyframes textGlow {
-            0% {
-                text-shadow: 
-                    0 0 10px rgba(0, 255, 136, 0.5),
-                    0 0 20px rgba(0, 255, 136, 0.3),
-                    0 0 30px rgba(0, 255, 136, 0.2);
-            }
-            100% {
-                text-shadow: 
-                    0 0 15px rgba(0, 255, 136, 0.7),
-                    0 0 30px rgba(0, 255, 136, 0.5),
-                    0 0 45px rgba(0, 255, 136, 0.3);
-            }
-        }
-        
-        .app-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            text-align: center;
-            letter-spacing: 1px;
-            margin-bottom: 40px;
-            animation: fadeIn 2s ease-in-out;
-        }
-        
-        .progress-container {
-            width: 300px;
-            height: 6px;
-            background: var(--progress-bg);
-            border-radius: 3px;
-            overflow: hidden;
-            position: relative;
-            margin-top: 30px;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-            border-radius: 3px;
-            box-shadow: 0 0 10px var(--accent-color);
-            transition: width 0.3s ease;
-        }
-        
-        .progress-bar::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            animation: progressShine 2s infinite;
-        }
-        
-        @keyframes progressShine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        
-        .particle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: var(--accent-color);
-            border-radius: 50%;
-            opacity: 0;
-            animation: particleFloat 8s infinite linear;
-        }
-        
-        @keyframes particleFloat {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        .loading-message {
-            margin-top: 20px;
-            font-size: 1rem;
-            color: var(--text-secondary);
-            text-align: center;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 0.7; }
-            50% { opacity: 1; }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* ===== APLICACIÓN PRINCIPAL (OCULTA INICIALMENTE) ===== */
-        #app-container {
-            display: none;
-            width: 100%;
-            height: 100%;
         }
         
         .app-container {
@@ -289,13 +355,13 @@
             flex-shrink: 0;
         }
         
-        .logo-container-app {
+        .logo-container {
             display: flex;
             align-items: center;
             gap: 12px;
         }
         
-        .logo-container-app img {
+        .logo-container img {
             width: 42px;
             height: 42px;
             border-radius: 50%;
@@ -305,7 +371,7 @@
             box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
         }
         
-        .logo-container-app h1 {
+        .logo-container h1 {
             font-size: 20px;
             font-weight: 700;
             background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary), var(--accent-tertiary));
@@ -488,6 +554,11 @@
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         /* NOTIFICACIÓN DE SIGUIENTE EPISODIO */
@@ -1607,337 +1678,268 @@
         padding: 8px 10px;
     }
 }
+/* SOLUCIÓN: El MENÚ COMPLETO no se mueve horizontalmente */
+#series-controls {
+    overflow-x: hidden !important;  /* El menú completo NO se mueve horizontalmente */
+    overflow-y: auto !important;    /* El menú completo SÍ se mueve verticalmente */
+    max-height: 35vh;
+}
+
+/* Las secciones DENTRO del menú SÍ se mueven horizontalmente */
+.seasons-scroll, .episodes-scroll, .other-series-scroll {
+    display: flex;
+    overflow-x: auto !important;    /* Cada sección SÍ se mueve horizontalmente */
+    overflow-y: hidden !important;  /* Cada sección NO se mueve verticalmente */
+    gap: 8px;
+    padding: 8px 0;
+    scrollbar-width: thin;
+}
+
+/* Mantener las barras de scroll horizontales para cada sección */
+.seasons-scroll::-webkit-scrollbar,
+.episodes-scroll::-webkit-scrollbar,
+.other-series-scroll::-webkit-scrollbar {
+    height: 4px;
+}
+
+.seasons-scroll::-webkit-scrollbar-thumb,
+.episodes-scroll::-webkit-scrollbar-thumb,
+.other-series-scroll::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+    border-radius: 4px;
+}
     </style>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <!-- Plyr JS -->
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
 </head>
 <body>
-    <!-- ===== ANIMACIÓN DE INICIO ===== -->
-    <div id="splash-screen">
-        <div class="amoled-background"></div>
-        <div class="particles" id="particles-container"></div>
-        
-        <div class="logo-container">
-            <div class="logo-image"></div>
-            <h1 class="app-name">𝑻𝑽𝒊𝒔𝒊𝒐𝒏 𝑴𝒂𝒙</h1>
-            <p class="app-subtitle">Reproductor IPTV Premium</p>
-        </div>
-        
-        <div class="progress-container">
-            <div class="progress-bar" id="progress-bar"></div>
-        </div>
-        
-        <div class="loading-message" id="loading-message">Inicializando aplicación...</div>
+    <!-- Indicador de carga inteligente -->
+    <div class="smart-loading-indicator" id="smart-loading-indicator">
+        <div class="smart-loading-bar" id="smart-loading-bar"></div>
     </div>
     
-    <!-- ===== APLICACIÓN PRINCIPAL ===== -->
-    <div id="app-container">
-        <!-- Indicador de carga inteligente -->
-        <div class="smart-loading-indicator" id="smart-loading-indicator">
-            <div class="smart-loading-bar" id="smart-loading-bar"></div>
+    <!-- Estado del cache -->
+    <div class="cache-status" id="cache-status"></div>
+    
+    <div class="app-container">
+        <!-- Header -->
+        <div id="header">
+            <div class="logo-container">
+                <img src="https://i.ibb.co/p6zkdWdb/1000210170.png" alt="Death Star">
+                <h1> 𝑻𝑽𝒊𝒔𝒊𝒐𝒏 𝑴𝒂𝒙 </h1>
+            </div>
+            <button class="settings-btn" id="settings-btn">⚙️</button>
+            <div id="settings-menu">
+                <div class="settings-item" id="show-favorites">⭐ Ver Favoritos</div>
+                <div class="settings-item" id="refresh-list">🔄 Actualizar Lista</div>
+                <div class="settings-item" id="load-m3u">📁 Cargar archivo M3U</div>
+                <div class="settings-item" id="clear-cache">🗑️ Limpiar Cache</div>
+                <div class="settings-item" id="close-settings">❌ Cerrar</div>
+            </div>
         </div>
-        
-        <!-- Estado del cache -->
-        <div class="cache-status" id="cache-status"></div>
-        
-        <div class="app-container">
-            <!-- Header -->
-            <div id="header">
-                <div class="logo-container-app">
-                    <img src="https://i.ibb.co/p6zkdWdb/1000210170.png" alt="Death Star">
-                    <h1> 𝑻𝑽𝒊𝒔𝒊𝒐𝒏 𝑴𝒂𝒙 </h1>
-                </div>
-                <button class="settings-btn" id="settings-btn">⚙️</button>
-                <div id="settings-menu">
-                    <div class="settings-item" id="show-favorites">⭐ Ver Favoritos</div>
-                    <div class="settings-item" id="refresh-list">🔄 Actualizar Lista</div>
-                    <div class="settings-item" id="load-m3u">📁 Cargar archivo M3U</div>
-                    <div class="settings-item" id="clear-cache">🗑️ Limpiar Cache</div>
-                    <div class="settings-item" id="close-settings">❌ Cerrar</div>
-                </div>
-            </div>
 
-            <!-- Player View (se muestra cuando se reproduce un canal) -->
-            <div id="player-view">
-                <!-- Player Wrapper - MEJORADO CON PLYR -->
-                <div id="player-wrapper">
-                    <video id="channel-player" autoplay playsinline></video>
-                    
-                    <!-- NUEVO: Panel de estadísticas técnicas - OCULTO PERO FUNCIONAL -->
-                    <div class="tech-stats-panel" id="tech-stats-panel">
-                        <h4>📊 Estadísticas Técnicas</h4>
-                        <div>Resolución: <span class="stat-value" id="stat-resolution">-</span></div>
-                        <div>Bitrate: <span class="stat-value" id="stat-bitrate">-</span></div>
-                        <div>Buffer: <span class="stat-value" id="stat-buffer">-</span></div>
-                        <div>FPS: <span class="stat-value" id="stat-fps">-</span></div>
-                        <div>Codec: <span class="stat-value" id="stat-codec">-</span></div>
-                    </div>
-                    
-                    <!-- NUEVO: Overlay para controles gestuales -->
-                    <div class="gesture-overlay" id="gesture-overlay">
-                        <div class="gesture-feedback" id="gesture-feedback">
-                            <span id="gesture-icon">⏩</span>
-                            <span id="gesture-text">+10s</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Indicador de estado -->
-                    <div class="player-status" id="player-status">
-                        <div class="loading-spinner"></div>
-                        <span id="status-text">Cargando...</span>
-                    </div>
-                    
-                    <!-- Notificación de siguiente episodio - MODIFICADA -->
-                    <div class="next-episode-notification" id="next-episode-notification">
-                        <div class="next-episode-info" id="next-episode-info">
-                            Siguiente episodio en 10 segundos
-                        </div>
-                        <div class="next-episode-actions">
-                            <button class="notification-btn play-next-btn" id="play-next-now">Reproducir ahora</button>
-                            <button class="notification-btn cancel-next-btn" id="cancel-next">Cancelar</button>
-                        </div>
+        <!-- Player View (se muestra cuando se reproduce un canal) -->
+        <div id="player-view">
+            <!-- Player Wrapper - MEJORADO CON PLYR -->
+            <div id="player-wrapper">
+                <video id="channel-player" autoplay playsinline></video>
+                
+                <!-- NUEVO: Panel de estadísticas técnicas - OCULTO PERO FUNCIONAL -->
+                <div class="tech-stats-panel" id="tech-stats-panel">
+                    <h4>📊 Estadísticas Técnicas</h4>
+                    <div>Resolución: <span class="stat-value" id="stat-resolution">-</span></div>
+                    <div>Bitrate: <span class="stat-value" id="stat-bitrate">-</span></div>
+                    <div>Buffer: <span class="stat-value" id="stat-buffer">-</span></div>
+                    <div>FPS: <span class="stat-value" id="stat-fps">-</span></div>
+                    <div>Codec: <span class="stat-value" id="stat-codec">-</span></div>
+                </div>
+                
+                <!-- NUEVO: Overlay para controles gestuales -->
+                <div class="gesture-overlay" id="gesture-overlay">
+                    <div class="gesture-feedback" id="gesture-feedback">
+                        <span id="gesture-icon">⏩</span>
+                        <span id="gesture-text">+10s</span>
                     </div>
                 </div>
                 
-                <!-- Search Bar in Player View - REGRESADO AL DISEÑO ORIGINAL -->
-                <div id="player-search-bar">
-                    <input type="text" id="player-search-input" placeholder="Buscar en esta categoría...">
-                    <button id="back-to-main">← Volver</button>
-                    <!-- BOTÓN OCULTO PERO FUNCIONAL -->
-                    <button id="tech-stats-btn" style="display: none;">📊 Stats</button>
-                    <button id="global-search-btn">🔍 Global</button>
+                <!-- Indicador de estado -->
+                <div class="player-status" id="player-status">
+                    <div class="loading-spinner"></div>
+                    <span id="status-text">Cargando...</span>
                 </div>
                 
-                <!-- Series Controls -->
-                <div id="series-controls">
-                    <div id="series-info-display" class="series-info-display">Ojo de Halcón S01 E01</div>
-                    <div class="auto-play-controls">
-                        <input type="checkbox" id="auto-play-toggle" class="auto-play-toggle" checked>
-                        <label for="auto-play-toggle" class="auto-play-label">Reproducción automática inteligente</label>
+                <!-- Notificación de siguiente episodio - MODIFICADA -->
+                <div class="next-episode-notification" id="next-episode-notification">
+                    <div class="next-episode-info" id="next-episode-info">
+                        Siguiente episodio en 10 segundos
                     </div>
-                    
-                    <!-- Temporadas -->
-                    <div id="seasons-container" class="seasons-container" style="display:none;">
-                        <div class="seasons-title">📺 Temporadas Disponibles</div>
-                        <div id="seasons-scroll" class="seasons-scroll">
-                            <!-- Las temporadas se cargarán aquí dinámicamente -->
-                        </div>
-                    </div>
-                    
-                    <!-- Episodios -->
-                    <div id="episodes-container" class="episodes-container" style="display:none;">
-                        <div class="episodes-title">🎬 Episodios de la Temporada</div>
-                        <div id="episodes-scroll" class="episodes-scroll">
-                            <!-- Los episodios se cargarán aquí dinámicamente -->
-                        </div>
-                    </div>
-                    
-                    <!-- Otras Series -->
-                    <div id="other-series-container" class="other-series-container" style="display:none;">
-                        <div class="other-series-title">🌟 Series que te pueden gustar</div>
-                        <div id="other-series-scroll" class="other-series-scroll">
-                            <!-- Otras series se cargarán aquí dinámicamente -->
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Channels in Player View - MEJORADO CON MÁS ESPACIO -->
-                <div id="player-channels-container">
-                    <div class="channels-grid" id="player-channels-grid">
-                        <!-- Los canales de la categoría actual se cargarán aquí -->
+                    <div class="next-episode-actions">
+                        <button class="notification-btn play-next-btn" id="play-next-now">Reproducir ahora</button>
+                        <button class="notification-btn cancel-next-btn" id="cancel-next">Cancelar</button>
                     </div>
                 </div>
             </div>
-
-            <!-- Main Content (vista principal) -->
-            <div id="main-content">
-                <!-- Categories Panel -->
-                <div id="categories-panel">
-                    <!-- Categories will be loaded dynamically -->
+            
+            <!-- Search Bar in Player View - REGRESADO AL DISEÑO ORIGINAL -->
+            <div id="player-search-bar">
+                <input type="text" id="player-search-input" placeholder="Buscar en esta categoría...">
+                <button id="back-to-main">← Volver</button>
+                <!-- BOTÓN OCULTO PERO FUNCIONAL -->
+                <button id="tech-stats-btn" style="display: none;">📊 Stats</button>
+                <button id="global-search-btn">🔍 Global</button>
+            </div>
+            
+            <!-- Series Controls -->
+            <div id="series-controls">
+                <div id="series-info-display" class="series-info-display">Ojo de Halcón S01 E01</div>
+                <div class="auto-play-controls">
+                    <input type="checkbox" id="auto-play-toggle" class="auto-play-toggle" checked>
+                    <label for="auto-play-toggle" class="auto-play-label">Reproducción automática inteligente</label>
                 </div>
-
-                <!-- Channels Panel -->
-                <div id="channels-panel">
-                    <!-- Search Bar in Main View -->
-                    <div id="search-bar">
-                        <input type="text" id="search-input" placeholder="Buscar canal...">
+                
+                <!-- Temporadas -->
+                <div id="seasons-container" class="seasons-container" style="display:none;">
+                    <div class="seasons-title">📺 Temporadas Disponibles</div>
+                    <div id="seasons-scroll" class="seasons-scroll">
+                        <!-- Las temporadas se cargarán aquí dinámicamente -->
                     </div>
-                    
-                    <!-- Channels Grid -->
-                    <div id="channels-grid-container">
-                        <!-- Channels will be loaded dynamically -->
+                </div>
+                
+                <!-- Episodios -->
+                <div id="episodes-container" class="episodes-container" style="display:none;">
+                    <div class="episodes-title">🎬 Episodios de la Temporada</div>
+                    <div id="episodes-scroll" class="episodes-scroll">
+                        <!-- Los episodios se cargarán aquí dinámicamente -->
                     </div>
+                </div>
+                
+                <!-- Otras Series -->
+                <div id="other-series-container" class="other-series-container" style="display:none;">
+                    <div class="other-series-title">🌟 Series que te pueden gustar</div>
+                    <div id="other-series-scroll" class="other-series-scroll">
+                        <!-- Otras series se cargarán aquí dinámicamente -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Channels in Player View - MEJORADO CON MÁS ESPACIO -->
+            <div id="player-channels-container">
+                <div class="channels-grid" id="player-channels-grid">
+                    <!-- Los canales de la categoría actual se cargarán aquí -->
                 </div>
             </div>
         </div>
 
-        <!-- Modal de Búsqueda Global -->
-        <div id="global-search-modal" class="search-modal">
-            <div class="search-modal-content">
-                <div class="search-modal-header">
-                    <div class="search-modal-title">🔍 Búsqueda Global</div>
-                    <button class="search-modal-close" id="close-global-search">✕</button>
+        <!-- Main Content (vista principal) -->
+        <div id="main-content">
+            <!-- Categories Panel -->
+            <div id="categories-panel">
+                <!-- Categories will be loaded dynamically -->
+            </div>
+
+            <!-- Channels Panel -->
+            <div id="channels-panel">
+                <!-- Search Bar in Main View -->
+                <div id="search-bar">
+                    <input type="text" id="search-input" placeholder="Buscar canal...">
                 </div>
-                <div class="search-modal-body">
-                    <input type="text" id="global-search-input" class="search-modal-input" placeholder="Buscar en todos los canales, series y categorías...">
-                    <div id="global-search-results" class="search-results-grid">
-                        <!-- Los resultados de búsqueda se cargarán aquí -->
-                    </div>
+                
+                <!-- Channels Grid -->
+                <div id="channels-grid-container">
+                    <!-- Channels will be loaded dynamically -->
                 </div>
             </div>
         </div>
-
-        <input type="file" id="file-input" accept=".m3u,.m3u8,.txt" style="display:none">
     </div>
 
-    <script>
-        // ===== SISTEMA DE ANIMACIÓN DE INICIO MEJORADO =====
-        class SplashAnimation {
-            constructor() {
-                this.splashScreen = document.getElementById('splash-screen');
-                this.appContainer = document.getElementById('app-container');
-                this.progressBar = document.getElementById('progress-bar');
-                this.loadingMessage = document.getElementById('loading-message');
-                this.particlesContainer = document.getElementById('particles-container');
-                
-                this.progress = 0;
-                this.maxProgress = 100;
-                this.animationDuration = 4000; // 4 segundos
-                this.stepDuration = this.animationDuration / this.maxProgress;
-                
-                this.messages = [
-                    "Inicializando aplicación...",
-                    "Cargando contenido...",
-                    "Optimizando experiencia...",
-                    "Preparando interfaz...",
-                    "Listo para usar..."
-                ];
-                
-                this.isAppLoaded = false;
-                
-                this.init();
-            }
-            
-            init() {
-                this.createParticles();
-                this.startProgressAnimation();
-                this.updateLoadingMessage();
-                // INICIAR CARGA DE LA APLICACIÓN INMEDIATAMENTE
-                this.startAppLoading();
-            }
-            
-            createParticles() {
-                const particleCount = 50;
-                
-                for (let i = 0; i < particleCount; i++) {
-                    const particle = document.createElement('div');
-                    particle.classList.add('particle');
-                    
-                    // Posición aleatoria
-                    const left = Math.random() * 100;
-                    const delay = Math.random() * 8;
-                    const duration = 5 + Math.random() * 5;
-                    
-                    particle.style.left = `${left}%`;
-                    particle.style.animationDelay = `${delay}s`;
-                    particle.style.animationDuration = `${duration}s`;
-                    
-                    // Color aleatorio de la paleta neón
-                    const colors = [
-                        'var(--accent-color)',
-                        'var(--accent-secondary)',
-                        'var(--accent-tertiary)'
-                    ];
-                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-                    particle.style.background = randomColor;
-                    
-                    this.particlesContainer.appendChild(particle);
-                }
-            }
-            
-            startProgressAnimation() {
-                const interval = setInterval(() => {
-                    this.progress += 1;
-                    this.progressBar.style.width = `${this.progress}%`;
-                    
-                    // Si la aplicación ya está cargada y la animación no ha terminado, acelerar
-                    if (this.isAppLoaded && this.progress < 90) {
-                        this.progress = 90;
-                        this.progressBar.style.width = '90%';
-                    }
-                    
-                    if (this.progress >= this.maxProgress) {
-                        clearInterval(interval);
-                        this.completeAnimation();
-                    }
-                }, this.stepDuration);
-            }
-            
-            updateLoadingMessage() {
-                let messageIndex = 0;
-                const messageInterval = setInterval(() => {
-                    if (messageIndex < this.messages.length) {
-                        this.loadingMessage.textContent = this.messages[messageIndex];
-                        messageIndex++;
-                    } else {
-                        clearInterval(messageInterval);
-                    }
-                }, this.animationDuration / this.messages.length);
-            }
-            
-            startAppLoading() {
-                // Iniciar la carga de la aplicación en segundo plano
-                setTimeout(() => {
-                    this.initializeMainApplication();
-                }, 500);
-            }
-            
-            completeAnimation() {
-                // Efecto de desvanecimiento
-                this.splashScreen.style.opacity = '0';
-                this.splashScreen.style.transition = 'opacity 0.5s ease';
-                
-                // Después del desvanecimiento, mostrar la aplicación
-                setTimeout(() => {
-                    this.splashScreen.style.display = 'none';
-                    this.appContainer.style.display = 'block';
-                }, 500);
-            }
-            
-            initializeMainApplication() {
-                // Inicializar todos los sistemas de la aplicación
-                initMainApp().then(() => {
-                    // Marcar que la aplicación está cargada
-                    this.isAppLoaded = true;
-                    console.log('Aplicación cargada completamente');
-                });
-            }
-        }
+    <!-- Modal de Búsqueda Global -->
+    <div id="global-search-modal" class="search-modal">
+        <div class="search-modal-content">
+            <div class="search-modal-header">
+                <div class="search-modal-title">🔍 Búsqueda Global</div>
+                <button class="search-modal-close" id="close-global-search">✕</button>
+            </div>
+            <div class="search-modal-body">
+                <input type="text" id="global-search-input" class="search-modal-input" placeholder="Buscar en todos los canales, series y categorías...">
+                <div id="global-search-results" class="search-results-grid">
+                    <!-- Los resultados de búsqueda se cargarán aquí -->
+                </div>
+            </div>
+        </div>
+    </div>
 
-        // ===== SISTEMA DE REPRODUCCIÓN ROBUSTO CORREGIDO =====
-        class RobustVideoPlayer {
+    <input type="file" id="file-input" accept=".m3u,.m3u8,.txt" style="display:none">
+
+    <script>
+        // ===== SISTEMA DE REPRODUCCIÓN INTELIGENTE MEJORADO CON CONTROLES AVANZADOS =====
+        class SmartVideoPlayer {
             constructor(videoElement) {
                 this.video = videoElement;
                 this.hls = null;
                 this.currentUrl = null;
+                this.isPlaying = false;
+                this.currentTime = 0;
+                this.duration = 0;
+                this.playbackPositions = new Map();
                 this.retryCount = 0;
-                this.maxRetries = 2;
+                this.maxRetries = 3;
+                this.nextEpisodeTimer = null;
+                this.autoPlayEnabled = true;
+                this.nextEpisodeNotificationShown = false;
                 this.plyr = null;
+                this.techStatsVisible = false;
+                this.frameCount = 0;
+                this.lastFpsTime = 0;
+                this.currentFps = 0;
                 
                 // Elementos de UI
                 this.playerStatus = document.getElementById('player-status');
                 this.statusText = document.getElementById('status-text');
+                this.nextEpisodeNotification = document.getElementById('next-episode-notification');
+                this.nextEpisodeInfo = document.getElementById('next-episode-info');
+                this.playNextNowBtn = document.getElementById('play-next-now');
+                this.cancelNextBtn = document.getElementById('cancel-next');
+                this.techStatsPanel = document.getElementById('tech-stats-panel');
+                this.gestureOverlay = document.getElementById('gesture-overlay');
+                this.gestureFeedback = document.getElementById('gesture-feedback');
+                this.gestureIcon = document.getElementById('gesture-icon');
+                this.gestureText = document.getElementById('gesture-text');
                 
                 this.initializePlyr();
                 this.setupEventListeners();
+                this.setupGestureControls();
+                this.startStatsUpdate();
+                this.setupHiddenControls(); // NUEVO: Configurar controles ocultos
+            }
+            
+            // NUEVO: Configurar controles ocultos pero funcionales
+            setupHiddenControls() {
+                // Las estadísticas se activan con doble tap en la pantalla
+                let lastTap = 0;
+                this.video.addEventListener('touchstart', (e) => {
+                    const currentTime = new Date().getTime();
+                    const tapLength = currentTime - lastTap;
+                    
+                    if (tapLength < 500 && tapLength > 0) {
+                        // Doble tap detectado - alternar estadísticas
+                        this.toggleTechStats();
+                    }
+                    lastTap = currentTime;
+                });
+                
+                // También se puede activar con click derecho (en desktop)
+                this.video.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
+                    this.toggleTechStats();
+                });
             }
             
             initializePlyr() {
                 // Ocultar controles nativos del video
                 this.video.controls = false;
                 
-                // Inicializar Plyr
+                // Inicializar Plyr CON CONTROLES AVANZADOS
                 this.plyr = new Plyr(this.video, {
                     controls: [
                         'play-large',
@@ -1952,9 +1954,20 @@
                         'pip',
                         'fullscreen'
                     ],
-                    settings: ['quality', 'speed'],
-                    quality: { default: 0, options: [4320, 2160, 1440, 1080, 720, 576, 480, 360, 240] },
-                    speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2] },
+                    settings: ['quality', 'speed', 'captions'],
+                    quality: {
+                        default: 0,
+                        options: [4320, 2160, 1440, 1080, 720, 576, 480, 360, 240],
+                        forced: true,
+                        onChange: (quality) => {
+                            console.log('Calidad cambiada:', quality);
+                            this.updateTechStats();
+                        }
+                    },
+                    speed: {
+                        selected: 1,
+                        options: [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]
+                    },
                     invertTime: false,
                     tooltips: { controls: true, seek: true },
                     keyboard: { focused: true, global: true },
@@ -1964,9 +1977,280 @@
                     hideControls: true,
                     resetOnEnd: false
                 });
+                
+                // CONFIGURACIÓN PARA PANTALLA COMPLETA HORIZONTAL
+                this.setupFullscreenOrientation();
+                
+                // Personalizar Plyr para que coincida con tu tema
+                this.customizePlyr();
+            }
+            
+            // NUEVO: Configurar controles gestuales
+            setupGestureControls() {
+                let startX = 0;
+                let startY = 0;
+                let isGestureActive = false;
+                let gestureType = null;
+
+                this.video.addEventListener('touchstart', (e) => {
+                    if (this.plyr.fullscreen.active) {
+                        startX = e.touches[0].clientX;
+                        startY = e.touches[0].clientY;
+                        isGestureActive = true;
+                    }
+                });
+
+                this.video.addEventListener('touchmove', (e) => {
+                    if (!isGestureActive || !this.plyr.fullscreen.active) return;
+                    
+                    const currentX = e.touches[0].clientX;
+                    const currentY = e.touches[0].clientY;
+                    const diffX = startX - currentX;
+                    const diffY = startY - currentY;
+                    
+                    if (Math.abs(diffX) > Math.abs(diffY)) {
+                        // Gestos horizontales - Buscar
+                        gestureType = 'seek';
+                        const seekAmount = Math.round(diffX / 10) * 5; // 5 segundos por gesto
+                        this.showGestureFeedback(seekAmount > 0 ? '⏪' : '⏩', `${Math.abs(seekAmount)}s`);
+                    } else {
+                        // Gestos verticales - Volumen/Brillo
+                        if (currentX < window.innerWidth / 2) {
+                            // Lado izquierdo - Brillo
+                            gestureType = 'brightness';
+                            this.showGestureFeedback('☀️', `${diffY > 0 ? '-' : '+'} Brillo`);
+                        } else {
+                            // Lado derecho - Volumen
+                            gestureType = 'volume';
+                            this.showGestureFeedback('🔊', `${diffY > 0 ? '-' : '+'} Vol`);
+                        }
+                    }
+                });
+
+                this.video.addEventListener('touchend', (e) => {
+                    if (!isGestureActive) return;
+                    
+                    const currentX = e.changedTouches[0].clientX;
+                    const currentY = e.changedTouches[0].clientY;
+                    const diffX = startX - currentX;
+                    const diffY = startY - currentY;
+                    
+                    if (gestureType === 'seek') {
+                        const seekTime = this.plyr.currentTime + (diffX > 0 ? -10 : 10);
+                        this.plyr.currentTime = Math.max(0, Math.min(seekTime, this.plyr.duration));
+                    }
+                    
+                    this.hideGestureFeedback();
+                    isGestureActive = false;
+                    gestureType = null;
+                });
+            }
+            
+            // NUEVO: Mostrar feedback de gestos
+            showGestureFeedback(icon, text) {
+                this.gestureIcon.textContent = icon;
+                this.gestureText.textContent = text;
+                this.gestureOverlay.style.display = 'flex';
+            }
+            
+            // NUEVO: Ocultar feedback de gestos
+            hideGestureFeedback() {
+                setTimeout(() => {
+                    this.gestureOverlay.style.display = 'none';
+                }, 500);
+            }
+            
+            // NUEVO: Sistema de estadísticas técnicas
+            startStatsUpdate() {
+                setInterval(() => {
+                    if (this.techStatsVisible) {
+                        this.updateTechStats();
+                    }
+                }, 1000);
+                
+                // Contador de FPS
+                this.video.addEventListener('timeupdate', () => {
+                    this.frameCount++;
+                    const now = performance.now();
+                    if (now - this.lastFpsTime >= 1000) {
+                        this.currentFps = Math.round((this.frameCount * 1000) / (now - this.lastFpsTime));
+                        this.frameCount = 0;
+                        this.lastFpsTime = now;
+                    }
+                });
+            }
+            
+            // NUEVO: Actualizar estadísticas técnicas
+            updateTechStats() {
+                if (!this.techStatsPanel) return;
+                
+                const resolution = this.video.videoWidth && this.video.videoHeight ? 
+                    `${this.video.videoWidth}x${this.video.videoHeight}` : '-';
+                
+                const bitrate = this.hls && this.hls.levels && this.hls.levels[this.hls.currentLevel] ?
+                    Math.round(this.hls.levels[this.hls.currentLevel].bitrate / 1000) + ' kbps' : '-';
+                
+                const buffer = this.video.buffered.length ? 
+                    Math.round(this.video.buffered.end(this.video.buffered.length - 1) - this.video.currentTime) + 's' : '0s';
+                
+                const codec = this.video.canPlayType('video/mp4; codecs="avc1.42E01E"') ? 'H.264' : 
+                             this.video.canPlayType('video/webm; codecs="vp8, vorbis"') ? 'VP8' : 'Unknown';
+                
+                document.getElementById('stat-resolution').textContent = resolution;
+                document.getElementById('stat-bitrate').textContent = bitrate;
+                document.getElementById('stat-buffer').textContent = buffer;
+                document.getElementById('stat-fps').textContent = this.currentFps + ' fps';
+                document.getElementById('stat-codec').textContent = codec;
+            }
+            
+            // NUEVO: Alternar visibilidad de estadísticas
+            toggleTechStats() {
+                this.techStatsVisible = !this.techStatsVisible;
+                if (this.techStatsVisible) {
+                    this.techStatsPanel.classList.add('show');
+                    this.updateTechStats();
+                } else {
+                    this.techStatsPanel.classList.remove('show');
+                }
+            }
+            
+            // Configurar orientación horizontal en pantalla completa
+            setupFullscreenOrientation() {
+                this.plyr.on('enterfullscreen', event => {
+                    console.log('Entrando en pantalla completa - Forzando horizontal');
+                    this.lockHorizontalOrientation();
+                    this.hideUIElements();
+                });
+                
+                this.plyr.on('exitfullscreen', event => {
+                    console.log('Saliendo de pantalla completa');
+                    this.unlockOrientation();
+                    this.showUIElements();
+                });
+            }
+            
+            lockHorizontalOrientation() {
+                if (screen.orientation && screen.orientation.lock) {
+                    screen.orientation.lock('landscape').catch(error => {
+                        console.log('No se pudo bloquear orientación:', error);
+                        this.forceLandscapeWithCSS();
+                    });
+                } else {
+                    this.forceLandscapeWithCSS();
+                }
+            }
+            
+            forceLandscapeWithCSS() {
+                document.documentElement.classList.add('force-landscape');
+                const landscapeStyle = document.createElement('style');
+                landscapeStyle.id = 'landscape-style';
+                landscapeStyle.textContent = `
+                    .force-landscape body {
+                        transform: rotate(90deg);
+                        transform-origin: center center;
+                        width: 100vh;
+                        height: 100vw;
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        margin-top: -50vw;
+                        margin-left: -50vh;
+                        overflow: hidden;
+                    }
+                    .force-landscape .plyr--fullscreen {
+                        transform: rotate(0deg) !important;
+                    }
+                `;
+                document.head.appendChild(landscapeStyle);
+            }
+            
+            unlockOrientation() {
+                if (screen.orientation && screen.orientation.unlock) {
+                    screen.orientation.unlock();
+                }
+                document.documentElement.classList.remove('force-landscape');
+                const landscapeStyle = document.getElementById('landscape-style');
+                if (landscapeStyle) {
+                    landscapeStyle.remove();
+                }
+            }
+            
+            hideUIElements() {
+                const elementsToHide = [
+                    '#player-search-bar',
+                    '#series-controls',
+                    '#player-channels-container',
+                    '#header'
+                ];
+                
+                elementsToHide.forEach(selector => {
+                    const element = document.querySelector(selector);
+                    if (element) {
+                        element.style.display = 'none';
+                    }
+                });
+                
+                document.body.style.overflow = 'hidden';
+            }
+            
+            showUIElements() {
+                const elementsToShow = [
+                    '#player-search-bar',
+                    '#series-controls', 
+                    '#player-channels-container',
+                    '#header'
+                ];
+                
+                elementsToShow.forEach(selector => {
+                    const element = document.querySelector(selector);
+                    if (element) {
+                        element.style.display = '';
+                    }
+                });
+                
+                document.body.style.overflow = '';
+            }
+            
+            customizePlyr() {
+                const style = document.createElement('style');
+                style.textContent = `
+                    .plyr--full-ui input[type="range"] {
+                        color: var(--accent-color);
+                    }
+                    .plyr__control--overlaid {
+                        background: var(--accent-color);
+                    }
+                    .plyr__control:hover {
+                        background: var(--accent-color);
+                    }
+                    .plyr--video .plyr__controls {
+                        background: linear-gradient(transparent, rgba(0,0,0,0.8));
+                    }
+                    .plyr__menu__container {
+                        background: var(--secondary-bg);
+                        border: 1px solid rgba(0, 255, 136, 0.3);
+                    }
+                    .plyr__menu__value {
+                        color: var(--accent-color);
+                    }
+                `;
+                document.head.appendChild(style);
             }
             
             setupEventListeners() {
+                // Eventos del video
+                this.video.addEventListener('loadedmetadata', () => {
+                    this.duration = this.video.duration;
+                    this.restorePlaybackPosition();
+                    this.updateTechStats();
+                });
+                
+                this.video.addEventListener('timeupdate', () => {
+                    this.currentTime = this.video.currentTime;
+                    this.checkForNextEpisode();
+                    this.savePlaybackPosition();
+                });
+                
                 this.video.addEventListener('waiting', () => {
                     this.showStatus('Buffering...');
                 });
@@ -1975,62 +2259,144 @@
                     this.hideStatus();
                 });
                 
+                this.video.addEventListener('ended', () => {
+                    this.handleVideoEnded();
+                });
+                
                 this.video.addEventListener('error', (e) => {
                     this.handleVideoError(e);
                 });
                 
+                // Eventos de Plyr
                 this.plyr.on('ready', () => {
-                    console.log('Plyr está listo');
+                    console.log('Plyr está listo - Controles avanzados habilitados');
+                });
+                
+                // Eventos de siguiente episodio
+                this.playNextNowBtn.addEventListener('click', () => {
+                    this.playNextEpisode();
+                });
+                
+                this.cancelNextBtn.addEventListener('click', () => {
+                    this.cancelNextEpisode();
+                });
+                
+                // Detectar cambios de orientación
+                window.addEventListener('orientationchange', () => {
+                    this.handleOrientationChange();
                 });
             }
             
-            // Reproducir URL con protección mejorada
+            handleOrientationChange() {
+                if (this.plyr.fullscreen.active) {
+                    setTimeout(() => {
+                        if (window.orientation === 90 || window.orientation === -90) {
+                            console.log('En landscape - pantalla completa activa');
+                        } else {
+                            console.log('En portrait - forzar landscape');
+                            this.lockHorizontalOrientation();
+                        }
+                    }, 100);
+                }
+            }
+            
+            // AGREGAR ESTA FUNCIÓN NUEVA PARA MANEJAR CALIDAD
+            forceHighestQuality() {
+                if (this.hls && this.hls.levels && this.hls.levels.length > 0) {
+                    const levels = this.hls.levels;
+                    let maxBitrate = 0;
+                    let maxLevelIndex = -1;
+                    
+                    for (let i = 0; i < levels.length; i++) {
+                        if (levels[i].bitrate > maxBitrate) {
+                            maxBitrate = levels[i].bitrate;
+                            maxLevelIndex = i;
+                        }
+                    }
+                    
+                    if (maxLevelIndex !== -1) {
+                        this.hls.currentLevel = maxLevelIndex;
+                        console.log(`Forzando calidad máxima: Nivel ${maxLevelIndex} (${Math.round(maxBitrate/1000)} kbps)`);
+                    }
+                }
+            }
+            
+            // Reproducir URL con sistema inteligente mejorado
             play(url, channelInfo = null) {
-                // Limpiar URL problemática
-                let cleanUrl = url.trim();
-                
-                // Quitar caracteres raros que crashean la app
-                cleanUrl = cleanUrl.replace(/[<>"{}|\\^`]/g, '');
-                cleanUrl = cleanUrl.replace(/\s{2,}/g, ' ');
-                
-                // Limitar longitud de URL
-                if (cleanUrl.length > 1000) {
-                    cleanUrl = cleanUrl.substring(0, 1000);
-                }
-                
-                // Si es enlace numérico, convertirlo a M3U8
-                if (cleanUrl.match(/\/\d+$/)) {
-                    const baseUrl = cleanUrl.replace(/\/\d+$/, '');
-                    const streamId = cleanUrl.match(/\/(\d+)$/)[1];
-                    cleanUrl = `${baseUrl}/${streamId}.m3u8`;
-                }
-                
-                this.currentUrl = cleanUrl;
+                this.currentUrl = url;
                 this.currentChannel = channelInfo;
                 
                 this.stop();
                 this.showStatus('Cargando...');
                 
-                // Reproducir
-                if (Hls.isSupported() && cleanUrl.includes('.m3u8')) {
-                    this.playHlsStream(cleanUrl);
+                const finalUrl = transformUrlToM3u8(url);
+                console.log('Reproduciendo URL inteligente:', finalUrl);
+                
+                const isHlsStream = finalUrl.toLowerCase().endsWith('.m3u8');
+                
+                if (isHlsStream) {
+                    this.playHlsStream(finalUrl);
                 } else {
-                    this.playDirectStream(cleanUrl);
+                    this.playDirectStream(finalUrl);
                 }
             }
             
             playHlsStream(url) {
                 if (Hls.isSupported()) {
                     this.hls = new Hls({
-                        enableWorker: false, // Más estable
+                        enableWorker: true,
                         lowLatencyMode: true,
-                        maxBufferLength: 30
+                        backBufferLength: 90,
+                        startLevel: -1,
+                        maxMaxBufferLength: 600,
+                        maxBufferSize: 120 * 1000 * 1000,
+                        maxBufferHole: 0.5,
+                        highBufferWatchdogPeriod: 2,
+                        nudgeOffset: 0.1,
+                        nudgeMaxRetry: 3,
+                        maxFragLookUpTolerance: 0.2,
+                        liveSyncDurationCount: 3,
+                        liveMaxLatencyDurationCount: 10,
+                        liveDurationInfinity: false,
+                        liveBackBufferLength: 0,
+                        maxLiveSyncPlaybackRate: 1.1,
+                        abrEwmaDefaultEstimate: 5000000,
+                        abrEwmaSlowLive: 3.0,
+                        abrEwmaFastLive: 1.0,
+                        abrEwmaDefaultLive: 3.0,
+                        abrEwmaSlowVoD: 3.0,
+                        abrEwmaFastVoD: 1.0,
+                        abrEwmaDefaultVoD: 3.0,
+                        abrMaxWithRealBitrate: true,
+                        maxStarvationDelay: 4,
+                        maxLoadingDelay: 4,
+                        minAutoBitrate: 0,
+                        emeEnabled: true,
+                        widevineLicenseUrl: ''
                     });
                     
                     this.hls.loadSource(url);
                     this.hls.attachMedia(this.video);
                     
                     this.hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                        const levels = this.hls.levels;
+                        if (levels && levels.length > 0) {
+                            let maxBitrate = 0;
+                            let maxLevel = 0;
+                            
+                            levels.forEach((level, index) => {
+                                if (level.bitrate > maxBitrate) {
+                                    maxBitrate = level.bitrate;
+                                    maxLevel = index;
+                                }
+                            });
+                            
+                            this.hls.nextLevel = maxLevel;
+                            this.hls.currentLevel = maxLevel;
+                            
+                            console.log(`Calidad seleccionada: ${maxLevel} (${Math.round(maxBitrate/1000)} kbps)`);
+                        }
+                        
                         this.hideStatus();
                         this.video.play().catch(e => {
                             console.error('Error al reproducir:', e);
@@ -2038,9 +2404,20 @@
                         });
                     });
                     
+                    this.hls.on(Hls.Events.MANIFEST_LOADED, () => {
+                        console.log('Manifest cargado, forzando calidad máxima...');
+                        setTimeout(() => {
+                            this.forceHighestQuality();
+                        }, 1000);
+                    });
+                    
                     this.hls.on(Hls.Events.ERROR, (event, data) => {
                         console.error('Error HLS:', data);
                         this.handleHlsError(data);
+                    });
+                    
+                    this.hls.on(Hls.Events.BUFFER_APPENDED, () => {
+                        this.hideStatus();
                     });
                     
                 } else if (this.video.canPlayType('application/vnd.apple.mpegurl')) {
@@ -2102,6 +2479,75 @@
                 }
             }
             
+            savePlaybackPosition() {
+                if (this.currentUrl && this.video.duration > 0) {
+                    const position = this.video.currentTime;
+                    const percent = (position / this.video.duration) * 100;
+                    
+                    if (position > 10 && percent < 95) {
+                        this.playbackPositions.set(this.currentUrl, {
+                            time: position,
+                            timestamp: Date.now()
+                        });
+                        
+                        if (this.currentChannel && this.currentChannel.seriesInfo) {
+                            updateSeriesProgress(
+                                this.currentChannel.seriesInfo.seriesName,
+                                this.currentChannel.seriesInfo.season,
+                                this.currentChannel.seriesInfo.episode,
+                                percent / 100
+                            );
+                        }
+                    }
+                }
+            }
+            
+            restorePlaybackPosition() {
+                if (this.currentUrl && this.playbackPositions.has(this.currentUrl)) {
+                    const saved = this.playbackPositions.get(this.currentUrl);
+                    const currentTime = Date.now();
+                    const timeDiff = currentTime - saved.timestamp;
+                    
+                    if (timeDiff < 24 * 60 * 60 * 1000) {
+                        this.video.currentTime = saved.time;
+                        console.log(`Posición restaurada: ${Math.round(saved.time)}s`);
+                    }
+                }
+            }
+            
+            checkForNextEpisode() {
+                if (!this.currentChannel || !this.currentChannel.seriesInfo) return;
+                
+                const timeLeft = this.video.duration - this.video.currentTime;
+                
+                if (timeLeft <= 5 && this.autoPlayEnabled && !this.nextEpisodeTimer) {
+                    this.playNextEpisode();
+                }
+            }
+            
+            playNextEpisode() {
+                const nextEpisode = findNextEpisode(this.currentChannel);
+                if (nextEpisode) {
+                    this.cancelNextEpisode();
+                    playSeries(nextEpisode);
+                }
+            }
+            
+            cancelNextEpisode() {
+                if (this.nextEpisodeTimer) {
+                    clearTimeout(this.nextEpisodeTimer);
+                    this.nextEpisodeTimer = null;
+                }
+                this.nextEpisodeNotification.classList.remove('show');
+                this.nextEpisodeNotificationShown = false;
+            }
+            
+            handleVideoEnded() {
+                if (this.autoPlayEnabled) {
+                    this.playNextEpisode();
+                }
+            }
+            
             showStatus(message) {
                 this.statusText.textContent = message;
                 this.playerStatus.classList.add('show');
@@ -2113,6 +2559,8 @@
             }
             
             stop() {
+                this.cancelNextEpisode();
+                
                 if (this.hls) {
                     this.hls.destroy();
                     this.hls = null;
@@ -2123,12 +2571,20 @@
                 this.video.load();
                 
                 this.hideStatus();
+                this.techStatsPanel.classList.remove('show');
+                this.techStatsVisible = false;
             }
             
             setAutoPlay(enabled) {
                 this.autoPlayEnabled = enabled;
             }
         }
+
+        // ===== EL RESTO DEL CÓDIGO SE MANTIENE IGUAL =====
+        // (Sistemas de cache, búsqueda, renderizado, etc.)
+        
+        // Solo cambiamos la parte del botón para que esté oculto
+        // pero todas las funciones avanzadas siguen trabajando
 
         // ===== SISTEMA DE CACHE INTELIGENTE =====
         class SmartCacheManager {
@@ -2392,6 +2848,34 @@
         // ===== SISTEMA MEJORADO PARA ENLACES NUMÉRICOS =====
         const urlCache = new Map();
 
+        function detectStreamType(url) {
+            const urlStr = url.toLowerCase();
+            
+            if (urlStr.includes('.m3u8')) return 'hls';
+            if (urlStr.includes('.mp4')) return 'mp4';
+            if (urlStr.includes('.mkv')) return 'mkv';
+            if (urlStr.includes('.avi')) return 'avi';
+            if (urlStr.includes('.ts')) return 'ts';
+            if (urlStr.match(/\/\d+$/)) return 'numeric_id';
+            
+            return 'unknown';
+        }
+
+        function generateUrlOptions(baseUrl, streamId) {
+            return [
+                baseUrl,
+                `${baseUrl}.m3u8`,
+                `${baseUrl}/index.m3u8`,
+                `${baseUrl.replace(/\/[^\/]+$/, '')}/playlist.m3u8?id=${streamId}`,
+                `${baseUrl.replace(/\/[^\/]+$/, '')}/hls/${streamId}/index.m3u8`,
+                `${baseUrl.replace(/\/[^\/]+$/, '')}/live/${streamId}/index.m3u8`,
+                `${baseUrl.replace(/\/[^\/]+$/, '')}/stream/${streamId}.m3u8`,
+                `${baseUrl.replace(/\/[^\/]+$/, '')}/chunklist_${streamId}.m3u8`,
+                `${baseUrl}?format=m3u8`,
+                `${baseUrl}?type=hls`
+            ];
+        }
+
         function transformUrlToM3u8(url) {
             if (!url || typeof url !== 'string') return url;
             
@@ -2414,17 +2898,15 @@
                     const baseUrl = url.replace(/\/\d+$/, '');
                     const streamId = url.match(/\/(\d+)$/)[1];
                     
-                    const possibleUrls = [
-                        `${baseUrl}/${streamId}.m3u8`,
-                        `${baseUrl}/hls/${streamId}/index.m3u8`,
-                        `${baseUrl}/live/${streamId}/index.m3u8`
-                    ];
+                    const possibleUrls = generateUrlOptions(url, streamId);
                     transformedUrl = possibleUrls[0];
                     
                     urlCache.set(url, { main: transformedUrl, alternatives: possibleUrls });
                     
                 } else if (urlLower.includes('.ts') && !urlLower.includes('.m3u8')) {
                     transformedUrl = url.replace(/\.ts$/i, '.m3u8');
+                } else if (urlLower.includes('/chunklist')) {
+                    transformedUrl = url.replace('/chunklist', '/index');
                 }
                 
                 urlCache.set(url, transformedUrl);
@@ -2570,7 +3052,7 @@
                     channelElement.innerHTML = `
                         <div class="favorite-star ${favClass}" data-url="${channel.url}">${isFav ? '★' : '☆'}</div>
                         <img src="${channel.logo || 'https://via.placeholder.com/300x450/0F3460/00FFAB?text=Poster'}" alt="${channel.name}" loading="lazy">
-                        <div class="special-channel-name">${channel.name.length > 50 ? channel.name.substring(0, 47) + '...' : channel.name}</div>
+                        <div class="special-channel-name">${channel.name}</div>
                     `;
                 } else {
                     channelElement = document.createElement('div');
@@ -2597,7 +3079,7 @@
                     channelElement.innerHTML = `
                         <div class="favorite-star ${favClass}" data-url="${channel.url}">${isFav ? '★' : '☆'}</div>
                         <img src="${channel.logo || 'https://via.placeholder.com/50x50/0F3460/00FFAB?text=TV'}" alt="${channel.name}" loading="lazy">
-                        <div class="channel-name">${channel.name.length > 50 ? channel.name.substring(0, 47) + '...' : channel.name}</div>
+                        <div class="channel-name">${channel.name}</div>
                         ${seriesInfoHTML}
                     `;
                 }
@@ -2790,7 +3272,7 @@
                     channel = {
                         group: groupMatch ? groupMatch[1] : 'Otros',
                         logo: logoMatch ? logoMatch[1] : '',
-                        name: nameMatch.length > 50 ? nameMatch.substring(0, 47) + '...' : nameMatch,
+                        name: nameMatch,
                         url: ''
                     };
                     
@@ -3435,7 +3917,7 @@
 
         function initVideoPlayer() {
             const videoElement = document.getElementById('channel-player');
-            videoPlayer = new RobustVideoPlayer(videoElement);
+            videoPlayer = new SmartVideoPlayer(videoElement);
             videoPlayer.setAutoPlay(autoPlayEnabled);
         }
 
@@ -3447,23 +3929,138 @@
             'narcoseries', 'infantil', 'kids', 'vado', 'comedia'
         ];
 
-        // ===== INICIALIZACIÓN PRINCIPAL DE LA APLICACIÓN =====
-        async function initMainApp() {
-            // Cargar datos primero
+        async function init() {
             await smartLoader.loadData();
             
-            // Luego inicializar el resto
             loadAutoPlayPreference();
             setupGlobalSearch();
             initVideoPlayer();
-            
-            return true;
         }
 
-        // Iniciar la animación cuando la página se carga
-        document.addEventListener('DOMContentLoaded', () => {
-            new SplashAnimation();
+        init();
+    </script>
+</body>
+</html>
+        <style>
+            /* Tus estilos CSS aquí */
+            .tu-aplicacion { ... }
+        </style>
+        
+        <div class="app-container">
+            <!-- Tu interfaz completa con canales, categorías, reproductor -->
+        </div>
+        
+        <script>
+            // Tu JavaScript aquí
+            function initApp() { ... }
+        </script>
+        -->
+        
+    </div>
+    <!-- ================================================== -->
+
+    <script>
+        // SCRIPT DEL EFECTO DE PRESENTACIÓN
+        document.addEventListener('DOMContentLoaded', function() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                const size = Math.random() * 20 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.animationDelay = `${Math.random() * 15}s`;
+                
+                const duration = Math.random() * 10 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+            
+            // Simular progreso de carga
+            const progressBar = document.getElementById('loading-progress');
+            const loadingText = document.getElementById('loading-text');
+            let progress = 0;
+            
+            const interval = setInterval(() => {
+                progress += Math.random() * 10;
+                if (progress > 100) progress = 100;
+                
+                progressBar.style.width = `${progress}%`;
+                
+                if (progress < 30) {
+                    loadingText.textContent = "Cargando contenido...";
+                } else if (progress < 60) {
+                    loadingText.textContent = "Optimizando calidad de video...";
+                } else if (progress < 90) {
+                    loadingText.textContent = "Preparando interfaz...";
+                } else {
+                    loadingText.textContent = "¡Listo! Iniciando TVision Max...";
+                }
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    
+                    // Transición a la aplicación real
+                    setTimeout(() => {
+                        // Ocultar efecto de presentación
+                        document.getElementById('splash-container').style.opacity = '0';
+                        document.getElementById('particles').style.opacity = '0';
+                        document.querySelector('.glow').style.opacity = '0';
+                        
+                        // Mostrar aplicación después de la animación
+                        setTimeout(() => {
+                            document.getElementById('splash-container').style.display = 'none';
+                            document.getElementById('particles').style.display = 'none';
+                            document.querySelector('.glow').style.display = 'none';
+                            
+                            // ==================================================
+                            // MOSTRAR TU APLICACIÓN
+                            // ==================================================
+                            document.getElementById('app-container').style.display = 'block';
+                            
+                            // Cambiar el fondo al tema de la aplicación
+                            document.body.style.background = '#000000';
+                            document.body.style.animation = 'none';
+                            
+                            // ==================================================
+                            // INICIALIZAR TU APLICACIÓN
+                            // ==================================================
+                            if (typeof initApp === 'function') {
+                                initApp();
+                            }
+                            // ==================================================
+                        }, 1000);
+                    }, 1000);
+                }
+            }, 300);
         });
+
+        // ==================================================
+        // AQUÍ DEBES MOVER EL JAVASCRIPT DE TU APLICACIÓN
+        // ==================================================
+        /*
+        function initApp() {
+            // PEGA AQUÍ TODO EL CÓDIGO JAVASCRIPT DE TU APLICACIÓN:
+            // - Variables globales
+            // - Clases (SmartVideoPlayer, SmartCacheManager, etc.)
+            // - Funciones (playChannel, renderChannels, etc.)
+            // - Event listeners
+            // - Inicialización
+            
+            // EJEMPLO:
+            // let allChannels = [];
+            // let categories = new Map();
+            // function playChannel(channel) { ... }
+            // document.addEventListener(...);
+        }
+        */
+        // ==================================================
     </script>
 </body>
 </html>
