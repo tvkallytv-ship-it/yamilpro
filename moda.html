@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FamiliaStyle - Ropa para Toda la Familia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2a5c8b;
+            --secondary: #f15a29;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --gray: #6c757d;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        .dark-mode {
+            --primary: #4a8bc2;
+            --secondary: #ff7b4a;
+            --light: #212529;
+            --dark: #f8f9fa;
+            --gray: #adb5bd;
+            --white: #343a40;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            transition: var(--transition);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header y Navegación */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-toggle, .cart-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover, .cart-btn:hover {
+            color: var(--secondary);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(42, 92, 139, 0.9), rgba(42, 92, 139, 0.7)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .btn:hover {
+            background-color: #d8491e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(241, 90, 41, 0.3);
+        }
+
+        /* Categorías */
+        .categories {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .category-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .category-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .category-card:hover .category-img img {
+            transform: scale(1.1);
+        }
+
+        .category-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .category-content h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+
+        /* Carrusel de Productos */
+        .product-carousel-section {
+            padding: 5rem 0;
+            background-color: var(--white);
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            padding: 0 40px;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 1.5rem;
+        }
+
+        .carousel-item {
+            flex: 0 0 calc(100% / 4 - 1.5rem);
+            background-color: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .carousel-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-img {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .carousel-item:hover .product-img img {
+            transform: scale(1.05);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .product-price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-price span {
+            color: var(--gray);
+            text-decoration: line-through;
+            font-size: 1rem;
+            margin-left: 0.5rem;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--primary);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn:hover {
+            background-color: var(--secondary);
+        }
+
+        .carousel-btn.prev {
+            left: 0;
+        }
+
+        .carousel-btn.next {
+            right: 0;
+        }
+
+        /* Accesorios */
+        .accessories {
+            padding: 5rem 0;
+            background-color: var(--light);
+        }
+
+        /* Calzados */
+        .footwear {
+            padding: 5rem 0;
+            background-color: var(--white);
+        }
+
+        /* Testimonios */
+        .testimonials {
+            padding: 5rem 0;
+            background-color: var(--light);
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-slide {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .testimonial-slide.active {
+            display: block;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .slider-btn {
+            background-color: var(--primary);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-btn:hover {
+            background-color: var(--secondary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a.facebook:hover {
+            background-color: #1877f2;
+        }
+
+        .social-links a.instagram:hover {
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+        }
+
+        .social-links a.whatsapp:hover {
+            background-color: #25d366;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Botón de WhatsApp flotante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            z-index: 100;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #128c7e;
+        }
+
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .carousel-item {
+                flex: 0 0 calc(100% / 3 - 1.5rem);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            .carousel-item {
+                flex: 0 0 calc(100% / 2 - 1.5rem);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                box-shadow: var(--shadow);
+                padding: 1rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            nav li {
+                width: 100%;
+            }
+
+            nav a {
+                display: block;
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .carousel-item {
+                flex: 0 0 calc(100% / 1.5 - 1.5rem);
+            }
+            
+            .carousel-container {
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 3rem 0;
+            }
+            
+            .categories, .product-carousel-section, .accessories, .footwear, .testimonials {
+                padding: 3rem 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .carousel-item {
+                flex: 0 0 100%;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header y Navegación -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-tshirt"></i>
+                <span>FamiliaStyle</span>
+            </a>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#categories">Categorías</a></li>
+                    <li><a href="#accessories">Accesorios</a></li>
+                    <li><a href="#footwear">Calzados</a></li>
+                    <li><a href="#about">Nosotros</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">3</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Ropa para Toda la Familia</h1>
+            <p>Descubre nuestra colección de moda familiar con las últimas tendencias en ropa para hombres, mujeres y niños. Calidad, estilo y comodidad en un solo lugar.</p>
+            <a href="#categories" class="btn">Ver Colección</a>
+        </div>
+    </section>
+
+    <!-- Categorías -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <h2 class="section-title">Nuestras Categorías</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ropa para Hombres">
+                    </div>
+                    <div class="category-content">
+                        <h3>Ropa para Hombres</h3>
+                        <p>Camisas, pantalones, chaquetas y más para el estilo masculino moderno.</p>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ropa para Mujeres">
+                    </div>
+                    <div class="category-content">
+                        <h3>Ropa para Mujeres</h3>
+                        <p>Vestidos, blusas, faldas y prendas elegantes para la mujer actual.</p>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="https://images.unsplash.com/photo-1519241047957-be31d7379a5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ropa para Niños">
+                    </div>
+                    <div class="category-content">
+                        <h3>Ropa para Niños</h3>
+                        <p>Ropa cómoda, divertida y resistente para los más pequeños de la casa.</p>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img">
+                        <img src="https://images.unsplash.com/photo-1519690889869-e705e59f72e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ofertas Especiales">
+                    </div>
+                    <div class="category-content">
+                        <h3>Ofertas Especiales</h3>
+                        <p>Descuentos exclusivos en packs familiares y productos seleccionados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos Destacados (Carrusel) -->
+    <section class="product-carousel-section">
+        <div class="container">
+            <h2 class="section-title">Productos Destacados</h2>
+            <div class="carousel-container">
+                <button class="carousel-btn prev" id="featuredPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="carousel" id="featuredCarousel">
+                    <!-- Producto 1 -->
+                    <div class="carousel-item">
+                        <div class="product-img">
+                            <span class="product-badge">25% OFF</span>
+                            <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camisa Casual Hombre">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Camisa Casual Hombre</h3>
+                            <p class="product-description">Camisa de algodón 100% con corte moderno.</p>
+                            <div class="product-price">$29.99 <span>$39.99</span></div>
+                            <button class="btn" style="width: 100%;">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Producto 2 -->
+                    <div class="carousel-item">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Vestido Verano Mujer">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Vestido de Verano</h3>
+                            <p class="product-description">Vestido ligero y fresco perfecto para días cálidos.</p>
+                            <div class="product-price">$45.99</div>
+                            <button class="btn" style="width: 100%;">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Producto 3 -->
+                    <div class="carousel-item">
+                        <div class="product-img">
+                            <span class="product-badge">NUEVO</span>
+                            <img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Conjunto Infantil">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Conjunto Infantil</h3>
+                            <p class="product-description">Conjunto cómodo y divertido para niños.</p>
+                            <div class="product-price">$32.50</div>
+                            <button class="btn" style="width: 100%;">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Producto 4 -->
+                    <div class="carousel-item">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Chaqueta Familiar">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Chaqueta Familiar</h3>
+                            <p class="product-description">Chaqueta abrigada para toda la familia.</p>
+                            <div class="product-price">$59.99</div>
+                            <button class="btn" style="width: 100%;">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Producto 5 -->
+                    <div class="carousel-item">
+                        <div class="product-img">
+                            <span class="product-badge">OFERTA</span>
+                            <img src="https://images.unsplash.com/photo-1505022610485-0249ba5b3675?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Jeans Clásicos">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Jeans Clásicos</h3>
+                            <p class="product-description">Jeans de alta calidad para hombre y mujer.</p>
+                            <div class="product-price">$49.99 <span>$59.99</span></div>
+                            <button class="btn" style="width: 100%;">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Producto 6 -->
+                    <div class="carousel-item">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Suéter de Lana">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Suéter de Lana</h3>
+                            <p class="product-description">Suéter cálido y suave para el invierno.</p>
+                            <div class="product-price">$38.50</div>
+                            <button class="btn" style="width: 100%;">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn next" id="featuredNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accesorios (Carrusel) -->
+    <section class="accessories" id="accessories">
+        <div class="container">
+            <h2 class="section-title">Nuestros Accesorios</h2>
+            <div class="carousel-container">
+                <button class="carousel-btn prev" id="accessoriesPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="carousel" id="accessoriesCarousel">
+                    <!-- Accesorio 1 -->
+                    <div class="carousel-item">
+                        <div class="product-img">
+                            <span class="product-badge">NUEVO</span>
+                            <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Reloj Elegante">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Reloj Elegante</h3>
+                            <p class="product-description">Reloj de pulsera para hombre con correa de cuero.</p>
+                            <div class="product-price">$89.99</div>
+                            <button class="btn" style="width: 100%;">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Accesorio 2 -->
+                    <div class="carousel-item">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Bolso de Mano">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Bolso de Mano</h3>
+                            <p class="product-description">Bolso elegante para mujer con múltiples compartimentos.</p>
+                            <div class="product-price">$65.50</div>
+                            <button class="btn" style="width: 100%;">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Accesorio 3 -->
+                    <div class="carousel-item">
+                        <div class="product-img">
+                            <span class="product-badge">15% OFF</span>
+                            <img src="https://images.unsplash.com/photo-1556306535-0f09a537f0a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Gafas de Sol">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Gafas de Sol</h3>
+                            <p class="product-description">Gafas de sol con protección UV para toda la familia.</p>
+                            <div class="product-price">$34.99 <span>$40.99</span></div>
+                            <button class="btn" style="width: 100%;">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Accesorio 4 -->
+                    <div class="carousel-item">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cinturón de Cuero">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Cinturón de Cuero</h3>
+                            <p class="product-description">Cinturón de cuero genuino para hombre en varios colores.</p>
+                            <div class="product-price">$28.99</div>
+                            <button class="btn" style="width: 100%;">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Accesorio 5 -->
+                    <div class="carousel-item">
+                        <div class="product-img">
+                            <span class="product-badge">OFERTA</span>
+                            <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Collar de Plata">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Collar de Plata</h3>
+                            <p class="product-description">Collar elegante de plata 925 para mujer.</p>
+                            <div class="product-price">$45.99 <span>$55.99</span></div>
+                            <button class="btn" style="width: 100%;">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Accesorio 6 -->
+                    <div class="carousel-item">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Bufanda de Lana">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Bufanda de Lana</h3>
+                            <p class="product-description">Bufanda cálida y suave para el invierno.</p>
+                            <div class="product-price">$24.50</div>
+                            <button class="btn" style="width: 100%;">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn next" id="accessoriesNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calzados (Carrusel) -->
+    <section class="footwear" id="footwear">
+        <div class="container">
+            <h2 class="section-title">Calzados para la Familia</h2>
+            <div class="carousel-container">
+                <button class="carousel-btn prev" id="footwearPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="carousel" id="footwearCarousel">
+                    <!-- Calzado 1 -->
+                    <div class="carousel-item">
+                        <div class="product-img">
+                            <span class="product-badge">30% OFF</span>
+                            <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Zapatos Casuales Hombre">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Zapatos Casuales Hombre</h3>
+                            <p class="product-description">Zapatos cómodos para el día a día.</p>
+                            <div class="product-price">$59.99 <span>$84.99</span></div>
+                            <button class="btn" style="width: 100%;">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Calzado 2 -->
+                    <div class="carousel-item">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Zapatillas Deportivas">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Zapatillas Deportivas</h3>
+                            <p class="product-description">Zapatillas para correr con amortiguación.</p>
+                            <div class="product-price">$79.99</div>
+                            <button class="btn" style="width: 100%;">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Calzado 3 -->
+                    <div class="carousel-item">
+                        <div class="product-img">
+                            <span class="product-badge">NUEVO</span>
+                            <img src="https://images.unsplash.com/photo-1542280756-74b2f55e73ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tacones Elegantes">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Tacones Elegantes</h3>
+                            <p class="product-description">Tacones para ocasiones especiales.</p>
+                            <div class="product-price">$69.50</div>
+                            <button class="btn" style="width: 100%;">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Calzado 4 -->
+                    <div class="carousel-item">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1560343090-f0409e92791a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Zapatos Infantiles">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Zapatos Infantiles</h3>
+                            <p class="product-description">Zapatos cómodos y divertidos para niños.</p>
+                            <div class="product-price">$35.99</div>
+                            <button class="btn" style="width: 100%;">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Calzado 5 -->
+                    <div class="carousel-item">
+                        <div class="product-img">
+                            <span class="product-badge">OFERTA</span>
+                            <img src="https://images.unsplash.com/photo-1516478177764-9fe5bd7e9717?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Botas de Cuero">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Botas de Cuero</h3>
+                            <p class="product-description">Botas resistentes para hombre y mujer.</p>
+                            <div class="product-price">$89.99 <span>$109.99</span></div>
+                            <button class="btn" style="width: 100%;">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Calzado 6 -->
+                    <div class="carousel-item">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sandalias de Verano">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Sandalias de Verano</h3>
+                            <p class="product-description">Sandalias cómodas para la temporada cálida.</p>
+                            <div class="product-price">$29.50</div>
+                            <button class="btn" style="width: 100%;">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn next" id="footwearNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="testimonials" id="about">
+        <div class="container">
+            <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial-slide active" id="slide1">
+                    <p class="testimonial-text">"La calidad de la ropa es excelente y los precios son muy competitivos. Hemos comprado ropa para toda la familia y estamos muy satisfechos."</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="María González">
+                        </div>
+                        <div class="author-info">
+                            <h4>María González</h4>
+                            <p>Cliente desde 2020</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide" id="slide2">
+                    <p class="testimonial-text">"Me encanta poder comprar ropa para mis hijos y para nosotros en el mismo sitio. La entrega fue rápida y todo llegó en perfecto estado."</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Carlos Rodríguez">
+                        </div>
+                        <div class="author-info">
+                            <h4>Carlos Rodríguez</h4>
+                            <p>Cliente desde 2021</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide" id="slide3">
+                    <p class="testimonial-text">"La colección de ropa para mujer es muy actual y de buena calidad. Además, el servicio al cliente es excelente."</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Ana Martínez">
+                        </div>
+                        <div class="author-info">
+                            <h4>Ana Martínez</h4>
+                            <p>Cliente desde 2022</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slider-controls">
+                    <button class="slider-btn prev-btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="slider-btn next-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>FamiliaStyle</h3>
+                    <p>Tu tienda de confianza para ropa de toda la familia. Ofrecemos calidad, estilo y comodidad en cada prenda.</p>
+                    <div class="social-links">
+                        <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-home"></i> Inicio</a></li>
+                        <li><a href="#categories"><i class="fas fa-tshirt"></i> Categorías</a></li>
+                        <li><a href="#accessories"><i class="fas fa-gem"></i> Accesorios</a></li>
+                        <li><a href="#footwear"><i class="fas fa-shoe-prints"></i> Calzados</a></li>
+                        <li><a href="#about"><i class="fas fa-users"></i> Nosotros</a></li>
+                        <li><a href="#contact"><i class="fas fa-address-book"></i> Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Categorías</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-male"></i> Ropa para Hombres</a></li>
+                        <li><a href="#"><i class="fas fa-female"></i> Ropa para Mujeres</a></li>
+                        <li><a href="#"><i class="fas fa-child"></i> Ropa para Niños</a></li>
+                        <li><a href="#"><i class="fas fa-gem"></i> Accesorios</a></li>
+                        <li><a href="#"><i class="fas fa-shoe-prints"></i> Calzados</a></li>
+                        <li><a href="#"><i class="fas fa-percent"></i> Ofertas Especiales</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contacto</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Calle Moda 123, Ciudad</li>
+                        <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+                        <li><i class="fas fa-envelope"></i> info@familiastyle.com</li>
+                        <li><i class="fas fa-clock"></i> Lunes a Sábado: 9am - 8pm</li>
+                        <li><i class="fab fa-whatsapp"></i> WhatsApp: +1 234 567 891</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 FamiliaStyle. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón de WhatsApp flotante -->
+    <a href="https://wa.me/1234567890?text=Hola,%20me%20interesa%20saber%20más%20sobre%20sus%20productos" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Toggle del menú móvil
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            menuToggle.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Toggle del modo oscuro/claro
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            themeToggle.innerHTML = body.classList.contains('dark-mode')
+                ? '<i class="fas fa-sun"></i>'
+                : '<i class="fas fa-moon"></i>';
+            
+            // Guardar preferencia en localStorage
+            if(body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // Cargar tema guardado
+        const savedTheme = localStorage.getItem('theme');
+        if(savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        // Carrusel de testimonios
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        
+        function showTestimonialSlide(index) {
+            // Ocultar todas las slides
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Ajustar índice si es necesario
+            if(index >= slides.length) currentSlide = 0;
+            if(index < 0) currentSlide = slides.length - 1;
+            
+            // Mostrar slide actual
+            slides[currentSlide].classList.add('active');
+        }
+        
+        prevBtn.addEventListener('click', () => {
+            currentSlide--;
+            showTestimonialSlide(currentSlide);
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            currentSlide++;
+            showTestimonialSlide(currentSlide);
+        });
+        
+        // Auto-avance del carrusel de testimonios cada 5 segundos
+        setInterval(() => {
+            currentSlide++;
+            showTestimonialSlide(currentSlide);
+        }, 5000);
+        
+        // Funcionalidad para los carruseles de productos
+        function setupCarousel(carouselId, prevBtnId, nextBtnId) {
+            const carousel = document.getElementById(carouselId);
+            const prevBtn = document.getElementById(prevBtnId);
+            const nextBtn = document.getElementById(nextBtnId);
+            const items = carousel.querySelectorAll('.carousel-item');
+            let currentIndex = 0;
+            const itemsPerView = getItemsPerView();
+            
+            function getItemsPerView() {
+                if (window.innerWidth >= 1200) return 4;
+                if (window.innerWidth >= 992) return 3;
+                if (window.innerWidth >= 768) return 2;
+                return 1;
+            }
+            
+            function updateCarousel() {
+                const itemWidth = 100 / itemsPerView;
+                const translateX = -currentIndex * itemWidth;
+                carousel.style.transform = `translateX(${translateX}%)`;
+            }
+            
+            function nextSlide() {
+                const maxIndex = Math.max(items.length - itemsPerView, 0);
+                currentIndex = (currentIndex >= maxIndex) ? 0 : currentIndex + 1;
+                updateCarousel();
+            }
+            
+            function prevSlide() {
+                const maxIndex = Math.max(items.length - itemsPerView, 0);
+                currentIndex = (currentIndex <= 0) ? maxIndex : currentIndex - 1;
+                updateCarousel();
+            }
+            
+            // Event listeners
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+            
+            // Auto-avance cada 4 segundos
+            let autoSlideInterval = setInterval(nextSlide, 4000);
+            
+            // Pausar auto-avance al hacer hover
+            carousel.addEventListener('mouseenter', () => {
+                clearInterval(autoSlideInterval);
+            });
+            
+            carousel.addEventListener('mouseleave', () => {
+                autoSlideInterval = setInterval(nextSlide, 4000);
+            });
+            
+            // Actualizar en redimensionamiento de ventana
+            window.addEventListener('resize', () => {
+                const newItemsPerView = getItemsPerView();
+                if (newItemsPerView !== itemsPerView) {
+                    currentIndex = 0;
+                    updateCarousel();
+                }
+            });
+            
+            // Inicializar
+            updateCarousel();
+            
+            return {
+                nextSlide,
+                prevSlide,
+                updateCarousel
+            };
+        }
+        
+        // Configurar los tres carruseles
+        const featuredCarousel = setupCarousel('featuredCarousel', 'featuredPrev', 'featuredNext');
+        const accessoriesCarousel = setupCarousel('accessoriesCarousel', 'accessoriesPrev', 'accessoriesNext');
+        const footwearCarousel = setupCarousel('footwearCarousel', 'footwearPrev', 'footwearNext');
+        
+        // Animación al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observar elementos para animación
+        document.querySelectorAll('.category-card, .carousel-item').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+        
+        // Actualizar contador del carrito
+        const cartCount = document.querySelector('.cart-count');
+        const addToCartBtns = document.querySelectorAll('.carousel-item .btn');
+        
+        addToCartBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                let count = parseInt(cartCount.textContent);
+                cartCount.textContent = count + 1;
+                
+                // Efecto visual
+                this.textContent = '¡Añadido!';
+                this.style.backgroundColor = '#28a745';
+                
+                setTimeout(() => {
+                    this.textContent = 'Añadir al Carrito';
+                    this.style.backgroundColor = '';
+                }, 1500);
+            });
+        });
+        
+        // Smooth scroll para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Inicializar animaciones al cargar la página
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.category-card, .carousel-item').forEach(card => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
