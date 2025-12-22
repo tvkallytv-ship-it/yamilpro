@@ -1602,6 +1602,55 @@
             box-shadow: var(--glow-color);
         }
         
+        /* Estilos para el diálogo de selección de archivos */
+        .file-selection-dialog {
+            animation: modalSlideUp 0.3s ease;
+        }
+        
+        @keyframes modalSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Indicador de progreso */
+        .progress-indicator {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--amoled-dark);
+            border: 2px solid var(--amoled-accent);
+            border-radius: 15px;
+            padding: 20px;
+            z-index: 2001;
+            box-shadow: var(--glow-color);
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-primary);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 5px;
+        }
+        
         /* Scrollbar personalizada */
         ::-webkit-scrollbar {
             width: 4px;
@@ -1993,13 +2042,14 @@
         </div>
     </div>
     
-    <!-- Inputs de archivo ocultos -->
-    <input type="file" id="fileInput" accept="audio/*" multiple style="display: none;">
+    <!-- Inputs de archivo ocultos - AHORA MULTIPLE -->
+    <input type="file" id="fileInput" accept="audio/*" style="display: none;" webkitdirectory directory multiple>
+    <input type="file" id="singleFileInput" accept="audio/*" style="display: none;">
     
     <!-- Audio player -->
     <audio id="audioPlayer" preload="metadata"></audio>
     
-    <!-- Script principal CORREGIDO -->
+    <!-- Script principal MEJORADO -->
     <script>
         // Elementos DOM
         const audioPlayer = document.getElementById('audioPlayer');
@@ -2031,6 +2081,7 @@
         const songsSearchInput = document.getElementById('songsSearchInput');
         const songsModalTitle = document.getElementById('songsModalTitle');
         const fileInput = document.getElementById('fileInput');
+        const singleFileInput = document.getElementById('singleFileInput');
         const audioVisualizer = document.getElementById('audioVisualizer');
         const backgroundAnimation = document.getElementById('backgroundAnimation');
         const clearStorageBtn = document.getElementById('clearStorageBtn');
@@ -2092,6 +2143,12 @@
         let isDragging = false;
         let lastProgress = 0;
         
+        // Variables para manejo de archivos
+        let filesToProcess = [];
+        let processingQueue = false;
+        let totalFilesToProcess = 0;
+        let processedFilesCount = 0;
+        
         // NUEVO: Sistema de temas
         const themes = [
             { id: 'amoled', name: 'AMOLED', class: 'theme-amoled' },
@@ -2132,11 +2189,60 @@
             initAudioVisualizer();
             setupEventListeners();
             initThemeSelector();
+            ensureFileAPI();
             
             setTimeout(() => {
                 initApp();
             }, 100);
         });
+        
+        // NUEVO: Verificar características del navegador
+        function ensureFileAPI() {
+            const features = {
+                fileInput: 'File' in window,
+                fileReader: 'FileReader' in window,
+                multiple: (() => {
+                    try {
+                        const input = document.createElement('input');
+                        input.type = 'file';
+                        return 'multiple' in input;
+                    } catch (e) {
+                        return false;
+                    }
+                })(),
+                directory: 'webkitdirectory' in document.createElement('input')
+            };
+            
+            console.log('Características del navegador:', features);
+            
+            if (!features.multiple) {
+                console.warn('Este navegador no soporta selección múltiple nativa');
+                showNotification('Tu navegador tiene limitaciones. Se usará modo compatibilidad.', true);
+            }
+        }
+        
+        // NUEVO: Detectar información del navegador
+        function getBrowserInfo() {
+            const ua = navigator.userAgent;
+            let browser = 'unknown';
+            let os = 'unknown';
+            let isMobile = false;
+            
+            if (ua.indexOf('Chrome') > -1) browser = 'Chrome';
+            else if (ua.indexOf('Safari') > -1) browser = 'Safari';
+            else if (ua.indexOf('Firefox') > -1) browser = 'Firefox';
+            else if (ua.indexOf('Edge') > -1) browser = 'Edge';
+            
+            if (ua.indexOf('Android') > -1) os = 'Android';
+            else if (ua.indexOf('iPhone') > -1 || ua.indexOf('iPad') > -1) os = 'iOS';
+            else if (ua.indexOf('Windows') > -1) os = 'Windows';
+            else if (ua.indexOf('Mac OS') > -1) os = 'macOS';
+            else if (ua.indexOf('Linux') > -1) os = 'Linux';
+            
+            isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
+            
+            return { browser, os, isMobile };
+        }
         
         // NUEVO: Inicializar selector de temas
         function initThemeSelector() {
@@ -2181,7 +2287,7 @@
                 option.classList.toggle('active', option.dataset.theme === themeId);
             });
             
-            // NUEVO: Recrear partículas con los colores del tema
+            // Recrear partículas con los colores del tema
             createParticles();
             
             // Guardar tema en localStorage para persistencia inmediata
@@ -2226,6 +2332,335 @@
                     resolve('amoled');
                 };
             });
+        }
+        
+        // NUEVO: Detectar soporte para selección múltiple
+        function detectMultipleFileSupport() {
+            try {
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.multiple = true;
+                input.accept = 'audio/*';
+                return 'multiple' in input;
+            } catch (e) {
+                return false;
+            }
+        }
+        
+        // NUEVO: Mostrar opciones de selección de archivos
+        function showFileSelectOptions() {
+            const supportsMultiple = detectMultipleFileSupport();
+            const browserInfo = getBrowserInfo();
+            
+            // iOS/Safari tiene limitaciones específicas
+            if (browserInfo.os === 'iOS' || browserInfo.browser === 'Safari') {
+                showFileSelectionDialog();
+            } else if (supportsMultiple) {
+                // Usar selección múltiple
+                fileInput.click();
+            } else {
+                showFileSelectionDialog();
+            }
+        }
+        
+        // NUEVO: Diálogo de selección para navegadores limitados
+        function showFileSelectionDialog() {
+            const options = `
+                <div style="
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: rgba(0,0,0,0.8);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 2000;
+                    padding: 20px;
+                ">
+                    <div style="
+                        background: var(--amoled-dark);
+                        border: 2px solid var(--amoled-accent);
+                        border-radius: 15px;
+                        padding: 25px;
+                        max-width: 400px;
+                        width: 100%;
+                        box-shadow: var(--glow-color);
+                    ">
+                        <h3 style="
+                            color: var(--amoled-accent);
+                            margin-bottom: 15px;
+                            text-align: center;
+                        ">
+                            Seleccionar Canciones
+                        </h3>
+                        
+                        <p style="
+                            color: var(--text-secondary);
+                            margin-bottom: 25px;
+                            text-align: center;
+                            font-size: 14px;
+                        ">
+                            Tu navegador tiene limitaciones para selección múltiple. 
+                            Puedes seleccionar carpetas o archivos individuales.
+                        </p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <button id="selectFolderBtn" style="
+                                background: var(--gradient-primary);
+                                color: var(--amoled-black);
+                                border: none;
+                                padding: 15px;
+                                border-radius: 8px;
+                                font-weight: bold;
+                                cursor: pointer;
+                                transition: var(--transition-smooth);
+                            ">
+                                <i class="fas fa-folder"></i> Seleccionar Carpeta
+                            </button>
+                            
+                            <button id="selectMultipleFilesBtn" style="
+                                background: rgba(255,255,255,0.05);
+                                color: var(--text-primary);
+                                border: 1px solid var(--glass-border);
+                                padding: 15px;
+                                border-radius: 8px;
+                                font-weight: bold;
+                                cursor: pointer;
+                                transition: var(--transition-smooth);
+                            ">
+                                <i class="fas fa-file-audio"></i> Seleccionar Archivos (uno a uno)
+                            </button>
+                            
+                            <button id="selectSingleMultipleBtn" style="
+                                background: rgba(255,255,255,0.05);
+                                color: var(--text-primary);
+                                border: 1px solid var(--glass-border);
+                                padding: 15px;
+                                border-radius: 8px;
+                                font-weight: bold;
+                                cursor: pointer;
+                                transition: var(--transition-smooth);
+                            ">
+                                <i class="fas fa-file-audio"></i> Seleccionar Varios (si es posible)
+                            </button>
+                            
+                            <button id="cancelSelectBtn" style="
+                                background: transparent;
+                                color: var(--text-secondary);
+                                border: 1px solid var(--glass-border);
+                                padding: 15px;
+                                border-radius: 8px;
+                                cursor: pointer;
+                                transition: var(--transition-smooth);
+                                margin-top: 10px;
+                            ">
+                                Cancelar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            const dialog = document.createElement('div');
+            dialog.innerHTML = options;
+            document.body.appendChild(dialog);
+            
+            // Event listeners para los botones del diálogo
+            dialog.querySelector('#selectFolderBtn').addEventListener('click', () => {
+                dialog.remove();
+                // Intentar usar el atributo webkitdirectory
+                fileInput.setAttribute('webkitdirectory', '');
+                fileInput.setAttribute('directory', '');
+                fileInput.removeAttribute('multiple');
+                fileInput.click();
+            });
+            
+            dialog.querySelector('#selectMultipleFilesBtn').addEventListener('click', () => {
+                dialog.remove();
+                startMultiFileSelection();
+            });
+            
+            dialog.querySelector('#selectSingleMultipleBtn').addEventListener('click', () => {
+                dialog.remove();
+                // Intentar usar selección múltiple normal
+                fileInput.removeAttribute('webkitdirectory');
+                fileInput.removeAttribute('directory');
+                fileInput.setAttribute('multiple', '');
+                fileInput.click();
+            });
+            
+            dialog.querySelector('#cancelSelectBtn').addEventListener('click', () => {
+                dialog.remove();
+            });
+            
+            // Cerrar al hacer clic fuera
+            dialog.addEventListener('click', (e) => {
+                if (e.target === dialog) {
+                    dialog.remove();
+                }
+            });
+        }
+        
+        // NUEVO: Sistema para seleccionar múltiples archivos uno por uno
+        function startMultiFileSelection() {
+            showNotification('Selecciona archivos uno por uno. Haz clic en "Cancelar" cuando termines.');
+            filesToProcess = [];
+            singleFileInput.click();
+        }
+        
+        // NUEVO: Manejar selección de archivo individual
+        function handleSingleFileSelect(e) {
+            const files = Array.from(e.target.files);
+            
+            if (files.length > 0) {
+                filesToProcess.push(...files);
+                showNotification(`Añadido: ${files[0].name}. Total: ${filesToProcess.length} archivo(s)`);
+                
+                // Mostrar diálogo para continuar o procesar
+                setTimeout(() => {
+                    const addMore = confirm(`Has añadido ${filesToProcess.length} archivo(s). ¿Quieres añadir más?`);
+                    if (addMore) {
+                        singleFileInput.value = '';
+                        singleFileInput.click();
+                    } else {
+                        processFileQueue();
+                    }
+                }, 100);
+            }
+        }
+        
+        // NUEVO: Procesar cola de archivos
+        async function processFileQueue() {
+            if (filesToProcess.length === 0 || processingQueue) return;
+            
+            processingQueue = true;
+            totalFilesToProcess = filesToProcess.length;
+            processedFilesCount = 0;
+            
+            showProgressDialog();
+            
+            await processFilesInBatches(filesToProcess);
+            
+            hideProgressDialog();
+            filesToProcess = [];
+            processingQueue = false;
+            
+            showNotification(`¡Listo! ${processedFilesCount} archivo(s) procesado(s)`);
+            updateSongsList();
+        }
+        
+        // NUEVO: Mostrar diálogo de progreso
+        function showProgressDialog() {
+            const progressHTML = `
+                <div class="progress-indicator" id="progressDialog">
+                    <h3 style="color: var(--amoled-accent); margin-bottom: 15px;">Procesando Archivos</h3>
+                    <p id="progressText" style="color: var(--text-secondary); margin-bottom: 10px;">
+                        Procesando 0 de ${totalFilesToProcess}...
+                    </p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                    </div>
+                    <p id="currentFile" style="color: var(--text-secondary); font-size: 12px; margin-top: 10px; word-break: break-all;">
+                        Preparando...
+                    </p>
+                </div>
+            `;
+            
+            const dialog = document.createElement('div');
+            dialog.innerHTML = progressHTML;
+            document.body.appendChild(dialog);
+        }
+        
+        // NUEVO: Ocultar diálogo de progreso
+        function hideProgressDialog() {
+            const dialog = document.getElementById('progressDialog');
+            if (dialog) {
+                dialog.remove();
+            }
+        }
+        
+        // NUEVO: Actualizar progreso
+        function updateProgressDialog(current, total, fileName) {
+            const progressText = document.getElementById('progressText');
+            const progressFill = document.getElementById('progressFill');
+            const currentFile = document.getElementById('currentFile');
+            
+            if (progressText) {
+                const percentage = Math.round((current / total) * 100);
+                progressText.textContent = `Procesando ${current} de ${total} (${percentage}%)`;
+                progressFill.style.width = `${percentage}%`;
+                
+                if (fileName) {
+                    const shortName = fileName.length > 30 ? fileName.substring(0, 27) + '...' : fileName;
+                    currentFile.textContent = `Archivo: ${shortName}`;
+                }
+            }
+        }
+        
+        // NUEVO: Procesar archivos en lotes
+        async function processFilesInBatches(files, batchSize = 5) {
+            let processed = 0;
+            
+            for (let i = 0; i < files.length; i += batchSize) {
+                const batch = files.slice(i, i + batchSize);
+                await processBatch(batch);
+                processed += batch.length;
+                processedFilesCount = processed;
+                
+                updateProgressDialog(processed, files.length, batch[0]?.name);
+            }
+        }
+        
+        // NUEVO: Procesar lote de archivos
+        async function processBatch(batch) {
+            const promises = batch.map(file => processSingleFile(file));
+            return Promise.all(promises);
+        }
+        
+        // NUEVO: Procesar archivo individual
+        async function processSingleFile(file) {
+            if (!file.type.startsWith('audio/')) {
+                console.warn(`"${file.name}" no es un archivo de audio`);
+                return;
+            }
+            
+            const title = file.name.replace(/\.[^/.]+$/, "");
+            let cover = null;
+            let artist = 'Artista desconocido';
+            
+            try {
+                if (window.jsmediatags) {
+                    cover = await extractCoverFromAudio(file);
+                }
+            } catch (error) {
+                console.log("Error extrayendo metadata:", error);
+            }
+            
+            if (!cover) {
+                cover = getRandomDefaultImage();
+            }
+            
+            const song = {
+                file: file,
+                title: title,
+                artist: artist,
+                cover: cover,
+                fileType: file.type,
+                dateAdded: new Date().toISOString()
+            };
+            
+            try {
+                await saveSongToDB(song);
+                songs.push(song);
+                
+                if (songs.length === 1) {
+                    playSong(0);
+                }
+            } catch (error) {
+                console.error('Error guardando canción:', error);
+            }
         }
         
         // Función principal de inicialización
@@ -2544,7 +2979,7 @@
             return playlist.songs.includes(songId);
         }
         
-        // Abrir "Mi Playlist" directamente - CORREGIDO
+        // Abrir "Mi Playlist" directamente
         function openMyPlaylist() {
             // Primero, desactivar cualquier filtro o modo previo
             deactivatePlaylistMode();
@@ -2592,7 +3027,7 @@
             }
         }
         
-        // Desactivar modo playlist - CORREGIDO
+        // Desactivar modo playlist
         function deactivatePlaylistMode() {
             isPlaylistMode = false;
             currentPlaylist = null;
@@ -2610,7 +3045,7 @@
             }
         }
         
-        // Reproducir canción desde la playlist actual - CORREGIDO
+        // Reproducir canción desde la playlist actual
         function playSongFromPlaylist(index) {
             if (!isPlaylistMode || playlistSongs.length === 0) {
                 console.error('No estamos en modo playlist o la playlist está vacía');
@@ -3139,10 +3574,14 @@
                 albumArt.classList.remove('playing');
             });
             
-            // Botones principales
-            addSongsBtn.addEventListener('click', () => fileInput.click());
+            // Botones principales - AHORA MEJORADO
+            addSongsBtn.addEventListener('click', showFileSelectOptions);
             
-            // Botón "Todas" - CORREGIDO
+            // Configurar los inputs de archivo
+            fileInput.addEventListener('change', handleFileSelect);
+            singleFileInput.addEventListener('change', handleSingleFileSelect);
+            
+            // Botón "Todas"
             songsModalBtn.addEventListener('click', () => {
                 deactivatePlaylistMode();
                 openSongsModal();
@@ -3150,7 +3589,7 @@
             
             closeSongsModal.addEventListener('click', closeSongsModalHandler);
             
-            // Botón Mi Playlist - CORREGIDO
+            // Botón Mi Playlist
             myPlaylistBtn.addEventListener('click', openMyPlaylist);
             
             // Botón limpiar
@@ -3160,9 +3599,8 @@
             settingsBtn.addEventListener('click', openSettingsModal);
             closeSettings.addEventListener('click', closeSettingsModal);
             
-            // NUEVO: Botón de fondo dinámico
+            // Botón de fondo dinámico
             backgroundBtn.addEventListener('click', () => {
-                // Cambiar entre diferentes patrones de fondo
                 const patterns = [
                     'var(--background-pattern)',
                     'linear-gradient(45deg, rgba(var(--amoled-accent-rgb), 0.1) 0%, transparent 50%), var(--background-pattern)',
@@ -3204,9 +3642,6 @@
             
             // Overlay
             modalOverlay.addEventListener('click', closeAllModals);
-            
-            // Archivos
-            fileInput.addEventListener('change', handleFileSelect);
             
             // Habilitar audio en móviles
             document.addEventListener('click', () => {
@@ -3468,7 +3903,89 @@
             }
         }
         
-        // Abrir modal de canciones - CORREGIDO
+        // NUEVO: Manejar selección de archivos múltiples
+        async function handleFileSelect(e) {
+            const files = Array.from(e.target.files);
+            
+            // Limpiar atributos para futuras selecciones
+            fileInput.removeAttribute('webkitdirectory');
+            fileInput.removeAttribute('directory');
+            fileInput.setAttribute('multiple', '');
+            
+            if (files.length === 0) return;
+            
+            showNotification(`Procesando ${files.length} archivo(s)...`);
+            
+            // Si hay muchos archivos, procesar en lotes con progreso
+            if (files.length > 5) {
+                processingQueue = true;
+                totalFilesToProcess = files.length;
+                processedFilesCount = 0;
+                
+                showProgressDialog();
+                
+                await processFilesInBatches(files);
+                
+                hideProgressDialog();
+                processingQueue = false;
+                
+                showNotification(`¡Listo! ${files.length} archivo(s) procesado(s)`);
+            } else {
+                let loadedCount = 0;
+                
+                for (const file of files) {
+                    if (!file.type.startsWith('audio/')) {
+                        console.warn(`"${file.name}" no es un archivo de audio`);
+                        continue;
+                    }
+                    
+                    const title = file.name.replace(/\.[^/.]+$/, "");
+                    
+                    let cover = null;
+                    let artist = 'Artista desconocido';
+                    
+                    try {
+                        if (window.jsmediatags) {
+                            cover = await extractCoverFromAudio(file);
+                        }
+                    } catch (error) {
+                        console.log("Error extrayendo metadata:", error);
+                    }
+                    
+                    if (!cover) {
+                        cover = getRandomDefaultImage();
+                    }
+                    
+                    const song = {
+                        file: file,
+                        title: title,
+                        artist: artist,
+                        cover: cover,
+                        fileType: file.type,
+                        dateAdded: new Date().toISOString()
+                    };
+                    
+                    try {
+                        await saveSongToDB(song);
+                        songs.push(song);
+                        loadedCount++;
+                        
+                        if (songs.length === 1) {
+                            playSong(0);
+                        }
+                    } catch (error) {
+                        console.error('Error guardando canción:', error);
+                    }
+                }
+                
+                showNotification(`${loadedCount} canción(es) añadida(s) con sus imágenes`);
+            }
+            
+            fileInput.value = '';
+            updateSongsList();
+        }
+        
+        // Abrir modal de canciones
         function openSongsModal() {
             songsModal.classList.add('active');
             modalOverlay.classList.add('active');
@@ -3509,7 +4026,7 @@
             modalOverlay.classList.remove('active');
         }
         
-        // Cerrar todos los modales - CORREGIDO
+        // Cerrar todos los modales
         function closeAllModals() {
             closeSongsModalHandler();
             closeSettingsModal();
@@ -3527,7 +4044,7 @@
             }
         }
         
-        // Actualizar lista de canciones - CORREGIDO
+        // Actualizar lista de canciones
         function updateSongsList(songsToDisplay = null) {
             songsList.innerHTML = '';
             
@@ -3741,65 +4258,6 @@
                         bar.style.width = '2px';
                 }
             });
-        }
-        
-        // Manejar archivos
-        async function handleFileSelect(e) {
-            const files = Array.from(e.target.files);
-            
-            if (files.length === 0) return;
-            
-            showNotification(`Procesando ${files.length} archivo(s)...`);
-            
-            let loadedCount = 0;
-            
-            for (const file of files) {
-                if (!file.type.startsWith('audio/')) {
-                    showNotification(`"${file.name}" no es un archivo de audio`, true);
-                    continue;
-                }
-                
-                const title = file.name.replace(/\.[^/.]+$/, "");
-                
-                let cover = null;
-                let artist = 'Artista desconocido';
-                
-                try {
-                    if (window.jsmediatags) {
-                        cover = await extractCoverFromAudio(file);
-                    }
-                } catch (error) {
-                    console.log("Error extrayendo metadata:", error);
-                }
-                
-                if (!cover) {
-                    cover = getRandomDefaultImage();
-                }
-                
-                const song = {
-                    file: file,
-                    title: title,
-                    artist: artist,
-                    cover: cover,
-                    fileType: file.type,
-                    dateAdded: new Date().toISOString()
-                };
-                
-                try {
-                    await saveSongToDB(song);
-                    songs.push(song);
-                    loadedCount++;
-                    
-                    if (songs.length === 1) {
-                        playSong(0);
-                    }
-                } catch (error) {
-                    console.error('Error guardando canción:', error);
-                }
-            }
-            
-            showNotification(`${loadedCount} canción(es) añadida(s) con sus imágenes`);
-            fileInput.value = '';
         }
         
         // Formatear tiempo
