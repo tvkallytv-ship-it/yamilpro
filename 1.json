@@ -5,7 +5,9 @@
     {
       "id": "main",
       "name": "Playlist Principal",
-      "url": 
+      "url": "https://ejemplo.com/main.m3u",
+      "enabled": true
+    },
     {
       "id": "u",
       "name": "Playlist u",
