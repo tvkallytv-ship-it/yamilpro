@@ -5,13 +5,13 @@
     {
       "id": "main",
       "name": "Playlist Principal",
-      "url": ""https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/fx.m3u",
+      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/fx.m3u",
       "enabled": true
     },
     {
       "id": "u",
       "name": "Playlist u",
-      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/u.m3u",
+      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/mo.m3u",
       "enabled": true
     }
   ]
