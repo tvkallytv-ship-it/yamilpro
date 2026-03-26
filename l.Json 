@@ -2,7 +2,7 @@
   "playlists": [
     {
       "name": "Mi Lista IPTV",
-      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/5k.m3u",
+      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/5.m3u",
       "enabled": true
     }
   ]
