@@ -11,12 +11,6 @@
     {
       "id": "u",
       "name": "Playlist u",
-      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/.m3u",
-      "enabled": true
-    },
-    {
-      "id": "nueva",
-      "name": "Nueva Playlist",
       "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/f62.m3u",
       "enabled": true
     }
