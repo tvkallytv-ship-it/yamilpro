@@ -1,11 +1,11 @@
 {
   "version": "1.0",
-  "lastUpdate": "2026-04-4",
+  "lastUpdate": "2026-04-9",
   "playlists": [
     {
       "id": "main",
       "name": "Playlist Principal",
-      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/0.m3u",
+      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/z2.m3u",
       "enabled": true
     },
     {
