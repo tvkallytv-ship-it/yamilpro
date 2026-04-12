@@ -1,35 +1,35 @@
 {
   "version": "1.0",
-  "lastUpdate": "2026-03-20",
+  "lastUpdate": "2026-04-12",
   "playlists": [
     {
       "id": "main",
       "name": "Playlist Principal",
-      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/il.m3u",
+      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/n7.m3u",
       "enabled": true
     },
     {
       "id": "re4",
       "name": "Playlist RE4",
-      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/5k.m3u",
+      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/n7.m3u",
       "enabled": true
     },
     {
       "id": "u",
       "name": "Playlist U",
-      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/u.m3u",
+      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/n7.m3u",
       "enabled": true
     },
     {
       "id": "ei",
       "name": "Playlist EI",
-      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/ei.m3u",
+      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/n7.m3u",
       "enabled": true
     },
     {
-      "id": "f4",
-      "name": "Playlist F4",
-      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/f4.m3u",
+      "id": "f62",
+      "name": "Playlist f62",
+      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/f62.m3u",
       "enabled": true
     }
   ]
