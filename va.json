@@ -1,29 +1,29 @@
 {
   "version": "1.0",
-  "lastUpdate": "2026-04-12",
+  "lastUpdate": "2026-04-21",
   "playlists": [
     {
       "id": "main",
       "name": "Playlist Principal",
-      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/n7.m3u",
+      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/hhh.m3u",
       "enabled": true
     },
     {
       "id": "re4",
       "name": "Playlist RE4",
-      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/n7.m3u",
+      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/4444.m3u",
       "enabled": true
     },
     {
       "id": "u",
       "name": "Playlist U",
-      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/n7.m3u",
+      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/kkk.m3u",
       "enabled": true
     },
     {
       "id": "ei",
       "name": "Playlist EI",
-      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/n7.m3u",
+      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/4c.m3u",
       "enabled": true
     },
     {
