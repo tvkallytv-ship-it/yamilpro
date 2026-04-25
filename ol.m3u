@@ -1,6 +1,6 @@
 #EXTM3U
-#EXTINF:-1 tvg-id="" tvg-name="" group-title="CLARO SPORTS" tvg-logo="https://static.epg.best/co/ClaroSports.co.png",DEP | CLARO SPORTS 1
-http://soporte-visual.com:80/live/fER6gYGeHYK4/95KfdvRy5pDp/311365.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="PPV EVENTOS Y DEPORTES" tvg-logo="https://archive.org/download/ppv_20200411/ppv.png",PPV• EVENTOS 1 (HD)
+http://origin.thetvapp.to/hls/espn-deportes/mono.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="" group-title="CLARO SPORTS" tvg-logo="https://static.epg.best/co/ClaroSports.co.png",DEP | CLARO SPORTS 2
 http://soporte-visual.com:80/live/fER6gYGeHYK4/95KfdvRy5pDp/311366.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="" group-title="CLARO SPORTS" tvg-logo="https://static.epg.best/co/ClaroSports.co.png",DEP | CLARO SPORTS MX
