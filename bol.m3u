@@ -1,4 +1,370 @@
 #EXTM3U
+#EXTM3U
+#EXTINF:-1 tvg-id="foxsports.mx" tvg-name="" group-title="EVENTOS LIGA MX BBVA" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/2/25/Fox_Sports_HD.png",FOX SPORTS MX HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/556.m3u8
+#EXTINF:-1 tvg-id="FoxSportsMexico.mx" tvg-name="" group-title="EVENTOS LIGA MX BBVA" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fox_sports_global.png",FOX SPORTS HD.
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/40311.m3u8
+#EXTINF:-1 tvg-id="I3.109803.schedulesdirect.org" tvg-name="" group-title="EVENTOS LIGA MX BBVA" tvg-logo="http://45.83.118.226/APKS/logo.jpg",(FOX SPORTS HD) CHILE HEVC
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/40326.m3u8
+#EXTINF:-1 tvg-id="I253.110964.schedulesdirect.org" tvg-name="" group-title="EVENTOS LIGA MX BBVA" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn_extra_lam.png",ESPN + IHD MX
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/73572.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="PPVS | FOXONE SOLO EVENTOS" tvg-logo="https://clarovideocdn6.clarovideo.net/FOXONE/PELICULAS/FOXONE1/EXPORTACION_WEB/SS/FOXONE1_t-290x163.png",MX  | FOX ONE 1
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/583585.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="PPVS | FOXONE SOLO EVENTOS" tvg-logo="https://clarovideocdn6.clarovideo.net/FOXONE/PELICULAS/FOXONE2/EXPORTACION_WEB/SS/FOXONE2_t-290x163.png",MX | FOX ONE 2
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/583586.m3u8
+#EXTINF:-1 tvg-id="DAZN F1 HD" tvg-name="" group-title="TV | DAZN SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/dd/dazn-de.png",ES | DAZN F1 FHD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/954.m3u8
+#EXTINF:-1 tvg-id="DAZN F1 HD" tvg-name="" group-title="TV | DAZN SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/dd/dazn-f1-uk-es.png",DAZN F1 HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/73565.m3u8
+#EXTINF:-1 tvg-id="I218.14899.zap2it.com" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/gg/golf_channel_us.png",GOLF USA
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/72718.m3u8
+#EXTINF:-1 tvg-id="I465.72189.zap2it.com" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fox_deportes_us.png",FOX DEPORTES USA
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/72732.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/rr/root_sports_us.png",ROOT SPORTS HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/72739.m3u8
+#EXTINF:-1 tvg-id="I388.81448.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fight_sports_us.png",UFC NET HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/73570.m3u8
+#EXTINF:-1 tvg-id="I257.96876.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn_2.png",ESPN2 SUR
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/73653.m3u8
+#EXTINF:-1 tvg-id="I264.79049.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn-3-america-latina-us.png",ESPN3 ANDINA
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/73654.m3u8
+#EXTINF:-1 tvg-id="I257.96876.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn_2.png",ESPN2 COL
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/73655.m3u8
+#EXTINF:-1 tvg-id="I253.110964.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn_us.png",ESPN1 COL
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/73656.m3u8
+#EXTINF:-1 tvg-id="I306.66365.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fox_sports_2_asia.png",FOX-SPORTS2 CHILE
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/73658.m3u8
+#EXTINF:-1 tvg-id="FOX SPORTS" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fox_sports_1_cl.png",FOX-SPORTS1 SUR *
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/73659.m3u8
+#EXTINF:-1 tvg-id="I306.66365.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fox_sports_2_asia.png",FOX SPORTS2 SUR
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/73660.m3u8
+#EXTINF:-1 tvg-id="I306.66365.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fox_sports_2_asia.png",FOX SPORTS 2 HD MEX H.265
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/73665.m3u8
+#EXTINF:-1 tvg-id="I308.105005.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fox_sports_3_asia.png",*FOX SPORTS 3 HD MEX H.265
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/73666.m3u8
+#EXTINF:-1 tvg-id="I895.96876.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn_2.png",ESPN 2 MEXICO HD (® ENCODER) 
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/543.m3u8
+#EXTINF:-1 tvg-id="I3.109803.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn_3_lam.png",ESPN 3 HD MX ENCODER
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/544.m3u8
+#EXTINF:-1 tvg-id="espn.mexico.mx" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn_us.png",ESPN  1 SUR  HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/545.m3u8
+#EXTINF:-1 tvg-id="I122.11097.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn_2.png",ESPN  2 SUR HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/546.m3u8
+#EXTINF:-1 tvg-id="I897.79049.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn_3_lam_norte.png",ESPN 3 SUR HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/547.m3u8
+#EXTINF:-1 tvg-id="I3.109803.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn_us.png",ESPN 1 HD (AR) R4
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/548.m3u8
+#EXTINF:-1 tvg-id="I3.109803.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn_2.png",ESPN HD (CH)
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/550.m3u8
+#EXTINF:-1 tvg-id="I898.65930.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn_extra_lam.png",ESPN 4 MX
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/551.m3u8
+#EXTINF:-1 tvg-id="I3.109803.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn_us.png",ESPN HD (EN)
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/552.m3u8
+#EXTINF:-1 tvg-id="I3.109803.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn_deportes.png",ESPN DEPORTES HD US
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/555.m3u8
+#EXTINF:-1 tvg-id="I3.109803.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fox_sports_2_lam.png",FOX SPORTS 2 HD MX
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/557.m3u8
+#EXTINF:-1 tvg-id="I3.109803.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fox_sports_3_lam.png",*FOX SPORTS 3 MEX HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/558.m3u8
+#EXTINF:-1 tvg-id="I3.109803.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fox_sports_1_cl.png",FOX SPORTS 1 HD (AR)
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/559.m3u8
+#EXTINF:-1 tvg-id="I3.109803.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fox_sports_2_lam.png",FOX SPORTS 2 SD (AR)
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/560.m3u8
+#EXTINF:-1 tvg-id="I3.109803.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fox_sports_lam_hd.png",*FOX SPORTS 1 HD MX
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/561.m3u8
+#EXTINF:-1 tvg-id="I3.109803.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fox_sports_3_lam.png",FOX SPORTS 3 HD. (AR)
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/562.m3u8
+#EXTINF:-1 tvg-id="I122.11097.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fox_sports_1_cl.png",FOX SPORTS 1 (CH).
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/564.m3u8
+#EXTINF:-1 tvg-id="I3.109803.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fox_sports_2_lam.png",FOX SPORTS 2 (CH)
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/565.m3u8
+#EXTINF:-1 tvg-id="I3.109803.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fox_deportes_us.png",FOX SPORTS DEPORTES HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/568.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/dd/directv-sports-us.png",DIRECTV SPORTS 1 HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/575.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/dd/directv-sports-us.png",DIRECTV SPORTS ECUADOR
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/576.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/dd/directv-sports-us.png",DIRECTV SPOTS HD (AR)
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/581.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ww/win_sports_co.png",*WIN SPORTS HD (CO)
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/582.m3u8
+#EXTINF:-1 tvg-id="I388.81448.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/uu/ufc-tv-rossiya-us-ru.png",UFC NETWORK HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/584.m3u8
+#EXTINF:-1 tvg-id="I1446.91306.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ww/world_wrestling_entertainment.png",WWE NETWORK US
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/585.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ss/spectrum-sportsnet-us.png",SPORTNET LA LAKERS
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/2241.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/futv-cr.png",FUTV (COSTA RICA)
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/2254.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="http://cupra290.mine.nu/gr/GOLTVPE.png",GOL PERU *
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/2255.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/tt/tennis_channel.png",TENNIS CHANNEL
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/2385.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/tt/tigo-sports-py.png",TIGO SPORTS (COSTA RICA)-
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/3681.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/tt/tigo-sports-py.png",TIGO SPORTS HD + (SALVADOR)
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/3683.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/tt/tigo-sports-py.png",*TIGO SPORTS HD  PLUS
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/3685.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/tt/tigo-sports-py.png",TIGO SPORTS HD (PARAGUAY)
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/3687.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/futv-cr.png",FUTV (MOVISTAR)
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/3688.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/tt/tyc_sports.png",TYC SPORTS HD (® ENCODER)
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/36801.m3u8
+#EXTINF:-1 tvg-id="tyc.sports.us" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/tt/tyc_sports.png", TYC SPORTS UHD (C)
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/37183.m3u8
+#EXTINF:-1 tvg-id="I122.11097.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fox_deportes_us.png",FOX SPORTS DEPORTES HD #OP 2
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/37684.m3u8
+#EXTINF:-1 tvg-id="tyc.sports.us" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/tt/tyc_sports.png",TYC SPORTS FHD ENCODER
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/39822.m3u8
+#EXTINF:-1 tvg-id="I3.109803.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn-4-america-latina-us.png",ESPN 4 FHD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/40579.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/tt/toros_tv_es.png",TOROS TV
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/40949.m3u8
+#EXTINF:-1 tvg-id="I312.123582.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fox_sports_global.png",FOX SPORTS PREMIUM. MEX (@)
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/43925.m3u8
+#EXTINF:-1 tvg-id="I312.123582.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="http://sat4encoder.is-by.us/logos/foz%20pe.jpg",FOX SPORT PREMIUM HD MEX (@) OP.2
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/44015.m3u8
+#EXTINF:-1 tvg-id="I264.79049.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn_3_lam_norte.png",ESPN 3 HD (@) H264
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/48318.m3u8
+#EXTINF:-1 tvg-id="I264.79049.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn-3-america-latina-us.png",ESPN 3 HD MX ENCODER
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/58968.m3u8
+#EXTINF:-1 tvg-id="I302.41677.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fox_sports_global.png",FOX  SPORTS RACING
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/58969.m3u8
+#EXTINF:-1 tvg-id="WINSPRE" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ww/win_sports_co.png",*WIN SPORTS+
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/76841.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/cc/cowboy-channel-us.png",COWBOY CHANNEL WRANGLER NFR
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/79351.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn_us.png",ESPN EXTRA AR
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/81369.m3u8
+#EXTINF:-1 tvg-id="I261.121144.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn_extra_lam.png",ESPN 4 MX HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/83140.m3u8
+#EXTINF:-1 tvg-id="I302.41677.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fox_sports_global.png",FOX SPORTS HD US
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/95568.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.mundoplus.tv/wiki/_media/logos/torole.png",ONETORO ES
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/124558.m3u8
+#EXTINF:-1 tvg-id="I662.38683.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/tt/tudn-mexico-mx.png",ZONA TUDN HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/262302.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/tt/tigo-sports-py.png",TIGO SPORTS SALVADOR
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/337690.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="",TVC DEPORTES 2
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/354146.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="",PX SPORTS HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/354420.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="", MOVISTAR GOLF
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/397946.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="",GAME SHOW NETWORK HU
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/398196.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ss/sky-sport-bundesliga-de.png",SKY SPORT BUNDESLIGA
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/479045.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ss/sky-sport-de.png",SKY SPORTS LALIGA
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/479046.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="",PBR RIDEPASS
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/481527.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ss/spectrum-sportsnet-us.png",SPECTRUM SPORTSNET LA (LAKERS)
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/483287.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ss/sky-sports-mix-uk.png",SKY SPORTS MIX
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/484863.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/bb/bein-sports-qa.png",BEIN SPORTS HD 
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/488870.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/bb/bein-sports-qa.png",BEIN SPORTS
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/488591.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="",TNT SPORTS ARGENTINA
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/491287.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="",TNT SPORTS 3 CHILE 
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/491293.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="",NFL HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/49019.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="",AT&T SPORTSNET ROCKY MOUNTAIN
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/514576.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/flag/az/cl.png",TNT SPORTS 2
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/529861.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/tt/tvc-deportes-mx.png",TVC DEPORTES HD.
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/604729.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/tt/tvc-deportes-mx.png",TVC DEPORTES 2 HD.
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/604730.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="",EUROSPORT 1 OP2
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/605794.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="",EUROSPORT 2
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/605795.m3u8
+#EXTINF:-1 tvg-id="worldfishingnetwork.us" tvg-name="" group-title="TV | DEPORTES" tvg-logo="",WORLD FISHING NETWORK
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/395774.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fanduel-tv-us.png",FANDUEL TV
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/395111.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="",OLYMPICS EXTRA 1 HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/468513.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ee/el-canal-del-futbol-ec.png", ECDF EL CANAL DEL FUTBOL
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/73507.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="",FANDUEL SPORTS NETWORK SOUTH
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/604510.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fanduel-tv-us.png",USA | FANDUEL SPORTS WISCONSIN *
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/42421.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fanduel-tv-us.png",USA | FANDUEL SPORTS WEST *
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/42422.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fanduel-tv-us.png",USA | FANDUEL SPORTS SUN
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/42423.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fanduel-tv-us.png",USA | FANDUEL SPORTS SOUTH *
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/42424.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fanduel-tv-us.png",USA | FANDUEL SPORTS SOUTHEAST *
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/42426.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fanduel-tv-us.png",USA | FANDUEL SPORTS SAN DIEGO *
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/42427.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fanduel-tv-us.png",USA | FANDUEL SPORTS OHIO
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/42428.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fanduel-tv-us.png",USA | FANDUEL SPORTS MIDWEST *
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/42430.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fanduel-tv-us.png",USA | FANDUEL SPORTS DETROIT
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/42432.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fanduel-tv-us.png",USA | FANDUEL SPORTS ARIZONA
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/42433.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fanduel-tv-us.png",USA | FANDUEL SPORTS KANSAS CITY
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/42435.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fanduel-tv-us.png",USA | FANDUEL SPORTS NORTH
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/42436.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fanduel-tv-us.png",USA | FANDUEL SPORTS SOCAL *
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/42437.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fanduel-tv-us.png",USA | FANDUEL SPORTS GREAT LAKES *
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/42438.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fanduel-tv-us.png",USA | FANDUEL SPORTS OKLAHOMA
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/42439.m3u8
+#EXTINF:-1 tvg-id="I676.10262.zap2it.com" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fanduel-tv-us.png",USA | FANDUEL SPORTS NEW ORLEANS *
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/43190.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fanduel-tv-us.png",USA | FANDUEL SPORTS NORTH *
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/487266.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES" tvg-logo="",BR | GLOBO
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/605086.m3u8
+#EXTINF:-1 tvg-id="I551.110964.schedulesdirect.org" tvg-name="" group-title="TV | DEPORTES EXCLUSIVOS" tvg-logo="http://cupra290.mine.nu/app/PPV-Logo-Final.png",ECU | CANAL DEL FUTBOL (SOLO EVENTOS)
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/953.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES EXCLUSIVOS" tvg-logo="https://www.lyngsat.com/logo/tv/ss/sky-sport-arena-it.png",SKY SPORTS ARENA HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/42154.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES EXCLUSIVOS" tvg-logo="https://www.lyngsat.com/logo/tv/gg/gol-tv-us.png",GOL TV (SOLO EVENTOS).
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/43115.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES EXCLUSIVOS" tvg-logo="https://www.lyngsat.com/logo/tv/ss/sky-sports-golf-uk.png",SKY GOLF HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/48019.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | DEPORTES EXCLUSIVOS" tvg-logo="https://www.lyngsat.com/logo/tv/nn/nba_tv_us.png",NBA MAVERICK
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/79640.m3u8
+#EXTINF:-1 tvg-id="I218.61854.zap2it.com" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/gg/golf_channel_us.png",GOLF USA HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/72719.m3u8
+#EXTINF:-1 tvg-id="I630.49198.zap2it.com" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/nn/nbc_sports_bay_area.png",NBC SPORTS
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/72720.m3u8
+#EXTINF:-1 tvg-id="I213.62079.zap2it.com" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/mm/mlb_network.png",MLB NETWORK HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/72729.m3u8
+#EXTINF:-1 tvg-id="I469.111046.zap2it.com" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/tt/tyc_sports.png",TYC SPORTS US
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/72731.m3u8
+#EXTINF:-1 tvg-id="I41.11054.zap2it.com" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/aa/att-sportsnet-us.png",AT&T SPORTS NET C
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/72740.m3u8
+#EXTINF:-1 tvg-id="I41.11054.zap2it.com" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/aa/att-sportsnet-us.png",AT&T SPORTSNET PITTSBURGH
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/72741.m3u8
+#EXTINF:-1 tvg-id="I1446.91306.schedulesdirect.org" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/ww/wwe-channel-za.png",WWE NET
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/73571.m3u8
+#EXTINF:-1 tvg-id="I206.10179.zap2it.com" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn_us.png",ESPN US
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/73648.m3u8
+#EXTINF:-1 tvg-id="I209.12444.zap2it.com" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn_2.png",ESPN2 US
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/73649.m3u8
+#EXTINF:-1 tvg-id="I208.45654.zap2it.com" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn_u.png",ESPN-U
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/73650.m3u8
+#EXTINF:-1 tvg-id="I207.59976.zap2it.com" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espnews.png",ESPN NEWS
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/73651.m3u8
+#EXTINF:-1 tvg-id="I3.109803.schedulesdirect.org" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn_u.png",ESPN U HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/553.m3u8
+#EXTINF:-1 tvg-id="I3.109803.schedulesdirect.org" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espnews.png",ESPN NEWS US HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/554.m3u8
+#EXTINF:-1 tvg-id="I3.109803.schedulesdirect.org" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fox_sports_us_2.png",FOX SPORTS 2 US HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/567.m3u8
+#EXTINF:-1 tvg-id="I212.34710.schedulesdirect.org" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/nn/nfl_network_us.png",NFL NETWORK *
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/2236.m3u8
+#EXTINF:-1 tvg-id="11.mexico.mx" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/nn/nfl_red_zone.png",NFL RED ZONE HU
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/2237.m3u8
+#EXTINF:-1 tvg-id="I611.89535.schedulesdirect.org" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn_sec_network_us.png",SEC NETWORK -
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/2242.m3u8
+#EXTINF:-1 tvg-id="I3.109803.schedulesdirect.org" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/cc/cbs-sports-network-us.png",CBS SPORTS NETWORK
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/2245.m3u8
+#EXTINF:-1 tvg-id="I631.46275.zap2it.com" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/yy/yes-network-us.png",YES NETWORK
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/2252.m3u8
+#EXTINF:-1 tvg-id="I218.14899.schedulesdirect.org" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/gg/golf_channel_us.png",GOLF CHANNEL
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/3605.m3u8
+#EXTINF:-1 tvg-id="nbc.universo.eastern.us" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/nn/nbcsn-us.png",NBC SPORTS NETWORK US
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/19505.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/gg/golf_channel_us.png",GOLF CHANNEL WEST
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/36770.m3u8
+#EXTINF:-1 tvg-id="I665.44905.schedulesdirect.org" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/nn/nbc_sports_california.png",NBC SPORTS CALIFORNIA
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/36775.m3u8
+#EXTINF:-1 tvg-id="I220.15952.schedulesdirect.org" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/nn/nbcsn-us.png",NBC SPORTS PHILADELPHIA
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/36777.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/ee/espn_sec_network_us.png",ESPN SEC *
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/36780.m3u8
+#EXTINF:-1 tvg-id="I3.109803.schedulesdirect.org" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/tt/tsn_1_ca.png",TSN 1
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/36796.m3u8
+#EXTINF:-1 tvg-id="I401.18990.schedulesdirect.org" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/tt/tsn_2_ca.png",TSN 2
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/36797.m3u8
+#EXTINF:-1 tvg-id="I402.90118.schedulesdirect.org" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/tt/tsn_3_ca.png",TSN 3
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/36798.m3u8
+#EXTINF:-1 tvg-id="I3.109803.schedulesdirect.org" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/tt/tsn_4_ca.png",TSN 4
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/36799.m3u8
+#EXTINF:-1 tvg-id="I404.90124.schedulesdirect.org" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/tt/tsn_5_ca.png",TSN 5
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/36800.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/mm/motortrend-us.png",MOTORTREND
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/36804.m3u8
+#EXTINF:-1 tvg-id="I408.18800.schedulesdirect.org" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/ss/sportsnet_west.png",SPORTSNET WEST (CA)
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/37197.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/aa/att-sportsnet-us.png",AT&T SPORTSNET SOUTHWEST HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/43395.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/aa/acc-network-us.png",ESPN ACC NETWORK US
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/51204.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="",ANDRENALINA NETWORK IHD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/75333.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="",BOX NATION HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/76394.m3u8
+#EXTINF:-1 tvg-id="I603.10188.zap2it.com" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/cc/cowboy-channel-us.png",COWBOY CHANNEL
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/79352.m3u8
+#EXTINF:-1 tvg-id="F1TV.us" tvg-name="" group-title="TV | SPORTS" tvg-logo="http://51.222.152.107:81/posters/1509416201412.png",SKY SPORTS F1
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/80022.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/mm/marquee-sports-network-us.png",MARQUEE SPORTS NETWORK
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/181062.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/mm/marquee-sports-network-us.png",MARQUEE NETWORK
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/237444.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/ss/sportsnet_east.png",SPORTSNET EAST (CA)
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/261823.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="",BIG TEN NETWORK
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/326445.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="https://www.lyngsat.com/logo/tv/ff/fox_soccer_plus.png",FOX SOCCER PLUS
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/40837.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="",AT&T SPORTSNET 2 R4
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/514577.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="",ESPN NEWS HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/395098.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="",ESPN U USA
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/395099.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="",*ESPN 2 USA HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/395100.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="",MAVTV USA HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/395101.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="",NBA USA HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/395103.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="",TENNIS USA HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/395104.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="",FOX SPORTS 1 (FS1)
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/395106.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="",CBS SPORTS NETWORK
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/395107.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="",*FOX DEPORTES USA
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/395109.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="",ESPN DEPORTES USA
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/395110.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="",PURSUIT CHANNEL
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/395112.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="",OUTDOOR CHANNEL
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/395113.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="",ESPN NETWORK SEC
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/395115.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="",ESPN ACCN USA
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/395116.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="",MSG HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/395121.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="" group-title="TV | SPORTS" tvg-logo="",MARQUEE HD
+http://ak-47scan.dyndns.tv:25461/live/ATKPLUSFULL/dgHZM4fAgGJP/395126.m3u8
+
 #EXTINF:-1 tvg-id="" tvg-name="" group-title="BEIN SPORTS" tvg-logo="http://visualservice.xyz:80/images/6d51c6dc03d1605f0a0c6ea1c9d6aa89.png",BEIN SPORT Ñ EXTRA
 http://soporte-visual.com:80/live/fER6gYGeHYK4/95KfdvRy5pDp/21944.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="" group-title="BEIN SPORTS" tvg-logo="http://visualservice.xyz:80/images/6d51c6dc03d1605f0a0c6ea1c9d6aa89.png",BEIN SPORT Ñ HD 
