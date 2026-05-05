@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "lastUpdate": "2026-04-8",
+  "lastUpdate": "2026-05-5",
   "playlists": [
     {
       "id": "main",
@@ -12,7 +12,7 @@
     {
       "id": "deportes",
       "name": "Playlist Deportes",
-      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/2.m3u8",
+      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/ya12.m3u",
       "enabled": true
     },
     {
