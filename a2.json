@@ -9,7 +9,7 @@
       "enabled": true
     },
     {
-      "id": "secondary",
+      "id": "main",
       "name": "Playlist Secundaria",
       "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/M1.m3u",
       "enabled": true
