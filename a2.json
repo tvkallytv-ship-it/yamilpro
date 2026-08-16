@@ -5,25 +5,25 @@
     {
       "id": "main",
       "name": "Playlist Principal",
-      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/1+tv.m3u",
+      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/tv+.m3u",
       "enabled": true
     },
     {
       "id": "secundaria",
       "name": "Playlist Secundaria",
-      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/3+dra.m3u",
+      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/dra+.m3u",
       "enabled": true
     },
     {
       "id": "deportes",
       "name": "Playlist Deportes",
-      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/2+dep.m3u",
+      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/dep+.m3u",
       "enabled": true
     },
     {
       "id": "peliculas",
       "name": "Playlist Películas",
-      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/5+pel.m3u",
+      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/pel+.m3u",
       "enabled": true
     },
     {
@@ -35,7 +35,7 @@
     {
       "id": "latino",
       "name": "Playlist Latino",
-      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/4+ser.m3u",
+      "url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/ser+.m3u",
       "enabled": true
     }
   ]
