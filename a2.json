@@ -12,7 +12,7 @@
 
 "name": "Playlist Principal",
 
-"url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/1can.m3u",
+"url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/2q.m3u",
 
 "enabled": true
 
@@ -24,7 +24,7 @@
 
 "name": "Playlist Secundaria",
 
-"url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/2dr.m3u",
+"url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/3q.m3u",
 
 "enabled": true
 
@@ -36,7 +36,7 @@
 
 "name": "Playlist Deportes",
 
-"url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/3dep.m3u",
+"url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/4q.m3u",
 
 "enabled": true
 
@@ -48,7 +48,7 @@
 
 "name": "Playlist Películas",
 
-"url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/4pel.m3u",
+"url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/q1.m3u",
 
 "enabled": true
 
@@ -60,7 +60,7 @@
 
 "name": "Playlist Infantil",
 
-"url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/A.m3u",
+"url": "https://raw.githack.com/tvkallytv-ship-it/yamilpro/main/Ao.m3u",
 
 "enabled": true
 
