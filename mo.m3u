@@ -1,5 +1,4 @@
-U
-#EXTINF:-1 tvg-id="151BPB.cl@SD" tvg-logo="https://i.imgur.com/hyxkJYV.png" group-title="Religious",15.1 BPB (720p)
+Actutvg-id="151BPB.cl@SD" tvg-logo="https://i.imgur.com/hyxkJYV.png" group-title="Religious",15.1 BPB (720p)
 https://v2.tustreaming.cl/enlacebpbtv/index.m3u8
 
 #EXTINF:-1 tvg-id="Enlace.cr@SD" tvg-logo="https://i.imgur.com/YwUVTmS.png" group-title="Religious",Enlace (720p)
@@ -9,11 +8,7 @@ http://177.234.249.178:8888/ENLACE/index.m3u8
 http://177.234.249.178:8888/ENLACE/index.m3u8
 
 #EXTINF:-1 tvg-id="EnlaceJuvenil.cr@SD" tvg-logo="https://i.imgur.com/GfpPQ5D.png" group-title="Religious",Enlace Juvenil
-https://livecdnusa.enlace.plus/ejtv/smil:ejtv-hd.smil/playlist.m3u8
-
-
-
-
+https://livecdnusa.enlace.plus/ejtv/smil:ejtv-hd.smil/playlist.m3u
 
 #EXTINF:-1 ,Forrest Gump (1994)
 https://nvmevod.btv.mx/132T/NANEGOBACK/MOVDUAL/26/forrest_gump_1994.mkv
